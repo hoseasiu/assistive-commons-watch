@@ -1,0 +1,804 @@
+---
+pagination:
+  data: acw.projects
+  size: 1
+  alias: project
+permalink: "/projects/{{ project.id }}/"
+eleventyComputed:
+  title: "{{ project.name }} — Assistive Commons Watch"
+layout: base.njk
+---
+<style>
+  /* ── Shared layout ── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+  /* ── Header ── */
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border);
+    height: 56px;
+  }
+  .site-header .container { height: 100%; display: flex; align-items: center; }
+  .wordmark {
+    font-size: 15px; font-weight: 800; letter-spacing: -0.03em;
+    color: var(--text-primary); margin-right: auto;
+    text-decoration: none;
+  }
+  .wordmark:hover { opacity: 0.8; }
+  .live-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: oklch(0.94 0.07 142); border-radius: 100px;
+    padding: 3px 8px; margin-left: 10px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.07em;
+    color: oklch(0.33 0.14 142); text-transform: uppercase;
+  }
+  .live-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: oklch(0.50 0.17 142);
+    animation: pulse-dot 2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  .site-nav { display: flex; align-items: center; gap: 4px; }
+  .site-nav a {
+    font-size: 13px; font-weight: 500; color: var(--text-secondary);
+    padding: 7px 12px; border-radius: 6px; transition: background 0.15s;
+  }
+  .site-nav a:hover { background: var(--bg-page); }
+  .nav-cta {
+    font-size: 13px; font-weight: 600; color: white;
+    background: var(--accent-green); padding: 7px 15px;
+    border-radius: 7px; margin-left: 8px; transition: opacity 0.15s;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* ── Breadcrumb ── */
+  .breadcrumb {
+    background: var(--bg-white); border-bottom: 1px solid var(--border);
+    padding: 10px 0;
+  }
+  .breadcrumb .container {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 13px; color: var(--text-muted);
+  }
+  .breadcrumb a { color: var(--accent-green); }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb-sep { color: oklch(0.80 0.01 75); }
+
+  /* ── Page hero ── */
+  .project-hero {
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 0 32px;
+  }
+  .project-hero .container { display: flex; align-items: flex-start; gap: 24px; }
+  .hero-body { flex: 1; }
+  .project-name {
+    font-size: 34px; font-weight: 800; letter-spacing: -0.03em;
+    color: oklch(0.17 0.025 50); line-height: 1.15; margin-bottom: 14px;
+  }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .tag {
+    display: inline-block; padding: 3px 9px; border-radius: 100px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.03em;
+    background: var(--bg-page); border: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+  .tag--area {
+    background: oklch(0.93 0.06 165); border-color: oklch(0.80 0.10 165);
+    color: oklch(0.30 0.12 165);
+  }
+  .tag--modality {
+    background: oklch(0.93 0.04 245); border-color: oklch(0.82 0.07 245);
+    color: oklch(0.32 0.10 245);
+  }
+  .tier-badge-large {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border-radius: 100px;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+    flex-shrink: 0; margin-top: 3px;
+  }
+  .tier-badge-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* ── Main page layout ── */
+  .page-main { padding: 32px 0 64px; }
+  .page-main .container {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 28px;
+    align-items: start;
+  }
+  .main-col { display: flex; flex-direction: column; gap: 20px; }
+
+  /* ── Cards ── */
+  .detail-card {
+    background: var(--bg-white); border-radius: 12px;
+    border: 1px solid var(--border); overflow: hidden;
+  }
+  .card-header {
+    padding: 14px 20px; border-bottom: 1px solid var(--border-subtle);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .card-icon { font-size: 16px; line-height: 1; }
+  .card-title {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.01em;
+    color: var(--text-primary);
+  }
+  .card-body { padding: 20px; }
+
+  /* ── Summary card ── */
+  .summary-tier-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+  }
+  .summary-score {
+    font-size: 28px; font-weight: 800; letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums; color: var(--text-primary);
+  }
+  .summary-score-label {
+    font-size: 11px; font-weight: 600; color: var(--text-muted);
+    letter-spacing: 0.06em; text-transform: uppercase; margin-top: 1px;
+  }
+  .summary-text {
+    font-size: 15px; line-height: 1.7; color: oklch(0.38 0.02 50);
+    margin-bottom: 18px;
+  }
+  .quick-facts {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .quick-fact {
+    background: var(--bg-page); border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .quick-fact-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.07em;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 3px;
+  }
+  .quick-fact-value {
+    font-size: 13px; font-weight: 600; color: var(--text-primary);
+  }
+  .quick-fact-value--muted { color: var(--text-muted); font-weight: 400; }
+
+  /* ── Score pills ── */
+  .score-pills-row {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .score-pill {
+    flex: 1; min-width: 100px;
+    border-radius: 10px; padding: 12px 14px;
+    border: 1px solid transparent;
+    position: relative;
+  }
+  .pill-icon { font-size: 18px; line-height: 1; margin-bottom: 6px; }
+  .pill-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
+    text-transform: uppercase; margin-bottom: 6px;
+    opacity: 0.85;
+  }
+  .pill-score {
+    font-size: 22px; font-weight: 800; letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums; line-height: 1;
+  }
+  .pill-score--na {
+    font-size: 18px; opacity: 0.55;
+  }
+  .pill-weight {
+    font-size: 10px; font-weight: 500; opacity: 0.65;
+    margin-top: 3px; letter-spacing: 0.02em;
+  }
+  .pill-tooltip-text {
+    display: none;
+    position: absolute; bottom: calc(100% + 6px); left: 50%;
+    transform: translateX(-50%);
+    background: oklch(0.18 0.02 50); color: white;
+    font-size: 11px; line-height: 1.5; font-weight: 400;
+    padding: 7px 10px; border-radius: 6px;
+    width: 180px; text-align: left; z-index: 10;
+    pointer-events: none; letter-spacing: 0;
+    box-shadow: 0 4px 12px oklch(0 0 0 / 0.18);
+  }
+  .pill-tooltip-text::after {
+    content: ''; position: absolute; top: 100%; left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: oklch(0.18 0.02 50);
+  }
+  .score-pill:hover .pill-tooltip-text,
+  .score-pill:focus-within .pill-tooltip-text { display: block; }
+  .score-pill:focus { outline: 2px solid var(--accent-green); outline-offset: 2px; }
+
+  /* ── Description section ── */
+  .project-description {
+    font-size: 15px; line-height: 1.75; color: oklch(0.40 0.02 50);
+  }
+  .project-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+  .link-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 14px; border-radius: 7px;
+    font-size: 13px; font-weight: 600;
+    border: 1px solid var(--border); color: var(--text-primary);
+    background: var(--bg-white); transition: background 0.15s;
+  }
+  .link-btn:hover { background: var(--bg-page); }
+  .link-btn--primary {
+    background: var(--accent-green); color: white; border-color: transparent;
+  }
+  .link-btn--primary:hover { opacity: 0.88; background: var(--accent-green); }
+
+  /* ── Metadata grid ── */
+  .meta-section { margin-bottom: 20px; }
+  .meta-section:last-child { margin-bottom: 0; }
+  .meta-section-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-muted);
+    margin-bottom: 10px; padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .meta-rows { display: flex; flex-direction: column; gap: 6px; }
+  .meta-row { display: flex; gap: 10px; align-items: flex-start; }
+  .meta-key {
+    font-size: 12px; font-weight: 600; color: var(--text-muted);
+    width: 130px; flex-shrink: 0; padding-top: 1px;
+  }
+  .meta-val {
+    font-size: 13px; color: var(--text-primary); flex: 1;
+  }
+  .meta-val--muted { color: var(--text-muted); font-style: italic; }
+  .meta-pill {
+    display: inline-block; padding: 1px 7px; border-radius: 100px;
+    font-size: 11px; font-weight: 500;
+    background: var(--bg-page); border: 1px solid var(--border);
+    color: var(--text-secondary); margin: 1px 2px 1px 0;
+  }
+  .signal-yes {
+    display: inline-flex; align-items: center; gap: 4px;
+    color: oklch(0.34 0.14 165); font-weight: 600; font-size: 13px;
+  }
+  .signal-no {
+    display: inline-flex; align-items: center; gap: 4px;
+    color: var(--text-muted); font-size: 13px;
+  }
+  .signal-unknown {
+    color: var(--text-muted); font-style: italic; font-size: 13px;
+  }
+
+  /* ── Sidebar ── */
+  .detail-sidebar { display: flex; flex-direction: column; gap: 16px; }
+  .sidebar-card {
+    background: var(--bg-white); border-radius: 12px;
+    border: 1px solid var(--border); overflow: hidden;
+  }
+  .sidebar-card-header {
+    padding: 12px 16px; border-bottom: 1px solid var(--border-subtle);
+    font-size: 12px; font-weight: 700; color: var(--text-primary);
+    letter-spacing: 0.02em;
+  }
+  .sidebar-card-body { padding: 14px 16px; }
+  .sidebar-stat-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 5px 0; border-bottom: 1px solid var(--border-faint);
+    font-size: 13px;
+  }
+  .sidebar-stat-row:last-child { border-bottom: none; }
+  .sidebar-stat-key { color: var(--text-muted); }
+  .sidebar-stat-val {
+    font-weight: 600; color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+  }
+  .score-formula-note {
+    font-size: 11px; color: var(--text-muted); line-height: 1.6;
+    margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border-subtle);
+  }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 600; color: var(--accent-green);
+    padding: 14px 16px;
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  /* ── Tags section ── */
+  .tags-row { display: flex; flex-wrap: wrap; gap: 5px; }
+
+  /* ── Footer ── */
+  .site-footer {
+    background: var(--bg-white); border-top: 1px solid var(--border);
+    padding: 20px 40px;
+  }
+  .site-footer .container {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-left { font-size: 12px; color: var(--text-muted); }
+  .footer-left a { color: var(--accent-green); }
+  .footer-links { display: flex; gap: 16px; }
+  .footer-links a { font-size: 12px; color: oklch(0.52 0.015 50); }
+</style>
+
+{%- set p = project -%}
+
+{# ── Dimension metadata (icons, weights, tooltips) ── #}
+{%- set dims = [
+  {
+    "key": "activity",
+    "icon": "⚡",
+    "label": "Activity",
+    "weight": "25%",
+    "tooltip": "How recently and consistently the project has been updated — last commit date, release cadence, and issue response rate. Requires nightly GitHub fetch."
+  },
+  {
+    "key": "replicability",
+    "icon": "🔧",
+    "label": "Replicability",
+    "weight": "30%",
+    "tooltip": "How easy it is to build or reproduce — bill of materials, build docs quality, installation steps, and release artifacts."
+  },
+  {
+    "key": "community",
+    "icon": "🤝",
+    "label": "Community",
+    "weight": "15%",
+    "tooltip": "Signals that contributors are welcomed: CONTRIBUTING.md, issue templates, code of conduct. Requires nightly GitHub fetch."
+  },
+  {
+    "key": "at_specific",
+    "icon": "♿",
+    "label": "AT-Specific",
+    "weight": "20%",
+    "tooltip": "How centered on disabled users — end-user docs, Nothing About Us co-design principle, feedback channels, and known deployments."
+  },
+  {
+    "key": "provenance",
+    "icon": "📎",
+    "label": "Provenance",
+    "weight": "10%",
+    "tooltip": "Trust and credibility signals — OSI-approved license, associated publications, institutional affiliation, and origin program."
+  }
+] -%}
+
+<!-- ─────────────────────────── HEADER ─────────────────────────── -->
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">
+      Assistive Commons Watch
+      <span class="live-badge">
+        <span class="live-dot"></span>LIVE
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Site navigation">
+      <a href="/browse">Browse</a>
+      <a href="/recent">Recent Changes</a>
+      <a href="/needs-attention">Needs Attention</a>
+      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new" class="nav-cta">Submit a project →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─────────────────────────── BREADCRUMB ─────────────────────────── -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container">
+    <a href="/">Assistive Commons Watch</a>
+    <span class="breadcrumb-sep" aria-hidden="true">›</span>
+    <span>{{ p.primary_area_label }}</span>
+    <span class="breadcrumb-sep" aria-hidden="true">›</span>
+    <span aria-current="page">{{ p.name }}</span>
+  </div>
+</nav>
+
+<!-- ─────────────────────────── HERO ─────────────────────────── -->
+<div class="project-hero">
+  <div class="container">
+    <div class="hero-body">
+      <h1 class="project-name">{{ p.name }}</h1>
+      <div class="hero-tags">
+        <span
+          class="tier-badge-large"
+          style="background: {{ p.health_tier | tierColor }}20; color: {{ p.health_tier | tierColor }}; border: 1px solid {{ p.health_tier | tierColor }}40;"
+          aria-label="Health tier: {{ p.health_tier_label }}"
+        >
+          <span class="tier-badge-dot" style="background: {{ p.health_tier | tierColor }}" aria-hidden="true"></span>
+          {{ p.health_tier_label }}
+        </span>
+        {%- for label in p.disability_area_labels -%}
+        <span class="tag tag--area">{{ label }}</span>
+        {%- endfor -%}
+        <span class="tag tag--modality">{{ p.modality_label }}</span>
+        {%- if p.skill_level_label -%}
+        <span class="tag">{{ p.skill_level_label }}</span>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────────────────────── MAIN CONTENT ─────────────────────────── -->
+<main class="page-main">
+  <div class="container">
+
+    <!-- Left column -->
+    <div class="main-col">
+
+      <!-- ── "Can I use this today?" summary card ── -->
+      <div class="detail-card" aria-labelledby="summary-heading">
+        <div class="card-header">
+          <span class="card-icon" aria-hidden="true">🔍</span>
+          <h2 class="card-title" id="summary-heading">Can I use this today?</h2>
+        </div>
+        <div class="card-body">
+          <div class="summary-tier-row">
+            <div>
+              <div class="summary-score" aria-label="Overall health score: {{ p.health_score }} out of 10">{{ p.health_score }}</div>
+              <div class="summary-score-label">/ 10 overall</div>
+            </div>
+            <div
+              style="margin-left: 4px; padding: 5px 12px; border-radius: 8px; font-size: 13px; font-weight: 700; background: {{ p.health_tier | tierColor }}18; color: {{ p.health_tier | tierColor }}; border: 1px solid {{ p.health_tier | tierColor }}35;"
+              role="status"
+              aria-label="Health tier: {{ p.health_tier_label }}"
+            >{{ p.health_tier_label }}</div>
+          </div>
+
+          <p class="summary-text">{{ p.summary }}</p>
+
+          <div class="quick-facts" role="list" aria-label="Quick facts">
+            <div class="quick-fact" role="listitem">
+              <div class="quick-fact-label">License</div>
+              <div class="quick-fact-value{% if not p.license %} quick-fact-value--muted{% endif %}">
+                {{ p.license if p.license else "Not specified" }}
+              </div>
+            </div>
+            <div class="quick-fact" role="listitem">
+              <div class="quick-fact-label">Modality</div>
+              <div class="quick-fact-value">{{ p.modality_label }}</div>
+            </div>
+            <div class="quick-fact" role="listitem">
+              <div class="quick-fact-label">Skill Level</div>
+              <div class="quick-fact-value{% if not p.skill_level_label %} quick-fact-value--muted{% endif %}">
+                {{ p.skill_level_label if p.skill_level_label else "Unknown" }}
+              </div>
+            </div>
+            <div class="quick-fact" role="listitem">
+              <div class="quick-fact-label">Cost Range</div>
+              <div class="quick-fact-value{% if not p.cost_range %} quick-fact-value--muted{% endif %}">
+                {{ p.cost_range if p.cost_range else "Unknown" }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Score pills ── -->
+      <div class="detail-card" aria-labelledby="scores-heading">
+        <div class="card-header">
+          <span class="card-icon" aria-hidden="true">📊</span>
+          <h2 class="card-title" id="scores-heading">Score Breakdown</h2>
+        </div>
+        <div class="card-body">
+          <div class="score-pills-row" role="list" aria-label="Health score dimensions">
+            {%- for dim in dims -%}
+            {%- set dimScore = p.scores[dim.key] -%}
+            <div
+              class="score-pill"
+              role="listitem"
+              tabindex="0"
+              style="background: {{ dimScore | scoreBg }}; color: {{ dimScore | scoreText }}; border-color: {{ dimScore | scoreBorder }};"
+              aria-label="{{ dim.label }}: {% if dimScore != null %}{{ dimScore }} out of 10{% else %}not yet computed{% endif %}"
+            >
+              <div class="pill-tooltip-text" role="tooltip">{{ dim.tooltip }}</div>
+              <div class="pill-icon" aria-hidden="true">{{ dim.icon }}</div>
+              <div class="pill-label">{{ dim.label }}</div>
+              <div class="pill-score{% if dimScore == null %} pill-score--na{% endif %}">
+                {%- if dimScore != null -%}{{ dimScore }}{%- else -%}—{%- endif -%}
+              </div>
+              <div class="pill-weight">weight {{ dim.weight }}</div>
+            </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+
+      <!-- ── About this project ── -->
+      <div class="detail-card" aria-labelledby="about-heading">
+        <div class="card-header">
+          <span class="card-icon" aria-hidden="true">📋</span>
+          <h2 class="card-title" id="about-heading">About this project</h2>
+        </div>
+        <div class="card-body">
+          <p class="project-description">{{ p.description }}</p>
+
+          {%- if p.tags and p.tags.length > 0 -%}
+          <div class="tags-row" style="margin-top: 14px;" aria-label="Tags">
+            {%- for tag in p.tags -%}
+            <span class="meta-pill">{{ tag }}</span>
+            {%- endfor -%}
+          </div>
+          {%- endif -%}
+
+          <div class="project-links">
+            {%- if p.github_url -%}
+            <a href="{{ p.github_url }}" class="link-btn link-btn--primary" target="_blank" rel="noopener">
+              <span aria-hidden="true">↗</span> View on GitHub
+            </a>
+            {%- endif -%}
+            <a href="/" class="link-btn">← Back to Landscape</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Full metadata ── -->
+      <div class="detail-card" aria-labelledby="metadata-heading">
+        <div class="card-header">
+          <span class="card-icon" aria-hidden="true">🗂</span>
+          <h2 class="card-title" id="metadata-heading">Full Details</h2>
+        </div>
+        <div class="card-body">
+
+          <!-- Scope -->
+          <div class="meta-section">
+            <div class="meta-section-title">Scope</div>
+            <div class="meta-rows">
+              <div class="meta-row">
+                <span class="meta-key">Disability areas</span>
+                <span class="meta-val">
+                  {%- for label in p.disability_area_labels -%}
+                  <span class="meta-pill">{{ label }}</span>
+                  {%- endfor -%}
+                </span>
+              </div>
+              {%- if p.interface and p.interface.length > 0 -%}
+              <div class="meta-row">
+                <span class="meta-key">Interface</span>
+                <span class="meta-val">
+                  {%- for iface in p.interface -%}
+                  <span class="meta-pill">{{ iface }}</span>
+                  {%- endfor -%}
+                </span>
+              </div>
+              {%- endif -%}
+              {%- if p.user_context and p.user_context.length > 0 -%}
+              <div class="meta-row">
+                <span class="meta-key">User context</span>
+                <span class="meta-val">
+                  {%- for ctx in p.user_context -%}
+                  <span class="meta-pill">{{ ctx }}</span>
+                  {%- endfor -%}
+                </span>
+              </div>
+              {%- endif -%}
+              {%- if p.documentation_languages and p.documentation_languages.length > 0 -%}
+              <div class="meta-row">
+                <span class="meta-key">Docs languages</span>
+                <span class="meta-val">
+                  {%- for lang in p.documentation_languages -%}
+                  <span class="meta-pill">{{ lang }}</span>
+                  {%- endfor -%}
+                </span>
+              </div>
+              {%- endif -%}
+            </div>
+          </div>
+
+          <!-- Build / Replication -->
+          <div class="meta-section">
+            <div class="meta-section-title">Build / Replication</div>
+            <div class="meta-rows">
+              <div class="meta-row">
+                <span class="meta-key">Build docs</span>
+                <span class="meta-val">{{ p.build_docs_quality_label }}</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-key">BOM present</span>
+                <span class="meta-val">
+                  {%- if p.bom_present == true -%}
+                  <span class="signal-yes">✓ Yes</span>
+                  {%- elif p.bom_present == false -%}
+                  <span class="signal-no">✗ No</span>
+                  {%- else -%}
+                  <span class="signal-unknown">Unknown</span>
+                  {%- endif -%}
+                </span>
+              </div>
+              {%- if p.fabrication_methods and p.fabrication_methods.length > 0 -%}
+              <div class="meta-row">
+                <span class="meta-key">Fabrication</span>
+                <span class="meta-val">
+                  {%- for method in p.fabrication_methods -%}
+                  <span class="meta-pill">{{ method }}</span>
+                  {%- endfor -%}
+                </span>
+              </div>
+              {%- endif -%}
+              <div class="meta-row">
+                <span class="meta-key">Cost range</span>
+                <span class="meta-val{% if not p.cost_range %} meta-val--muted{% endif %}">
+                  {{ p.cost_range if p.cost_range else "Unknown" }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- AT Community signals -->
+          <div class="meta-section">
+            <div class="meta-section-title">AT Community Signals</div>
+            <div class="meta-rows">
+              <div class="meta-row">
+                <span class="meta-key">Nothing About Us</span>
+                <span class="meta-val">
+                  {%- if p.nothing_about_us == true -%}
+                  <span class="signal-yes">✓ Co-designed with disabled users</span>
+                  {%- elif p.nothing_about_us == false -%}
+                  <span class="signal-no">✗ No co-design evidence</span>
+                  {%- else -%}
+                  <span class="signal-unknown">Unknown</span>
+                  {%- endif -%}
+                </span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-key">End-user docs</span>
+                <span class="meta-val">
+                  {%- if p.end_user_docs == true -%}
+                  <span class="signal-yes">✓ Available</span>
+                  {%- elif p.end_user_docs == false -%}
+                  <span class="signal-no">✗ Not available</span>
+                  {%- else -%}
+                  <span class="signal-unknown">Unknown</span>
+                  {%- endif -%}
+                </span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-key">Feedback channel</span>
+                <span class="meta-val">
+                  {%- if p.feedback_channel == true -%}
+                  <span class="signal-yes">✓ Present</span>
+                  {%- elif p.feedback_channel == false -%}
+                  <span class="signal-no">✗ Not present</span>
+                  {%- else -%}
+                  <span class="signal-unknown">Unknown</span>
+                  {%- endif -%}
+                </span>
+              </div>
+              {%- if p.known_deployed_instances -%}
+              <div class="meta-row">
+                <span class="meta-key">Known deployments</span>
+                <span class="meta-val">{{ p.known_deployed_instances }}</span>
+              </div>
+              {%- endif -%}
+              {%- if p.replicated_by_disabled_person != null -%}
+              <div class="meta-row">
+                <span class="meta-key">Built by a disabled person</span>
+                <span class="meta-val">
+                  {%- if p.replicated_by_disabled_person -%}
+                  <span class="signal-yes">✓ Confirmed</span>
+                  {%- else -%}
+                  <span class="signal-no">✗ Not confirmed</span>
+                  {%- endif -%}
+                </span>
+              </div>
+              {%- endif -%}
+            </div>
+          </div>
+
+          <!-- Provenance -->
+          <div class="meta-section">
+            <div class="meta-section-title">Provenance</div>
+            <div class="meta-rows">
+              <div class="meta-row">
+                <span class="meta-key">License</span>
+                <span class="meta-val{% if not p.license %} meta-val--muted{% endif %}">
+                  {{ p.license if p.license else "Not specified" }}
+                </span>
+              </div>
+              {%- if p.institutional_affiliation -%}
+              <div class="meta-row">
+                <span class="meta-key">Institution</span>
+                <span class="meta-val">{{ p.institutional_affiliation }}</span>
+              </div>
+              {%- endif -%}
+              {%- if p.origin_program -%}
+              <div class="meta-row">
+                <span class="meta-key">Origin program</span>
+                <span class="meta-val">{{ p.origin_program }}</span>
+              </div>
+              {%- endif -%}
+              {%- if p.associated_publication -%}
+              <div class="meta-row">
+                <span class="meta-key">Publication</span>
+                <span class="meta-val">{{ p.associated_publication }}</span>
+              </div>
+              {%- endif -%}
+              <div class="meta-row">
+                <span class="meta-key">Added</span>
+                <span class="meta-val">{{ p.added_date }}</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /main-col -->
+
+    <!-- Right sidebar -->
+    <aside class="detail-sidebar" aria-label="Project sidebar">
+
+      <!-- GitHub stats (if available) -->
+      {%- if p.github_url -%}
+      <div class="sidebar-card">
+        <div class="sidebar-card-header">GitHub</div>
+        <div class="sidebar-card-body">
+          <div class="sidebar-stat-row">
+            <span class="sidebar-stat-key">Stars</span>
+            <span class="sidebar-stat-val">{{ p.github_stars if p.github_stars != null else "—" }}</span>
+          </div>
+          <div class="sidebar-stat-row">
+            <span class="sidebar-stat-key">Forks</span>
+            <span class="sidebar-stat-val">{{ p.github_forks if p.github_forks != null else "—" }}</span>
+          </div>
+          <div class="sidebar-stat-row">
+            <span class="sidebar-stat-key">Open issues</span>
+            <span class="sidebar-stat-val">{{ p.github_open_issues if p.github_open_issues != null else "—" }}</span>
+          </div>
+          <div class="sidebar-stat-row">
+            <span class="sidebar-stat-key">Last commit</span>
+            <span class="sidebar-stat-val">{{ p.github_last_commit if p.github_last_commit else "—" }}</span>
+          </div>
+          <div style="margin-top: 12px;">
+            <a href="{{ p.github_url }}" class="link-btn" target="_blank" rel="noopener" style="width: 100%; justify-content: center; font-size: 12px;">
+              ↗ Open on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+      {%- endif -%}
+
+      <!-- Score formula reference -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header">Scoring formula</div>
+        <div class="sidebar-card-body">
+          <div class="sidebar-stat-row">
+            <span class="sidebar-stat-key">⚡ Activity</span>
+            <span class="sidebar-stat-val">25%</span>
+          </div>
+          <div class="sidebar-stat-row">
+            <span class="sidebar-stat-key">🔧 Replicability</span>
+            <span class="sidebar-stat-val">30%</span>
+          </div>
+          <div class="sidebar-stat-row">
+            <span class="sidebar-stat-key">🤝 Community</span>
+            <span class="sidebar-stat-val">15%</span>
+          </div>
+          <div class="sidebar-stat-row">
+            <span class="sidebar-stat-key">♿ AT-Specific</span>
+            <span class="sidebar-stat-val">20%</span>
+          </div>
+          <div class="sidebar-stat-row">
+            <span class="sidebar-stat-key">📎 Provenance</span>
+            <span class="sidebar-stat-val">10%</span>
+          </div>
+          <p class="score-formula-note">
+            Scores 0–10. Activity and Community update nightly via GitHub Actions. Tier: Thriving ≥7.5, Stable ≥5.5.
+          </p>
+        </div>
+      </div>
+
+      <!-- Back link -->
+      <div class="sidebar-card">
+        <a href="/" class="back-link">← All projects</a>
+      </div>
+
+    </aside>
+
+  </div>
+</main>
+
+<!-- ─────────────────────────── FOOTER ─────────────────────────── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-left">
+      Assistive Commons Watch · Data: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/hoseasiu/assistive-commons-watch">GitHub</a>
+      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new">Submit a project</a>
+    </div>
+  </div>
+</footer>

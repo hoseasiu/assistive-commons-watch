@@ -20,8 +20,8 @@ import yaml
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from _fetchers.models import HealthTier, Project
-from _fetchers.scoring import compute_health
+from _fetchers.models import BuildDocsQuality, HealthTier, Project
+from _fetchers.scoring import compute_health, compute_sub_scores
 
 ROOT = Path(__file__).parent.parent
 DATA_DIR = ROOT / "_data" / "projects"
@@ -58,6 +58,53 @@ TIER_LABELS = {
     "unverified": "Unverified",
 }
 
+MODALITY_LABELS = {
+    "hardware": "Hardware",
+    "software": "Software",
+    "firmware": "Firmware",
+    "hybrid": "Hardware + Software",
+}
+
+SKILL_LABELS = {
+    "beginner": "Beginner",
+    "maker": "Maker / DIY",
+    "engineer": "Engineer",
+}
+
+BUILD_DOCS_LABELS = {
+    "none": "None",
+    "partial": "Partial",
+    "complete": "Complete",
+}
+
+
+def _generate_summary(sub_scores: dict, project: Project) -> str:
+    """Two-sentence plain-language synthesis based on statically-available signals."""
+    at_spec = sub_scores["at_specific"]
+    replic = sub_scores.get("replicability") or 0.0
+
+    parts = []
+
+    if at_spec >= 7:
+        parts.append(
+            "Designed with disabled users in mind — end-user docs and feedback channels are present."
+        )
+    elif project.end_user_docs:
+        parts.append("End-user documentation is available.")
+    elif not project.end_user_docs and not project.nothing_about_us:
+        parts.append("No end-user documentation found — primarily a builder/developer resource.")
+    else:
+        parts.append("Limited AT-specific user documentation.")
+
+    if replic >= 6:
+        parts.append("Well-documented for replication.")
+    elif replic >= 3 or project.build_docs_quality == BuildDocsQuality.partial:
+        parts.append("Partial build documentation available.")
+    elif project.build_docs_quality == BuildDocsQuality.none:
+        parts.append("Build documentation is not available — check the repository directly.")
+
+    return " ".join(parts)
+
 
 def load_projects() -> list[dict]:
     records = []
@@ -78,6 +125,10 @@ def load_projects() -> list[dict]:
 
         primary_area = project.disability_area[0] if project.disability_area else "other"
 
+        source = next((s for s in project.sources if s.platform == "github"), None)
+        sub_scores = compute_sub_scores(project)
+        summary = _generate_summary(sub_scores, project)
+
         records.append(
             {
                 "id": project.id,
@@ -92,6 +143,45 @@ def load_projects() -> list[dict]:
                 "github_url": next(
                     (s.url for s in project.sources if s.platform == "github"), None
                 ),
+                # Sub-scores and summary (for detail pages)
+                "scores": sub_scores,
+                "summary": summary,
+                # Full metadata
+                "tags": project.tags,
+                "disability_area": project.disability_area,
+                "disability_area_labels": [
+                    AREA_LABEL.get(a, a.replace("_", " ").title())
+                    for a in project.disability_area
+                ],
+                "modality": project.modality.value,
+                "modality_label": MODALITY_LABELS.get(project.modality.value, project.modality.value),
+                "interface": project.interface,
+                "user_context": project.user_context,
+                "fabrication_methods": project.fabrication_methods,
+                "bom_present": project.bom_present,
+                "build_docs_quality": project.build_docs_quality.value,
+                "build_docs_quality_label": BUILD_DOCS_LABELS.get(
+                    project.build_docs_quality.value, project.build_docs_quality.value
+                ),
+                "skill_level": project.skill_level.value if project.skill_level else None,
+                "skill_level_label": SKILL_LABELS.get(
+                    project.skill_level.value, project.skill_level.value
+                ) if project.skill_level else None,
+                "cost_range": project.cost_range,
+                "license": project.license,
+                "nothing_about_us": project.nothing_about_us,
+                "replicated_by_disabled_person": project.replicated_by_disabled_person,
+                "end_user_docs": project.end_user_docs,
+                "feedback_channel": project.feedback_channel,
+                "known_deployed_instances": project.known_deployed_instances,
+                "associated_publication": project.associated_publication,
+                "institutional_affiliation": project.institutional_affiliation,
+                "origin_program": project.origin_program,
+                "documentation_languages": project.documentation_languages,
+                "github_stars": source.stars if source else None,
+                "github_forks": source.forks if source else None,
+                "github_last_commit": str(source.last_commit) if source and source.last_commit else None,
+                "github_open_issues": source.open_issues if source else None,
             }
         )
     return records
