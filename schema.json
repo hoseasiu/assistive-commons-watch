@@ -1,0 +1,531 @@
+{
+  "$defs": {
+    "BuildDocsQuality": {
+      "enum": [
+        "none",
+        "partial",
+        "complete"
+      ],
+      "title": "BuildDocsQuality",
+      "type": "string"
+    },
+    "GitHubSource": {
+      "properties": {
+        "platform": {
+          "const": "github",
+          "enum": [
+            "github"
+          ],
+          "title": "Platform",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "fetched_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fetched At"
+        },
+        "stars": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stars"
+        },
+        "forks": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Forks"
+        },
+        "last_commit": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Last Commit"
+        },
+        "open_issues": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Open Issues"
+        },
+        "open_prs": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Open Prs"
+        },
+        "issue_response_rate": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issue Response Rate"
+        },
+        "release_in_last_year": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Release In Last Year"
+        },
+        "readme_has_installation": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Readme Has Installation"
+        },
+        "readme_has_usage": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Readme Has Usage"
+        },
+        "readme_has_bom": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Readme Has Bom"
+        },
+        "release_artifact_present": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Release Artifact Present"
+        },
+        "dependencies_pinned": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dependencies Pinned"
+        },
+        "has_contributing": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Has Contributing"
+        },
+        "has_code_of_conduct": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Has Code Of Conduct"
+        },
+        "has_issue_templates": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Has Issue Templates"
+        }
+      },
+      "required": [
+        "platform",
+        "url"
+      ],
+      "title": "GitHubSource",
+      "type": "object"
+    },
+    "HealthTier": {
+      "enum": [
+        "thriving",
+        "stable",
+        "dormant",
+        "at_risk",
+        "archived",
+        "unverified"
+      ],
+      "title": "HealthTier",
+      "type": "string"
+    },
+    "Modality": {
+      "enum": [
+        "hardware",
+        "software",
+        "firmware",
+        "hybrid"
+      ],
+      "title": "Modality",
+      "type": "string"
+    },
+    "SkillLevel": {
+      "enum": [
+        "beginner",
+        "maker",
+        "engineer"
+      ],
+      "title": "SkillLevel",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "description": {
+      "title": "Description",
+      "type": "string"
+    },
+    "added_date": {
+      "format": "date",
+      "title": "Added Date",
+      "type": "string"
+    },
+    "tags": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Tags",
+      "type": "array"
+    },
+    "disability_area": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Disability Area",
+      "type": "array"
+    },
+    "modality": {
+      "$ref": "#/$defs/Modality"
+    },
+    "user_context": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "User Context",
+      "type": "array"
+    },
+    "interface": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Interface",
+      "type": "array"
+    },
+    "bom_present": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Bom Present"
+    },
+    "build_docs_quality": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/BuildDocsQuality"
+        }
+      ],
+      "default": "none"
+    },
+    "cost_range": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Cost Range"
+    },
+    "fabrication_methods": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Fabrication Methods",
+      "type": "array"
+    },
+    "skill_level": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SkillLevel"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "nothing_about_us": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Nothing About Us"
+    },
+    "replicated_by_disabled_person": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Replicated By Disabled Person"
+    },
+    "end_user_docs": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "End User Docs"
+    },
+    "feedback_channel": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Feedback Channel"
+    },
+    "known_deployed_instances": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Known Deployed Instances"
+    },
+    "license": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "License"
+    },
+    "associated_publication": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Associated Publication"
+    },
+    "institutional_affiliation": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Institutional Affiliation"
+    },
+    "origin_program": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Origin Program"
+    },
+    "documentation_languages": {
+      "default": [
+        "en"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "Documentation Languages",
+      "type": "array"
+    },
+    "sources": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/GitHubSource"
+      },
+      "title": "Sources",
+      "type": "array"
+    },
+    "health_tier": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/HealthTier"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "health_score": {
+      "anyOf": [
+        {
+          "maximum": 10.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Health Score"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "description",
+    "added_date",
+    "modality"
+  ],
+  "title": "Project",
+  "type": "object"
+}
