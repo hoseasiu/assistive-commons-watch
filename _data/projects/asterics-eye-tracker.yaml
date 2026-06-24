@@ -12,6 +12,7 @@ tags:
   - gaze
 
 disability_area:
+  - eyegaze
   - motor
 modality: hybrid
 user_context:
@@ -48,5 +49,5 @@ sources:
     url: https://github.com/asterics/eye-lcos-tracker
     fetched_at: null
 
-health_tier: null
-health_score: null
+health_tier: dormant
+health_score: 3.8

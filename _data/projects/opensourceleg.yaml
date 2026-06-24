@@ -15,8 +15,8 @@ tags:
   - research
 
 disability_area:
-  - motor
   - prosthetics
+  - motor
 modality: hybrid
 user_context:
   - research
@@ -52,5 +52,5 @@ sources:
     url: https://github.com/neurobionics/opensourceleg
     fetched_at: null
 
-health_tier: null
-health_score: null
+health_tier: thriving
+health_score: 8.8

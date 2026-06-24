@@ -47,5 +47,5 @@ sources:
     url: https://github.com/brailletouch/Brailletouch
     fetched_at: null
 
-health_tier: null
-health_score: null
+health_tier: dormant
+health_score: 3.2

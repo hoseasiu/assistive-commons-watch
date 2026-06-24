@@ -14,8 +14,8 @@ tags:
   - robotics
 
 disability_area:
-  - motor
   - prosthetics
+  - motor
 modality: hardware
 user_context:
   - home
@@ -51,5 +51,5 @@ sources:
     url: https://github.com/OpenBionics/Prosthetic-Hands
     fetched_at: null
 
-health_tier: null
-health_score: null
+health_tier: dormant
+health_score: 3.5

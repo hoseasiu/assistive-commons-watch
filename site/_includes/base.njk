@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title or "Assistive Commons Watch" }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page:          oklch(0.97 0.012 76);
+      --bg-white:         white;
+      --border:           oklch(0.91 0.012 75);
+      --border-subtle:    oklch(0.94 0.008 75);
+      --border-faint:     oklch(0.97 0.006 75);
+      --text-primary:     oklch(0.18 0.025 50);
+      --text-secondary:   oklch(0.42 0.02 50);
+      --text-muted:       oklch(0.56 0.015 50);
+      --accent-green:     oklch(0.43 0.14 165);
+      --accent-green-bg:  oklch(0.94 0.06 165);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Figtree', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      background: var(--bg-page);
+      color: var(--text-secondary);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.2; }
+    }
+  </style>
+</head>
+<body>
+  {{ content | safe }}
+</body>
+</html>

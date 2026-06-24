@@ -45,5 +45,5 @@ sources:
     url: https://github.com/jqug/switchboard
     fetched_at: null
 
-health_tier: null
-health_score: null
+health_tier: dormant
+health_score: 3.0

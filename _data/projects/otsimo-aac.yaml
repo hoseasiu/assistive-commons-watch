@@ -48,5 +48,5 @@ sources:
     url: https://github.com/otsimo/aac
     fetched_at: null
 
-health_tier: null
-health_score: null
+health_tier: archived
+health_score: 1.5

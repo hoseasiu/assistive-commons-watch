@@ -1,0 +1,751 @@
+---
+layout: base.njk
+title: Assistive Commons Watch
+---
+<style>
+  /* ── Layout helpers ── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+  /* ── Header ── */
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border);
+    height: 56px;
+  }
+  .site-header .container {
+    height: 100%; display: flex; align-items: center;
+  }
+  .wordmark {
+    font-size: 15px; font-weight: 800; letter-spacing: -0.03em;
+    color: var(--text-primary); margin-right: auto;
+  }
+  .live-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: oklch(0.94 0.07 142); border-radius: 100px;
+    padding: 3px 8px; margin-left: 10px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.07em;
+    color: oklch(0.33 0.14 142); text-transform: uppercase;
+  }
+  .live-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: oklch(0.50 0.17 142);
+    animation: pulse-dot 2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  .site-nav { display: flex; align-items: center; gap: 4px; }
+  .site-nav a {
+    font-size: 13px; font-weight: 500; color: var(--text-secondary);
+    padding: 7px 12px; border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .site-nav a:hover { background: var(--bg-page); }
+  .nav-cta {
+    font-size: 13px; font-weight: 600; color: white;
+    background: var(--accent-green); padding: 7px 15px;
+    border-radius: 7px; margin-left: 8px;
+    transition: opacity 0.15s;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* ── Hero ── */
+  .hero {
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero .container {
+    padding-top: 52px; padding-bottom: 44px;
+    display: grid; grid-template-columns: 1fr 268px; gap: 52px;
+  }
+  .hero-h1 {
+    font-size: 40px; font-weight: 800; letter-spacing: -0.03em;
+    line-height: 1.1; color: oklch(0.17 0.025 50);
+    margin-bottom: 16px;
+  }
+  .hero-body {
+    font-size: 16px; line-height: 1.7; color: oklch(0.48 0.02 50);
+    max-width: 500px; margin-bottom: 20px;
+  }
+  .hero-meta {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    font-size: 13px; color: var(--text-muted);
+  }
+  .hero-meta .live-dot {
+    width: 7px; height: 7px;
+    animation-delay: 0.5s;
+  }
+  .meta-sep { color: oklch(0.82 0.01 75); }
+  .hero-meta a { color: var(--accent-green); font-weight: 500; }
+
+  .stat-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    align-content: start;
+  }
+  .stat-card {
+    padding: 16px 18px; border-radius: 10px;
+    background: var(--bg-page);
+  }
+  .stat-card--green {
+    background: oklch(0.94 0.08 142);
+  }
+  .stat-card--amber {
+    background: oklch(0.96 0.06 84);
+  }
+  .stat-number {
+    font-size: 32px; font-weight: 800; letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums; color: var(--text-primary);
+  }
+  .stat-card--green .stat-number { color: oklch(0.36 0.15 142); }
+  .stat-card--amber .stat-number { color: oklch(0.44 0.10 84); }
+  .stat-label {
+    font-size: 12px; font-weight: 500; color: oklch(0.52 0.02 50);
+    margin-top: 3px;
+  }
+
+  /* ── Tier strip ── */
+  .tier-strip {
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border);
+  }
+  .tier-strip .container {
+    padding-top: 10px; padding-bottom: 10px;
+    display: flex; align-items: center; gap: 6px;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tier-strip-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: oklch(0.60 0.015 50);
+    margin-right: 10px; white-space: nowrap; flex-shrink: 0;
+  }
+  .tier-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 10px; border: 1px solid oklch(0.90 0.01 75);
+    border-radius: 100px; white-space: nowrap; flex-shrink: 0;
+  }
+  .tier-pill-dot {
+    width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+  }
+  .tier-pill-name {
+    font-size: 12px; font-weight: 500; color: oklch(0.35 0.02 50);
+  }
+  .tier-pill-count {
+    font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums;
+    color: oklch(0.38 0.02 50);
+  }
+
+  /* ── Main content area ── */
+  .main-area .container {
+    padding-top: 36px; padding-bottom: 64px;
+    display: grid; grid-template-columns: 1fr 304px; gap: 28px;
+    align-items: start;
+  }
+
+  /* ── Section header ── */
+  .section-eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--accent-green);
+    margin-bottom: 4px;
+  }
+  .section-h2 {
+    font-size: 26px; font-weight: 800; letter-spacing: -0.025em;
+    color: var(--text-primary); margin-bottom: 6px;
+  }
+  .section-desc { font-size: 14px; color: oklch(0.50 0.02 50); }
+  .section-header { margin-bottom: 26px; }
+
+  /* ── Tabs ── */
+  .tab-nav {
+    display: flex; gap: 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 28px;
+  }
+  .tab-btn {
+    font-family: inherit; font-size: 14px; font-weight: 400;
+    color: oklch(0.50 0.02 50); letter-spacing: 0.01em;
+    padding: 10px 0; background: none; border: none;
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+    cursor: pointer; transition: color 0.15s;
+  }
+  .tab-btn[aria-selected="true"] {
+    color: oklch(0.38 0.14 165); font-weight: 600;
+    border-bottom-color: oklch(0.43 0.14 165);
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel[data-active] { display: block; }
+
+  /* ── Tab 0: By Disability Area ── */
+  .tab-intro {
+    font-size: 13px; color: oklch(0.55 0.015 50);
+    line-height: 1.65; margin-bottom: 20px;
+  }
+  .area-row {
+    display: flex; align-items: center; gap: 16px;
+    padding: 13px 0; border-bottom: 1px solid var(--border-subtle);
+  }
+  .area-label-col { width: 196px; flex-shrink: 0; }
+  .area-name { font-size: 14px; font-weight: 600; color: oklch(0.24 0.02 50); }
+  .area-count {
+    font-size: 12px; color: var(--text-muted);
+    margin-top: 2px; font-variant-numeric: tabular-nums;
+  }
+  .area-blocks { display: flex; gap: 5px; flex-wrap: wrap; flex: 1; }
+  .project-block {
+    width: 36px; height: 28px; border-radius: 6px;
+    display: inline-block;
+  }
+  .legend {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .legend-key {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.07em;
+    text-transform: uppercase; color: oklch(0.58 0.015 50);
+  }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+  .legend-swatch {
+    width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0;
+  }
+  .legend-label { font-size: 12px; color: oklch(0.45 0.02 50); }
+
+  /* ── Tab 1: By Status ── */
+  .by-status-grid {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 40px; align-items: start;
+  }
+  .donut-wrap { display: flex; flex-direction: column; align-items: center; }
+  .donut {
+    width: 180px; height: 180px; border-radius: 50%;
+    position: relative; display: flex; align-items: center; justify-content: center;
+  }
+  .donut-hole {
+    width: 112px; height: 112px; border-radius: 50%;
+    background: white; box-shadow: 0 0 0 1px oklch(0.91 0.01 75);
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; position: relative; z-index: 1;
+  }
+  .donut-total {
+    font-size: 28px; font-weight: 800; letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums; color: var(--text-primary);
+  }
+  .donut-caption-label {
+    font-size: 11px; color: var(--text-muted); font-weight: 500;
+  }
+  .donut-caption {
+    font-size: 12px; color: oklch(0.55 0.015 50);
+    text-align: center; line-height: 1.5; margin-top: 10px;
+  }
+  .tier-legend { display: flex; flex-direction: column; gap: 8px; }
+  .tier-legend-card {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 12px 14px; background: oklch(0.98 0.008 76);
+    border-radius: 9px;
+  }
+  .tier-legend-swatch {
+    width: 30px; height: 30px; border-radius: 7px; flex-shrink: 0;
+  }
+  .tier-legend-info { flex: 1; }
+  .tier-legend-top {
+    display: flex; align-items: baseline; gap: 8px; margin-bottom: 3px;
+  }
+  .tier-legend-name { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+  .tier-legend-count {
+    font-size: 14px; font-weight: 800; font-variant-numeric: tabular-nums;
+    color: var(--text-primary);
+  }
+  .tier-legend-desc {
+    font-size: 12px; color: oklch(0.54 0.015 50); line-height: 1.5;
+  }
+
+  /* ── Tab 2: Coverage Gaps ── */
+  .gap-row {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 0; border-bottom: 1px solid var(--border-subtle);
+  }
+  .gap-label-col { width: 196px; flex-shrink: 0; }
+  .gap-area-name { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+  .gap-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .gap-bar-wrap {
+    flex: 1; height: 8px; background: oklch(0.92 0.01 75);
+    border-radius: 100px; overflow: hidden;
+  }
+  .gap-bar-fill {
+    height: 100%; background: oklch(0.45 0.14 165);
+    border-radius: 100px;
+  }
+  .gap-badge {
+    min-width: 88px; display: flex; justify-content: flex-end;
+  }
+  .gap-badge-pill {
+    padding: 3px 9px; border-radius: 100px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .gap-badge--sparse {
+    background: oklch(0.96 0.07 47); color: oklch(0.44 0.15 47);
+  }
+  .gap-badge--moderate {
+    background: oklch(0.96 0.05 84); color: oklch(0.46 0.10 84);
+  }
+  .gap-badge--covered {
+    background: oklch(0.93 0.08 142); color: oklch(0.36 0.15 142);
+  }
+  .priority-callout {
+    margin-top: 24px;
+    background: oklch(0.97 0.05 47); border-radius: 10px;
+    padding: 16px 18px;
+    border-left: 3px solid oklch(0.62 0.17 47);
+  }
+  .priority-callout-title {
+    font-size: 13px; font-weight: 700; color: oklch(0.40 0.13 47);
+    margin-bottom: 5px;
+  }
+  .priority-callout-body {
+    font-size: 13px; color: oklch(0.44 0.08 47); line-height: 1.65;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar { display: flex; flex-direction: column; gap: 18px; }
+  .sidebar-card {
+    background: var(--bg-white); border-radius: 12px;
+    border: 1px solid var(--border); overflow: hidden;
+  }
+  .sidebar-card-header {
+    display: flex; align-items: center; gap: 8px;
+    padding: 14px 18px; border-bottom: 1px solid var(--border-subtle);
+  }
+  .sidebar-card-header-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: oklch(0.62 0.17 47); flex-shrink: 0;
+  }
+  .sidebar-card-title { font-size: 13px; font-weight: 700; color: var(--text-primary); }
+  .sidebar-card-count { font-size: 12px; color: var(--text-muted); margin-left: auto; }
+
+  .attention-item {
+    padding: 14px 18px; border-bottom: 1px solid var(--border-faint);
+  }
+  .attention-item:last-of-type { border-bottom: none; }
+  .attention-row1 {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 8px; margin-bottom: 4px;
+  }
+  .attention-name {
+    font-size: 13px; font-weight: 600; line-height: 1.4;
+    color: var(--text-primary);
+  }
+  .attention-area {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 5px;
+  }
+  .attention-note {
+    font-size: 12px; color: oklch(0.48 0.07 47); line-height: 1.55;
+  }
+
+  .recent-item {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 10px; padding: 12px 18px; border-bottom: 1px solid var(--border-faint);
+  }
+  .recent-item:last-of-type { border-bottom: none; }
+  .recent-name {
+    font-size: 13px; font-weight: 600; color: var(--text-primary);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .recent-meta { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+  .tier-badge {
+    display: inline-block; padding: 2px 7px; border-radius: 100px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.03em;
+    white-space: nowrap; flex-shrink: 0;
+  }
+
+  .sidebar-footer {
+    padding: 12px 18px; border-top: 1px solid var(--border-subtle);
+  }
+  .sidebar-footer a {
+    font-size: 13px; font-weight: 600; color: var(--accent-green);
+  }
+
+  .about-card {
+    background: oklch(0.94 0.06 165); border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .about-title {
+    font-size: 13px; font-weight: 700; color: oklch(0.26 0.12 165);
+    margin-bottom: 7px;
+  }
+  .about-body {
+    font-size: 12px; color: oklch(0.37 0.10 165); line-height: 1.65;
+  }
+  .about-link {
+    display: block; margin-top: 10px;
+    font-size: 12px; font-weight: 600; color: oklch(0.35 0.13 165);
+  }
+
+  /* ── Footer ── */
+  .site-footer {
+    background: var(--bg-white); border-top: 1px solid var(--border);
+    padding: 20px 40px;
+  }
+  .site-footer .container {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-left { font-size: 12px; color: var(--text-muted); }
+  .footer-left a { color: var(--accent-green); }
+  .footer-links { display: flex; gap: 16px; }
+  .footer-links a { font-size: 12px; color: oklch(0.52 0.015 50); }
+</style>
+
+{# ── Pull data from acw.json (built by scripts/build_json.py) ── #}
+{%- set d = acw -%}
+{%- set stats = d.stats -%}
+{%- set tierCounts = d.tier_counts -%}
+
+{# Tier rendering order for strip and legend #}
+{%- set tierOrder = ["thriving","stable","dormant","at_risk","archived","unverified"] -%}
+{%- set tierLabels = {
+  "thriving": "Thriving",
+  "stable": "Stable",
+  "dormant": "Dormant",
+  "at_risk": "At Risk",
+  "archived": "Archived",
+  "unverified": "Unverified"
+} -%}
+{%- set tierDescs = {
+  "thriving": "Active, documented, welcoming",
+  "stable": "Works, maintained passively, usable",
+  "dormant": "Documented to replicate, inactive",
+  "at_risk": "Maintenance unclear, documentation gaps",
+  "archived": "Explicitly archived or abandoned",
+  "unverified": "Newly submitted, not yet assessed"
+} -%}
+
+{# Precompute total for donut and coverage gap max #}
+{%- set maxAreaCount = 0 -%}
+{%- for area in d.by_area -%}
+  {%- if area.count > maxAreaCount -%}{%- set maxAreaCount = area.count -%}{%- endif -%}
+{%- endfor -%}
+
+<!-- ─────────────────────────── HEADER ─────────────────────────── -->
+<header class="site-header">
+  <div class="container">
+    <span class="wordmark">
+      Assistive Commons Watch
+      <span class="live-badge">
+        <span class="live-dot"></span>LIVE
+      </span>
+    </span>
+    <nav class="site-nav" aria-label="Site navigation">
+      <a href="/browse">Browse</a>
+      <a href="/recent">Recent Changes</a>
+      <a href="/needs-attention">Needs Attention</a>
+      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new" class="nav-cta">Submit a project →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─────────────────────────── HERO ─────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <div>
+      <h1 class="hero-h1">A live health registry for<br>open-source assistive technology.</h1>
+      <p class="hero-body">
+        ACW tracks {{ stats.total }} open-source AT projects across {{ stats.areas }} disability areas —
+        monitoring maintenance, replicability, and community health so builders can find projects
+        worth contributing to and clinicians can trust what they recommend.
+      </p>
+      <div class="hero-meta">
+        <span class="live-dot"></span>
+        <span>Last refreshed {{ d.last_refreshed }}</span>
+        <span class="meta-sep">·</span>
+        <span>Nightly via GitHub Actions</span>
+        <span class="meta-sep">·</span>
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/">Data: CC0</a>
+      </div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-number">{{ stats.total }}</div>
+        <div class="stat-label">Projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">{{ stats.areas }}</div>
+        <div class="stat-label">Areas</div>
+      </div>
+      <div class="stat-card stat-card--green">
+        <div class="stat-number">{{ stats.active_or_better_pct }}%</div>
+        <div class="stat-label">Active or better</div>
+      </div>
+      <div class="stat-card stat-card--amber">
+        <div class="stat-number">{{ stats.dormant_count }}</div>
+        <div class="stat-label">Dormant</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── TIER STRIP ─────────────────────────── -->
+<div class="tier-strip">
+  <div class="container">
+    <span class="tier-strip-label">Tier Breakdown</span>
+    {%- for tier in tierOrder -%}
+      {%- if tierCounts[tier] and tierCounts[tier] > 0 -%}
+      <div class="tier-pill">
+        <span class="tier-pill-dot" style="background:{{ tier | tierColor }}"></span>
+        <span class="tier-pill-name">{{ tierLabels[tier] }}</span>
+        <span class="tier-pill-count">{{ tierCounts[tier] }}</span>
+      </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+<!-- ─────────────────────────── MAIN CONTENT ─────────────────────────── -->
+<main class="main-area">
+  <div class="container">
+
+    <!-- Left: Landscape panel -->
+    <div>
+      <div class="section-header">
+        <p class="section-eyebrow">Primary View</p>
+        <h2 class="section-h2">The Landscape</h2>
+        <p class="section-desc">Explore the open AT ecosystem by disability area, health status, or coverage gaps.</p>
+      </div>
+
+      <!-- Tab navigation -->
+      <div class="tab-nav" role="tablist" aria-label="Landscape views">
+        <button class="tab-btn" role="tab" aria-selected="true"  aria-controls="panel-0" id="tab-0">By Disability Area</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-1" id="tab-1">By Status</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2">Coverage Gaps</button>
+      </div>
+
+      <!-- ── Tab 0: By Disability Area ── -->
+      <div class="tab-panel" id="panel-0" role="tabpanel" aria-labelledby="tab-0" data-active>
+        <p class="tab-intro">
+          Each block represents one project, coloured by health tier. Hover a block for the project name.
+          Areas are ordered by size of ecosystem coverage.
+        </p>
+        {%- for area in d.by_area -%}
+        {%- if area.count > 0 -%}
+        <div class="area-row">
+          <div class="area-label-col">
+            <div class="area-name">{{ area.label }}</div>
+            <div class="area-count">{{ area.count }} project{{ "s" if area.count != 1 }}</div>
+          </div>
+          <div class="area-blocks">
+            {%- for p in area.projects -%}
+            <span
+              class="project-block"
+              style="background:{{ p.health_tier | tierColor }}"
+              title="{{ p.name }} — {{ p.health_tier | tierLabel }}"
+            ></span>
+            {%- endfor -%}
+          </div>
+        </div>
+        {%- endif -%}
+        {%- endfor -%}
+
+        <div class="legend">
+          <span class="legend-key">Key</span>
+          {%- for tier in tierOrder -%}
+          {%- if tierCounts[tier] and tierCounts[tier] > 0 -%}
+          <div class="legend-item">
+            <span class="legend-swatch" style="background:{{ tier | tierColor }}"></span>
+            <span class="legend-label">{{ tierLabels[tier] }}</span>
+          </div>
+          {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <!-- ── Tab 1: By Status ── -->
+      <div class="tab-panel" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
+        <div class="by-status-grid">
+          <div class="donut-wrap">
+            {# Build conic-gradient from tier counts #}
+            {%- set donutParts = [] -%}
+            {%- set runningPct = 0 -%}
+            {%- for tier in tierOrder -%}
+              {%- set cnt = tierCounts[tier] -%}
+              {%- if cnt and cnt > 0 -%}
+                {%- set pct = (cnt / stats.total * 100) | round(1) -%}
+                {%- set endPct = runningPct + pct -%}
+                {%- set _ = donutParts.push(tier | tierColor + " " + runningPct + "% " + endPct + "%") -%}
+                {%- set runningPct = endPct -%}
+              {%- endif -%}
+            {%- endfor -%}
+            <div class="donut" style="background: conic-gradient({{ donutParts | join(", ") }})">
+              <div class="donut-hole">
+                <span class="donut-total">{{ stats.total }}</span>
+                <span class="donut-caption-label">Projects</span>
+              </div>
+            </div>
+            <p class="donut-caption">Distribution of {{ stats.total }} projects<br>across all health tiers</p>
+          </div>
+
+          <div class="tier-legend">
+            {%- for tier in tierOrder -%}
+            {%- set cnt = tierCounts[tier] -%}
+            {%- if cnt and cnt > 0 -%}
+            <div class="tier-legend-card">
+              <div class="tier-legend-swatch" style="background:{{ tier | tierColor }}"></div>
+              <div class="tier-legend-info">
+                <div class="tier-legend-top">
+                  <span class="tier-legend-name">{{ tierLabels[tier] }}</span>
+                  <span class="tier-legend-count">{{ cnt }}</span>
+                </div>
+                <div class="tier-legend-desc">{{ tierDescs[tier] }}</div>
+              </div>
+            </div>
+            {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Tab 2: Coverage Gaps ── -->
+      <div class="tab-panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2">
+        <p class="tab-intro">
+          How well-covered is each disability area? Areas with few projects are where new contributions
+          have the highest impact.
+        </p>
+        {%- for area in d.by_area -%}
+        {%- if area.count > 0 -%}
+        {%- set barPct = (area.count / maxAreaCount * 100) | round -%}
+        <div class="gap-row">
+          <div class="gap-label-col">
+            <div class="gap-area-name">{{ area.label }}</div>
+            <div class="gap-sub">{{ area.count }} total · {{ area.active_count }} active</div>
+          </div>
+          <div class="gap-bar-wrap">
+            <div class="gap-bar-fill" style="width:{{ barPct }}%"></div>
+          </div>
+          <div class="gap-badge">
+            {%- if area.count <= 2 -%}
+            <span class="gap-badge-pill gap-badge--sparse">⚑ Sparse</span>
+            {%- elif area.count == 3 -%}
+            <span class="gap-badge-pill gap-badge--moderate">◑ Moderate</span>
+            {%- else -%}
+            <span class="gap-badge-pill gap-badge--covered">✓ Covered</span>
+            {%- endif -%}
+          </div>
+        </div>
+        {%- endif -%}
+        {%- endfor -%}
+
+        {%- set sparseAreas = [] -%}
+        {%- for area in d.by_area -%}
+          {%- if area.count <= 2 and area.count > 0 -%}
+            {%- set _ = sparseAreas.push(area.label) -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if sparseAreas.length > 0 -%}
+        <div class="priority-callout">
+          <div class="priority-callout-title">Priority areas for new contributions</div>
+          <div class="priority-callout-body">
+            {{ sparseAreas | join(", ") }}
+            {%- if sparseAreas.length == 1 -%} has only {{ d.by_area | selectattr("label", "==", sparseAreas[0]) | first | attribute("count") }} project — new submissions here have outsized impact.
+            {%- else -%} each have 2 or fewer projects — new submissions in these areas have outsized impact.
+            {%- endif -%}
+          </div>
+        </div>
+        {%- endif -%}
+      </div>
+    </div><!-- /left panel -->
+
+    <!-- Right: Sidebar -->
+    <aside class="sidebar">
+
+      <!-- Needs Attention -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header">
+          <span class="sidebar-card-header-dot"></span>
+          <span class="sidebar-card-title">Needs Attention</span>
+          <span class="sidebar-card-count">{{ d.needs_attention | length }}</span>
+        </div>
+        {%- for p in d.needs_attention -%}
+        <div class="attention-item">
+          <div class="attention-row1">
+            <span class="attention-name">{{ p.name }}</span>
+            <span class="tier-badge"
+              style="background:{{ p.health_tier | tierColor }};color:{{ p.health_tier | tierTextColor }}">
+              {{ p.health_tier | tierLabel }}
+            </span>
+          </div>
+          <div class="attention-area">{{ p.primary_area_label }}</div>
+          <div class="attention-note">Score {{ p.health_score }} — review recommended</div>
+        </div>
+        {%- endfor -%}
+        <div class="sidebar-footer">
+          <a href="/needs-attention">View all needs attention →</a>
+        </div>
+      </div>
+
+      <!-- Recently Added -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header">
+          <span class="sidebar-card-title">Recently Added</span>
+        </div>
+        {%- for p in d.recently_added -%}
+        <div class="recent-item">
+          <div>
+            <div class="recent-name">{{ p.name }}</div>
+            <div class="recent-meta">{{ p.primary_area_label }} · {{ p.added_date }}</div>
+          </div>
+          <span class="tier-badge"
+            style="background:{{ p.health_tier | tierColor }};color:{{ p.health_tier | tierTextColor }}">
+            {{ p.health_tier | tierLabel }}
+          </span>
+        </div>
+        {%- endfor -%}
+        <div class="sidebar-footer">
+          <a href="/recent">View all recent changes →</a>
+        </div>
+      </div>
+
+      <!-- About this data -->
+      <div class="about-card">
+        <div class="about-title">About this data</div>
+        <div class="about-body">
+          Health scores are computed nightly from live GitHub data using a transparent,
+          versioned formula. Replicability (30%), Activity (25%), AT-specific signals (20%),
+          Community (15%), and Provenance (10%). All data is CC0.
+        </div>
+        <a class="about-link" href="/methodology">Read the methodology →</a>
+      </div>
+
+    </aside>
+  </div>
+</main>
+
+<!-- ─────────────────────────── FOOTER ─────────────────────────── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-left">
+      Assistive Commons Watch ·
+      <a href="https://creativecommons.org/publicdomain/zero/1.0/">Data CC0</a> ·
+      <a href="/methodology">Score methodology v1.0</a>
+    </div>
+    <nav class="footer-links">
+      <a href="https://github.com/hoseasiu/assistive-commons-watch">GitHub</a>
+      <a href="/about">About</a>
+      <a href="/api">API</a>
+      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new">Submit</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  // Tab switching
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+      panels.forEach(p => p.removeAttribute('data-active'));
+      tab.setAttribute('aria-selected', 'true');
+      panels[i].setAttribute('data-active', '');
+    });
+  });
+</script>
