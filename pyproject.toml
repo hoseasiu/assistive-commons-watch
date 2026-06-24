@@ -14,5 +14,8 @@ dev = [
     "pytest-cov",
 ]
 
+[tool.setuptools.packages.find]
+include = ["_fetchers*"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
