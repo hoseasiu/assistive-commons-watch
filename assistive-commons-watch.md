@@ -119,35 +119,53 @@ sources:
 - **Make the score explainable** — every dimension is shown in plain language on the project detail page
 - **Log score changes** — when a project's tier changes, the event is recorded and visible (e.g., "HeadMouse Nano moved from Stable to Dormant — last commit was 14 months ago")
 
-### Score dimensions
+### Score dimensions (each 0–10)
 
-**1. Activity** — is anyone home?
-- Days since last commit (decay curve, not cliff)
-- Issue response rate: % of last N issues that received a response
-- PR merge rate / average time to close
-- Release cadence (tagged releases signal intentional maintenance)
+**1. Activity** (25% weight) — is anyone home?
+- Days since last commit: 0d=10, 30d=9, 90d=7, 180d=5, 365d=3, 730d=1, 1095d+=0 (decay curve, not cliff)
+- Issue response rate: +0–3 pts (0%=0, 50%=1.5, 90%+=3)
+- Tagged release in last 12 months: +2 pts (capped at 10)
 
-**2. Replicability** — can someone actually build this?
-- README quality (section detection: Installation? Usage? BOM?)
-- Build docs presence and completeness
-- Dependencies pinned vs. floating
-- Release artifact present (binary, STL, gerbers) vs. source-only
+**2. Replicability** (30% weight) — can someone actually build this?
+- BOM present: +2
+- Build docs: none=0, partial=+2, complete=+4
+- Dependencies listed: +1
+- Release artifact (binary, STL, gerbers): +2
+- README has Installation + Usage sections (auto-detected): +1
 
-**3. Community health** — is it welcoming?
-- CONTRIBUTING.md present
-- Issue templates present
-- Code of conduct present
+**3. Community health** (15% weight) — is it welcoming?
+- CONTRIBUTING.md present: +4
+- Issue templates present: +3
+- Code of conduct present: +3
 
-**4. AT-specific signals** — the layer no generic tool has
-- NAUWU / co-design indicator (manually curated)
-- End-user documentation present
-- Accessibility of documentation
-- Known deployed instances
+**4. AT-specific signals** (20% weight) — the layer no generic tool has
+- NAUWU / co-design indicator (manually curated): +4
+- End-user documentation present: +3
+- Feedback/contact channel for end users: +2
+- Known deployed instances: +1
 
-**5. Provenance & trust**
-- OSI-approved license present
-- Associated publication or citation
-- Affiliated with a known program or institution
+**5. Provenance & trust** (10% weight)
+- OSI-approved license: +4
+- Associated publication or citation: +3
+- Institutional affiliation: +2
+- Originating program/challenge (CRE[AT]E, RESNA, ATHack): +1
+
+### Weighted total
+
+```
+score = 0.25×activity + 0.30×replicability + 0.15×community + 0.20×at_specific + 0.10×provenance
+```
+
+### Tier assignment rules (applied in order)
+
+1. **Archived** — explicitly archived on platform OR (activity=0 AND last_commit > 3 years)
+2. **Thriving** — score ≥ 7.5
+3. **Stable** — score ≥ 5.5
+4. **Dormant** — activity ≤ 2 AND replicability ≥ 5 (useful artifact but inactive maintainer)
+5. **At Risk** — score < 5.5 (gaps in replicability or AT-specific signals; still live)
+6. **Unverified** — newly submitted, not yet fetched
+
+*Rationale for weights: Replicability is highest because AT projects serve small populations — a well-documented dormant project can still save a clinician months of work. Activity is second because abandoned projects mislead builders about ongoing support. AT-specific signals outweigh community health because they are the differentiator from generic OSS health tools.*
 
 ### Tier system (headline display)
 
@@ -161,7 +179,14 @@ sources:
 | ⚪ | Unverified | Newly submitted, not yet assessed |
 
 ### Detail view
-Each project's detail page shows a **radar/spider chart** across the five dimensions above, so users can see *why* a project has its tier — not just what the tier is.
+Each project's detail page shows a **row of five score pills** — one per dimension, colored by score tier (green → red), with a small icon and label for each. This avoids the spatial distortion of radar charts (where enclosed area misleads perception of magnitude) while keeping all five signals visible at a glance.
+
+Each pill shows:
+- Icon (⚡ Activity, 🔧 Replicability, 🤝 Community, ♿ AT-Specific, 📎 Provenance)
+- Color: green (≥7), yellow (4–6), red (<4)
+- Score on hover/expand
+
+A compact "Can I use this today?" summary card sits above the pills for quick orientation.
 
 ---
 
@@ -234,11 +259,63 @@ The `sources` array in the data model means adding a new platform = adding a new
 
 ---
 
-## Open Questions / Next Decisions
+## Decisions Log
 
-- [ ] **Health score formula** — finalize dimension weights and tier thresholds
-- [ ] **Data schema v1** — formalize into a JSON Schema or Pydantic model for validation
+- [x] **Primary audience** — **Builders** (contributors, forkers, replicators) for v1. AT community view is a planned v2 feature tracked in [issue #1](https://github.com/hoseasiu/assistive-commons-watch/issues/1).
+- [x] **Health score formula** — Finalized above. Replicability 30%, Activity 25%, AT-specific 20%, Community 15%, Provenance 10%. Tier rules are explicit and ordered.
+- [x] **Visualization** — Five score pills (not radar chart). Radar charts distort by enclosed area; pills are independently readable with no spatial bias.
+- [x] **Seeding strategy** — 18 seed projects identified (see below), covering all major disability areas and activity states.
+
+## Open Questions / Next Steps
+
+- [ ] **Data schema v1** — Pydantic model; export `schema.json` as a CI build artifact (do not edit by hand)
 - [ ] **Frontend build** — start with 11ty scaffold
-- [ ] **Seeding strategy** — what are the first 10–20 projects in the registry?
-- [ ] **Primary audience** — builders (contributors, forkers) or AT community (disabled people, clinicians, educators)? This affects score weights, UI language level, and description standards
 - [ ] **Domain** — `assistivecommons.watch` or similar
+
+---
+
+## Seed Projects (v1)
+
+18 real GitHub projects covering all major disability areas and a mix of activity states.
+
+### AAC / Communication
+| Project | URL | Modality | Activity |
+|---|---|---|---|
+| cboard | https://github.com/cboard-org/cboard | Software | Active |
+| AsTeRICS-Grid | https://github.com/asterics/AsTeRICS-Grid | Software | Active |
+| speakeasy-aac | https://github.com/jeremydpotts/speakeasy-aac | Software | Dormant |
+| otsimo/aac | https://github.com/otsimo/aac | Software | Archived |
+
+### Eye Gaze / Eye Tracking
+| Project | URL | Modality | Activity |
+|---|---|---|---|
+| OptiKey | https://github.com/OptiKey/OptiKey | Software | Active |
+| asterics/eye-lcos-tracker | https://github.com/asterics/eye-lcos-tracker | Hybrid | Dormant |
+| iGaze | https://github.com/mrpmorris/iGaze | Software | Dormant |
+
+### Motor / Switch Access
+| Project | URL | Modality | Activity |
+|---|---|---|---|
+| LipSync | https://github.com/makersmakingchange/LipSync | Hybrid | Active |
+| OpenAT-Joysticks | https://github.com/makersmakingchange/OpenAT-Joysticks | Hardware | Active |
+| FABI | https://github.com/asterics/FABI | Hybrid | Active |
+| FLipMouse | https://github.com/asterics/FLipMouse | Hybrid | Active |
+| switchboard | https://github.com/jqug/switchboard | Software | Dormant |
+
+### Vision / Braille
+| Project | URL | Modality | Activity |
+|---|---|---|---|
+| NVDA | https://github.com/nvaccess/nvda | Software | Active |
+| BrailleTouch | https://github.com/brailletouch/Brailletouch | Hybrid | Dormant |
+
+### Hearing
+| Project | URL | Modality | Activity |
+|---|---|---|---|
+| Tympan_Library | https://github.com/Tympan/Tympan_Library | Hybrid | Active |
+| hearingaid-prototype | https://github.com/m-r-s/hearingaid-prototype | Hybrid | Dormant |
+
+### Prosthetics / Motor Rehab
+| Project | URL | Modality | Activity |
+|---|---|---|---|
+| OpenBionics/Prosthetic-Hands | https://github.com/OpenBionics/Prosthetic-Hands | Hardware | Dormant |
+| opensourceleg | https://github.com/neurobionics/opensourceleg | Hybrid | Active |
