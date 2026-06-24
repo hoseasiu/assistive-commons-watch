@@ -39,12 +39,16 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
-      # Produces site/_data/acw.json from _data/projects/*.yaml, then builds
-      # the 11ty site into _site/.
-      - name: Build site
-        run: npm run build
-
       - uses: actions/configure-pages@v5
+        id: pages
+
+      # Produces site/_data/acw.json from _data/projects/*.yaml, then builds
+      # the 11ty site into _site/. ELEVENTY_PATH_PREFIX tells 11ty's
+      # HtmlBasePlugin to rewrite absolute URLs for the GitHub Pages subdirectory.
+      - name: Build site
+        env:
+          ELEVENTY_PATH_PREFIX: ${{ steps.pages.outputs.base_path }}
+        run: npm run build
 
       - uses: actions/upload-pages-artifact@v3
         with:
