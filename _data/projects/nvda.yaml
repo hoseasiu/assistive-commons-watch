@@ -1,0 +1,59 @@
+id: acw-0013
+name: NVDA (NonVisual Desktop Access)
+description: >-
+  Free, open-source screen reader for Windows that enables blind and
+  vision-impaired users to access computers using synthesized speech and
+  refreshable Braille displays. One of the most widely used screen readers
+  globally, maintained by NV Access.
+added_date: "2026-06-24"
+tags:
+  - screen-reader
+  - windows
+  - vision
+  - braille
+  - text-to-speech
+
+disability_area:
+  - vision
+modality: software
+user_context:
+  - home
+  - work
+  - school
+interface:
+  - keyboard
+  - braille-display
+
+bom_present: null
+build_docs_quality: none
+cost_range: null
+fabrication_methods: []
+skill_level: beginner
+
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+
+license: GPL-2.0
+associated_publication: null
+institutional_affiliation: NV Access
+origin_program: null
+
+documentation_languages:
+  - en
+  - ar
+  - de
+  - es
+  - fr
+  - ja
+  - zh
+
+sources:
+  - platform: github
+    url: https://github.com/nvaccess/nvda
+    fetched_at: null
+
+health_tier: null
+health_score: null

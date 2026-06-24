@@ -1,0 +1,55 @@
+id: acw-0017
+name: OpenBionics Prosthetic Hands
+description: >-
+  Open-source designs for lightweight, low-cost 3D-printed prosthetic hands.
+  Based on research from the Georgia Institute of Technology and Biorobotics
+  Lab, providing parametric hand designs adaptable to different user arm sizes
+  with full fabrication documentation.
+added_date: "2026-06-24"
+tags:
+  - prosthetics
+  - 3d-printing
+  - hand
+  - hardware
+  - robotics
+
+disability_area:
+  - motor
+  - prosthetics
+modality: hardware
+user_context:
+  - home
+  - clinical
+  - research
+interface: []
+
+bom_present: true
+build_docs_quality: partial
+cost_range: "$200–$600"
+fabrication_methods:
+  - 3d-printing
+  - electronics
+  - assembly
+skill_level: maker
+
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: null
+feedback_channel: null
+known_deployed_instances: null
+
+license: Creative Commons
+associated_publication: null
+institutional_affiliation: Georgia Institute of Technology
+origin_program: null
+
+documentation_languages:
+  - en
+
+sources:
+  - platform: github
+    url: https://github.com/OpenBionics/Prosthetic-Hands
+    fetched_at: null
+
+health_tier: null
+health_score: null

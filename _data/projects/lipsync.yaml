@@ -1,0 +1,57 @@
+id: acw-0008
+name: LipSync
+description: >-
+  Open-source sip-and-puff mouth-operated joystick that provides hands-free
+  mouse and computer control for people with limited upper limb mobility.
+  Developed by Makers Making Change; includes full BOM, 3D-printable
+  enclosure, and build documentation.
+added_date: "2026-06-24"
+tags:
+  - sip-and-puff
+  - joystick
+  - switch-access
+  - hardware
+  - 3d-printing
+  - mouth-control
+
+disability_area:
+  - motor
+modality: hybrid
+user_context:
+  - home
+  - work
+  - school
+interface:
+  - mouse
+  - switch
+
+bom_present: true
+build_docs_quality: complete
+cost_range: "$50–$200"
+fabrication_methods:
+  - 3d-printing
+  - electronics
+  - soldering
+skill_level: maker
+
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+
+license: CERN-OHL-W-2.0
+associated_publication: null
+institutional_affiliation: Makers Making Change
+origin_program: null
+
+documentation_languages:
+  - en
+
+sources:
+  - platform: github
+    url: https://github.com/makersmakingchange/LipSync
+    fetched_at: null
+
+health_tier: null
+health_score: null
