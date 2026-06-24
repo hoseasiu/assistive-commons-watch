@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.2; }
+  }
+  body { margin: 0; font-family: 'Figtree', system-ui, sans-serif; background: oklch(0.97 0.012 76); color: oklch(0.20 0.025 50); }
+  *, *::before, *::after { box-sizing: border-box; }
+  a { text-decoration: none; }
+</style>
+</helmet>
+
+<!-- ══ HEADER ══ -->
+<header style="position:sticky; top:0; z-index:100; background:white; border-bottom:1px solid oklch(0.91 0.012 75); padding:0 40px">
+  <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; height:56px; gap:0">
+    <div style="display:flex; align-items:center; gap:10px">
+      <span style="font-size:15px; font-weight:800; letter-spacing:-0.03em; color:oklch(0.18 0.025 50)">Assistive Commons Watch</span>
+      <div style="display:inline-flex; align-items:center; gap:5px; padding:3px 8px; background:oklch(0.94 0.07 142); border-radius:100px">
+        <div style="width:6px; height:6px; border-radius:50%; background:oklch(0.50 0.17 142); animation:pulse-dot 2s ease-in-out infinite"></div>
+        <span style="font-size:10px; font-weight:700; letter-spacing:0.07em; color:oklch(0.33 0.14 142); text-transform:uppercase">Live</span>
+      </div>
+    </div>
+    <div style="flex:1"></div>
+    <nav style="display:flex; align-items:center; gap:2px">
+      <a href="#" style="padding:7px 12px; font-size:13px; font-weight:500; color:oklch(0.42 0.02 50); border-radius:6px">Browse</a>
+      <a href="#" style="padding:7px 12px; font-size:13px; font-weight:500; color:oklch(0.42 0.02 50); border-radius:6px">Recent Changes</a>
+      <a href="#" style="padding:7px 12px; font-size:13px; font-weight:500; color:oklch(0.42 0.02 50); border-radius:6px">Needs Attention</a>
+      <a href="#" style="margin-left:8px; padding:7px 15px; font-size:13px; font-weight:600; color:white; background:oklch(0.43 0.14 165); border-radius:7px">Submit a project →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<div style="background:white; border-bottom:1px solid oklch(0.91 0.012 75)">
+  <div style="max-width:1200px; margin:0 auto; padding:52px 40px 44px; display:grid; grid-template-columns:1fr 268px; gap:52px; align-items:start">
+    <div>
+      <h1 style="margin:0 0 14px; font-size:40px; font-weight:800; letter-spacing:-0.03em; line-height:1.1; color:oklch(0.17 0.025 50)">
+        A live health registry for<br>open-source assistive technology.
+      </h1>
+      <p style="margin:0; font-size:16px; line-height:1.7; color:oklch(0.48 0.02 50); max-width:500px; text-wrap:pretty">
+        ACW tracks the health, replicability, and community signals of open AT projects — surfacing what's thriving, what needs attention, and where the gaps are.
+      </p>
+      <div style="margin-top:20px; display:flex; align-items:center; gap:8px; font-size:13px; color:oklch(0.58 0.015 50)">
+        <div style="width:7px; height:7px; border-radius:50%; background:oklch(0.50 0.17 142); animation:pulse-dot 2s ease-in-out infinite 0.5s; flex-shrink:0"></div>
+        <span>Last refreshed Jun 24, 2026</span>
+        <span style="color:oklch(0.82 0.01 75)">·</span>
+        <span>Nightly via GitHub Actions</span>
+        <span style="color:oklch(0.82 0.01 75)">·</span>
+        <span>Data: <a href="#" style="color:inherit; font-weight:600; border-bottom:1px solid currentColor">CC0</a></span>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px">
+      <div style="padding:16px 18px; background:oklch(0.97 0.012 76); border-radius:10px">
+        <div style="font-size:32px; font-weight:800; letter-spacing:-0.04em; font-variant-numeric:tabular-nums">{{ total }}</div>
+        <div style="font-size:12px; color:oklch(0.52 0.02 50); margin-top:3px; font-weight:500">Projects</div>
+      </div>
+      <div style="padding:16px 18px; background:oklch(0.97 0.012 76); border-radius:10px">
+        <div style="font-size:32px; font-weight:800; letter-spacing:-0.04em">6</div>
+        <div style="font-size:12px; color:oklch(0.52 0.02 50); margin-top:3px; font-weight:500">Areas</div>
+      </div>
+      <div style="padding:16px 18px; background:oklch(0.94 0.08 142); border-radius:10px">
+        <div style="font-size:32px; font-weight:800; letter-spacing:-0.04em; color:oklch(0.36 0.15 142); font-variant-numeric:tabular-nums">{{ activePct }}%</div>
+        <div style="font-size:12px; color:oklch(0.44 0.11 142); margin-top:3px; font-weight:500">Active or better</div>
+      </div>
+      <div style="padding:16px 18px; background:oklch(0.96 0.06 84); border-radius:10px">
+        <div style="font-size:32px; font-weight:800; letter-spacing:-0.04em; color:oklch(0.44 0.10 84); font-variant-numeric:tabular-nums">{{ dormant }}</div>
+        <div style="font-size:12px; color:oklch(0.50 0.08 84); margin-top:3px; font-weight:500">Dormant</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TIER STRIP ══ -->
+<div style="background:white; border-bottom:1px solid oklch(0.91 0.012 75)">
+  <div style="max-width:1200px; margin:0 auto; padding:10px 40px; display:flex; align-items:center; gap:6px; overflow-x:auto">
+    <span style="font-size:11px; font-weight:700; letter-spacing:0.08em; color:oklch(0.60 0.015 50); text-transform:uppercase; margin-right:10px; flex-shrink:0">Tier breakdown</span>
+    <sc-for list="{{ tierDist }}" as="t" hint-placeholder-count="4">
+      <div style="display:flex; align-items:center; gap:5px; padding:4px 10px; border:1px solid oklch(0.90 0.01 75); border-radius:100px; flex-shrink:0">
+        <div style="width:7px; height:7px; border-radius:50%; background:{{ t.bg }}; flex-shrink:0"></div>
+        <span style="font-size:12px; font-weight:500; color:oklch(0.35 0.02 50)">{{ t.label }}</span>
+        <span style="font-size:12px; font-weight:700; font-variant-numeric:tabular-nums; color:oklch(0.38 0.02 50)">{{ t.count }}</span>
+      </div>
+    </sc-for>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<main style="max-width:1200px; margin:0 auto; padding:36px 40px 64px; display:grid; grid-template-columns:1fr 304px; gap:28px; align-items:start">
+
+  <!-- LEFT: Landscape panel -->
+  <div>
+    <div style="margin-bottom:26px">
+      <div style="font-size:11px; font-weight:700; letter-spacing:0.09em; color:oklch(0.43 0.14 165); text-transform:uppercase; margin-bottom:5px">Primary view</div>
+      <h2 style="margin:0 0 5px; font-size:26px; font-weight:800; letter-spacing:-0.025em; color:oklch(0.18 0.025 50)">The Landscape</h2>
+      <p style="margin:0; font-size:14px; color:oklch(0.50 0.02 50)">A breakdown of the open AT space by disability area, health tier, and coverage gaps.</p>
+    </div>
+
+    <!-- Tab nav -->
+    <div style="display:flex; gap:24px; border-bottom:1px solid oklch(0.91 0.012 75); margin-bottom:28px">
+      <button style="{{ tab0Style }}" onClick="{{ setTab0 }}">By Disability Area</button>
+      <button style="{{ tab1Style }}" onClick="{{ setTab1 }}">By Status</button>
+      <button style="{{ tab2Style }}" onClick="{{ setTab2 }}">Coverage Gaps</button>
+    </div>
+
+    <!-- TAB 0: By Disability Area -->
+    <sc-if value="{{ isTab0 }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <p style="margin:0 0 20px; font-size:13px; color:oklch(0.55 0.015 50); line-height:1.65">Each block represents one project, sorted healthiest first. Hover a block to see the project name.</p>
+        <sc-for list="{{ areaRows }}" as="area" hint-placeholder-count="6">
+          <div style="display:flex; align-items:center; gap:16px; padding:13px 0; border-bottom:1px solid oklch(0.94 0.008 75)">
+            <div style="width:196px; flex-shrink:0">
+              <div style="font-size:14px; font-weight:600; color:oklch(0.24 0.02 50)">{{ area.label }}</div>
+              <div style="font-size:12px; color:oklch(0.56 0.015 50); margin-top:2px; font-variant-numeric:tabular-nums">{{ area.total }} projects</div>
+            </div>
+            <div style="display:flex; gap:5px; align-items:center; flex-wrap:wrap; flex:1">
+              <sc-for list="{{ area.blocks }}" as="block" hint-placeholder-count="3">
+                <div title="{{ block.name }} — {{ block.label }}" style="width:36px; height:28px; border-radius:6px; background:{{ block.bg }}; flex-shrink:0; cursor:default"></div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+        <div style="margin-top:20px; display:flex; align-items:center; gap:14px; flex-wrap:wrap">
+          <span style="font-size:11px; font-weight:700; letter-spacing:0.07em; color:oklch(0.58 0.015 50); text-transform:uppercase">Key</span>
+          <sc-for list="{{ tierDist }}" as="t" hint-placeholder-count="4">
+            <div style="display:flex; align-items:center; gap:5px">
+              <div style="width:12px; height:12px; border-radius:3px; background:{{ t.bg }}; flex-shrink:0"></div>
+              <span style="font-size:12px; color:oklch(0.45 0.02 50)">{{ t.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- TAB 1: By Status -->
+    <sc-if value="{{ isTab1 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid; grid-template-columns:200px 1fr; gap:40px; align-items:start">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:14px">
+          <div style="position:relative; width:180px; height:180px">
+            <div style="{{ donutStyle }}"></div>
+            <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center">
+              <div style="width:112px; height:112px; border-radius:50%; background:white; display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:0 0 0 1px oklch(0.91 0.01 75)">
+                <span style="font-size:28px; font-weight:800; letter-spacing:-0.04em; font-variant-numeric:tabular-nums">{{ total }}</span>
+                <span style="font-size:11px; color:oklch(0.56 0.015 50); font-weight:500; margin-top:1px">projects</span>
+              </div>
+            </div>
+          </div>
+          <div style="font-size:12px; color:oklch(0.55 0.015 50); text-align:center; line-height:1.5">Health tier distribution<br>across all 18 projects</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px">
+          <sc-for list="{{ tierDist }}" as="t" hint-placeholder-count="4">
+            <div style="display:flex; align-items:flex-start; gap:12px; padding:12px 14px; background:oklch(0.98 0.008 76); border-radius:9px">
+              <div style="width:30px; height:30px; border-radius:7px; background:{{ t.bg }}; flex-shrink:0; margin-top:1px"></div>
+              <div style="flex:1; min-width:0">
+                <div style="display:flex; align-items:baseline; gap:8px">
+                  <span style="font-size:14px; font-weight:700; color:oklch(0.20 0.025 50)">{{ t.label }}</span>
+                  <span style="font-size:14px; font-weight:800; color:oklch(0.20 0.025 50); font-variant-numeric:tabular-nums">{{ t.count }}</span>
+                </div>
+                <div style="font-size:12px; color:oklch(0.54 0.015 50); margin-top:2px; line-height:1.5">{{ t.desc }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- TAB 2: Coverage Gaps -->
+    <sc-if value="{{ isTab2 }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <p style="margin:0 0 20px; font-size:13px; color:oklch(0.55 0.015 50); line-height:1.65; text-wrap:pretty">Areas with ≤ 2 projects or limited active maintainership — where the community can have the highest impact.</p>
+        <sc-for list="{{ gapRows }}" as="row" hint-placeholder-count="6">
+          <div style="display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid oklch(0.94 0.008 75)">
+            <div style="width:196px; flex-shrink:0">
+              <div style="font-size:14px; font-weight:600; color:oklch(0.24 0.02 50)">{{ row.label }}</div>
+              <div style="font-size:12px; color:oklch(0.56 0.015 50); margin-top:2px">{{ row.total }} total · {{ row.activeN }} active</div>
+            </div>
+            <div style="flex:1; position:relative; height:8px; background:oklch(0.92 0.01 75); border-radius:100px; overflow:hidden">
+              <div style="{{ row.barStyle }}"></div>
+            </div>
+            <div style="min-width:88px; display:flex; justify-content:flex-end">
+              <sc-if value="{{ row.isSparse }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:3px 9px; background:oklch(0.96 0.07 47); color:oklch(0.44 0.15 47); border-radius:100px; font-size:11px; font-weight:700; letter-spacing:0.03em; white-space:nowrap">⚑ Sparse</div>
+              </sc-if>
+              <sc-if value="{{ row.isMod }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:3px 9px; background:oklch(0.96 0.05 84); color:oklch(0.46 0.10 84); border-radius:100px; font-size:11px; font-weight:700; letter-spacing:0.03em; white-space:nowrap">◑ Moderate</div>
+              </sc-if>
+              <sc-if value="{{ row.isWell }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:3px 9px; background:oklch(0.93 0.08 142); color:oklch(0.36 0.15 142); border-radius:100px; font-size:11px; font-weight:700; letter-spacing:0.03em; white-space:nowrap">✓ Covered</div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-for>
+        <div style="margin-top:24px; padding:16px 18px; background:oklch(0.97 0.05 47); border-radius:10px; border-left:3px solid oklch(0.62 0.17 47)">
+          <div style="font-size:13px; font-weight:700; color:oklch(0.40 0.13 47); margin-bottom:5px">Coverage priority</div>
+          <div style="font-size:13px; color:oklch(0.44 0.08 47); line-height:1.65; text-wrap:pretty">Vision / Braille, Hearing, and Prosthetics each have only 2 tracked projects — and at least one is dormant. These areas are most in need of new submissions or maintainer recruitment.</div>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+
+  <!-- RIGHT: Sidebar -->
+  <div style="display:flex; flex-direction:column; gap:18px">
+
+    <!-- Needs Attention -->
+    <div style="background:white; border-radius:12px; border:1px solid oklch(0.91 0.012 75); overflow:hidden">
+      <div style="padding:14px 18px; border-bottom:1px solid oklch(0.94 0.008 75); display:flex; align-items:center; gap:8px">
+        <div style="width:8px; height:8px; border-radius:50%; background:oklch(0.62 0.17 47); flex-shrink:0"></div>
+        <span style="font-size:13px; font-weight:700; color:oklch(0.20 0.025 50)">Needs Attention</span>
+        <div style="flex:1"></div>
+        <span style="font-size:12px; color:oklch(0.56 0.015 50)">3 projects</span>
+      </div>
+      <sc-for list="{{ needsAttention }}" as="item" hint-placeholder-count="3">
+        <div style="padding:14px 18px; border-bottom:1px solid oklch(0.97 0.006 75)">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:4px">
+            <span style="font-size:13px; font-weight:600; color:oklch(0.20 0.025 50); line-height:1.4; word-break:break-word">{{ item.name }}</span>
+            <div style="padding:2px 7px; background:{{ item.bg }}; border-radius:100px; flex-shrink:0; margin-top:1px">
+              <span style="font-size:10px; font-weight:700; color:{{ item.textColor }}; letter-spacing:0.03em">{{ item.tierLabel }}</span>
+            </div>
+          </div>
+          <div style="font-size:11px; color:oklch(0.58 0.015 50); margin-bottom:5px; font-weight:500; text-transform:uppercase; letter-spacing:0.04em">{{ item.area }}</div>
+          <div style="font-size:12px; color:oklch(0.48 0.07 47); line-height:1.55">{{ item.note }}</div>
+        </div>
+      </sc-for>
+      <div style="padding:12px 18px">
+        <a href="#" style="font-size:13px; font-weight:600; color:oklch(0.43 0.14 165)">View all needs attention →</a>
+      </div>
+    </div>
+
+    <!-- Recently Added -->
+    <div style="background:white; border-radius:12px; border:1px solid oklch(0.91 0.012 75); overflow:hidden">
+      <div style="padding:14px 18px; border-bottom:1px solid oklch(0.94 0.008 75)">
+        <span style="font-size:13px; font-weight:700; color:oklch(0.20 0.025 50)">Recently Added</span>
+      </div>
+      <sc-for list="{{ recentlyAdded }}" as="r" hint-placeholder-count="3">
+        <div style="padding:12px 18px; border-bottom:1px solid oklch(0.97 0.006 75); display:flex; align-items:center; justify-content:space-between; gap:10px">
+          <div style="min-width:0">
+            <div style="font-size:13px; font-weight:600; color:oklch(0.20 0.025 50); white-space:nowrap; overflow:hidden; text-overflow:ellipsis">{{ r.name }}</div>
+            <div style="font-size:11px; color:oklch(0.58 0.015 50); margin-top:2px">{{ r.area }} · {{ r.date }}</div>
+          </div>
+          <div style="padding:2px 8px; background:{{ r.bg }}; border-radius:100px; flex-shrink:0">
+            <span style="font-size:10px; font-weight:700; color:{{ r.textColor }}; letter-spacing:0.03em">{{ r.tierLabel }}</span>
+          </div>
+        </div>
+      </sc-for>
+      <div style="padding:12px 18px">
+        <a href="#" style="font-size:13px; font-weight:600; color:oklch(0.43 0.14 165)">View all recent changes →</a>
+      </div>
+    </div>
+
+    <!-- About the data -->
+    <div style="background:oklch(0.94 0.06 165); border-radius:12px; padding:18px 20px">
+      <div style="font-size:13px; font-weight:700; color:oklch(0.26 0.12 165); margin-bottom:7px">About this data</div>
+      <div style="font-size:12px; color:oklch(0.37 0.10 165); line-height:1.65; text-wrap:pretty">Health scores are computed nightly from GitHub activity, documentation, and AT-specific signals. The methodology is open-source and versioned. Disputes can be filed via GitHub Issues.</div>
+      <a href="#" style="display:inline-block; margin-top:10px; font-size:12px; font-weight:600; color:oklch(0.35 0.13 165)">Read the methodology →</a>
+    </div>
+
+  </div>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer style="border-top:1px solid oklch(0.91 0.012 75); background:white; padding:20px 40px">
+  <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px">
+    <div style="font-size:12px; color:oklch(0.56 0.015 50)">Assistive Commons Watch · Data <a href="#" style="color:inherit; font-weight:600">CC0</a> · Score methodology <a href="#" style="color:inherit; font-weight:600">v1.0</a></div>
+    <div style="display:flex; gap:16px">
+      <a href="#" style="font-size:12px; color:oklch(0.52 0.015 50)">GitHub</a>
+      <a href="#" style="font-size:12px; color:oklch(0.52 0.015 50)">About</a>
+      <a href="#" style="font-size:12px; color:oklch(0.52 0.015 50)">API</a>
+      <a href="#" style="font-size:12px; color:oklch(0.52 0.015 50)">Submit</a>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 900}}">
+class Component extends DCLogic {
+  state = { activeTab: 0 };
+
+  get PROJECTS() {
+    return [
+      { id: 'cboard',           name: 'cboard',                        area: 'aac',         tier: 'thriving' },
+      { id: 'asterics-grid',    name: 'AsTeRICS-Grid',                 area: 'aac',         tier: 'thriving' },
+      { id: 'speakeasy-aac',    name: 'speakeasy-aac',                 area: 'aac',         tier: 'dormant'  },
+      { id: 'otsimo-aac',       name: 'otsimo/aac',                    area: 'aac',         tier: 'archived' },
+      { id: 'optikey',          name: 'OptiKey',                       area: 'eyegaze',     tier: 'thriving' },
+      { id: 'eye-lcos-tracker', name: 'asterics/eye-lcos-tracker',     area: 'eyegaze',     tier: 'dormant'  },
+      { id: 'igaze',            name: 'iGaze',                         area: 'eyegaze',     tier: 'dormant'  },
+      { id: 'lipsync',          name: 'LipSync',                       area: 'motor',       tier: 'thriving' },
+      { id: 'openat-joysticks', name: 'OpenAT-Joysticks',              area: 'motor',       tier: 'thriving' },
+      { id: 'fabi',             name: 'FABI',                          area: 'motor',       tier: 'stable'   },
+      { id: 'flipmouse',        name: 'FLipMouse',                     area: 'motor',       tier: 'stable'   },
+      { id: 'switchboard',      name: 'switchboard',                   area: 'motor',       tier: 'dormant'  },
+      { id: 'nvda',             name: 'NVDA',                          area: 'vision',      tier: 'thriving' },
+      { id: 'brailletouch',     name: 'BrailleTouch',                  area: 'vision',      tier: 'dormant'  },
+      { id: 'tympan',           name: 'Tympan_Library',                area: 'hearing',     tier: 'stable'   },
+      { id: 'hearingaid',       name: 'hearingaid-prototype',          area: 'hearing',     tier: 'dormant'  },
+      { id: 'openbionics',      name: 'OpenBionics/Prosthetic-Hands',  area: 'prosthetics', tier: 'dormant'  },
+      { id: 'opensourceleg',    name: 'opensourceleg',                 area: 'prosthetics', tier: 'thriving' },
+    ];
+  }
+
+  get TIER_META() {
+    return {
+      thriving:   { label: 'Thriving',   bg: 'oklch(0.52 0.16 142)', textColor: 'white',               desc: 'Active, documented, welcoming'           },
+      stable:     { label: 'Stable',     bg: 'oklch(0.50 0.14 245)', textColor: 'white',               desc: 'Works, maintained passively, usable'     },
+      dormant:    { label: 'Dormant',    bg: 'oklch(0.72 0.13 83)',  textColor: 'oklch(0.30 0.06 80)', desc: 'Documented to replicate, inactive'       },
+      'at-risk':  { label: 'At Risk',    bg: 'oklch(0.62 0.17 47)', textColor: 'white',               desc: 'Maintenance unclear, documentation gaps' },
+      archived:   { label: 'Archived',   bg: 'oklch(0.52 0.14 22)', textColor: 'white',               desc: 'Explicitly archived or abandoned'        },
+      unverified: { label: 'Unverified', bg: 'oklch(0.80 0.02 250)', textColor: 'oklch(0.40 0.02 250)', desc: 'Not yet assessed'                       },
+    };
+  }
+
+  get AREAS() {
+    return [
+      { id: 'aac',         label: 'AAC / Communication'  },
+      { id: 'eyegaze',     label: 'Eye Gaze / Tracking'  },
+      { id: 'motor',       label: 'Motor / Switch Access' },
+      { id: 'vision',      label: 'Vision / Braille'      },
+      { id: 'hearing',     label: 'Hearing'               },
+      { id: 'prosthetics', label: 'Prosthetics / Rehab'  },
+    ];
+  }
+
+  renderVals() {
+    const projects    = this.PROJECTS;
+    const tierMeta    = this.TIER_META;
+    const areas       = this.AREAS;
+    const { activeTab } = this.state;
+    const TIER_ORDER  = ['thriving', 'stable', 'dormant', 'at-risk', 'archived', 'unverified'];
+
+    // ── core stats
+    const total    = projects.length;
+    const thriving = projects.filter(p => p.tier === 'thriving').length;
+    const stable   = projects.filter(p => p.tier === 'stable').length;
+    const dormant  = projects.filter(p => p.tier === 'dormant').length;
+    const archived = projects.filter(p => p.tier === 'archived').length;
+    const activePct = Math.round(((thriving + stable) / total) * 100);
+
+    // ── tier distribution
+    const tierDist = TIER_ORDER
+      .map(t => ({ tier: t, count: projects.filter(p => p.tier === t).length, ...tierMeta[t] }))
+      .filter(t => t.count > 0);
+
+    // ── donut gradient
+    let cum = 0;
+    const donutBg = 'conic-gradient(' + tierDist.map(t => {
+      const pct = (t.count / total) * 100;
+      const seg = `${t.bg} ${cum.toFixed(1)}% ${(cum + pct).toFixed(1)}%`;
+      cum += pct;
+      return seg;
+    }).join(', ') + ')';
+    const donutStyle = { width: '180px', height: '180px', borderRadius: '50%', background: donutBg };
+
+    // ── area rows (tab 0)
+    const maxCount = Math.max(...areas.map(a => projects.filter(p => p.area === a.id).length));
+    const areaRows = areas.map(area => {
+      const ps = projects.filter(p => p.area === area.id);
+      const sorted = [...ps].sort((a, b) => TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier));
+      return {
+        ...area,
+        total: ps.length,
+        blocks: sorted.map(p => ({
+          name:  p.name,
+          label: tierMeta[p.tier].label,
+          bg:    tierMeta[p.tier].bg,
+          tier:  p.tier,
+        })),
+      };
+    });
+
+    // ── gap rows (tab 2)
+    const gapRows = areaRows.map(a => ({
+      ...a,
+      activeN:  a.blocks.filter(b => ['thriving', 'stable'].includes(b.tier)).length,
+      isSparse: a.total <= 2,
+      isMod:    a.total === 3,
+      isWell:   a.total >= 4,
+      barStyle: {
+        position: 'absolute', top: 0, left: 0,
+        height: '100%',
+        width: `${Math.round((a.total / maxCount) * 100)}%`,
+        background: 'oklch(0.45 0.14 165)',
+        borderRadius: '100px',
+      },
+    }));
+
+    // ── needs attention
+    const needsAttention = [
+      { name: 'iGaze',                        area: 'Eye Gaze',    tier: 'dormant', note: 'Last commit 5+ years ago — approaching abandonment' },
+      { name: 'OpenBionics/Prosthetic-Hands', area: 'Prosthetics', tier: 'dormant', note: 'No build docs; sole dormant project in a sparse area' },
+      { name: 'hearingaid-prototype',         area: 'Hearing',     tier: 'dormant', note: 'Only 2 hearing projects — critical coverage gap' },
+    ].map(n => ({ ...n, bg: tierMeta[n.tier].bg, textColor: tierMeta[n.tier].textColor, tierLabel: tierMeta[n.tier].label }));
+
+    // ── recently added
+    const recentlyAdded = [
+      { name: 'opensourceleg',   area: 'Prosthetics / Rehab',  date: 'Jun 2026', tier: 'thriving' },
+      { name: 'OpenAT-Joysticks',area: 'Motor / Switch Access', date: 'May 2026', tier: 'thriving' },
+      { name: 'AsTeRICS-Grid',   area: 'AAC / Communication',  date: 'Apr 2026', tier: 'thriving' },
+    ].map(r => ({ ...r, bg: tierMeta[r.tier].bg, textColor: tierMeta[r.tier].textColor, tierLabel: tierMeta[r.tier].label }));
+
+    // ── tab button styles (state-dependent — style holes are correct here)
+    const makeTabStyle = i => ({
+      padding:       '10px 0',
+      borderTop:     'none',
+      borderLeft:    'none',
+      borderRight:   'none',
+      borderBottom:  `2px solid ${activeTab === i ? 'oklch(0.43 0.14 165)' : 'transparent'}`,
+      color:         activeTab === i ? 'oklch(0.38 0.14 165)' : 'oklch(0.50 0.02 50)',
+      fontWeight:    activeTab === i ? '600' : '400',
+      background:    'none',
+      cursor:        'pointer',
+      fontFamily:    'inherit',
+      fontSize:      '14px',
+      letterSpacing: '0.01em',
+      whiteSpace:    'nowrap',
+      lineHeight:    '1.2',
+      outline:       'none',
+    });
+
+    return {
+      total, thriving, stable, dormant, archived, activePct,
+      tierDist, donutStyle, areaRows, gapRows, needsAttention, recentlyAdded,
+      isTab0:    activeTab === 0,
+      isTab1:    activeTab === 1,
+      isTab2:    activeTab === 2,
+      tab0Style: makeTabStyle(0),
+      tab1Style: makeTabStyle(1),
+      tab2Style: makeTabStyle(2),
+      setTab0:   () => this.setState({ activeTab: 0 }),
+      setTab1:   () => this.setState({ activeTab: 1 }),
+      setTab2:   () => this.setState({ activeTab: 2 }),
+    };
+  }
+}
+</script>
+</body>
+</html>

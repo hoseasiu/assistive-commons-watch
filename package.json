@@ -1,0 +1,13 @@
+{
+  "name": "assistive-commons-watch",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "data": "python scripts/build_json.py",
+    "build": "npm run data && npx @11ty/eleventy --input=site --output=_site",
+    "serve": "npm run data && npx @11ty/eleventy --input=site --output=_site --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

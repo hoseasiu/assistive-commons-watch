@@ -11,6 +11,7 @@ tags:
   - mouse-replacement
 
 disability_area:
+  - eyegaze
   - motor
 modality: software
 user_context:
@@ -44,5 +45,5 @@ sources:
     url: https://github.com/mrpmorris/iGaze
     fetched_at: null
 
-health_tier: null
-health_score: null
+health_tier: dormant
+health_score: 2.5
