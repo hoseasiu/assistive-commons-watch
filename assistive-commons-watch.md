@@ -268,7 +268,7 @@ The `sources` array in the data model means adding a new platform = adding a new
 
 ## Open Questions / Next Steps
 
-- [ ] **Data schema v1** — formalize into a JSON Schema or Pydantic model for validation
+- [ ] **Data schema v1** — Pydantic model; export `schema.json` as a CI build artifact (do not edit by hand)
 - [ ] **Frontend build** — start with 11ty scaffold
 - [ ] **Domain** — `assistivecommons.watch` or similar
 
