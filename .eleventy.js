@@ -34,6 +34,28 @@ module.exports = function (eleventyConfig) {
     return labels[tier] ?? tier;
   });
 
+  // Score pill colors — light tinted bg, dark text, WCAG AA compliant
+  eleventyConfig.addFilter("scoreBg", (score) => {
+    if (score === null || score === undefined) return "oklch(0.93 0.005 75)";
+    if (score >= 7) return "oklch(0.92 0.08 142)";
+    if (score >= 4) return "oklch(0.96 0.07 83)";
+    return "oklch(0.94 0.06 22)";
+  });
+
+  eleventyConfig.addFilter("scoreText", (score) => {
+    if (score === null || score === undefined) return "oklch(0.44 0.01 75)";
+    if (score >= 7) return "oklch(0.28 0.14 142)";
+    if (score >= 4) return "oklch(0.40 0.10 83)";
+    return "oklch(0.40 0.14 22)";
+  });
+
+  eleventyConfig.addFilter("scoreBorder", (score) => {
+    if (score === null || score === undefined) return "oklch(0.82 0.01 75)";
+    if (score >= 7) return "oklch(0.78 0.12 142)";
+    if (score >= 4) return "oklch(0.82 0.10 83)";
+    return "oklch(0.80 0.10 22)";
+  });
+
   return {
     dir: {
       input: "site",

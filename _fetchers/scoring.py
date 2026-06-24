@@ -131,3 +131,30 @@ def compute_health(project: Project) -> tuple[float, HealthTier]:
         tier = HealthTier.at_risk
 
     return score, tier
+
+
+def compute_sub_scores(project: Project) -> dict[str, float | None]:
+    """Per-dimension scores from available data.
+
+    activity and community return None when fetched_at is null — those
+    dimensions require live GitHub API data and can't be estimated statically.
+    """
+    source = next((s for s in project.sources if s.platform == "github"), None)
+
+    if source is None:
+        return {
+            "activity": None,
+            "replicability": None,
+            "community": None,
+            "at_specific": round(_at_specific(project), 1),
+            "provenance": round(_provenance(project), 1),
+        }
+
+    fetched = source.fetched_at is not None
+    return {
+        "activity": round(_activity(source), 1) if fetched else None,
+        "replicability": round(_replicability(project, source), 1),
+        "community": round(_community(source), 1) if fetched else None,
+        "at_specific": round(_at_specific(project), 1),
+        "provenance": round(_provenance(project), 1),
+    }

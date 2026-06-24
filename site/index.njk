@@ -534,11 +534,13 @@ title: Assistive Commons Watch
           </div>
           <div class="area-blocks">
             {%- for p in area.projects -%}
-            <span
+            <a
+              href="/projects/{{ p.id }}/"
               class="project-block"
               style="background:{{ p.health_tier | tierColor }}"
               title="{{ p.name }} — {{ p.health_tier | tierLabel }}"
-            ></span>
+              aria-label="{{ p.name }}, {{ p.health_tier | tierLabel }}"
+            ></a>
             {%- endfor -%}
           </div>
         </div>
@@ -666,7 +668,7 @@ title: Assistive Commons Watch
         {%- for p in d.needs_attention -%}
         <div class="attention-item">
           <div class="attention-row1">
-            <span class="attention-name">{{ p.name }}</span>
+            <a href="/projects/{{ p.id }}/" class="attention-name">{{ p.name }}</a>
             <span class="tier-badge"
               style="background:{{ p.health_tier | tierColor }};color:{{ p.health_tier | tierTextColor }}">
               {{ p.health_tier | tierLabel }}
@@ -689,7 +691,7 @@ title: Assistive Commons Watch
         {%- for p in d.recently_added -%}
         <div class="recent-item">
           <div>
-            <div class="recent-name">{{ p.name }}</div>
+            <a href="/projects/{{ p.id }}/" class="recent-name">{{ p.name }}</a>
             <div class="recent-meta">{{ p.primary_area_label }} · {{ p.added_date }}</div>
           </div>
           <span class="tier-badge"
