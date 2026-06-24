@@ -1,0 +1,67 @@
+name: Deploy to GitHub Pages
+
+# Trigger on every push to main and allow manual runs.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deployment runs at a time; do not cancel in-progress deployments.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install "pyyaml>=6.0" "pydantic>=2.0"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      # Produces site/_data/acw.json from _data/projects/*.yaml, then builds
+      # the 11ty site into _site/.
+      - name: Build site
+        run: npm run build
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+# Custom domain (when ready):
+#   1. Add a CNAME file to site/ containing the domain (e.g. assistivecommons.watch)
+#   2. Set the custom domain in GitHub repo Settings → Pages
+#   3. Configure DNS: CNAME assistivecommons.watch → hoseasiu.github.io
