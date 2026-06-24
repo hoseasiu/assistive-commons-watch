@@ -1,0 +1,57 @@
+id: acw-0001
+name: Cboard
+description: >-
+  Open-source web-based AAC (Augmentative and Alternative Communication) app
+  that lets users communicate using symbols and text-to-speech. Supports
+  multiple languages and is co-designed with users who have communication
+  disabilities.
+added_date: "2026-06-24"
+tags:
+  - aac
+  - communication
+  - web
+  - symbols
+  - text-to-speech
+
+disability_area:
+  - communication
+  - cognitive
+modality: software
+user_context:
+  - home
+  - school
+  - clinical
+interface:
+  - touch
+  - mouse
+
+bom_present: null
+build_docs_quality: none
+cost_range: null
+fabrication_methods: []
+skill_level: beginner
+
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+
+license: GPL-3.0
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+
+documentation_languages:
+  - en
+  - es
+  - ar
+  - fr
+
+sources:
+  - platform: github
+    url: https://github.com/cboard-org/cboard
+    fetched_at: null
+
+health_tier: null
+health_score: null

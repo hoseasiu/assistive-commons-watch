@@ -1,0 +1,56 @@
+id: acw-0018
+name: Open-Source Leg
+description: >-
+  Open-source powered prosthetic leg platform from the Neurobionics Lab at the
+  University of Michigan. Provides a research-grade lower-limb prosthesis
+  with published hardware designs, firmware, and control software to accelerate
+  prosthetics and exoskeleton research.
+added_date: "2026-06-24"
+tags:
+  - prosthetics
+  - leg
+  - hardware
+  - robotics
+  - exoskeleton
+  - research
+
+disability_area:
+  - motor
+  - prosthetics
+modality: hybrid
+user_context:
+  - research
+  - clinical
+interface: []
+
+bom_present: true
+build_docs_quality: complete
+cost_range: "$5000–$15000"
+fabrication_methods:
+  - machining
+  - electronics
+  - pcb
+  - assembly
+skill_level: engineer
+
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+
+license: MIT
+associated_publication: null
+institutional_affiliation: University of Michigan
+origin_program: null
+
+documentation_languages:
+  - en
+
+sources:
+  - platform: github
+    url: https://github.com/neurobionics/opensourceleg
+    fetched_at: null
+
+health_tier: null
+health_score: null

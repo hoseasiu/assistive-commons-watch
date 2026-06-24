@@ -1,0 +1,58 @@
+id: acw-0002
+name: AsTeRICS Grid
+description: >-
+  Open-source AAC grid software that runs in the browser and supports flexible
+  grid-based communication boards. Integrates with assistive input methods
+  including eye gaze, switch access, and head tracking. Developed by the
+  AsTeRICS Foundation.
+added_date: "2026-06-24"
+tags:
+  - aac
+  - communication
+  - grid
+  - browser
+  - switch-access
+  - eye-gaze
+
+disability_area:
+  - communication
+  - motor
+modality: software
+user_context:
+  - home
+  - school
+  - clinical
+interface:
+  - touch
+  - mouse
+  - eye-gaze
+  - switch
+
+bom_present: null
+build_docs_quality: none
+cost_range: null
+fabrication_methods: []
+skill_level: beginner
+
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+
+license: AGPL-3.0
+associated_publication: null
+institutional_affiliation: FH Technikum Wien
+origin_program: null
+
+documentation_languages:
+  - en
+  - de
+
+sources:
+  - platform: github
+    url: https://github.com/asterics/AsTeRICS-Grid
+    fetched_at: null
+
+health_tier: null
+health_score: null

@@ -1,0 +1,53 @@
+id: acw-0015
+name: Tympan Library
+description: >-
+  Open-source Arduino library and hardware platform for developing custom
+  hearing aid and hearing enhancement algorithms. Built on a dedicated
+  open-source hearing aid hardware board (Tympan), enabling researchers and
+  makers to prototype and study hearing device DSP.
+added_date: "2026-06-24"
+tags:
+  - hearing-aid
+  - arduino
+  - audio-dsp
+  - hardware
+  - firmware
+
+disability_area:
+  - hearing
+modality: hybrid
+user_context:
+  - research
+  - clinical
+interface:
+  - audio
+
+bom_present: true
+build_docs_quality: partial
+cost_range: "$200–$500"
+fabrication_methods:
+  - electronics
+  - pcb
+skill_level: engineer
+
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: null
+feedback_channel: true
+known_deployed_instances: null
+
+license: MIT
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+
+documentation_languages:
+  - en
+
+sources:
+  - platform: github
+    url: https://github.com/Tympan/Tympan_Library
+    fetched_at: null
+
+health_tier: null
+health_score: null

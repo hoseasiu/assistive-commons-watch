@@ -1,0 +1,52 @@
+id: acw-0006
+name: AsTeRICS Eye-LCOS Tracker
+description: >-
+  Low-cost open-source eye tracker based on LCOS (Liquid Crystal on Silicon)
+  optics. Hardware and firmware design for an affordable gaze-tracking device
+  that can interface with AT software.
+added_date: "2026-06-24"
+tags:
+  - eye-tracking
+  - hardware
+  - low-cost
+  - gaze
+
+disability_area:
+  - motor
+modality: hybrid
+user_context:
+  - home
+  - clinical
+  - research
+interface:
+  - eye-gaze
+
+bom_present: true
+build_docs_quality: partial
+cost_range: null
+fabrication_methods:
+  - electronics
+  - pcb
+skill_level: engineer
+
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: null
+feedback_channel: null
+known_deployed_instances: null
+
+license: null
+associated_publication: null
+institutional_affiliation: FH Technikum Wien
+origin_program: null
+
+documentation_languages:
+  - en
+
+sources:
+  - platform: github
+    url: https://github.com/asterics/eye-lcos-tracker
+    fetched_at: null
+
+health_tier: null
+health_score: null

@@ -1,0 +1,55 @@
+id: acw-0009
+name: OpenAT Joysticks
+description: >-
+  Collection of open-source assistive joystick designs from Makers Making
+  Change, providing low-cost switch-access and mouse-replacement input devices
+  for people with limited hand or arm mobility. Includes multiple joystick
+  variants with full BOMs and build guides.
+added_date: "2026-06-24"
+tags:
+  - joystick
+  - switch-access
+  - hardware
+  - 3d-printing
+  - mouse-replacement
+
+disability_area:
+  - motor
+modality: hardware
+user_context:
+  - home
+  - work
+  - school
+interface:
+  - mouse
+  - switch
+
+bom_present: true
+build_docs_quality: complete
+cost_range: "$20–$100"
+fabrication_methods:
+  - 3d-printing
+  - electronics
+skill_level: maker
+
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+
+license: CERN-OHL-W-2.0
+associated_publication: null
+institutional_affiliation: Makers Making Change
+origin_program: null
+
+documentation_languages:
+  - en
+
+sources:
+  - platform: github
+    url: https://github.com/makersmakingchange/OpenAT-Joysticks
+    fetched_at: null
+
+health_tier: null
+health_score: null

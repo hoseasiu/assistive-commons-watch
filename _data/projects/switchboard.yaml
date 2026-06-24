@@ -1,0 +1,49 @@
+id: acw-0012
+name: Switchboard
+description: >-
+  Open-source software tool that maps external switch inputs to keyboard
+  shortcuts and mouse actions, enabling switch-access control of computers and
+  applications for people with limited motor ability.
+added_date: "2026-06-24"
+tags:
+  - switch-access
+  - keyboard
+  - software
+
+disability_area:
+  - motor
+modality: software
+user_context:
+  - home
+  - work
+  - school
+interface:
+  - switch
+
+bom_present: null
+build_docs_quality: partial
+cost_range: null
+fabrication_methods: []
+skill_level: beginner
+
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: null
+feedback_channel: null
+known_deployed_instances: null
+
+license: null
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+
+documentation_languages:
+  - en
+
+sources:
+  - platform: github
+    url: https://github.com/jqug/switchboard
+    fetched_at: null
+
+health_tier: null
+health_score: null
