@@ -59,7 +59,7 @@ class GitHubFetcher(BaseFetcher):
         owner, repo = _parse_owner_repo(url)
 
         meta = self._get(f"/repos/{owner}/{repo}")
-        community = self._get(f"/repos/{owner}/{repo}/community/profile")
+        community = self._get_optional(f"/repos/{owner}/{repo}/community/profile")
         readme = self._fetch_readme(owner, repo)
         releases = self._get(f"/repos/{owner}/{repo}/releases?per_page=5")
         issues = self._get(f"/repos/{owner}/{repo}/issues?state=all&per_page=20")
@@ -110,6 +110,20 @@ class GitHubFetcher(BaseFetcher):
         resp = self._client.get(f"{self._BASE}{path}")
         if resp.status_code == 404:
             raise ValueError(f"GitHub API 404: {path}")
+        if resp.status_code in (403, 429):
+            reset = resp.headers.get("X-RateLimit-Reset", "unknown")
+            raise PermissionError(
+                f"GitHub API rate limit or auth error (status {resp.status_code}). "
+                f"Rate limit resets at: {reset}. Set GITHUB_TOKEN to raise the limit."
+            )
+        resp.raise_for_status()
+        return resp.json()
+
+    def _get_optional(self, path: str) -> Any:
+        """Like _get but returns an empty dict on 404 instead of raising."""
+        resp = self._client.get(f"{self._BASE}{path}")
+        if resp.status_code == 404:
+            return {}
         if resp.status_code in (403, 429):
             reset = resp.headers.get("X-RateLimit-Reset", "unknown")
             raise PermissionError(

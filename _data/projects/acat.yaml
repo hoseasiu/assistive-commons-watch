@@ -1,0 +1,48 @@
+id: acw-0021
+name: ACAT
+description: Assistive Context-Aware Toolkit, originally developed at Intel Labs for
+  Stephen Hawking. A Windows platform for people with severely restricted motor and
+  speech capabilities, providing a configurable on-screen keyboard, word/sentence prediction,
+  speech synthesis, and support for switch, eye-gaze, head-tracker, and BCI inputs.
+added_date: '2026-06-24'
+tags:
+- communication
+- text-entry
+- word-prediction
+- switch-access
+- motor
+- windows
+- aac
+disability_area:
+- motor
+- communication
+modality: software
+user_context:
+- home
+- work
+interface:
+- switch
+- eye-gaze
+- head-tracking
+- mouse
+bom_present: null
+build_docs_quality: complete
+cost_range: null
+fabrication_methods: []
+skill_level: maker
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: Apache-2.0
+associated_publication: null
+institutional_affiliation: Intel Labs
+origin_program: null
+documentation_languages:
+- en
+sources:
+- platform: github
+  url: https://github.com/intel/acat
+health_tier: null
+health_score: null
