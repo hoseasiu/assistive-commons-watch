@@ -1,59 +1,66 @@
 id: acw-0011
 name: FLipMouse
-description: >-
-  Open-source mouth- or finger-operated mouse and joystick replacement built
-  by the AsTeRICS Foundation. Uses a pressure-sensitive stick and sip/puff
-  input to provide full mouse, keyboard, and joystick control for people with
-  severe upper limb mobility impairments.
-added_date: "2026-06-24"
+description: Open-source mouth- or finger-operated mouse and joystick replacement
+  built by the AsTeRICS Foundation. Uses a pressure-sensitive stick and sip/puff input
+  to provide full mouse, keyboard, and joystick control for people with severe upper
+  limb mobility impairments.
+added_date: '2026-06-24'
 tags:
-  - sip-and-puff
-  - mouse-replacement
-  - joystick
-  - hardware
-  - mouth-control
-  - switch-access
-
+- sip-and-puff
+- mouse-replacement
+- joystick
+- hardware
+- mouth-control
+- switch-access
 disability_area:
-  - motor
+- motor
 modality: hybrid
 user_context:
-  - home
-  - work
-  - school
+- home
+- work
+- school
 interface:
-  - mouse
-  - switch
-  - keyboard
-
+- mouse
+- switch
+- keyboard
 bom_present: true
 build_docs_quality: complete
-cost_range: "$100–$300"
+cost_range: $100–$300
 fabrication_methods:
-  - 3d-printing
-  - electronics
-  - soldering
+- 3d-printing
+- electronics
+- soldering
 skill_level: maker
-
 nothing_about_us: true
 replicated_by_disabled_person: null
 end_user_docs: true
 feedback_channel: true
 known_deployed_instances: null
-
 license: GPL-3.0
 associated_publication: null
 institutional_affiliation: FH Technikum Wien
 origin_program: null
-
 documentation_languages:
-  - en
-  - de
-
+- en
+- de
 sources:
-  - platform: github
-    url: https://github.com/asterics/FLipMouse
-    fetched_at: null
-
+- platform: github
+  url: https://github.com/asterics/FLipMouse
+  fetched_at: '2026-06-25T00:10:53.660552+00:00'
+  stars: 43
+  forks: 9
+  last_commit: '2026-02-18'
+  open_issues: 8
+  open_prs: null
+  issue_response_rate: 0.5
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: false
+  readme_has_bom: false
+  release_artifact_present: true
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
 health_tier: stable
-health_score: 6.5
+health_score: 6.47

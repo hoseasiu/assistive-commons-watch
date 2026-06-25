@@ -1,51 +1,58 @@
 id: acw-0014
 name: BrailleTouch
-description: >-
-  Open-source mobile Braille keyboard that turns a touchscreen into a
-  six-key Braille input device. Allows blind and low-vision users to type
-  in Braille on standard smartphones without additional hardware.
-added_date: "2026-06-24"
+description: Open-source mobile Braille keyboard that turns a touchscreen into a six-key
+  Braille input device. Allows blind and low-vision users to type in Braille on standard
+  smartphones without additional hardware.
+added_date: '2026-06-24'
 tags:
-  - braille
-  - keyboard
-  - mobile
-  - touch
-  - vision
-
+- braille
+- keyboard
+- mobile
+- touch
+- vision
 disability_area:
-  - vision
+- vision
 modality: software
 user_context:
-  - home
-  - work
-  - school
+- home
+- work
+- school
 interface:
-  - touch
-
+- touch
 bom_present: null
 build_docs_quality: partial
 cost_range: null
 fabrication_methods: []
 skill_level: beginner
-
 nothing_about_us: null
 replicated_by_disabled_person: null
 end_user_docs: null
 feedback_channel: null
 known_deployed_instances: null
-
 license: null
 associated_publication: null
 institutional_affiliation: Georgia Institute of Technology
 origin_program: null
-
 documentation_languages:
-  - en
-
+- en
 sources:
-  - platform: github
-    url: https://github.com/brailletouch/Brailletouch
-    fetched_at: null
-
-health_tier: dormant
-health_score: 3.2
+- platform: github
+  url: https://github.com/brailletouch/Brailletouch
+  fetched_at: '2026-06-25T00:10:47.322320+00:00'
+  stars: 52
+  forks: 8
+  last_commit: '2025-05-15'
+  open_issues: 1
+  open_prs: null
+  issue_response_rate: 1.0
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: false
+  readme_has_bom: true
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
+health_tier: at_risk
+health_score: 1.8

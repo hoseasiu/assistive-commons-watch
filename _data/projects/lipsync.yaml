@@ -1,57 +1,63 @@
 id: acw-0008
 name: LipSync
-description: >-
-  Open-source sip-and-puff mouth-operated joystick that provides hands-free
-  mouse and computer control for people with limited upper limb mobility.
-  Developed by Makers Making Change; includes full BOM, 3D-printable
-  enclosure, and build documentation.
-added_date: "2026-06-24"
+description: Open-source sip-and-puff mouth-operated joystick that provides hands-free
+  mouse and computer control for people with limited upper limb mobility. Developed
+  by Makers Making Change; includes full BOM, 3D-printable enclosure, and build documentation.
+added_date: '2026-06-24'
 tags:
-  - sip-and-puff
-  - joystick
-  - switch-access
-  - hardware
-  - 3d-printing
-  - mouth-control
-
+- sip-and-puff
+- joystick
+- switch-access
+- hardware
+- 3d-printing
+- mouth-control
 disability_area:
-  - motor
+- motor
 modality: hybrid
 user_context:
-  - home
-  - work
-  - school
+- home
+- work
+- school
 interface:
-  - mouse
-  - switch
-
+- mouse
+- switch
 bom_present: true
 build_docs_quality: complete
-cost_range: "$50–$200"
+cost_range: $50–$200
 fabrication_methods:
-  - 3d-printing
-  - electronics
-  - soldering
+- 3d-printing
+- electronics
+- soldering
 skill_level: maker
-
 nothing_about_us: true
 replicated_by_disabled_person: null
 end_user_docs: true
 feedback_channel: true
 known_deployed_instances: null
-
 license: CERN-OHL-W-2.0
 associated_publication: null
 institutional_affiliation: Makers Making Change
 origin_program: null
-
 documentation_languages:
-  - en
-
+- en
 sources:
-  - platform: github
-    url: https://github.com/makersmakingchange/LipSync
-    fetched_at: null
-
-health_tier: thriving
-health_score: 9.2
+- platform: github
+  url: https://github.com/makersmakingchange/LipSync
+  fetched_at: '2026-06-25T00:10:59.501171+00:00'
+  stars: 15
+  forks: 0
+  last_commit: '2026-01-05'
+  open_issues: 39
+  open_prs: null
+  issue_response_rate: 0.32
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: false
+  readme_has_bom: true
+  release_artifact_present: true
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
+health_tier: stable
+health_score: 6.32

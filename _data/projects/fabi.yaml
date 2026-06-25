@@ -1,58 +1,65 @@
 id: acw-0010
 name: FABI (Flexible Assistive Button Interface)
-description: >-
-  Open-source hardware interface that translates button presses from external
-  switches into mouse clicks, keyboard input, and joystick movements. Designed
-  by the AsTeRICS Foundation for people with severe motor disabilities who
-  cannot use standard input devices.
-added_date: "2026-06-24"
+description: Open-source hardware interface that translates button presses from external
+  switches into mouse clicks, keyboard input, and joystick movements. Designed by
+  the AsTeRICS Foundation for people with severe motor disabilities who cannot use
+  standard input devices.
+added_date: '2026-06-24'
 tags:
-  - switch-access
-  - buttons
-  - hardware
-  - mouse-replacement
-  - keyboard
-
+- switch-access
+- buttons
+- hardware
+- mouse-replacement
+- keyboard
 disability_area:
-  - motor
+- motor
 modality: hybrid
 user_context:
-  - home
-  - work
-  - school
+- home
+- work
+- school
 interface:
-  - switch
-  - mouse
-  - keyboard
-
+- switch
+- mouse
+- keyboard
 bom_present: true
 build_docs_quality: complete
-cost_range: "$30–$80"
+cost_range: $30–$80
 fabrication_methods:
-  - 3d-printing
-  - electronics
-  - soldering
+- 3d-printing
+- electronics
+- soldering
 skill_level: maker
-
 nothing_about_us: true
 replicated_by_disabled_person: null
 end_user_docs: true
 feedback_channel: true
 known_deployed_instances: null
-
 license: GPL-3.0
 associated_publication: null
 institutional_affiliation: FH Technikum Wien
 origin_program: null
-
 documentation_languages:
-  - en
-  - de
-
+- en
+- de
 sources:
-  - platform: github
-    url: https://github.com/asterics/FABI
-    fetched_at: null
-
-health_tier: stable
-health_score: 6.8
+- platform: github
+  url: https://github.com/asterics/FABI
+  fetched_at: '2026-06-25T00:10:51.652906+00:00'
+  stars: 19
+  forks: 11
+  last_commit: '2026-06-10'
+  open_issues: 5
+  open_prs: null
+  issue_response_rate: 0.93
+  release_in_last_year: false
+  readme_has_installation: true
+  readme_has_usage: true
+  readme_has_bom: false
+  release_artifact_present: true
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
+health_tier: thriving
+health_score: 7.6

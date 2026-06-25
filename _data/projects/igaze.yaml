@@ -1,49 +1,56 @@
 id: acw-0007
 name: iGaze
-description: >-
-  Open-source eye gaze application for Windows that enables control of the
-  computer using only eye movements. Designed as an accessibility tool for
-  people with limited or no hand mobility.
-added_date: "2026-06-24"
+description: Open-source eye gaze application for Windows that enables control of
+  the computer using only eye movements. Designed as an accessibility tool for people
+  with limited or no hand mobility.
+added_date: '2026-06-24'
 tags:
-  - eye-gaze
-  - windows
-  - mouse-replacement
-
+- eye-gaze
+- windows
+- mouse-replacement
 disability_area:
-  - eyegaze
-  - motor
+- eyegaze
+- motor
 modality: software
 user_context:
-  - home
-  - work
+- home
+- work
 interface:
-  - eye-gaze
-
+- eye-gaze
 bom_present: null
 build_docs_quality: none
 cost_range: null
 fabrication_methods: []
 skill_level: beginner
-
 nothing_about_us: null
 replicated_by_disabled_person: null
 end_user_docs: null
 feedback_channel: null
 known_deployed_instances: null
-
 license: null
 associated_publication: null
 institutional_affiliation: null
 origin_program: null
-
 documentation_languages:
-  - en
-
+- en
 sources:
-  - platform: github
-    url: https://github.com/mrpmorris/iGaze
-    fetched_at: null
-
-health_tier: dormant
-health_score: 2.5
+- platform: github
+  url: https://github.com/mrpmorris/iGaze
+  fetched_at: '2026-06-25T00:10:57.273536+00:00'
+  stars: 7
+  forks: 2
+  last_commit: '2017-04-09'
+  open_issues: 0
+  open_prs: null
+  issue_response_rate: null
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: false
+  readme_has_bom: false
+  release_artifact_present: true
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
+health_tier: archived
+health_score: 0.6

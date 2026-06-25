@@ -1,59 +1,65 @@
 id: acw-0013
 name: NVDA (NonVisual Desktop Access)
-description: >-
-  Free, open-source screen reader for Windows that enables blind and
-  vision-impaired users to access computers using synthesized speech and
-  refreshable Braille displays. One of the most widely used screen readers
-  globally, maintained by NV Access.
-added_date: "2026-06-24"
+description: Free, open-source screen reader for Windows that enables blind and vision-impaired
+  users to access computers using synthesized speech and refreshable Braille displays.
+  One of the most widely used screen readers globally, maintained by NV Access.
+added_date: '2026-06-24'
 tags:
-  - screen-reader
-  - windows
-  - vision
-  - braille
-  - text-to-speech
-
+- screen-reader
+- windows
+- vision
+- braille
+- text-to-speech
 disability_area:
-  - vision
+- vision
 modality: software
 user_context:
-  - home
-  - work
-  - school
+- home
+- work
+- school
 interface:
-  - keyboard
-  - braille-display
-
+- keyboard
+- braille-display
 bom_present: null
 build_docs_quality: none
 cost_range: null
 fabrication_methods: []
 skill_level: beginner
-
 nothing_about_us: true
 replicated_by_disabled_person: null
 end_user_docs: true
 feedback_channel: true
 known_deployed_instances: null
-
 license: GPL-2.0
 associated_publication: null
 institutional_affiliation: NV Access
 origin_program: null
-
 documentation_languages:
-  - en
-  - ar
-  - de
-  - es
-  - fr
-  - ja
-  - zh
-
+- en
+- ar
+- de
+- es
+- fr
+- ja
+- zh
 sources:
-  - platform: github
-    url: https://github.com/nvaccess/nvda
-    fetched_at: null
-
-health_tier: thriving
-health_score: 9.5
+- platform: github
+  url: https://github.com/nvaccess/nvda
+  fetched_at: '2026-06-25T00:11:02.370126+00:00'
+  stars: 2589
+  forks: 796
+  last_commit: '2026-06-23'
+  open_issues: 2237
+  open_prs: null
+  issue_response_rate: 0.45
+  release_in_last_year: true
+  readme_has_installation: false
+  readme_has_usage: false
+  readme_has_bom: false
+  release_artifact_present: true
+  dependencies_pinned: null
+  has_contributing: true
+  has_code_of_conduct: true
+  has_issue_templates: true
+health_tier: stable
+health_score: 7.0

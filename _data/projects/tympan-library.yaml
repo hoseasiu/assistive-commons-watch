@@ -1,53 +1,60 @@
 id: acw-0015
 name: Tympan Library
-description: >-
-  Open-source Arduino library and hardware platform for developing custom
-  hearing aid and hearing enhancement algorithms. Built on a dedicated
-  open-source hearing aid hardware board (Tympan), enabling researchers and
-  makers to prototype and study hearing device DSP.
-added_date: "2026-06-24"
+description: Open-source Arduino library and hardware platform for developing custom
+  hearing aid and hearing enhancement algorithms. Built on a dedicated open-source
+  hearing aid hardware board (Tympan), enabling researchers and makers to prototype
+  and study hearing device DSP.
+added_date: '2026-06-24'
 tags:
-  - hearing-aid
-  - arduino
-  - audio-dsp
-  - hardware
-  - firmware
-
+- hearing-aid
+- arduino
+- audio-dsp
+- hardware
+- firmware
 disability_area:
-  - hearing
+- hearing
 modality: hybrid
 user_context:
-  - research
-  - clinical
+- research
+- clinical
 interface:
-  - audio
-
+- audio
 bom_present: true
 build_docs_quality: partial
-cost_range: "$200–$500"
+cost_range: $200–$500
 fabrication_methods:
-  - electronics
-  - pcb
+- electronics
+- pcb
 skill_level: engineer
-
 nothing_about_us: null
 replicated_by_disabled_person: null
 end_user_docs: null
 feedback_channel: true
 known_deployed_instances: null
-
 license: MIT
 associated_publication: null
 institutional_affiliation: null
 origin_program: null
-
 documentation_languages:
-  - en
-
+- en
 sources:
-  - platform: github
-    url: https://github.com/Tympan/Tympan_Library
-    fetched_at: null
-
-health_tier: stable
-health_score: 6.2
+- platform: github
+  url: https://github.com/Tympan/Tympan_Library
+  fetched_at: '2026-06-25T00:11:17.168635+00:00'
+  stars: 144
+  forks: 42
+  last_commit: '2026-05-22'
+  open_issues: 31
+  open_prs: null
+  issue_response_rate: 1.0
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: false
+  readme_has_bom: false
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
+health_tier: at_risk
+health_score: 4.5
