@@ -1,0 +1,46 @@
+id: acw-0029
+name: Piper TTS
+description: Fast, local neural text-to-speech system producing natural-sounding voices
+  across 30+ languages. Optimized to run in real time on low-end hardware (Raspberry
+  Pi 4). Integrated as a speech synthesizer in NVDA, Home Assistant, and Rhasspy;
+  offers pre-built binaries and ONNX-based voice models.
+added_date: '2026-06-24'
+tags:
+- tts
+- text-to-speech
+- neural
+- speech-synthesis
+- vision
+- screen-reader
+- offline
+disability_area:
+- vision
+- communication
+modality: software
+user_context:
+- home
+- work
+- school
+interface:
+- speech
+bom_present: null
+build_docs_quality: complete
+cost_range: null
+fabrication_methods: []
+skill_level: beginner
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: MIT
+associated_publication: null
+institutional_affiliation: Open Home Foundation
+origin_program: null
+documentation_languages:
+- en
+sources:
+- platform: github
+  url: https://github.com/rhasspy/piper
+health_tier: null
+health_score: null

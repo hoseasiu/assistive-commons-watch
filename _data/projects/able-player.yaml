@@ -1,0 +1,47 @@
+id: acw-0024
+name: Able Player
+description: Fully accessible, open-source HTML5 media player with keyboard navigation,
+  screen-reader support, closed captions (WebVTT), audio descriptions, auto-generated
+  interactive transcripts, and customizable caption styling. Designed to meet WCAG
+  2.1 AA and Section 508 requirements out of the box.
+added_date: '2026-06-24'
+tags:
+- media-player
+- captions
+- audio-description
+- transcript
+- hearing
+- vision
+- web
+disability_area:
+- hearing
+- vision
+modality: software
+user_context:
+- home
+- school
+- work
+interface:
+- keyboard
+- screen-reader
+bom_present: null
+build_docs_quality: complete
+cost_range: null
+fabrication_methods: []
+skill_level: beginner
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: MIT
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+documentation_languages:
+- en
+sources:
+- platform: github
+  url: https://github.com/ableplayer/ableplayer
+health_tier: null
+health_score: null

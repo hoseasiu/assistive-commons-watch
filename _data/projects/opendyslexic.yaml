@@ -1,0 +1,42 @@
+id: acw-0026
+name: OpenDyslexic
+description: Open-source typeface designed to reduce common visual symptoms of dyslexia.
+  Letters have heavy weighted bottoms to resist rotation and flipping; unique letterforms
+  help prevent b/d/p/q confusion. Available in regular, bold, italic, and bold-italic;
+  continuously refined with feedback from dyslexic users. Licensed under SIL OFL.
+added_date: '2026-06-24'
+tags:
+- font
+- dyslexia
+- reading
+- cognitive
+- typography
+disability_area:
+- cognitive
+modality: software
+user_context:
+- home
+- school
+- work
+interface: []
+bom_present: null
+build_docs_quality: partial
+cost_range: null
+fabrication_methods: []
+skill_level: beginner
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: SIL-OFL-1.1
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+documentation_languages:
+- en
+sources:
+- platform: github
+  url: https://github.com/antijingoist/opendyslexic
+health_tier: null
+health_score: null

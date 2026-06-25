@@ -1,0 +1,42 @@
+id: acw-0020
+name: liblouis
+description: Open-source braille translator and back-translator supporting contracted
+  and uncontracted braille for many languages, including Nemeth math braille. Used
+  internally by NVDA, Orca, and commercial AT products to render text on braille displays.
+added_date: '2026-06-24'
+tags:
+- braille
+- braille-translation
+- vision
+- screen-reader
+- library
+disability_area:
+- vision
+modality: software
+user_context:
+- home
+- work
+- school
+interface:
+- braille-display
+bom_present: null
+build_docs_quality: partial
+cost_range: null
+fabrication_methods: []
+skill_level: engineer
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: false
+feedback_channel: true
+known_deployed_instances: null
+license: LGPL-2.1
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+documentation_languages:
+- en
+sources:
+- platform: github
+  url: https://github.com/liblouis/liblouis
+health_tier: null
+health_score: null

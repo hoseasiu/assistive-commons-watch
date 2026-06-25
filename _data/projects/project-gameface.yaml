@@ -1,0 +1,45 @@
+id: acw-0022
+name: Project Gameface
+description: Hands-free mouse emulator from Google that uses an off-the-shelf webcam
+  and MediaPipe face mesh to translate head movements and facial gestures (blinks,
+  open mouth, raised eyebrows) into mouse cursor control. Inspired by quadriplegic
+  gamer Lance Carr; open-sourced with Android expansion in 2024.
+added_date: '2026-06-24'
+tags:
+- head-tracking
+- face-tracking
+- mouse-emulation
+- webcam
+- motor
+- gaming
+disability_area:
+- motor
+modality: software
+user_context:
+- home
+- recreation
+- work
+interface:
+- webcam
+- mouse
+bom_present: null
+build_docs_quality: partial
+cost_range: null
+fabrication_methods: []
+skill_level: beginner
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: Apache-2.0
+associated_publication: null
+institutional_affiliation: Google
+origin_program: null
+documentation_languages:
+- en
+sources:
+- platform: github
+  url: https://github.com/google/project-gameface
+health_tier: null
+health_score: null
