@@ -433,9 +433,25 @@ layout: base.njk
             >{{ p.health_tier_label }}</div>
           </div>
 
-          <p class="summary-text">{{ p.summary }}</p>
+          <p class="summary-text">{{ p.plain_language_description if p.plain_language_description else p.summary }}</p>
 
           <div class="quick-facts" role="list" aria-label="Quick facts">
+            <div class="quick-fact" role="listitem">
+              <div class="quick-fact-label">Platform</div>
+              <div class="quick-fact-value{% if not p.platform or p.platform | length == 0 %} quick-fact-value--muted{% endif %}">
+                {%- if p.platform and p.platform | length > 0 -%}
+                  {{ p.platform | join(", ") | replace("hardware-only", "Hardware") | replace("windows", "Windows") | replace("linux", "Linux") | replace("macos", "macOS") | replace("web", "Web") | replace("ios", "iOS") | replace("android", "Android") }}
+                {%- else -%}Not specified{%- endif -%}
+              </div>
+            </div>
+            <div class="quick-fact" role="listitem">
+              <div class="quick-fact-label">Download</div>
+              <div class="quick-fact-value{% if not p.download_ready %} quick-fact-value--muted{% endif %}">
+                {%- if p.download_ready and p.latest_release_url -%}
+                  <a href="{{ p.latest_release_url }}" target="_blank" rel="noopener noreferrer">Latest release →</a>
+                {%- else -%}Not available{%- endif -%}
+              </div>
+            </div>
             <div class="quick-fact" role="listitem">
               <div class="quick-fact-label">License</div>
               <div class="quick-fact-value{% if not p.license %} quick-fact-value--muted{% endif %}">

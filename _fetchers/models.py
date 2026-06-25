@@ -40,6 +40,7 @@ class GitHubSource(BaseModel):
     platform: Literal["github"]
     url: str
     fetched_at: Optional[datetime] = None
+    latest_release_url: Optional[str] = None
 
     # Activity signals
     stars: Optional[int] = Field(None, ge=0)
@@ -91,6 +92,8 @@ class Project(BaseModel):
     modality: Modality
     user_context: list[str] = []
     interface: list[str] = []
+    platform: list[str] = []
+    plain_language_description: Optional[str] = None
 
     # Replicability (manually curated)
     bom_present: Optional[bool] = None

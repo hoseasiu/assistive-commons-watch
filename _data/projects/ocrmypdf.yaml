@@ -58,3 +58,8 @@ sources:
   license_spdx: MPL-2.0
 health_tier: stable
 health_score: 7.05
+platform:
+- windows
+- linux
+- macos
+plain_language_description: null

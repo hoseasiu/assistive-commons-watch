@@ -42,3 +42,8 @@ sources:
   url: https://github.com/OneTalker/OneTalker
 health_tier: null
 health_score: null
+platform:
+- windows
+plain_language_description: A desktop AAC app for Windows focused on fast, reliable
+  communication. Designed for people who use AAC full-time and need a dependable tool
+  that works without an internet connection.

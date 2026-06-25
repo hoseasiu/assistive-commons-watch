@@ -57,3 +57,10 @@ sources:
   license_spdx: LGPL-2.1
 health_tier: at_risk
 health_score: 4.5
+platform:
+- windows
+- linux
+- macos
+- android
+- ios
+plain_language_description: null

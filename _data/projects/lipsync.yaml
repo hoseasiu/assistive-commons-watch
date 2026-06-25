@@ -62,3 +62,8 @@ sources:
   license_spdx: null
 health_tier: stable
 health_score: 6.23
+platform:
+- windows
+- linux
+- macos
+plain_language_description: null

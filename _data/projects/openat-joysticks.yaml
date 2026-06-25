@@ -61,3 +61,6 @@ sources:
   license_spdx: null
 health_tier: stable
 health_score: 5.95
+platform:
+- hardware-only
+plain_language_description: null

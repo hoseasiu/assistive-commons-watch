@@ -55,3 +55,6 @@ sources:
   license_spdx: LGPL-3.0
 health_tier: at_risk
 health_score: 2.75
+platform:
+- windows
+plain_language_description: null

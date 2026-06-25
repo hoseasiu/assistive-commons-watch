@@ -57,3 +57,8 @@ sources:
   license_spdx: AGPL-3.0
 health_tier: stable
 health_score: 5.6
+platform:
+- windows
+- linux
+- macos
+plain_language_description: null

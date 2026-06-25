@@ -129,11 +129,17 @@ def load_projects() -> list[dict]:
         sub_scores = compute_sub_scores(project)
         summary = _generate_summary(sub_scores, project)
 
+        latest_release_url = source.latest_release_url if source else None
+        download_ready = bool(
+            project.modality.value in ("software", "hybrid") and latest_release_url
+        )
+
         records.append(
             {
                 "id": project.id,
                 "name": project.name,
                 "description": project.description,
+                "plain_language_description": project.plain_language_description,
                 "added_date": str(project.added_date),
                 "primary_area": primary_area,
                 "primary_area_label": AREA_LABEL.get(primary_area, primary_area.title()),
@@ -178,6 +184,9 @@ def load_projects() -> list[dict]:
                 "institutional_affiliation": project.institutional_affiliation,
                 "origin_program": project.origin_program,
                 "documentation_languages": project.documentation_languages,
+                "platform": project.platform,
+                "latest_release_url": latest_release_url,
+                "download_ready": download_ready,
                 "github_stars": source.stars if source else None,
                 "github_forks": source.forks if source else None,
                 "github_last_commit": str(source.last_commit) if source and source.last_commit else None,

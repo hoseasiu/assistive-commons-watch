@@ -58,3 +58,6 @@ sources:
   license_spdx: GPL-3.0
 health_tier: dormant
 health_score: 4.84
+platform:
+- windows
+plain_language_description: null

@@ -63,3 +63,8 @@ sources:
   license_spdx: AGPL-3.0
 health_tier: at_risk
 health_score: 4.9
+platform:
+- web
+plain_language_description: A free communication board app that works in any web browser,
+  no installation needed. Create customizable picture grids that speak sentences aloud
+  — great for AAC users, students, and people with limited speech.

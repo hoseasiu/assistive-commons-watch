@@ -64,3 +64,8 @@ sources:
   license_spdx: MIT
 health_tier: stable
 health_score: 6.31
+platform:
+- windows
+- linux
+- macos
+plain_language_description: null

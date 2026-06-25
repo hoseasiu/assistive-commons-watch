@@ -33,6 +33,18 @@
           "default": null,
           "title": "Fetched At"
         },
+        "latest_release_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Latest Release Url"
+        },
         "stars": {
           "anyOf": [
             {
@@ -324,6 +336,26 @@
       },
       "title": "Interface",
       "type": "array"
+    },
+    "platform": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Platform",
+      "type": "array"
+    },
+    "plain_language_description": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Plain Language Description"
     },
     "bom_present": {
       "anyOf": [

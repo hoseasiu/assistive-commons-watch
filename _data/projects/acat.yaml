@@ -64,3 +64,6 @@ sources:
   license_spdx: NOASSERTION
 health_tier: thriving
 health_score: 7.5
+platform:
+- windows
+plain_language_description: null

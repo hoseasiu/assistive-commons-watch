@@ -243,6 +243,9 @@ title: Browse Projects — Assistive Commons Watch
   .use-badge--cost      { background: var(--bg-page); color: var(--text-secondary); border: 1px solid var(--border); }
   .use-badge--docs      { background: oklch(0.94 0.06 245); color: oklch(0.30 0.12 245); border: 1px solid oklch(0.80 0.10 245); }
   .use-badge--feedback  { background: oklch(0.95 0.04 165); color: oklch(0.32 0.10 165); border: 1px solid oklch(0.82 0.08 165); }
+  .use-badge--download  { background: oklch(0.93 0.09 142); color: oklch(0.28 0.14 142); border: 1px solid oklch(0.78 0.13 142); text-decoration: none; }
+  .use-badge--download:hover { background: oklch(0.88 0.11 142); }
+  .card-tag--platform   { background: oklch(0.95 0.04 255); border-color: oklch(0.82 0.07 255); color: oklch(0.34 0.10 255); }
 
   .card-maintenance {
     font-size: 12px; font-weight: 700; letter-spacing: 0.01em;
@@ -834,19 +837,33 @@ title: Browse Projects — Assistive Commons Watch
     const feedbackBadge = p.feedback_channel
       ? `<span class="use-badge use-badge--feedback">Feedback channel ✓</span>` : '';
 
+    // Download badge
+    const downloadBadge = p.download_ready && p.latest_release_url
+      ? `<a class="use-badge use-badge--download" href="${p.latest_release_url}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Download available ↗</a>` : '';
+
+    // Platform badges
+    const PLATFORM_LABELS = {
+      windows: 'Windows', linux: 'Linux', macos: 'macOS',
+      web: 'Web', ios: 'iOS', android: 'Android', 'hardware-only': 'Hardware'
+    };
+    const platformTagsHtml = (p.platform || [])
+      .map(pl => `<span class="card-tag card-tag--platform">${PLATFORM_LABELS[pl] || pl}</span>`).join('');
+
+    const desc = p.plain_language_description || p.description || '';
+
     const a = document.createElement('a');
     a.className = 'project-card project-card--use';
     a.href = `${PATH_PREFIX}projects/${p.id}/`;
     a.setAttribute('role', 'listitem');
-    a.setAttribute('aria-label', `${p.name}, ${maintenance.label} — ${truncate(p.description, 120)}`);
+    a.setAttribute('aria-label', `${p.name}, ${maintenance.label} — ${truncate(desc, 120)}`);
     a.dataset.id = p.id;
     a.innerHTML = `
       <div class="card-main">
         <div class="card-name">${p.name}</div>
-        <div class="card-desc">${p.description || ''}</div>
-        <div class="card-tags">${areaTagsHtml}${modalityHtml}</div>
+        <div class="card-desc">${desc}</div>
+        <div class="card-tags">${areaTagsHtml}${modalityHtml}${platformTagsHtml}</div>
         <div class="card-use-badges">
-          ${skillBadge}${costBadge}${docsBadge}${feedbackBadge}
+          ${skillBadge}${costBadge}${docsBadge}${feedbackBadge}${downloadBadge}
         </div>
       </div>
       <div class="card-right">

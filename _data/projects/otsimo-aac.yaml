@@ -58,3 +58,9 @@ sources:
   license_spdx: AGPL-3.0
 health_tier: archived
 health_score: 1.2
+platform:
+- ios
+- android
+plain_language_description: A free AAC app for phones and tablets that helps people
+  with autism or communication difficulties express themselves using pictures and
+  symbols. Available in multiple languages on iPhone and Android.

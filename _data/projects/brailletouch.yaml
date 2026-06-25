@@ -57,3 +57,7 @@ sources:
   license_spdx: NOASSERTION
 health_tier: at_risk
 health_score: 1.8
+platform:
+- ios
+- android
+plain_language_description: null
