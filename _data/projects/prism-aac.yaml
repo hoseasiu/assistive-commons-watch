@@ -3,6 +3,7 @@ name: Prism AAC
 description: Modern browser-based AAC platform supporting symbols, speech synthesis,
   and offline operation. Designed to be accessible and lightweight without requiring
   a native app install.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - aac
@@ -14,6 +15,8 @@ tags:
 - web
 disability_area:
 - communication
+iso_9999_codes:
+  - "22.21.06"
 modality: software
 user_context:
 - home

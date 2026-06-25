@@ -3,6 +3,7 @@ name: OCRmyPDF
 description: Adds searchable text layers to scanned PDFs using OCR, making documents
   accessible to screen readers and other assistive technologies. Supports over 100
   languages and preserves original image quality.
+at_relevance: adjacent
 added_date: '2026-06-24'
 tags:
 - vision

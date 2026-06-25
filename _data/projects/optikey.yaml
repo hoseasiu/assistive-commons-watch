@@ -3,6 +3,7 @@ name: OptiKey
 description: Free, open-source on-screen keyboard for Windows controlled by eye gaze,
   head tracking, or a mouse. Designed for people with motor and speech disabilities
   — particularly ALS/MND — to type and control a PC without physical hardware.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - eye-gaze
@@ -15,6 +16,9 @@ disability_area:
 - eyegaze
 - motor
 - communication
+iso_9999_codes:
+  - "22.36.12"
+  - "22.21.06"
 modality: software
 user_context:
 - home

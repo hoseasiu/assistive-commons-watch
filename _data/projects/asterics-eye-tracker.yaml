@@ -3,6 +3,7 @@ name: AsTeRICS Eye-LCOS Tracker
 description: Low-cost open-source eye tracker based on LCOS (Liquid Crystal on Silicon)
   optics. Hardware and firmware design for an affordable gaze-tracking device that
   can interface with AT software.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - eye-tracking
@@ -12,6 +13,8 @@ tags:
 disability_area:
 - eyegaze
 - motor
+iso_9999_codes:
+  - "22.36.12"
 modality: hybrid
 user_context:
 - home

@@ -3,6 +3,7 @@ name: Accessibility Insights
 description: Microsoft's open-source accessibility testing toolkit for web applications.
   Provides guided manual testing workflows alongside automated checks, helping developers
   find and fix accessibility issues before shipping.
+at_relevance: tooling
 added_date: '2026-06-24'
 tags:
 - accessibility-testing

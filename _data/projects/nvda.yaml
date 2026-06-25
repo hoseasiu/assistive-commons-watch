@@ -3,6 +3,7 @@ name: NVDA (NonVisual Desktop Access)
 description: Free, open-source screen reader for Windows that enables blind and vision-impaired
   users to access computers using synthesized speech and refreshable Braille displays.
   One of the most widely used screen readers globally, maintained by NV Access.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - screen-reader
@@ -12,6 +13,8 @@ tags:
 - text-to-speech
 disability_area:
 - vision
+iso_9999_codes:
+  - "22.39.16"
 modality: software
 user_context:
 - home

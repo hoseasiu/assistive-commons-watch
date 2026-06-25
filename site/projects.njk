@@ -323,7 +323,7 @@ layout: base.njk
     "icon": "⚡",
     "label": "Activity",
     "weight": "25%",
-    "tooltip": "How recently and consistently the project has been updated — last commit date, release cadence, and issue response rate. Requires nightly GitHub fetch."
+    "tooltip": "How recently and consistently the project has been updated — last commit date, release cadence, and issue response rate. Requires a GitHub data fetch to populate."
   },
   {
     "key": "replicability",
@@ -337,7 +337,7 @@ layout: base.njk
     "icon": "🤝",
     "label": "Community",
     "weight": "15%",
-    "tooltip": "Signals that contributors are welcomed: CONTRIBUTING.md, issue templates, code of conduct. Requires nightly GitHub fetch."
+    "tooltip": "Signals that contributors are welcomed: CONTRIBUTING.md, issue templates, code of conduct. Requires a GitHub data fetch to populate."
   },
   {
     "key": "at_specific",
@@ -556,6 +556,12 @@ layout: base.njk
                   {%- endfor -%}
                 </span>
               </div>
+              {%- if p.iso_9999_codes and p.iso_9999_codes.length -%}
+              <div class="meta-row">
+                <span class="meta-key">ISO 9999</span>
+                <span class="meta-val">{{ p.iso_9999_codes | join(", ") }}</span>
+              </div>
+              {%- endif -%}
               {%- if p.interface and p.interface.length > 0 -%}
               <div class="meta-row">
                 <span class="meta-key">Interface</span>

@@ -3,6 +3,7 @@ name: WebAnywhere
 description: Browser-based screen reader that can provide spoken access to web content
   without local installation. Designed to enable users to access the web from any
   computer that lacks a local screen reader.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - screen-reader
@@ -12,6 +13,8 @@ tags:
 - speech-synthesis
 disability_area:
 - vision
+iso_9999_codes:
+  - "22.39.16"
 modality: software
 user_context:
 - home

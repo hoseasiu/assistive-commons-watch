@@ -4,6 +4,7 @@ description: Open-source hardware interface that translates button presses from 
   switches into mouse clicks, keyboard input, and joystick movements. Designed by
   the AsTeRICS Foundation for people with severe motor disabilities who cannot use
   standard input devices.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - switch-access
@@ -13,6 +14,8 @@ tags:
 - keyboard
 disability_area:
 - motor
+iso_9999_codes:
+  - "22.36.18"
 modality: hybrid
 user_context:
 - home

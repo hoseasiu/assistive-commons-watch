@@ -4,6 +4,7 @@ description: Fast, local neural text-to-speech system producing natural-sounding
   across 30+ languages. Optimized to run in real time on low-end hardware (Raspberry
   Pi 4). Integrated as a speech synthesizer in NVDA, Home Assistant, and Rhasspy;
   offers pre-built binaries and ONNX-based voice models.
+at_relevance: adjacent
 added_date: '2026-06-24'
 tags:
 - tts
@@ -16,6 +17,8 @@ tags:
 disability_area:
 - vision
 - communication
+iso_9999_codes:
+  - "22.39.16"
 modality: software
 user_context:
 - home

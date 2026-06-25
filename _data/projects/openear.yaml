@@ -3,6 +3,7 @@ name: OpenEar
 description: Local-first real-time captioning system that converts speech into captions
   without requiring cloud services. Designed for privacy-conscious users who need
   on-device live captions.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - hearing
@@ -12,6 +13,8 @@ tags:
 - real-time
 disability_area:
 - hearing
+iso_9999_codes:
+  - "22.21.24"
 modality: software
 user_context:
 - home

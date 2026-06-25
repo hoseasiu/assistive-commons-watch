@@ -3,6 +3,7 @@ name: Otsimo AAC
 description: Open-source AAC application from Otsimo, designed to support individuals
   with autism spectrum disorder and other communication disabilities. Provides symbol-based
   communication and speech output.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - aac
@@ -12,6 +13,8 @@ tags:
 disability_area:
 - communication
 - cognitive
+iso_9999_codes:
+  - "22.21.06"
 modality: software
 user_context:
 - home

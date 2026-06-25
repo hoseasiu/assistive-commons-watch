@@ -3,6 +3,7 @@ name: liblouis
 description: Open-source braille translator and back-translator supporting contracted
   and uncontracted braille for many languages, including Nemeth math braille. Used
   internally by NVDA, Orca, and commercial AT products to render text on braille displays.
+at_relevance: adjacent
 added_date: '2026-06-24'
 tags:
 - braille
@@ -12,6 +13,8 @@ tags:
 - library
 disability_area:
 - vision
+iso_9999_codes:
+  - "22.39.07"
 modality: software
 user_context:
 - home

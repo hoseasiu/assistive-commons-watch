@@ -2,6 +2,7 @@ id: acw-0003
 name: SpeakEasy AAC
 description: Open-source AAC application built with React Native, providing a customizable
   symbol-based communication board for mobile devices.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - aac
@@ -10,6 +11,8 @@ tags:
 - react-native
 disability_area:
 - communication
+iso_9999_codes:
+  - "22.21.06"
 modality: software
 user_context:
 - home

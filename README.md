@@ -21,7 +21,7 @@ Generic open-source health tools don't ask the AT-specific questions. ACW does. 
 Each project record captures:
 
 - **Identity** — name, description, disability area, modality (hardware / software / firmware / hybrid), interfaces
-- **Activity signals** — last commit, issue response rate, release cadence (auto-fetched nightly)
+- **Activity signals** — last commit, issue response rate, release cadence (auto-fetched by the fetch workflow)
 - **Replicability** — BOM presence, build docs quality, fabrication methods, estimated cost, release artifacts
 - **AT-specific signals** — "Nothing About Us Without Us" (NAUWU) indicator, end-user documentation, feedback channels, known deployed instances
 - **Community health** — CONTRIBUTING.md, issue templates, code of conduct
@@ -93,7 +93,7 @@ Projects live as YAML files in `_data/projects/`. The Pydantic model in [`_fetch
 
 The `disability_area` field is ordered: the first entry is used as the primary display area on the Landscape page.
 
-Fields written by the nightly fetch workflow (`health_tier`, `health_score`, activity signals) will be overwritten automatically — you don't need to set them.
+Fields written by the fetch workflow (`health_tier`, `health_score`, activity signals) will be overwritten automatically — you don't need to set them.
 
 ## CI
 

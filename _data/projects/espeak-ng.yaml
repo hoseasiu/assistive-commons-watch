@@ -3,6 +3,7 @@ name: eSpeak NG
 description: Open-source multilingual text-to-speech synthesizer supporting over 100
   languages and accents. Widely used as the speech engine inside NVDA, Orca, and many
   other AT tools; also ships as a standalone command-line and library.
+at_relevance: adjacent
 added_date: '2026-06-24'
 tags:
 - tts
@@ -14,6 +15,8 @@ tags:
 disability_area:
 - vision
 - communication
+iso_9999_codes:
+  - "22.39.16"
 modality: software
 user_context:
 - home

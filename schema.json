@@ -1,5 +1,14 @@
 {
   "$defs": {
+    "AtRelevance": {
+      "enum": [
+        "primary",
+        "adjacent",
+        "tooling"
+      ],
+      "title": "AtRelevance",
+      "type": "string"
+    },
     "BuildDocsQuality": {
       "enum": [
         "none",
@@ -297,6 +306,10 @@
       "title": "Description",
       "type": "string"
     },
+    "at_relevance": {
+      "$ref": "#/$defs/AtRelevance",
+      "default": "primary"
+    },
     "added_date": {
       "format": "date",
       "title": "Added Date",
@@ -317,6 +330,21 @@
       },
       "title": "Disability Area",
       "type": "array"
+    },
+    "iso_9999_codes": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Iso 9999 Codes"
     },
     "modality": {
       "$ref": "#/$defs/Modality"

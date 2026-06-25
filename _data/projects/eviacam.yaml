@@ -4,6 +4,7 @@ description: Webcam-based mouse-replacement software that moves the screen point
   as the user moves their head. No additional hardware required beyond a standard
   webcam. Supports pointer speed, dwell-click, and motion acceleration tuning. Runs
   on GNU/Linux and Windows.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - head-tracking
@@ -13,6 +14,8 @@ tags:
 - dwell-click
 disability_area:
 - motor
+iso_9999_codes:
+  - "22.36.18"
 modality: software
 user_context:
 - home

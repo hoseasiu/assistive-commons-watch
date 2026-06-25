@@ -3,6 +3,7 @@ name: PISAK
 description: Eye-tracking communication and computer-access environment for people
   with severe motor impairments. Provides eye-gaze-controlled applications including
   communication boards, a web browser, and media player.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - eyegaze
@@ -14,6 +15,8 @@ tags:
 disability_area:
 - eyegaze
 - motor
+iso_9999_codes:
+  - "22.36.12"
 modality: software
 user_context:
 - home

@@ -3,6 +3,7 @@ name: Pa11y
 description: Command-line accessibility testing tool for monitoring and improving
   WCAG compliance. Runs automated accessibility tests against URLs and can be integrated
   into CI pipelines to catch regressions.
+at_relevance: tooling
 added_date: '2026-06-24'
 tags:
 - accessibility-testing

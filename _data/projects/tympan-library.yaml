@@ -4,6 +4,7 @@ description: Open-source Arduino library and hardware platform for developing cu
   hearing aid and hearing enhancement algorithms. Built on a dedicated open-source
   hearing aid hardware board (Tympan), enabling researchers and makers to prototype
   and study hearing device DSP.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - hearing-aid
@@ -13,6 +14,8 @@ tags:
 - firmware
 disability_area:
 - hearing
+iso_9999_codes:
+  - "22.03.06"
 modality: hybrid
 user_context:
 - research
