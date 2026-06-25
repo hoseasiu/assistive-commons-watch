@@ -3,6 +3,7 @@ name: Hearing Aid Prototype
 description: Open-source prototype hearing aid design that combines off-the-shelf
   microphones, digital signal processing, and speakers. Provides a reference implementation
   for low-cost, hackable hearing amplification; primarily research-oriented.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - hearing-aid
@@ -11,6 +12,8 @@ tags:
 - prototype
 disability_area:
 - hearing
+iso_9999_codes:
+  - "22.03.06"
 modality: hardware
 user_context:
 - research

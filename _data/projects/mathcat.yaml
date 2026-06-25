@@ -3,6 +3,7 @@ name: MathCAT
 description: Converts mathematical notation into accessible speech and braille for
   screen-reader users. Provides natural-language descriptions of MathML expressions
   and generates braille math codes including Nemeth and UEB.
+at_relevance: adjacent
 added_date: '2026-06-24'
 tags:
 - vision
@@ -13,6 +14,9 @@ tags:
 - library
 disability_area:
 - vision
+iso_9999_codes:
+  - "22.39.07"
+  - "22.39.16"
 modality: software
 user_context:
 - school

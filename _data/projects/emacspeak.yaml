@@ -3,6 +3,7 @@ name: Emacspeak
 description: Complete audio desktop environment built around Emacs for blind and low-vision
   users. Provides spoken access to files, email, web browsing, programming tools,
   and hundreds of Emacs applications.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - screen-reader
@@ -13,6 +14,8 @@ tags:
 - speech-synthesis
 disability_area:
 - vision
+iso_9999_codes:
+  - "22.39.16"
 modality: software
 user_context:
 - home

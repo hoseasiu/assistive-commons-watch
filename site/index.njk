@@ -83,6 +83,10 @@ title: Assistive Commons Watch
     font-size: 12px; font-weight: 500; color: oklch(0.52 0.02 50);
     margin-top: 3px;
   }
+  .stat-sublabel {
+    font-size: 10px; font-weight: 400; color: oklch(0.60 0.03 50);
+    margin-top: 2px; letter-spacing: 0.01em;
+  }
 
   /* ── Path selection ── */
   .path-section {
@@ -408,7 +412,7 @@ title: Assistive Commons Watch
         Most open-source health tools only check if a repo is active. ACW goes further —
         it checks whether you can actually build or replicate the device, whether user
         documentation exists, and whether disabled people were involved in the design.
-        {{ stats.total }} projects across {{ stats.areas }} disability areas, automatically refreshed nightly.
+        {{ stats.total }} projects across {{ stats.areas }} disability areas.
       </p>
       <div class="hero-meta">
         <span>Last refreshed {{ d.last_refreshed }}</span>
@@ -426,8 +430,9 @@ title: Assistive Commons Watch
         <div class="stat-label">Areas</div>
       </div>
       <div class="stat-card stat-card--green">
-        <div class="stat-number">{{ stats.active_or_better_pct }}%</div>
+        <div class="stat-number">{{ stats.primary_active_pct }}%</div>
         <div class="stat-label">Active or better</div>
+        <div class="stat-sublabel">of primary AT projects</div>
       </div>
       <div class="stat-card stat-card--amber">
         <div class="stat-number">{{ stats.dormant_count }}</div>

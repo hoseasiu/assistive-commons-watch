@@ -3,6 +3,7 @@ name: openMHA (Open Master Hearing Aid)
 description: Research platform for developing, testing, and deploying open-source
   hearing-aid signal-processing algorithms. Supports real-time audio processing and
   is used in academic and clinical hearing-aid research.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - hearing-aid
@@ -13,6 +14,8 @@ tags:
 - audio
 disability_area:
 - hearing
+iso_9999_codes:
+  - "22.03.06"
 modality: software
 user_context:
 - clinical

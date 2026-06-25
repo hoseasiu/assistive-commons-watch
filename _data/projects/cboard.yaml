@@ -3,6 +3,7 @@ name: Cboard
 description: Open-source web-based AAC (Augmentative and Alternative Communication)
   app that lets users communicate using symbols and text-to-speech. Supports multiple
   languages and is co-designed with users who have communication disabilities.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - aac
@@ -13,6 +14,8 @@ tags:
 disability_area:
 - communication
 - cognitive
+iso_9999_codes:
+  - "22.21.06"
 modality: software
 user_context:
 - home

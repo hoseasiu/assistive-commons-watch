@@ -4,6 +4,7 @@ description: Open-source interface developed by the charity SpecialEffect that e
   people with physical disabilities to play Minecraft entirely with eye gaze. Combines
   a custom eye-gaze keyboard (based on OptiKey) with Minecraft-specific mods. Works
   with any eye tracker that can emulate a mouse pointer.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - eye-gaze
@@ -14,6 +15,8 @@ tags:
 disability_area:
 - motor
 - eyegaze
+iso_9999_codes:
+  - "22.36.12"
 modality: software
 user_context:
 - home

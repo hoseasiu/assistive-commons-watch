@@ -3,6 +3,7 @@ name: ColorCode
 description: Experimental communication system that enables efficient text entry using
   only two switches or buttons. Designed as a low-fatigue alternative input method
   for people with severe motor impairments.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - communication
@@ -13,6 +14,8 @@ tags:
 disability_area:
 - communication
 - motor
+iso_9999_codes:
+  - "22.36.18"
 modality: software
 user_context:
 - home

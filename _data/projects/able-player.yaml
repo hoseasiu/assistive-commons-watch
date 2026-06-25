@@ -4,6 +4,7 @@ description: Fully accessible, open-source HTML5 media player with keyboard navi
   screen-reader support, closed captions (WebVTT), audio descriptions, auto-generated
   interactive transcripts, and customizable caption styling. Designed to meet WCAG
   2.1 AA and Section 508 requirements out of the box.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - media-player
@@ -16,6 +17,9 @@ tags:
 disability_area:
 - hearing
 - vision
+iso_9999_codes:
+  - "22.21.24"
+  - "22.39.16"
 modality: software
 user_context:
 - home

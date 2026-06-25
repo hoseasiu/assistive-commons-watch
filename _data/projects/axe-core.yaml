@@ -3,6 +3,7 @@ name: axe-core
 description: Industry-standard automated accessibility testing engine used in browser
   extensions, testing frameworks, and CI pipelines worldwide. Detects WCAG and best-practice
   violations with a very low false-positive rate.
+at_relevance: tooling
 added_date: '2026-06-24'
 tags:
 - accessibility-testing

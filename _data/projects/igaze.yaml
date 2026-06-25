@@ -3,6 +3,7 @@ name: iGaze
 description: Open-source eye gaze application for Windows that enables control of
   the computer using only eye movements. Designed as an accessibility tool for people
   with limited or no hand mobility.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - eye-gaze
@@ -11,6 +12,8 @@ tags:
 disability_area:
 - eyegaze
 - motor
+iso_9999_codes:
+  - "22.36.12"
 modality: software
 user_context:
 - home

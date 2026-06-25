@@ -3,6 +3,7 @@ name: BrailleTouch
 description: Open-source mobile Braille keyboard that turns a touchscreen into a six-key
   Braille input device. Allows blind and low-vision users to type in Braille on standard
   smartphones without additional hardware.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - braille
@@ -12,6 +13,8 @@ tags:
 - vision
 disability_area:
 - vision
+iso_9999_codes:
+  - "22.39.07"
 modality: software
 user_context:
 - home

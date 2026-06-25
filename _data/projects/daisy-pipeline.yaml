@@ -3,6 +3,7 @@ name: DAISY Pipeline 2
 description: Converts documents into accessible formats such as DAISY talking books,
   EPUB 3, braille, and large print. Maintained by the DAISY Consortium and widely
   used by libraries and publishers serving blind and print-disabled readers.
+at_relevance: adjacent
 added_date: '2026-06-24'
 tags:
 - vision
@@ -14,6 +15,8 @@ tags:
 - library
 disability_area:
 - vision
+iso_9999_codes:
+  - "22.39.07"
 modality: software
 user_context:
 - home

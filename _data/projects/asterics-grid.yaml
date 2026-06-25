@@ -3,6 +3,7 @@ name: AsTeRICS Grid
 description: Open-source AAC grid software that runs in the browser and supports flexible
   grid-based communication boards. Integrates with assistive input methods including
   eye gaze, switch access, and head tracking. Developed by the AsTeRICS Foundation.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - aac
@@ -14,6 +15,8 @@ tags:
 disability_area:
 - communication
 - motor
+iso_9999_codes:
+  - "22.21.06"
 modality: software
 user_context:
 - home

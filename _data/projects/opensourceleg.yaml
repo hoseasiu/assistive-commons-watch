@@ -4,6 +4,7 @@ description: Open-source powered prosthetic leg platform from the Neurobionics L
   at the University of Michigan. Provides a research-grade lower-limb prosthesis with
   published hardware designs, firmware, and control software to accelerate prosthetics
   and exoskeleton research.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - prosthetics
@@ -15,6 +16,8 @@ tags:
 disability_area:
 - prosthetics
 - motor
+iso_9999_codes:
+  - "06.24.12"
 modality: hybrid
 user_context:
 - research

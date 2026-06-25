@@ -3,6 +3,7 @@ name: A11yWatch
 description: Automated website accessibility auditing platform that helps developers
   identify and track accessibility barriers at scale. Provides CI integration and
   a dashboard for monitoring WCAG compliance across multiple sites.
+at_relevance: tooling
 added_date: '2026-06-24'
 tags:
 - accessibility-testing

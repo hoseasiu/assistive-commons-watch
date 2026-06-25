@@ -4,6 +4,7 @@ description: Open-source designs for lightweight, low-cost 3D-printed prosthetic
   Based on research from the Georgia Institute of Technology and Biorobotics Lab,
   providing parametric hand designs adaptable to different user arm sizes with full
   fabrication documentation.
+at_relevance: primary
 added_date: '2026-06-24'
 tags:
 - prosthetics
@@ -14,6 +15,8 @@ tags:
 disability_area:
 - prosthetics
 - motor
+iso_9999_codes:
+  - "06.24.06"
 modality: hardware
 user_context:
 - home

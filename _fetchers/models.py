@@ -36,6 +36,12 @@ class HealthTier(str, Enum):
     unverified = "unverified"
 
 
+class AtRelevance(str, Enum):
+    primary = "primary"    # directly increases functional capability (NVDA, OptiKey, LipSync)
+    adjacent = "adjacent"  # AT-enabling infrastructure (liblouis, etc.)
+    tooling = "tooling"    # developer/auditing tool with AT application
+
+
 class GitHubSource(BaseModel):
     platform: Literal["github"]
     url: str
@@ -84,11 +90,13 @@ class Project(BaseModel):
     id: str
     name: str
     description: str
+    at_relevance: AtRelevance = AtRelevance.primary
     added_date: date
     tags: list[str] = []
 
     # Scope
     disability_area: list[str] = []
+    iso_9999_codes: list[str] | None = None
     modality: Modality
     user_context: list[str] = []
     interface: list[str] = []
@@ -118,7 +126,7 @@ class Project(BaseModel):
     # Documentation
     documentation_languages: list[str] = ["en"]
 
-    # Sources — populated by nightly fetch workflow
+    # Sources — populated by fetch workflow
     sources: list[Source] = []
 
     # Computed — written back by fetch workflow, not hand-edited

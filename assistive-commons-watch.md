@@ -204,7 +204,7 @@ assistive-commons-watch/
 │   └── (printables.py)        # future phases
 ├── .github/
 │   └── workflows/
-│       ├── fetch.yml          # nightly: fetch all sources, commit diffs
+│       ├── fetch.yml          # fetch all sources, commit diffs
 │       └── validate.yml       # on PR: validate YAML schema
 ├── scripts/
 │   └── add_project.py         # CLI to scaffold a new project entry
@@ -215,7 +215,7 @@ assistive-commons-watch/
 ```
 
 ### Frontend recommendation: 11ty + client-side JSON index
-- Nightly Action builds `projects.json` from all YAML files
+- A scheduled action builds `projects.json` from all YAML files
 - Frontend loads it once; filtering is instant client-side
 - No backend required; fully static, GitHub Pages compatible
 - Upgrade path to Next.js if interactivity demands it later

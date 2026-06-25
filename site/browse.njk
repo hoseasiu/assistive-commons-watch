@@ -649,7 +649,7 @@ title: Browse Projects — Assistive Commons Watch
 
     if (mode === 'use') {
       pageTitle.textContent = 'Find a Tool';
-      pageSubtitle.textContent = 'Showing actively maintained projects — ready to use or build';
+      pageSubtitle.textContent = 'Showing primary AT — tools directly usable by disabled people';
       tierFilterSection.style.display = 'none';
       // Default sort to beginner-first in use mode if not set
       const p = new URLSearchParams(location.search);
@@ -722,6 +722,8 @@ title: Browse Projects — Assistive Commons Watch
     }
 
     let results = PROJECTS.filter(p => {
+      // In use mode, only show primary AT (directly usable by disabled people)
+      if (filters.mode === 'use' && p.at_relevance !== 'primary') return false;
       if (filters.area.length && !filters.area.some(a => (p.disability_area || []).includes(a)))
         return false;
       if (activeTiers.length && !activeTiers.includes(p.health_tier))

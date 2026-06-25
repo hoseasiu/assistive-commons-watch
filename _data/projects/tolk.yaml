@@ -3,6 +3,7 @@ name: Tolk
 description: Abstraction layer that lets Windows applications communicate with multiple
   screen readers such as NVDA and JAWS through a single API. Eliminates the need for
   developers to integrate with each screen reader separately.
+at_relevance: adjacent
 added_date: '2026-06-24'
 tags:
 - screen-reader
@@ -12,6 +13,8 @@ tags:
 - developer-tools
 disability_area:
 - vision
+iso_9999_codes:
+  - "22.39.16"
 modality: software
 user_context:
 - work

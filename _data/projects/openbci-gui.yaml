@@ -4,6 +4,7 @@ description: Cross-platform graphical interface for OpenBCI EEG/EMG/ECG biosigna
   hardware. Visualizes raw brainwave and muscle data in real time, applies filters,
   and streams data via LSL, OSC, UDP, or Serial to downstream BCI and AT applications.
   Used in research and consumer BCI experimentation.
+at_relevance: adjacent
 added_date: '2026-06-24'
 tags:
 - bci

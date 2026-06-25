@@ -3,7 +3,7 @@
 Build site/_data/acw.json from _data/projects/*.yaml.
 
 Reads every project YAML, uses the stored health_tier/health_score if set
-(written by the nightly fetch workflow), otherwise computes them live.
+(written by the fetch workflow), otherwise computes them live.
 Outputs a pre-aggregated JSON blob that the 11ty Landscape page renders
 directly — no runtime computation needed in the template.
 
@@ -20,7 +20,7 @@ import yaml
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from _fetchers.models import BuildDocsQuality, HealthTier, Project
+from _fetchers.models import AtRelevance, BuildDocsQuality, HealthTier, Project
 from _fetchers.scoring import compute_health, compute_sub_scores
 
 ROOT = Path(__file__).parent.parent
@@ -139,6 +139,7 @@ def load_projects() -> list[dict]:
                 "id": project.id,
                 "name": project.name,
                 "description": project.description,
+                "at_relevance": project.at_relevance.value,
                 "plain_language_description": project.plain_language_description,
                 "added_date": str(project.added_date),
                 "primary_area": primary_area,
@@ -155,6 +156,7 @@ def load_projects() -> list[dict]:
                 # Full metadata
                 "tags": project.tags,
                 "disability_area": project.disability_area,
+                "iso_9999_codes": project.iso_9999_codes,
                 "disability_area_labels": [
                     AREA_LABEL.get(a, a.replace("_", " ").title())
                     for a in project.disability_area
@@ -255,11 +257,18 @@ def main() -> None:
     tier_counts = build_tier_counts(projects)
     by_area = build_by_area(projects)
 
+    primary_projects = [p for p in projects if p["at_relevance"] == AtRelevance.primary.value]
     active_count = tier_counts.get("thriving", 0) + tier_counts.get("stable", 0)
     total = len(projects)
     active_pct = round(active_count / total * 100) if total else 0
     dormant_count = tier_counts.get("dormant", 0)
     area_count = sum(1 for a in by_area if a["count"] > 0)
+
+    primary_total = len(primary_projects)
+    primary_active = sum(
+        1 for p in primary_projects if p["health_tier"] in ("thriving", "stable")
+    )
+    primary_active_pct = round(primary_active / primary_total * 100) if primary_total else 0
 
     payload = {
         "generated_at": datetime.now(UTC).isoformat(),
@@ -269,6 +278,8 @@ def main() -> None:
             "areas": area_count,
             "active_or_better_pct": active_pct,
             "dormant_count": dormant_count,
+            "primary_total": primary_total,
+            "primary_active_pct": primary_active_pct,
         },
         "tier_counts": tier_counts,
         "by_area": by_area,
