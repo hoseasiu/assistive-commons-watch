@@ -126,6 +126,11 @@ class Project(BaseModel):
     # Documentation
     documentation_languages: list[str] = ["en"]
 
+    # Ecosystem cross-references (manually curated)
+    # Keys are registry slugs (makers_making_change, openassistive, goat, eastin, awesome_assistivetech).
+    # Values are full URLs to the project's page in that registry.
+    ecosystem_links: Optional[dict[str, str]] = None
+
     # Sources — populated by fetch workflow
     sources: list[Source] = []
 

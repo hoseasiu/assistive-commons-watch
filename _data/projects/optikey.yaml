@@ -43,6 +43,9 @@ institutional_affiliation: null
 origin_program: null
 documentation_languages:
 - en
+ecosystem_links:
+  openassistive: "https://openassistive.org/item/optikey/"
+  awesome_assistivetech: "https://github.com/openassistive/awesome-assistivetech#eye-gaze"
 sources:
 - platform: github
   url: https://github.com/OptiKey/OptiKey

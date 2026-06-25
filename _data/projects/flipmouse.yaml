@@ -46,6 +46,9 @@ origin_program: null
 documentation_languages:
 - en
 - de
+ecosystem_links:
+  makers_making_change: "https://www.makersmakingchange.com/project/flipmouse/"
+  goat: "https://www.openassistivetech.org/product/flipmouse"
 sources:
 - platform: github
   url: https://github.com/asterics/FLipMouse
