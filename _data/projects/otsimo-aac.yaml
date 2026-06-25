@@ -1,52 +1,59 @@
 id: acw-0004
 name: Otsimo AAC
-description: >-
-  Open-source AAC application from Otsimo, designed to support individuals
-  with autism spectrum disorder and other communication disabilities. Provides
-  symbol-based communication and speech output.
-added_date: "2026-06-24"
+description: Open-source AAC application from Otsimo, designed to support individuals
+  with autism spectrum disorder and other communication disabilities. Provides symbol-based
+  communication and speech output.
+added_date: '2026-06-24'
 tags:
-  - aac
-  - communication
-  - autism
-  - mobile
-
+- aac
+- communication
+- autism
+- mobile
 disability_area:
-  - communication
-  - cognitive
+- communication
+- cognitive
 modality: software
 user_context:
-  - home
-  - school
-  - clinical
+- home
+- school
+- clinical
 interface:
-  - touch
-
+- touch
 bom_present: null
 build_docs_quality: partial
 cost_range: null
 fabrication_methods: []
 skill_level: beginner
-
 nothing_about_us: null
 replicated_by_disabled_person: null
 end_user_docs: null
 feedback_channel: null
 known_deployed_instances: null
-
 license: null
 associated_publication: null
 institutional_affiliation: Otsimo
 origin_program: null
-
 documentation_languages:
-  - en
-  - tr
-
+- en
+- tr
 sources:
-  - platform: github
-    url: https://github.com/otsimo/aac
-    fetched_at: null
-
+- platform: github
+  url: https://github.com/otsimo-archive/aac
+  fetched_at: '2026-06-25T00:32:49.198201+00:00'
+  stars: 26
+  forks: 8
+  last_commit: '2020-01-28'
+  open_issues: 13
+  open_prs: null
+  issue_response_rate: null
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: true
+  readme_has_bom: false
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
 health_tier: archived
-health_score: 1.5
+health_score: 0.8

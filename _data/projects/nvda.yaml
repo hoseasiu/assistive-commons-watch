@@ -45,7 +45,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/nvaccess/nvda
-  fetched_at: '2026-06-25T00:11:02.370126+00:00'
+  fetched_at: '2026-06-25T00:32:38.191388+00:00'
   stars: 2589
   forks: 796
   last_commit: '2026-06-23'
