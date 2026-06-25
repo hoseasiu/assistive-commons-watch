@@ -46,7 +46,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/asterics/FLipMouse
-  fetched_at: '2026-06-25T03:24:03.874273+00:00'
+  fetched_at: '2026-06-25T13:00:19.840265+00:00'
   stars: 43
   forks: 9
   last_commit: '2026-02-18'
@@ -62,5 +62,6 @@ sources:
   has_contributing: false
   has_code_of_conduct: false
   has_issue_templates: false
+  license_spdx: NOASSERTION
 health_tier: stable
 health_score: 6.47

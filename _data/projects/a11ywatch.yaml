@@ -36,13 +36,13 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/a11ywatch/a11ywatch
-  fetched_at: '2026-06-25T03:23:31.334212+00:00'
+  fetched_at: '2026-06-25T12:59:17.402366+00:00'
   stars: 50
   forks: 9
   last_commit: '2024-08-11'
   open_issues: 0
   open_prs: null
-  issue_response_rate: 1.0
+  issue_response_rate: 0.95
   release_in_last_year: false
   readme_has_installation: true
   readme_has_usage: true
@@ -52,5 +52,6 @@ sources:
   has_contributing: false
   has_code_of_conduct: true
   has_issue_templates: true
+  license_spdx: MIT
 health_tier: at_risk
 health_score: 4.2

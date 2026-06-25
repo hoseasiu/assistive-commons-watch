@@ -42,13 +42,13 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/rhasspy/piper
-  fetched_at: '2026-06-25T03:24:40.083761+00:00'
+  fetched_at: '2026-06-25T13:01:27.445984+00:00'
   stars: 11140
-  forks: 1034
+  forks: 1033
   last_commit: '2025-08-26'
   open_issues: 419
   open_prs: null
-  issue_response_rate: 0.36
+  issue_response_rate: 0.27
   release_in_last_year: false
   readme_has_installation: false
   readme_has_usage: false
@@ -58,5 +58,6 @@ sources:
   has_contributing: false
   has_code_of_conduct: false
   has_issue_templates: false
+  license_spdx: MIT
 health_tier: at_risk
-health_score: 4.45
+health_score: 4.38

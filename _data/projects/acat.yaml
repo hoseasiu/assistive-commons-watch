@@ -45,7 +45,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/intel/acat
-  fetched_at: '2026-06-25T03:23:35.491311+00:00'
+  fetched_at: '2026-06-25T12:59:28.527876+00:00'
   stars: 3231
   forks: 614
   last_commit: '2026-04-23'
@@ -61,5 +61,6 @@ sources:
   has_contributing: true
   has_code_of_conduct: true
   has_issue_templates: false
+  license_spdx: NOASSERTION
 health_tier: thriving
 health_score: 7.5

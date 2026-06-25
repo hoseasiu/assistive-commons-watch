@@ -45,13 +45,13 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/asterics/FABI
-  fetched_at: '2026-06-25T03:24:01.920695+00:00'
+  fetched_at: '2026-06-25T13:00:14.096496+00:00'
   stars: 19
   forks: 11
   last_commit: '2026-06-10'
   open_issues: 5
   open_prs: null
-  issue_response_rate: 0.93
+  issue_response_rate: 0.5
   release_in_last_year: false
   readme_has_installation: true
   readme_has_usage: true
@@ -61,5 +61,6 @@ sources:
   has_contributing: false
   has_code_of_conduct: false
   has_issue_templates: false
+  license_spdx: NOASSERTION
 health_tier: thriving
 health_score: 7.6

@@ -37,13 +37,13 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/dequelabs/axe-core
-  fetched_at: '2026-06-25T03:23:43.905031+00:00'
-  stars: 7263
+  fetched_at: '2026-06-25T12:59:42.343932+00:00'
+  stars: 7268
   forks: 895
   last_commit: '2026-06-18'
-  open_issues: 456
+  open_issues: 457
   open_prs: null
-  issue_response_rate: 0.14
+  issue_response_rate: 0.0
   release_in_last_year: true
   readme_has_installation: true
   readme_has_usage: false
@@ -53,5 +53,6 @@ sources:
   has_contributing: true
   has_code_of_conduct: true
   has_issue_templates: true
+  license_spdx: MPL-2.0
 health_tier: stable
 health_score: 6.8

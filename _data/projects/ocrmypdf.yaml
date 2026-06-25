@@ -39,8 +39,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/ocrmypdf/OCRmyPDF
-  fetched_at: '2026-06-25T03:24:21.415780+00:00'
-  stars: 33962
+  fetched_at: '2026-06-25T13:00:47.371949+00:00'
+  stars: 33965
   forks: 2343
   last_commit: '2026-06-19'
   open_issues: 101
@@ -55,5 +55,6 @@ sources:
   has_contributing: true
   has_code_of_conduct: false
   has_issue_templates: true
+  license_spdx: MPL-2.0
 health_tier: stable
 health_score: 7.05

@@ -38,7 +38,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/tvraman/emacspeak
-  fetched_at: '2026-06-25T03:23:54.882123+00:00'
+  fetched_at: '2026-06-25T13:00:00.495581+00:00'
   stars: 280
   forks: 59
   last_commit: '2024-08-26'
@@ -54,5 +54,6 @@ sources:
   has_contributing: false
   has_code_of_conduct: false
   has_issue_templates: false
+  license_spdx: null
 health_tier: at_risk
 health_score: 3.27

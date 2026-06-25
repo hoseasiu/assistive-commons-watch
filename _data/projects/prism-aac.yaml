@@ -42,7 +42,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/dcostenco/prism-aac
-  fetched_at: '2026-06-25T03:24:44.163699+00:00'
+  fetched_at: '2026-06-25T13:01:34.783211+00:00'
   stars: 1
   forks: 0
   last_commit: '2026-06-24'
@@ -58,5 +58,6 @@ sources:
   has_contributing: true
   has_code_of_conduct: true
   has_issue_templates: true
+  license_spdx: AGPL-3.0
 health_tier: at_risk
-health_score: 4.0
+health_score: 4.4

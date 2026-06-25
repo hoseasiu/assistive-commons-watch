@@ -44,7 +44,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/asterics/Asterics-AAC
-  fetched_at: '2026-06-25T03:23:41.536575+00:00'
+  fetched_at: '2026-06-25T12:59:36.590724+00:00'
   stars: 112
   forks: 53
   last_commit: '2026-06-03'
@@ -60,5 +60,6 @@ sources:
   has_contributing: false
   has_code_of_conduct: false
   has_issue_templates: false
+  license_spdx: AGPL-3.0
 health_tier: at_risk
 health_score: 4.9

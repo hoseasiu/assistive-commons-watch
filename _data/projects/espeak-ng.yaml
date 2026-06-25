@@ -40,7 +40,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/espeak-ng/espeak-ng
-  fetched_at: '2026-06-25T03:23:56.648175+00:00'
+  fetched_at: '2026-06-25T13:00:03.745242+00:00'
   stars: 6602
   forks: 1243
   last_commit: '2026-04-27'
@@ -56,5 +56,6 @@ sources:
   has_contributing: true
   has_code_of_conduct: false
   has_issue_templates: false
+  license_spdx: GPL-3.0
 health_tier: at_risk
 health_score: 5.16

@@ -37,7 +37,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/pa11y/pa11y
-  fetched_at: '2026-06-25T03:24:38.437957+00:00'
+  fetched_at: '2026-06-25T13:01:24.556392+00:00'
   stars: 4463
   forks: 295
   last_commit: '2026-05-25'
@@ -53,5 +53,6 @@ sources:
   has_contributing: true
   has_code_of_conduct: false
   has_issue_templates: true
+  license_spdx: LGPL-3.0
 health_tier: stable
 health_score: 6.15

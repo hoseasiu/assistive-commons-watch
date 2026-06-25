@@ -40,13 +40,13 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/Tympan/Tympan_Library
-  fetched_at: '2026-06-25T03:24:52.976246+00:00'
+  fetched_at: '2026-06-25T13:01:51.574580+00:00'
   stars: 144
   forks: 42
   last_commit: '2026-05-22'
   open_issues: 31
   open_prs: null
-  issue_response_rate: 1.0
+  issue_response_rate: 0.5
   release_in_last_year: false
   readme_has_installation: false
   readme_has_usage: false
@@ -56,5 +56,6 @@ sources:
   has_contributing: false
   has_code_of_conduct: false
   has_issue_templates: false
+  license_spdx: MIT
 health_tier: at_risk
-health_score: 4.5
+health_score: 4.17

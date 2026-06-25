@@ -44,13 +44,13 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/dasher-project/dasher
-  fetched_at: '2026-06-25T03:23:53.085522+00:00'
+  fetched_at: '2026-06-25T12:59:56.679605+00:00'
   stars: 176
   forks: 48
   last_commit: '2020-04-20'
   open_issues: 52
   open_prs: null
-  issue_response_rate: 0.4
+  issue_response_rate: 0.27
   release_in_last_year: false
   readme_has_installation: true
   readme_has_usage: false
@@ -60,5 +60,6 @@ sources:
   has_contributing: false
   has_code_of_conduct: false
   has_issue_templates: false
+  license_spdx: GPL-2.0
 health_tier: at_risk
-health_score: 3.13
+health_score: 3.03
