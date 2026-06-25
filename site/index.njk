@@ -297,6 +297,18 @@ title: Assistive Commons Watch
   .tier-legend-count { font-size: 14px; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--text-primary); }
   .tier-legend-desc { font-size: 12px; color: oklch(0.54 0.015 50); line-height: 1.5; }
 
+  /* ── About score card ── */
+  .about-score-card {
+    margin-top: 8px; padding: 14px 16px;
+    background: oklch(0.97 0.012 76);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    font-size: 13px; line-height: 1.6; color: oklch(0.50 0.015 50);
+  }
+  .about-score-card a {
+    color: var(--accent-green); font-weight: 600; white-space: nowrap;
+  }
+
   /* ── Tab 2: Coverage Gaps ── */
   .gap-row {
     display: flex; align-items: center; gap: 14px;
@@ -604,6 +616,11 @@ title: Assistive Commons Watch
           </div>
           {%- endif -%}
           {%- endfor -%}
+
+          <div class="about-score-card">
+            Scores are computed from five weighted dimensions: activity, replicability, community, AT-specific signals, and provenance.
+            <a href="/methodology/">Read the methodology →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -667,7 +684,7 @@ title: Assistive Commons Watch
     <div class="footer-left">
       Assistive Commons Watch ·
       <a href="https://creativecommons.org/publicdomain/zero/1.0/">Data CC0</a> ·
-      <a href="/methodology">Score methodology v1.0</a>
+      <a href="/methodology/">Score methodology v1.0</a>
     </div>
     <nav class="footer-links">
       <a href="https://github.com/hoseasiu/assistive-commons-watch">GitHub</a>
