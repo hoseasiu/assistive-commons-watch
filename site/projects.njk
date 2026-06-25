@@ -46,13 +46,13 @@ layout: base.njk
     min-height: 44px; display: inline-flex; align-items: center;
   }
   .site-nav a:hover { background: var(--bg-page); }
-  .nav-cta {
+  .site-nav .nav-cta {
     font-size: 13px; font-weight: 600; color: white;
     background: var(--accent-green); padding: 0 15px;
-    border-radius: 7px; margin-left: 8px; transition: opacity 0.15s;
+    border-radius: 7px; margin-left: 8px; transition: background 0.15s;
     min-height: 44px; display: inline-flex; align-items: center;
   }
-  .nav-cta:hover { opacity: 0.88; }
+  .site-nav .nav-cta:hover { background: oklch(0.36 0.14 165); color: white; }
 
   /* ── Breadcrumb ── */
   .breadcrumb {
@@ -117,11 +117,12 @@ layout: base.njk
   /* ── Cards ── */
   .detail-card {
     background: var(--bg-white); border-radius: 12px;
-    border: 1px solid var(--border); overflow: hidden;
+    border: 1px solid var(--border);
   }
   .card-header {
     padding: 14px 20px; border-bottom: 1px solid var(--border-subtle);
     display: flex; align-items: center; gap: 8px;
+    border-radius: 12px 12px 0 0;
   }
   .card-icon { font-size: 16px; line-height: 1; }
   .card-title {
@@ -305,7 +306,7 @@ layout: base.njk
   /* ── Footer ── */
   .site-footer {
     background: var(--bg-white); border-top: 1px solid var(--border);
-    padding: 20px 40px;
+    padding: 20px 0;
   }
   .site-footer .container {
     display: flex; justify-content: space-between; align-items: center;
@@ -315,6 +316,15 @@ layout: base.njk
   .footer-left a { color: var(--accent-green); }
   .footer-links { display: flex; gap: 16px; }
   .footer-links a { font-size: 12px; color: oklch(0.52 0.015 50); }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .container { padding: 0 16px; }
+    .site-nav a:not(.nav-cta) { display: none; }
+    .project-hero .container { flex-direction: column; gap: 12px; }
+    .project-name { font-size: 24px; }
+    .page-main .container { grid-template-columns: 1fr; }
+  }
 </style>
 
 {%- set p = project -%}
