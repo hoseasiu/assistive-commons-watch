@@ -1,0 +1,59 @@
+id: acw-0037
+name: OCRmyPDF
+description: Adds searchable text layers to scanned PDFs using OCR, making documents
+  accessible to screen readers and other assistive technologies. Supports over 100
+  languages and preserves original image quality.
+added_date: '2026-06-24'
+tags:
+- vision
+- reading
+- ocr
+- pdf
+- screen-reader
+- multilingual
+disability_area:
+- vision
+modality: software
+user_context:
+- home
+- work
+- school
+interface:
+- keyboard
+bom_present: null
+build_docs_quality: complete
+cost_range: null
+fabrication_methods: []
+skill_level: maker
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: MPL-2.0
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+documentation_languages:
+- en
+sources:
+- platform: github
+  url: https://github.com/ocrmypdf/OCRmyPDF
+  fetched_at: '2026-06-25T03:24:21.415780+00:00'
+  stars: 33962
+  forks: 2343
+  last_commit: '2026-06-19'
+  open_issues: 101
+  open_prs: null
+  issue_response_rate: 0.67
+  release_in_last_year: true
+  readme_has_installation: true
+  readme_has_usage: true
+  readme_has_bom: false
+  release_artifact_present: true
+  dependencies_pinned: null
+  has_contributing: true
+  has_code_of_conduct: false
+  has_issue_templates: true
+health_tier: stable
+health_score: 7.05

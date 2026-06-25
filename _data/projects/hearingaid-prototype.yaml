@@ -37,7 +37,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/m-r-s/hearingaid-prototype
-  fetched_at: '2026-06-25T01:27:37.904311+00:00'
+  fetched_at: '2026-06-25T03:24:07.187290+00:00'
   stars: 130
   forks: 35
   last_commit: '2021-10-20'

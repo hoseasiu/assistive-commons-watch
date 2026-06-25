@@ -1,0 +1,60 @@
+id: acw-0038
+name: DAISY Pipeline 2
+description: Converts documents into accessible formats such as DAISY talking books,
+  EPUB 3, braille, and large print. Maintained by the DAISY Consortium and widely
+  used by libraries and publishers serving blind and print-disabled readers.
+added_date: '2026-06-24'
+tags:
+- vision
+- braille
+- daisy
+- epub
+- large-print
+- reading
+- library
+disability_area:
+- vision
+modality: software
+user_context:
+- home
+- work
+- school
+interface:
+- keyboard
+bom_present: null
+build_docs_quality: complete
+cost_range: null
+fabrication_methods: []
+skill_level: maker
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: LGPL-3.0
+associated_publication: null
+institutional_affiliation: DAISY Consortium
+origin_program: null
+documentation_languages:
+- en
+sources:
+- platform: github
+  url: https://github.com/daisy/pipeline
+  fetched_at: '2026-06-25T03:23:51.298975+00:00'
+  stars: 26
+  forks: 20
+  last_commit: '2026-06-08'
+  open_issues: 142
+  open_prs: null
+  issue_response_rate: 0.73
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: false
+  readme_has_bom: false
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: true
+health_tier: stable
+health_score: 5.75

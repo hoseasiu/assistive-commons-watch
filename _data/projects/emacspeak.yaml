@@ -1,37 +1,35 @@
-id: acw-0019
-name: eSpeak NG
-description: Open-source multilingual text-to-speech synthesizer supporting over 100
-  languages and accents. Widely used as the speech engine inside NVDA, Orca, and many
-  other AT tools; also ships as a standalone command-line and library.
+id: acw-0046
+name: Emacspeak
+description: Complete audio desktop environment built around Emacs for blind and low-vision
+  users. Provides spoken access to files, email, web browsing, programming tools,
+  and hundreds of Emacs applications.
 added_date: '2026-06-24'
 tags:
-- tts
-- text-to-speech
-- speech-synthesis
-- vision
 - screen-reader
-- multilingual
+- vision
+- audio
+- emacs
+- linux
+- speech-synthesis
 disability_area:
 - vision
-- communication
 modality: software
 user_context:
 - home
 - work
-- school
 interface:
-- speech
+- keyboard
 bom_present: null
 build_docs_quality: partial
 cost_range: null
 fabrication_methods: []
-skill_level: beginner
+skill_level: engineer
 nothing_about_us: null
 replicated_by_disabled_person: null
 end_user_docs: true
 feedback_channel: true
 known_deployed_instances: null
-license: GPL-3.0
+license: GPL-2.0
 associated_publication: null
 institutional_affiliation: null
 origin_program: null
@@ -39,22 +37,22 @@ documentation_languages:
 - en
 sources:
 - platform: github
-  url: https://github.com/espeak-ng/espeak-ng
-  fetched_at: '2026-06-25T03:23:56.648175+00:00'
-  stars: 6602
-  forks: 1243
-  last_commit: '2026-04-27'
-  open_issues: 615
+  url: https://github.com/tvraman/emacspeak
+  fetched_at: '2026-06-25T03:23:54.882123+00:00'
+  stars: 280
+  forks: 59
+  last_commit: '2024-08-26'
+  open_issues: 6
   open_prs: null
-  issue_response_rate: 0.25
+  issue_response_rate: 0.5
   release_in_last_year: false
   readme_has_installation: false
   readme_has_usage: false
   readme_has_bom: false
   release_artifact_present: true
   dependencies_pinned: null
-  has_contributing: true
+  has_contributing: false
   has_code_of_conduct: false
   has_issue_templates: false
 health_tier: at_risk
-health_score: 5.16
+health_score: 3.27

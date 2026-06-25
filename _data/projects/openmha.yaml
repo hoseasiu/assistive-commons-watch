@@ -1,0 +1,58 @@
+id: acw-0030
+name: openMHA (Open Master Hearing Aid)
+description: Research platform for developing, testing, and deploying open-source
+  hearing-aid signal-processing algorithms. Supports real-time audio processing and
+  is used in academic and clinical hearing-aid research.
+added_date: '2026-06-24'
+tags:
+- hearing-aid
+- hearing
+- audio-dsp
+- research
+- clinical
+- audio
+disability_area:
+- hearing
+modality: software
+user_context:
+- clinical
+- work
+interface:
+- audio
+bom_present: null
+build_docs_quality: partial
+cost_range: null
+fabrication_methods: []
+skill_level: engineer
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: AGPL-3.0
+associated_publication: null
+institutional_affiliation: HörTech gGmbH
+origin_program: null
+documentation_languages:
+- en
+sources:
+- platform: github
+  url: https://github.com/HoerTech-gGmbH/openMHA
+  fetched_at: '2026-06-25T03:24:30.846710+00:00'
+  stars: 321
+  forks: 97
+  last_commit: '2026-06-17'
+  open_issues: 0
+  open_prs: null
+  issue_response_rate: 0.89
+  release_in_last_year: true
+  readme_has_installation: true
+  readme_has_usage: true
+  readme_has_bom: false
+  release_artifact_present: true
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
+health_tier: stable
+health_score: 5.6

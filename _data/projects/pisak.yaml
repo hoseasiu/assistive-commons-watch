@@ -1,54 +1,55 @@
-id: acw-0004
-name: Otsimo AAC
-description: Open-source AAC application from Otsimo, designed to support individuals
-  with autism spectrum disorder and other communication disabilities. Provides symbol-based
-  communication and speech output.
+id: acw-0039
+name: PISAK
+description: Eye-tracking communication and computer-access environment for people
+  with severe motor impairments. Provides eye-gaze-controlled applications including
+  communication boards, a web browser, and media player.
 added_date: '2026-06-24'
 tags:
-- aac
+- eyegaze
+- eye-tracking
+- eye-gaze
+- motor
 - communication
-- autism
-- mobile
+- switch-access
 disability_area:
-- communication
-- cognitive
+- eyegaze
+- motor
 modality: software
 user_context:
 - home
-- school
 - clinical
 interface:
-- touch
+- eye-gaze
 bom_present: null
 build_docs_quality: partial
 cost_range: null
 fabrication_methods: []
-skill_level: beginner
+skill_level: maker
 nothing_about_us: null
 replicated_by_disabled_person: null
 end_user_docs: null
 feedback_channel: null
 known_deployed_instances: null
-license: null
+license: GPL-3.0
 associated_publication: null
-institutional_affiliation: Otsimo
+institutional_affiliation: BrainTech
 origin_program: null
 documentation_languages:
 - en
-- tr
+- pl
 sources:
 - platform: github
-  url: https://github.com/otsimo-archive/aac
-  fetched_at: '2026-06-25T03:24:36.555318+00:00'
-  stars: 26
+  url: https://github.com/BrainTech/pisak
+  fetched_at: '2026-06-25T03:24:41.785359+00:00'
+  stars: 6
   forks: 8
-  last_commit: '2020-01-28'
-  open_issues: 13
+  last_commit: '2017-12-20'
+  open_issues: 1
   open_prs: null
   issue_response_rate: null
   release_in_last_year: false
   readme_has_installation: false
-  readme_has_usage: true
+  readme_has_usage: false
   readme_has_bom: false
   release_artifact_present: false
   dependencies_pinned: null
@@ -56,4 +57,4 @@ sources:
   has_code_of_conduct: false
   has_issue_templates: false
 health_tier: archived
-health_score: 0.8
+health_score: 1.2

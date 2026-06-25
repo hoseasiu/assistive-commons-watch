@@ -1,26 +1,26 @@
-id: acw-0004
-name: Otsimo AAC
-description: Open-source AAC application from Otsimo, designed to support individuals
-  with autism spectrum disorder and other communication disabilities. Provides symbol-based
-  communication and speech output.
+id: acw-0034
+name: ColorCode
+description: Experimental communication system that enables efficient text entry using
+  only two switches or buttons. Designed as a low-fatigue alternative input method
+  for people with severe motor impairments.
 added_date: '2026-06-24'
 tags:
-- aac
 - communication
-- autism
-- mobile
+- switch-access
+- text-entry
+- motor
+- two-switch
 disability_area:
 - communication
-- cognitive
+- motor
 modality: software
 user_context:
 - home
 - school
-- clinical
 interface:
-- touch
+- switch
 bom_present: null
-build_docs_quality: partial
+build_docs_quality: none
 cost_range: null
 fabrication_methods: []
 skill_level: beginner
@@ -31,23 +31,22 @@ feedback_channel: null
 known_deployed_instances: null
 license: null
 associated_publication: null
-institutional_affiliation: Otsimo
+institutional_affiliation: null
 origin_program: null
 documentation_languages:
 - en
-- tr
 sources:
 - platform: github
-  url: https://github.com/otsimo-archive/aac
-  fetched_at: '2026-06-25T03:24:36.555318+00:00'
-  stars: 26
-  forks: 8
-  last_commit: '2020-01-28'
-  open_issues: 13
+  url: https://github.com/mrdaly/ColorCode
+  fetched_at: '2026-06-25T03:23:49.450777+00:00'
+  stars: 2
+  forks: 1
+  last_commit: '2022-05-24'
+  open_issues: 0
   open_prs: null
   issue_response_rate: null
   release_in_last_year: false
-  readme_has_installation: false
+  readme_has_installation: true
   readme_has_usage: true
   readme_has_bom: false
   release_artifact_present: false
@@ -56,4 +55,4 @@ sources:
   has_code_of_conduct: false
   has_issue_templates: false
 health_tier: archived
-health_score: 0.8
+health_score: 0.3

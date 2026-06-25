@@ -1,29 +1,23 @@
-id: acw-0024
-name: Able Player
-description: Fully accessible, open-source HTML5 media player with keyboard navigation,
-  screen-reader support, closed captions (WebVTT), audio descriptions, auto-generated
-  interactive transcripts, and customizable caption styling. Designed to meet WCAG
-  2.1 AA and Section 508 requirements out of the box.
+id: acw-0044
+name: Accessibility Insights
+description: Microsoft's open-source accessibility testing toolkit for web applications.
+  Provides guided manual testing workflows alongside automated checks, helping developers
+  find and fix accessibility issues before shipping.
 added_date: '2026-06-24'
 tags:
-- media-player
-- captions
-- audio-description
-- transcript
-- hearing
-- vision
+- accessibility-testing
+- wcag
+- developer-tools
 - web
+- browser
+- microsoft
 disability_area:
-- hearing
-- vision
+- accessibility-tools
 modality: software
 user_context:
-- home
-- school
 - work
 interface:
 - keyboard
-- screen-reader
 bom_present: null
 build_docs_quality: complete
 cost_range: null
@@ -36,20 +30,20 @@ feedback_channel: true
 known_deployed_instances: null
 license: MIT
 associated_publication: null
-institutional_affiliation: null
+institutional_affiliation: Microsoft
 origin_program: null
 documentation_languages:
 - en
 sources:
 - platform: github
-  url: https://github.com/ableplayer/ableplayer
-  fetched_at: '2026-06-25T03:23:33.239372+00:00'
-  stars: 822
-  forks: 239
-  last_commit: '2026-06-21'
-  open_issues: 104
+  url: https://github.com/microsoft/accessibility-insights-web
+  fetched_at: '2026-06-25T03:23:38.144728+00:00'
+  stars: 904
+  forks: 171
+  last_commit: '2026-06-15'
+  open_issues: 67
   open_prs: null
-  issue_response_rate: 0.25
+  issue_response_rate: 0.0
   release_in_last_year: true
   readme_has_installation: true
   readme_has_usage: false
@@ -60,4 +54,4 @@ sources:
   has_code_of_conduct: true
   has_issue_templates: true
 health_tier: stable
-health_score: 6.6
+health_score: 6.8

@@ -1,14 +1,16 @@
-id: acw-0004
-name: Otsimo AAC
-description: Open-source AAC application from Otsimo, designed to support individuals
-  with autism spectrum disorder and other communication disabilities. Provides symbol-based
-  communication and speech output.
+id: acw-0035
+name: Gueopic
+description: Android communication application supporting users with autism and speech
+  impairments through visual communication tools. Uses pictogram-based grids for expressive
+  and receptive communication.
 added_date: '2026-06-24'
 tags:
 - aac
 - communication
 - autism
 - mobile
+- symbols
+- android
 disability_area:
 - communication
 - cognitive
@@ -20,7 +22,7 @@ user_context:
 interface:
 - touch
 bom_present: null
-build_docs_quality: partial
+build_docs_quality: none
 cost_range: null
 fabrication_methods: []
 skill_level: beginner
@@ -31,21 +33,21 @@ feedback_channel: null
 known_deployed_instances: null
 license: null
 associated_publication: null
-institutional_affiliation: Otsimo
+institutional_affiliation: null
 origin_program: null
 documentation_languages:
 - en
-- tr
+- es
 sources:
 - platform: github
-  url: https://github.com/otsimo-archive/aac
-  fetched_at: '2026-06-25T03:24:36.555318+00:00'
-  stars: 26
-  forks: 8
-  last_commit: '2020-01-28'
+  url: https://github.com/Gueopic/App
+  fetched_at: '2026-06-25T03:24:05.673007+00:00'
+  stars: 5
+  forks: 0
+  last_commit: '2025-11-07'
   open_issues: 13
   open_prs: null
-  issue_response_rate: null
+  issue_response_rate: 0.0
   release_in_last_year: false
   readme_has_installation: false
   readme_has_usage: true
@@ -55,5 +57,5 @@ sources:
   has_contributing: false
   has_code_of_conduct: false
   has_issue_templates: false
-health_tier: archived
-health_score: 0.8
+health_tier: at_risk
+health_score: 0.75

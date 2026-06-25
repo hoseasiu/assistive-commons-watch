@@ -1,0 +1,56 @@
+id: acw-0041
+name: A11yWatch
+description: Automated website accessibility auditing platform that helps developers
+  identify and track accessibility barriers at scale. Provides CI integration and
+  a dashboard for monitoring WCAG compliance across multiple sites.
+added_date: '2026-06-24'
+tags:
+- accessibility-testing
+- wcag
+- developer-tools
+- web
+- automation
+disability_area:
+- accessibility-tools
+modality: software
+user_context:
+- work
+interface:
+- keyboard
+bom_present: null
+build_docs_quality: partial
+cost_range: null
+fabrication_methods: []
+skill_level: maker
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: MIT
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+documentation_languages:
+- en
+sources:
+- platform: github
+  url: https://github.com/a11ywatch/a11ywatch
+  fetched_at: '2026-06-25T03:23:31.334212+00:00'
+  stars: 50
+  forks: 9
+  last_commit: '2024-08-11'
+  open_issues: 0
+  open_prs: null
+  issue_response_rate: 1.0
+  release_in_last_year: false
+  readme_has_installation: true
+  readme_has_usage: true
+  readme_has_bom: false
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: true
+  has_issue_templates: true
+health_tier: at_risk
+health_score: 4.2

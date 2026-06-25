@@ -1,0 +1,57 @@
+id: acw-0043
+name: axe-core
+description: Industry-standard automated accessibility testing engine used in browser
+  extensions, testing frameworks, and CI pipelines worldwide. Detects WCAG and best-practice
+  violations with a very low false-positive rate.
+added_date: '2026-06-24'
+tags:
+- accessibility-testing
+- wcag
+- developer-tools
+- web
+- library
+- automation
+disability_area:
+- accessibility-tools
+modality: software
+user_context:
+- work
+interface:
+- keyboard
+bom_present: null
+build_docs_quality: complete
+cost_range: null
+fabrication_methods: []
+skill_level: maker
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: MPL-2.0
+associated_publication: null
+institutional_affiliation: Deque Systems
+origin_program: null
+documentation_languages:
+- en
+sources:
+- platform: github
+  url: https://github.com/dequelabs/axe-core
+  fetched_at: '2026-06-25T03:23:43.905031+00:00'
+  stars: 7263
+  forks: 895
+  last_commit: '2026-06-18'
+  open_issues: 456
+  open_prs: null
+  issue_response_rate: 0.14
+  release_in_last_year: true
+  readme_has_installation: true
+  readme_has_usage: false
+  readme_has_bom: false
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: true
+  has_code_of_conduct: true
+  has_issue_templates: true
+health_tier: stable
+health_score: 6.8

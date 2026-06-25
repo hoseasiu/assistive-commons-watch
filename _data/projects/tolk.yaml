@@ -1,56 +1,51 @@
-id: acw-0025
-name: Enable Viacam (eViacam)
-description: Webcam-based mouse-replacement software that moves the screen pointer
-  as the user moves their head. No additional hardware required beyond a standard
-  webcam. Supports pointer speed, dwell-click, and motion acceleration tuning. Runs
-  on GNU/Linux and Windows.
+id: acw-0045
+name: Tolk
+description: Abstraction layer that lets Windows applications communicate with multiple
+  screen readers such as NVDA and JAWS through a single API. Eliminates the need for
+  developers to integrate with each screen reader separately.
 added_date: '2026-06-24'
 tags:
-- head-tracking
-- webcam
-- mouse-emulation
-- motor
-- dwell-click
+- screen-reader
+- vision
+- windows
+- library
+- developer-tools
 disability_area:
-- motor
+- vision
 modality: software
 user_context:
-- home
 - work
-- school
 interface:
-- webcam
-- mouse
+- keyboard
 bom_present: null
 build_docs_quality: partial
 cost_range: null
 fabrication_methods: []
-skill_level: beginner
+skill_level: engineer
 nothing_about_us: null
 replicated_by_disabled_person: null
 end_user_docs: true
 feedback_channel: true
 known_deployed_instances: null
-license: GPL-3.0
+license: LGPL-2.1
 associated_publication: null
 institutional_affiliation: null
 origin_program: null
 documentation_languages:
 - en
-- es
 sources:
 - platform: github
-  url: https://github.com/cmauri/eviacam
-  fetched_at: '2026-06-25T03:23:58.385787+00:00'
-  stars: 174
-  forks: 44
-  last_commit: '2022-11-09'
-  open_issues: 30
+  url: https://github.com/dkager/tolk
+  fetched_at: '2026-06-25T03:24:51.146357+00:00'
+  stars: 103
+  forks: 51
+  last_commit: '2024-06-08'
+  open_issues: 11
   open_prs: null
-  issue_response_rate: 0.25
+  issue_response_rate: 1.0
   release_in_last_year: false
   readme_has_installation: false
-  readme_has_usage: false
+  readme_has_usage: true
   readme_has_bom: false
   release_artifact_present: false
   dependencies_pinned: null
@@ -58,4 +53,4 @@ sources:
   has_code_of_conduct: false
   has_issue_templates: false
 health_tier: at_risk
-health_score: 2.21
+health_score: 2.75

@@ -42,7 +42,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/OptiKey/OptiKey
-  fetched_at: '2026-06-25T01:27:58.464541+00:00'
+  fetched_at: '2026-06-25T03:24:34.767403+00:00'
   stars: 4396
   forks: 508
   last_commit: '2026-03-18'

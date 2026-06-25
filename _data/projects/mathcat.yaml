@@ -1,26 +1,25 @@
-id: acw-0019
-name: eSpeak NG
-description: Open-source multilingual text-to-speech synthesizer supporting over 100
-  languages and accents. Widely used as the speech engine inside NVDA, Orca, and many
-  other AT tools; also ships as a standalone command-line and library.
+id: acw-0036
+name: MathCAT
+description: Converts mathematical notation into accessible speech and braille for
+  screen-reader users. Provides natural-language descriptions of MathML expressions
+  and generates braille math codes including Nemeth and UEB.
 added_date: '2026-06-24'
 tags:
-- tts
-- text-to-speech
-- speech-synthesis
 - vision
+- braille
+- math
 - screen-reader
-- multilingual
+- speech-synthesis
+- library
 disability_area:
 - vision
-- communication
 modality: software
 user_context:
-- home
-- work
 - school
+- work
 interface:
-- speech
+- keyboard
+- braille-display
 bom_present: null
 build_docs_quality: partial
 cost_range: null
@@ -31,7 +30,7 @@ replicated_by_disabled_person: null
 end_user_docs: true
 feedback_channel: true
 known_deployed_instances: null
-license: GPL-3.0
+license: Apache-2.0
 associated_publication: null
 institutional_affiliation: null
 origin_program: null
@@ -39,22 +38,22 @@ documentation_languages:
 - en
 sources:
 - platform: github
-  url: https://github.com/espeak-ng/espeak-ng
-  fetched_at: '2026-06-25T03:23:56.648175+00:00'
-  stars: 6602
-  forks: 1243
-  last_commit: '2026-04-27'
-  open_issues: 615
+  url: https://github.com/daisy/MathCAT
+  fetched_at: '2026-06-25T03:24:15.019302+00:00'
+  stars: 104
+  forks: 68
+  last_commit: '2026-06-24'
+  open_issues: 118
   open_prs: null
-  issue_response_rate: 0.25
-  release_in_last_year: false
+  issue_response_rate: 0.38
+  release_in_last_year: true
   readme_has_installation: false
   readme_has_usage: false
   readme_has_bom: false
   release_artifact_present: true
   dependencies_pinned: null
-  has_contributing: true
+  has_contributing: false
   has_code_of_conduct: false
   has_issue_templates: false
 health_tier: at_risk
-health_score: 5.16
+health_score: 5.1

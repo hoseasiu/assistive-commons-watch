@@ -1,0 +1,57 @@
+id: acw-0042
+name: Pa11y
+description: Command-line accessibility testing tool for monitoring and improving
+  WCAG compliance. Runs automated accessibility tests against URLs and can be integrated
+  into CI pipelines to catch regressions.
+added_date: '2026-06-24'
+tags:
+- accessibility-testing
+- wcag
+- developer-tools
+- web
+- cli
+- automation
+disability_area:
+- accessibility-tools
+modality: software
+user_context:
+- work
+interface:
+- keyboard
+bom_present: null
+build_docs_quality: complete
+cost_range: null
+fabrication_methods: []
+skill_level: maker
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: LGPL-3.0
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+documentation_languages:
+- en
+sources:
+- platform: github
+  url: https://github.com/pa11y/pa11y
+  fetched_at: '2026-06-25T03:24:38.437957+00:00'
+  stars: 4463
+  forks: 295
+  last_commit: '2026-05-25'
+  open_issues: 49
+  open_prs: null
+  issue_response_rate: 0.67
+  release_in_last_year: true
+  readme_has_installation: false
+  readme_has_usage: true
+  readme_has_bom: false
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: true
+  has_code_of_conduct: false
+  has_issue_templates: true
+health_tier: stable
+health_score: 6.15
