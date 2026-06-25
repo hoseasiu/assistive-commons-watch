@@ -183,19 +183,27 @@ class TestGitHubFetcherMocked:
         readme_content="## Installation\n\nInstall it.\n\n## Usage\n\nUse it.",
         releases=None,
         issues=None,
+        issue_comments=None,
         commits=None,
     ):
-        """Return a dict mapping URL paths to their mock responses."""
+        """Return a dict mapping URL paths to their mock responses.
+
+        issue_comments: dict mapping issue number → list of comment dicts.
+        Used to populate per-issue comment endpoints so _response_rate can check
+        whether any comment is from a non-author.
+        """
         if releases is None:
             releases = [{"draft": False, "published_at": "2024-06-01T00:00:00Z", "assets": [{"name": "bin"}]}]
         if issues is None:
-            issues = [{"number": 1, "comments": 2}]
+            issues = [{"number": 1, "user": {"login": "reporter"}, "comments": 1}]
+        if issue_comments is None:
+            issue_comments = {1: [{"user": {"login": "maintainer"}}]}
         if commits is None:
             commits = [{"commit": {"committer": {"date": last_commit_iso}}}]
 
         encoded_readme = base64.b64encode(readme_content.encode()).decode()
 
-        return {
+        responses = {
             "/repos/owner/repo": {
                 "stargazers_count": stars,
                 "forks_count": forks,
@@ -217,6 +225,9 @@ class TestGitHubFetcherMocked:
             "/repos/owner/repo/issues?state=all&per_page=20": issues,
             "/repos/owner/repo/commits?per_page=1": commits,
         }
+        for issue_num, comments in issue_comments.items():
+            responses[f"/repos/owner/repo/issues/{issue_num}/comments?per_page=5"] = comments
+        return responses
 
     def _make_fetcher(self, responses: dict) -> GitHubFetcher:
         fetcher = GitHubFetcher.__new__(GitHubFetcher)
@@ -307,23 +318,36 @@ class TestGitHubFetcherMocked:
 
     def test_fetch_issue_response_rate(self):
         issues = [
-            {"number": 1, "comments": 2},   # responded
-            {"number": 2, "comments": 0},   # not responded
-            {"number": 3, "comments": 1},   # responded
-            {"number": 4, "comments": 0},   # not responded
+            {"number": 1, "user": {"login": "alice"}, "comments": 2},   # maintainer commented
+            {"number": 2, "user": {"login": "alice"}, "comments": 0},   # no comments
+            {"number": 3, "user": {"login": "bob"}, "comments": 1},     # maintainer commented
+            {"number": 4, "user": {"login": "carol"}, "comments": 0},   # no comments
         ]
-        responses = self._build_mock_responses(issues=issues)
+        issue_comments = {
+            1: [{"user": {"login": "maintainer"}}, {"user": {"login": "alice"}}],
+            3: [{"user": {"login": "maintainer"}}],
+        }
+        responses = self._build_mock_responses(issues=issues, issue_comments=issue_comments)
         fetcher = self._make_fetcher(responses)
         result = fetcher.fetch("https://github.com/owner/repo")
         # 2 out of 4 responded -> 0.5
         assert result.issue_response_rate == pytest.approx(0.5)
 
+    def test_fetch_issue_response_rate_filters_self_comments(self):
+        """An issue where only the reporter commented must not count as responded."""
+        issues = [{"number": 1, "user": {"login": "reporter"}, "comments": 2}]
+        issue_comments = {1: [{"user": {"login": "reporter"}}, {"user": {"login": "reporter"}}]}
+        responses = self._build_mock_responses(issues=issues, issue_comments=issue_comments)
+        fetcher = self._make_fetcher(responses)
+        result = fetcher.fetch("https://github.com/owner/repo")
+        assert result.issue_response_rate == pytest.approx(0.0)
+
     def test_fetch_prs_excluded_from_response_rate(self):
         issues = [
-            {"number": 1, "comments": 0},
-            {"number": 2, "pull_request": {"url": "x"}, "comments": 5},  # PR — excluded
+            {"number": 1, "user": {"login": "reporter"}, "comments": 0},
+            {"number": 2, "pull_request": {"url": "x"}, "user": {"login": "reporter"}, "comments": 5},  # PR — excluded
         ]
-        responses = self._build_mock_responses(issues=issues)
+        responses = self._build_mock_responses(issues=issues, issue_comments={})
         fetcher = self._make_fetcher(responses)
         result = fetcher.fetch("https://github.com/owner/repo")
         # Only issue 1 counts: 0/1 responded = 0.0

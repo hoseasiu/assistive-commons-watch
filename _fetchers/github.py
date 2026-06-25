@@ -81,7 +81,7 @@ class GitHubFetcher(BaseFetcher):
             # open_issues_count includes PRs — acceptable approximation
             open_issues=meta.get("open_issues_count"),
             last_commit=self._last_commit_date(commits),
-            issue_response_rate=self._response_rate(issues),
+            issue_response_rate=self._response_rate(issues, owner, repo),
             release_in_last_year=any(
                 _to_date(r.get("published_at")) >= one_year_ago
                 for r in published
@@ -93,6 +93,7 @@ class GitHubFetcher(BaseFetcher):
             readme_has_bom=bool(_RE_BOM.search(readme)) if readme else None,
             release_artifact_present=any(r.get("assets") for r in published) or False,
             # dependencies_pinned: not yet implemented — requires per-language heuristics
+            license_spdx=(meta.get("license") or {}).get("spdx_id"),
             # Community health
             has_contributing=self._file_present(community, "contributing"),
             has_code_of_conduct=self._file_present(community, "code_of_conduct"),
@@ -156,12 +157,23 @@ class GitHubFetcher(BaseFetcher):
             commits[0].get("commit", {}).get("committer", {}).get("date")
         )
 
-    def _response_rate(self, items: list[dict]) -> Optional[float]:
+    def _response_rate(self, items: list[dict], owner: str, repo: str) -> Optional[float]:
         # The issues endpoint returns both issues and PRs; filter PRs out
         issues = [i for i in items if "pull_request" not in i]
         if not issues:
             return None
-        responded = sum(1 for i in issues if i.get("comments", 0) > 0)
+        responded = 0
+        for issue in issues:
+            if issue.get("comments", 0) > 0:
+                author = (issue.get("user") or {}).get("login")
+                comments = self._get_optional(
+                    f"/repos/{owner}/{repo}/issues/{issue['number']}/comments?per_page=5"
+                )
+                # Count as responded only if at least one comment is from a non-author
+                if isinstance(comments, list) and any(
+                    (c.get("user") or {}).get("login") != author for c in comments
+                ):
+                    responded += 1
         return round(responded / len(issues), 2)
 
     @staticmethod
