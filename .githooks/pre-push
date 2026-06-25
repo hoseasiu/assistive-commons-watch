@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Mirrors the 'validate' GitHub Actions workflow so failures surface locally
+# before wasting a CI run.
+set -euo pipefail
+
+echo "==> Validating project YAMLs..."
+python scripts/validate_yaml.py
+
+echo "==> Checking schema.json is up to date..."
+python scripts/export_schema.py
+if ! git diff --exit-code schema.json; then
+  echo ""
+  echo "schema.json is out of date. Commit the regenerated file and re-push."
+  exit 1
+fi
+
+echo "==> Local checks passed."
