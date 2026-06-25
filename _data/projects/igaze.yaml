@@ -55,3 +55,6 @@ sources:
   license_spdx: GPL-3.0
 health_tier: archived
 health_score: 1.0
+platform:
+- windows
+plain_language_description: null

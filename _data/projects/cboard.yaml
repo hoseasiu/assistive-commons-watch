@@ -30,7 +30,8 @@ nothing_about_us: true
 replicated_by_disabled_person: null
 end_user_docs: true
 feedback_channel: true
-known_deployed_instances: null
+known_deployed_instances: Hosted instance at app.cboard.io, used in schools and therapy
+  centers in over 60 countries.
 license: GPL-3.0
 associated_publication: null
 institutional_affiliation: null
@@ -62,3 +63,10 @@ sources:
   license_spdx: GPL-3.0
 health_tier: stable
 health_score: 6.2
+platform:
+- web
+- android
+- ios
+plain_language_description: An online communication board for people who have difficulty
+  speaking. Works in any web browser — type or tap symbols to build sentences, and
+  the app speaks them aloud. Also available as a free app on phones and tablets.

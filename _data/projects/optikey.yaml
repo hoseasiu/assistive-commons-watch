@@ -61,3 +61,8 @@ sources:
   license_spdx: GPL-3.0
 health_tier: at_risk
 health_score: 5.2
+platform:
+- windows
+plain_language_description: A free on-screen keyboard for Windows controlled by eye
+  gaze or a webcam. No specialist hardware required — just a standard webcam. Designed
+  for people who cannot use a physical keyboard or mouse.

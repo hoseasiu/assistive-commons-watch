@@ -54,3 +54,9 @@ sources:
   license_spdx: MIT
 health_tier: at_risk
 health_score: 1.75
+platform:
+- ios
+- android
+plain_language_description: A free AAC app for phones and tablets that lets users
+  communicate by tapping picture symbols. Fully customizable, works offline, and available
+  on both iPhone and Android.

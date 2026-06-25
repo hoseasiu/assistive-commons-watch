@@ -63,3 +63,7 @@ sources:
   license_spdx: GPL-2.0
 health_tier: at_risk
 health_score: 3.03
+platform:
+- windows
+- linux
+plain_language_description: null

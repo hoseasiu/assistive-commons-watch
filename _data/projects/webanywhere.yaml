@@ -40,3 +40,8 @@ sources:
   url: https://github.com/webanywhere/webanywhere
 health_tier: null
 health_score: null
+platform:
+- web
+plain_language_description: A free screen reader that runs entirely in a web browser,
+  letting people access web content using synthesized speech from any computer — even
+  one that doesn't have a screen reader installed.

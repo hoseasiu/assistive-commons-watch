@@ -59,3 +59,6 @@ sources:
   license_spdx: null
 health_tier: at_risk
 health_score: 3.65
+platform:
+- windows
+plain_language_description: null

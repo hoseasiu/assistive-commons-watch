@@ -28,7 +28,8 @@ nothing_about_us: true
 replicated_by_disabled_person: null
 end_user_docs: true
 feedback_channel: true
-known_deployed_instances: null
+known_deployed_instances: Available for free download from opendyslexic.org; integrated
+  into dozens of browser extensions and apps worldwide.
 license: SIL-OFL-1.1
 associated_publication: null
 institutional_affiliation: null
@@ -57,3 +58,13 @@ sources:
   license_spdx: OFL-1.1
 health_tier: at_risk
 health_score: 4.53
+platform:
+- web
+- windows
+- linux
+- macos
+- ios
+- android
+plain_language_description: A free dyslexia-friendly font designed to make reading
+  easier by giving each letter a unique shape. Install it on any device or use it
+  as a browser extension.

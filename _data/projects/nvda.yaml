@@ -29,7 +29,8 @@ nothing_about_us: true
 replicated_by_disabled_person: null
 end_user_docs: true
 feedback_channel: true
-known_deployed_instances: null
+known_deployed_instances: Installed on tens of millions of Windows computers worldwide;
+  available for download at nvaccess.org.
 license: GPL-2.0
 associated_publication: null
 institutional_affiliation: NV Access
@@ -64,3 +65,8 @@ sources:
   license_spdx: NOASSERTION
 health_tier: stable
 health_score: 7.0
+platform:
+- windows
+plain_language_description: A free screen reader for Windows that reads everything
+  on screen aloud using a synthesized voice or a Braille display. One of the world's
+  most widely used screen readers — download and run, no purchase required.

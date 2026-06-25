@@ -60,3 +60,9 @@ sources:
   license_spdx: GPL-3.0
 health_tier: at_risk
 health_score: 2.21
+platform:
+- windows
+- linux
+plain_language_description: A free webcam-based mouse replacement for Windows and
+  Linux. Just look at your webcam and move your head to control the mouse pointer
+  — no extra hardware required.

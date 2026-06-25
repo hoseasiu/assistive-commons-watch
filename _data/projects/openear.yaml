@@ -40,3 +40,10 @@ sources:
   url: https://github.com/openear-project/openear
 health_tier: null
 health_score: null
+platform:
+- windows
+- linux
+- macos
+plain_language_description: A free real-time captioning app that converts spoken words
+  to on-screen captions using your computer's microphone. Works offline, no cloud
+  subscription needed.

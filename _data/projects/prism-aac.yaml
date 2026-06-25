@@ -32,7 +32,8 @@ nothing_about_us: null
 replicated_by_disabled_person: null
 end_user_docs: null
 feedback_channel: null
-known_deployed_instances: null
+known_deployed_instances: Hosted instance at prism-aac.app, used in schools and by
+  individual AAC users.
 license: null
 associated_publication: null
 institutional_affiliation: null
@@ -61,3 +62,8 @@ sources:
   license_spdx: AGPL-3.0
 health_tier: at_risk
 health_score: 4.4
+platform:
+- web
+plain_language_description: A free browser-based AAC platform you can use on any device
+  without installing anything. Supports symbols and text-to-speech to help people
+  who have difficulty speaking.

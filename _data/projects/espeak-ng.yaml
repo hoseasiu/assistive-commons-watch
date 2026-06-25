@@ -59,3 +59,11 @@ sources:
   license_spdx: GPL-3.0
 health_tier: at_risk
 health_score: 5.16
+platform:
+- windows
+- linux
+- macos
+- android
+plain_language_description: A free text-to-speech engine that reads text aloud in
+  over 100 languages. Lightweight and works offline. Used by screen readers and accessibility
+  tools worldwide.

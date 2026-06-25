@@ -56,3 +56,9 @@ sources:
   license_spdx: LGPL-3.0
 health_tier: stable
 health_score: 6.15
+platform:
+- web
+- windows
+- linux
+- macos
+plain_language_description: null

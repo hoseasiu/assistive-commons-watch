@@ -75,6 +75,7 @@ class GitHubFetcher(BaseFetcher):
             platform="github",
             url=canonical_url,
             fetched_at=datetime.now(timezone.utc),
+            latest_release_url=published[0].get("html_url") if published else None,
             # Activity
             stars=meta.get("stargazers_count"),
             forks=meta.get("forks_count"),

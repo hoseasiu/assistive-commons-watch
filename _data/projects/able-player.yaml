@@ -62,3 +62,8 @@ sources:
   license_spdx: NOASSERTION
 health_tier: stable
 health_score: 6.6
+platform:
+- web
+plain_language_description: A free, fully accessible video and audio player that works
+  on any website. Supports captions, audio descriptions, keyboard navigation, and
+  screen readers out of the box.

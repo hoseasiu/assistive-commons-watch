@@ -57,3 +57,7 @@ sources:
   license_spdx: null
 health_tier: at_risk
 health_score: 3.27
+platform:
+- linux
+- macos
+plain_language_description: null

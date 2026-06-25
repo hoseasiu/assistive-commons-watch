@@ -58,3 +58,8 @@ sources:
   license_spdx: MIT
 health_tier: at_risk
 health_score: 5.1
+platform:
+- windows
+- linux
+- macos
+plain_language_description: null

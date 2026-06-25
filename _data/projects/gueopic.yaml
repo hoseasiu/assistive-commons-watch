@@ -60,3 +60,6 @@ sources:
   license_spdx: GPL-3.0
 health_tier: at_risk
 health_score: 1.15
+platform:
+- android
+plain_language_description: null

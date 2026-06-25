@@ -62,3 +62,6 @@ sources:
   license_spdx: LGPL-2.1
 health_tier: stable
 health_score: 6.95
+platform:
+- linux
+plain_language_description: null
