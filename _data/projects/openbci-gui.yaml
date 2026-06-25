@@ -1,0 +1,49 @@
+id: acw-0028
+name: OpenBCI GUI
+description: Cross-platform graphical interface for OpenBCI EEG/EMG/ECG biosignal
+  hardware. Visualizes raw brainwave and muscle data in real time, applies filters,
+  and streams data via LSL, OSC, UDP, or Serial to downstream BCI and AT applications.
+  Used in research and consumer BCI experimentation.
+added_date: '2026-06-24'
+tags:
+- bci
+- eeg
+- emg
+- brain-computer-interface
+- neurological
+- motor
+- biofeedback
+disability_area:
+- motor
+- neurological
+modality: hybrid
+user_context:
+- clinical
+- home
+- work
+interface:
+- eeg
+- emg
+bom_present: true
+build_docs_quality: complete
+cost_range: $200–$2000
+fabrication_methods:
+- electronics
+- off-shelf
+skill_level: engineer
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: MIT
+associated_publication: null
+institutional_affiliation: OpenBCI
+origin_program: null
+documentation_languages:
+- en
+sources:
+- platform: github
+  url: https://github.com/OpenBCI/OpenBCI_GUI
+health_tier: null
+health_score: null

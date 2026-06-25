@@ -1,0 +1,45 @@
+id: acw-0025
+name: Enable Viacam (eViacam)
+description: Webcam-based mouse-replacement software that moves the screen pointer
+  as the user moves their head. No additional hardware required beyond a standard
+  webcam. Supports pointer speed, dwell-click, and motion acceleration tuning. Runs
+  on GNU/Linux and Windows.
+added_date: '2026-06-24'
+tags:
+- head-tracking
+- webcam
+- mouse-emulation
+- motor
+- dwell-click
+disability_area:
+- motor
+modality: software
+user_context:
+- home
+- work
+- school
+interface:
+- webcam
+- mouse
+bom_present: null
+build_docs_quality: partial
+cost_range: null
+fabrication_methods: []
+skill_level: beginner
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: GPL-3.0
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+documentation_languages:
+- en
+- es
+sources:
+- platform: github
+  url: https://github.com/cmauri/eviacam
+health_tier: null
+health_score: null

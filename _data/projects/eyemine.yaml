@@ -1,0 +1,43 @@
+id: acw-0027
+name: EyeMine
+description: Open-source interface developed by the charity SpecialEffect that enables
+  people with physical disabilities to play Minecraft entirely with eye gaze. Combines
+  a custom eye-gaze keyboard (based on OptiKey) with Minecraft-specific mods. Works
+  with any eye tracker that can emulate a mouse pointer.
+added_date: '2026-06-24'
+tags:
+- eye-gaze
+- gaming
+- minecraft
+- motor
+- recreation
+disability_area:
+- motor
+- eyegaze
+modality: software
+user_context:
+- home
+- recreation
+interface:
+- eye-gaze
+bom_present: null
+build_docs_quality: complete
+cost_range: null
+fabrication_methods: []
+skill_level: maker
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: GPL-3.0
+associated_publication: null
+institutional_affiliation: SpecialEffect
+origin_program: null
+documentation_languages:
+- en
+sources:
+- platform: github
+  url: https://github.com/SpecialEffect/EyeMine
+health_tier: null
+health_score: null
