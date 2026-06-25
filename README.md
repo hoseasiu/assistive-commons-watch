@@ -1,12 +1,20 @@
 # Assistive Commons Watch
 
-A living registry and health-monitoring dashboard for open-source assistive technology (AT) projects.
+An automated health dashboard for open-source assistive technology projects.
 
 **[Live site →](https://hoseasiu.github.io/assistive-commons-watch/)**
 
 ---
 
-ACW is more than a curated list. It's a queryable, filterable registry that reflects the *actual health and usability* of open AT projects over time — a live dashboard of the open AT space designed for builders: contributors, forkers, and replicators.
+ACW is a report card for open-source AT. For each project it checks:
+
+- **Is it still being maintained?** (recent commits, issue response, releases)
+- **Can you actually build or replicate it?** (parts lists, build docs, fabrication files, estimated cost)
+- **Was it designed with disabled people's input?** ("Nothing About Us Without Us")
+- **Is there documentation for end users** — not just developers?
+- **Is the community welcoming** to new contributors?
+
+Generic open-source health tools don't ask the AT-specific questions. ACW does. The result is a filterable, queryable registry that shows you which projects are worth your time — whether you're a physical therapist hunting for a tool that actually has user docs, a high school maker looking for a hardware project to fork, or a software engineer wanting to contribute to something that matters.
 
 ## What it tracks
 
