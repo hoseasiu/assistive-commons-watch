@@ -35,15 +35,20 @@ title: Browse Projects — Assistive Commons Watch
   .site-nav { display: flex; align-items: center; gap: 4px; }
   .site-nav a {
     font-size: 13px; font-weight: 500; color: var(--text-secondary);
-    padding: 7px 12px; border-radius: 6px; transition: background 0.15s;
+    padding: 0 12px; border-radius: 6px; transition: background 0.15s;
+    min-height: 44px; display: inline-flex; align-items: center;
   }
   .site-nav a:hover { background: var(--bg-page); }
-  .nav-cta {
-    font-size: 13px; font-weight: 600; color: white;
-    background: var(--accent-green); padding: 7px 15px;
-    border-radius: 7px; margin-left: 8px; transition: opacity 0.15s;
+  .site-nav a[aria-current="page"] {
+    background: var(--bg-page); color: var(--text-primary); font-weight: 600;
   }
-  .nav-cta:hover { opacity: 0.88; }
+  .site-nav .nav-cta {
+    font-size: 13px; font-weight: 600; color: white;
+    background: var(--accent-green); padding: 0 15px;
+    border-radius: 7px; margin-left: 8px; transition: background 0.15s;
+    min-height: 44px; display: inline-flex; align-items: center;
+  }
+  .site-nav .nav-cta:hover { background: oklch(0.36 0.14 165); color: white; }
 
   /* ── Page hero ── */
   .page-hero {
@@ -293,6 +298,28 @@ title: Browse Projects — Assistive Commons Watch
 
   /* ── No-JS fallback ── */
   .no-js-note { font-size: 12px; color: var(--text-muted); padding: 6px 0; }
+
+  /* ── Mobile filter toggle ── */
+  .filter-toggle-btn {
+    display: none; width: 100%; padding: 12px 16px;
+    font-size: 14px; font-weight: 600;
+    color: var(--text-primary); background: var(--bg-white);
+    border: 1px solid var(--border); border-radius: 10px;
+    cursor: pointer; text-align: left;
+    margin-bottom: 12px;
+  }
+  .filter-toggle-btn:hover { background: var(--bg-page); }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .container { padding: 0 16px; }
+    .site-nav a:not(.nav-cta) { display: none; }
+    .browse-layout { grid-template-columns: 1fr; }
+    .filter-toggle-btn { display: block; }
+    .filter-panel { position: static; display: none; margin-bottom: 12px; }
+    .filter-panel.open { display: block; }
+    .mode-tab { padding: 10px 12px; font-size: 13px; }
+  }
 </style>
 
 {# Embed all project data for client-side filtering #}
@@ -312,7 +339,7 @@ title: Browse Projects — Assistive Commons Watch
     <nav class="site-nav" aria-label="Site navigation">
       <a href="/browse/?mode=contribute">Contribute</a>
       <a href="/browse/?mode=use">Find a Tool</a>
-      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new" class="nav-cta">Submit a project →</a>
+      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new?template=submit_project.yml" class="nav-cta">Submit a project →</a>
     </nav>
   </div>
 </header>
@@ -342,7 +369,10 @@ title: Browse Projects — Assistive Commons Watch
 
       <!-- ── Filter panel ── -->
       <aside aria-label="Filter projects">
-        <div class="filter-panel">
+        <button class="filter-toggle-btn" id="filter-toggle-btn" aria-expanded="false" aria-controls="filter-panel">
+          Filter projects ▾
+        </button>
+        <div class="filter-panel" id="filter-panel">
           <div class="filter-panel-header">
             <span class="filter-panel-title">Filter</span>
             <button class="filter-clear-btn" id="clear-all-btn" aria-label="Clear all filters">Clear all</button>
@@ -919,6 +949,17 @@ title: Browse Projects — Assistive Commons Watch
   clearAllBtn.addEventListener('click', clearAllFilters);
   emptyClearBtn.addEventListener('click', clearAllFilters);
   window.addEventListener('popstate', render);
+
+  // Mobile filter toggle
+  const filterToggleBtn = document.getElementById('filter-toggle-btn');
+  const filterPanelEl   = document.getElementById('filter-panel');
+  if (filterToggleBtn && filterPanelEl) {
+    filterToggleBtn.addEventListener('click', () => {
+      const open = filterPanelEl.classList.toggle('open');
+      filterToggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      filterToggleBtn.textContent = open ? 'Filter projects ▴' : 'Filter projects ▾';
+    });
+  }
 
   render();
 })();

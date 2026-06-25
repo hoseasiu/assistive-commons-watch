@@ -42,15 +42,17 @@ layout: base.njk
   .site-nav { display: flex; align-items: center; gap: 4px; }
   .site-nav a {
     font-size: 13px; font-weight: 500; color: var(--text-secondary);
-    padding: 7px 12px; border-radius: 6px; transition: background 0.15s;
+    padding: 0 12px; border-radius: 6px; transition: background 0.15s;
+    min-height: 44px; display: inline-flex; align-items: center;
   }
   .site-nav a:hover { background: var(--bg-page); }
-  .nav-cta {
+  .site-nav .nav-cta {
     font-size: 13px; font-weight: 600; color: white;
-    background: var(--accent-green); padding: 7px 15px;
-    border-radius: 7px; margin-left: 8px; transition: opacity 0.15s;
+    background: var(--accent-green); padding: 0 15px;
+    border-radius: 7px; margin-left: 8px; transition: background 0.15s;
+    min-height: 44px; display: inline-flex; align-items: center;
   }
-  .nav-cta:hover { opacity: 0.88; }
+  .site-nav .nav-cta:hover { background: oklch(0.36 0.14 165); color: white; }
 
   /* ── Breadcrumb ── */
   .breadcrumb {
@@ -115,11 +117,12 @@ layout: base.njk
   /* ── Cards ── */
   .detail-card {
     background: var(--bg-white); border-radius: 12px;
-    border: 1px solid var(--border); overflow: hidden;
+    border: 1px solid var(--border);
   }
   .card-header {
     padding: 14px 20px; border-bottom: 1px solid var(--border-subtle);
     display: flex; align-items: center; gap: 8px;
+    border-radius: 12px 12px 0 0;
   }
   .card-icon { font-size: 16px; line-height: 1; }
   .card-title {
@@ -206,7 +209,7 @@ layout: base.njk
   }
   .score-pill:hover .pill-tooltip-text,
   .score-pill:focus-within .pill-tooltip-text { display: block; }
-  .score-pill:focus { outline: 2px solid var(--accent-green); outline-offset: 2px; }
+  .score-pill:focus-visible { outline: 2px solid var(--accent-green); outline-offset: 2px; }
 
   /* ── Description section ── */
   .project-description {
@@ -303,7 +306,7 @@ layout: base.njk
   /* ── Footer ── */
   .site-footer {
     background: var(--bg-white); border-top: 1px solid var(--border);
-    padding: 20px 40px;
+    padding: 20px 0;
   }
   .site-footer .container {
     display: flex; justify-content: space-between; align-items: center;
@@ -313,6 +316,15 @@ layout: base.njk
   .footer-left a { color: var(--accent-green); }
   .footer-links { display: flex; gap: 16px; }
   .footer-links a { font-size: 12px; color: oklch(0.52 0.015 50); }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .container { padding: 0 16px; }
+    .site-nav a:not(.nav-cta) { display: none; }
+    .project-hero .container { flex-direction: column; gap: 12px; }
+    .project-name { font-size: 24px; }
+    .page-main .container { grid-template-columns: 1fr; }
+  }
 </style>
 
 {%- set p = project -%}
@@ -369,7 +381,7 @@ layout: base.njk
       <a href="/browse">Browse</a>
       <a href="/recent">Recent Changes</a>
       <a href="/needs-attention">Needs Attention</a>
-      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new" class="nav-cta">Submit a project →</a>
+      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new?template=submit_project.yml" class="nav-cta">Submit a project →</a>
     </nav>
   </div>
 </header>
@@ -412,7 +424,7 @@ layout: base.njk
 </div>
 
 <!-- ─────────────────────────── MAIN CONTENT ─────────────────────────── -->
-<main class="page-main">
+<main class="page-main" id="main-content">
   <div class="container">
 
     <!-- Left column -->
@@ -755,27 +767,27 @@ layout: base.njk
         <div class="sidebar-card-header">Scoring formula</div>
         <div class="sidebar-card-body">
           <div class="sidebar-stat-row">
-            <span class="sidebar-stat-key">⚡ Activity</span>
+            <span class="sidebar-stat-key"><span aria-hidden="true">⚡</span> Activity</span>
             <span class="sidebar-stat-val">25%</span>
           </div>
           <div class="sidebar-stat-row">
-            <span class="sidebar-stat-key">🔧 Replicability</span>
+            <span class="sidebar-stat-key"><span aria-hidden="true">🔧</span> Replicability</span>
             <span class="sidebar-stat-val">30%</span>
           </div>
           <div class="sidebar-stat-row">
-            <span class="sidebar-stat-key">🤝 Community</span>
+            <span class="sidebar-stat-key"><span aria-hidden="true">🤝</span> Community</span>
             <span class="sidebar-stat-val">15%</span>
           </div>
           <div class="sidebar-stat-row">
-            <span class="sidebar-stat-key">♿ AT-Specific</span>
+            <span class="sidebar-stat-key"><span aria-hidden="true">♿</span> AT-Specific</span>
             <span class="sidebar-stat-val">20%</span>
           </div>
           <div class="sidebar-stat-row">
-            <span class="sidebar-stat-key">📎 Provenance</span>
+            <span class="sidebar-stat-key"><span aria-hidden="true">📎</span> Provenance</span>
             <span class="sidebar-stat-val">10%</span>
           </div>
           <p class="score-formula-note">
-            Scores 0–10. Activity and Community update nightly via GitHub Actions. Tier: Thriving ≥7.5, Stable ≥5.5.
+            Scores 0–10. Activity and Community update via GitHub Actions. Tier: Thriving ≥7.5, Stable ≥5.5.
           </p>
         </div>
       </div>
@@ -796,9 +808,9 @@ layout: base.njk
     <div class="footer-left">
       Assistive Commons Watch · Data: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
     </div>
-    <div class="footer-links">
+    <nav class="footer-links" aria-label="Footer">
       <a href="https://github.com/hoseasiu/assistive-commons-watch">GitHub</a>
-      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new">Submit a project</a>
-    </div>
+      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new?template=submit_project.yml">Submit a project</a>
+    </nav>
   </div>
 </footer>

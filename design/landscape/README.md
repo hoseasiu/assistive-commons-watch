@@ -98,7 +98,7 @@ White background, 1px bottom border. Inner container: max-width 1200px, padding 
 **Left column:**
 - H1: "A live health registry for open-source assistive technology." — 40px, 800, -0.03em, line-height 1.1, `oklch(0.17 0.025 50)`. Has a `<br>` after "for".
 - Body: 16px, line-height 1.7, `oklch(0.48 0.02 50)`, max-width 500px
-- Meta row (flex, gap 8px, margin-top 20px): animated green dot (7px, 0.5s animation-delay) + "Last refreshed [date]" + separator "·" + "Nightly via GitHub Actions" + separator + "Data: CC0 (linked)"
+- Meta row (flex, gap 8px, margin-top 20px): animated green dot (7px, 0.5s animation-delay) + "Last refreshed [date]" + separator "·" + "Data: CC0 (linked)"
   - Separator color: `oklch(0.82 0.01 75)`
 
 **Right column: 2×2 stat grid** (gap 10px)
