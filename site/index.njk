@@ -646,7 +646,9 @@ title: Assistive Commons Watch
           <div class="priority-callout-title">Priority areas for new contributions</div>
           <div class="priority-callout-body">
             {{ sparseAreas | join(", ") }}
-            {%- if sparseAreas.length == 1 -%} has only {{ d.by_area | selectattr("label", "==", sparseAreas[0]) | first | attribute("count") }} project — new submissions here have outsized impact.
+            {%- if sparseAreas.length == 1 -%}
+              {%- set _sparseAreaObj = d.by_area | selectattr("label", "equalto", sparseAreas[0]) | first -%}
+              has only {{ _sparseAreaObj.count }} project — new submissions here have outsized impact.
             {%- else -%} each have 2 or fewer projects — new submissions in these areas have outsized impact.
             {%- endif -%}
           </div>
