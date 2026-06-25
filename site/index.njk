@@ -36,15 +36,17 @@ title: Assistive Commons Watch
   .site-nav { display: flex; align-items: center; gap: 4px; }
   .site-nav a {
     font-size: 13px; font-weight: 500; color: var(--text-secondary);
-    padding: 7px 12px; border-radius: 6px;
+    padding: 0 12px; border-radius: 6px;
     transition: background 0.15s;
+    min-height: 44px; display: inline-flex; align-items: center;
   }
   .site-nav a:hover { background: var(--bg-page); }
   .site-nav .nav-cta {
     font-size: 13px; font-weight: 600; color: white;
-    background: var(--accent-green); padding: 7px 15px;
+    background: var(--accent-green); padding: 0 15px;
     border-radius: 7px; margin-left: 8px;
     transition: opacity 0.15s;
+    min-height: 44px; display: inline-flex; align-items: center;
   }
   .site-nav .nav-cta:hover { opacity: 0.88; }
 
@@ -114,7 +116,7 @@ title: Assistive Commons Watch
   }
   .tier-strip-label {
     font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase; color: oklch(0.60 0.015 50);
+    text-transform: uppercase; color: oklch(0.48 0.015 50);
     margin-right: 10px; white-space: nowrap; flex-shrink: 0;
   }
   .tier-pill {
@@ -192,7 +194,14 @@ title: Assistive Commons Watch
   .area-blocks { display: flex; gap: 5px; flex-wrap: wrap; flex: 1; }
   .project-block {
     width: 36px; height: 28px; border-radius: 6px;
-    display: inline-block;
+    display: inline-block; position: relative;
+    box-shadow: inset 0 0 0 1px oklch(0 0 0 / 0.15);
+  }
+  .project-block::after {
+    content: ''; position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 44px; min-height: 44px;
   }
   .legend {
     display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
@@ -455,7 +464,7 @@ title: Assistive Commons Watch
         worth contributing to and clinicians can trust what they recommend.
       </p>
       <div class="hero-meta">
-        <span class="live-dot"></span>
+        <span class="live-dot" aria-hidden="true"></span>
         <span>Last refreshed {{ d.last_refreshed }}</span>
         <span class="meta-sep">·</span>
         <span>Nightly via GitHub Actions</span>
@@ -491,7 +500,7 @@ title: Assistive Commons Watch
     {%- for tier in tierOrder -%}
       {%- if tierCounts[tier] and tierCounts[tier] > 0 -%}
       <div class="tier-pill">
-        <span class="tier-pill-dot" style="background:{{ tier | tierColor }}"></span>
+        <span class="tier-pill-dot" style="background:{{ tier | tierColor }}" aria-hidden="true"></span>
         <span class="tier-pill-name">{{ tierLabels[tier] }}</span>
         <span class="tier-pill-count">{{ tierCounts[tier] }}</span>
       </div>
@@ -501,7 +510,7 @@ title: Assistive Commons Watch
 </div>
 
 <!-- ─────────────────────────── MAIN CONTENT ─────────────────────────── -->
-<main class="main-area">
+<main class="main-area" id="main-content">
   <div class="container">
 
     <!-- Left: Landscape panel -->
@@ -514,9 +523,9 @@ title: Assistive Commons Watch
 
       <!-- Tab navigation -->
       <div class="tab-nav" role="tablist" aria-label="Landscape views">
-        <button class="tab-btn" role="tab" aria-selected="true"  aria-controls="panel-0" id="tab-0">By Disability Area</button>
-        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-1" id="tab-1">By Status</button>
-        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2">Coverage Gaps</button>
+        <button class="tab-btn" role="tab" aria-selected="true"  aria-controls="panel-0" id="tab-0" tabindex="0">By Disability Area</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-1" id="tab-1" tabindex="-1">By Status</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2" tabindex="-1">Coverage Gaps</button>
       </div>
 
       <!-- ── Tab 0: By Disability Area ── -->
@@ -552,7 +561,7 @@ title: Assistive Commons Watch
           {%- for tier in tierOrder -%}
           {%- if tierCounts[tier] and tierCounts[tier] > 0 -%}
           <div class="legend-item">
-            <span class="legend-swatch" style="background:{{ tier | tierColor }}"></span>
+            <span class="legend-swatch" style="background:{{ tier | tierColor }}" aria-hidden="true"></span>
             <span class="legend-label">{{ tierLabels[tier] }}</span>
           </div>
           {%- endif -%}
@@ -566,6 +575,7 @@ title: Assistive Commons Watch
           <div class="donut-wrap">
             {# Build conic-gradient from tier counts #}
             {%- set donutParts = [] -%}
+            {%- set donutDesc = [] -%}
             {%- set runningPct = 0 -%}
             {%- for tier in tierOrder -%}
               {%- set cnt = tierCounts[tier] -%}
@@ -573,10 +583,11 @@ title: Assistive Commons Watch
                 {%- set pct = (cnt / stats.total * 100) | round(1) -%}
                 {%- set endPct = runningPct + pct -%}
                 {%- set _ = donutParts.push(tier | tierColor + " " + runningPct + "% " + endPct + "%") -%}
+                {%- set _ = donutDesc.push(cnt ~ " " ~ tierLabels[tier]) -%}
                 {%- set runningPct = endPct -%}
               {%- endif -%}
             {%- endfor -%}
-            <div class="donut" style="background: conic-gradient({{ donutParts | join(", ") }})">
+            <div class="donut" role="img" aria-label="Project distribution: {{ donutDesc | join(', ') }}" style="background: conic-gradient({{ donutParts | join(", ") }})">
               <div class="donut-hole">
                 <span class="donut-total">{{ stats.total }}</span>
                 <span class="donut-caption-label">Projects</span>
@@ -590,7 +601,7 @@ title: Assistive Commons Watch
             {%- set cnt = tierCounts[tier] -%}
             {%- if cnt and cnt > 0 -%}
             <div class="tier-legend-card">
-              <div class="tier-legend-swatch" style="background:{{ tier | tierColor }}"></div>
+              <div class="tier-legend-swatch" style="background:{{ tier | tierColor }}" aria-hidden="true"></div>
               <div class="tier-legend-info">
                 <div class="tier-legend-top">
                   <span class="tier-legend-name">{{ tierLabels[tier] }}</span>
@@ -619,7 +630,14 @@ title: Assistive Commons Watch
             <div class="gap-area-name">{{ area.label }}</div>
             <div class="gap-sub">{{ area.count }} total · {{ area.active_count }} active</div>
           </div>
-          <div class="gap-bar-wrap">
+          <div
+            class="gap-bar-wrap"
+            role="progressbar"
+            aria-valuenow="{{ area.count }}"
+            aria-valuemin="0"
+            aria-valuemax="{{ maxAreaCount }}"
+            aria-label="{{ area.label }}: {{ area.count }} of {{ maxAreaCount }} projects"
+          >
             <div class="gap-bar-fill" style="width:{{ barPct }}%"></div>
           </div>
           <div class="gap-badge">
@@ -663,7 +681,7 @@ title: Assistive Commons Watch
       <!-- Needs Attention -->
       <div class="sidebar-card">
         <div class="sidebar-card-header">
-          <span class="sidebar-card-header-dot"></span>
+          <span class="sidebar-card-header-dot" aria-hidden="true"></span>
           <span class="sidebar-card-title">Needs Attention</span>
           <span class="sidebar-card-count">{{ d.needs_attention | length }}</span>
         </div>
@@ -730,7 +748,7 @@ title: Assistive Commons Watch
       <a href="https://creativecommons.org/publicdomain/zero/1.0/">Data CC0</a> ·
       <a href="/methodology">Score methodology v1.0</a>
     </div>
-    <nav class="footer-links">
+    <nav class="footer-links" aria-label="Footer">
       <a href="https://github.com/hoseasiu/assistive-commons-watch">GitHub</a>
       <a href="/about">About</a>
       <a href="/api">API</a>
@@ -740,16 +758,34 @@ title: Assistive Commons Watch
 </footer>
 
 <script>
-  // Tab switching
+  // Tab switching with ARIA keyboard pattern
   const tabs = document.querySelectorAll('.tab-btn');
   const panels = document.querySelectorAll('.tab-panel');
 
+  function activateTab(idx) {
+    tabs.forEach((t, j) => {
+      const active = j === idx;
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+      t.setAttribute('tabindex', active ? '0' : '-1');
+    });
+    panels.forEach((p, j) => {
+      if (j === idx) p.setAttribute('data-active', '');
+      else p.removeAttribute('data-active');
+    });
+  }
+
   tabs.forEach((tab, i) => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
-      panels.forEach(p => p.removeAttribute('data-active'));
-      tab.setAttribute('aria-selected', 'true');
-      panels[i].setAttribute('data-active', '');
+    tab.addEventListener('click', () => activateTab(i));
+    tab.addEventListener('keydown', (e) => {
+      let next;
+      if      (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+      else if (e.key === 'ArrowLeft')  next = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === 'Home')       next = 0;
+      else if (e.key === 'End')        next = tabs.length - 1;
+      else return;
+      e.preventDefault();
+      activateTab(next);
+      tabs[next].focus();
     });
   });
 </script>

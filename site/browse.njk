@@ -35,7 +35,8 @@ title: Browse Projects — Assistive Commons Watch
   .site-nav { display: flex; align-items: center; gap: 4px; }
   .site-nav a {
     font-size: 13px; font-weight: 500; color: var(--text-secondary);
-    padding: 7px 12px; border-radius: 6px; transition: background 0.15s;
+    padding: 0 12px; border-radius: 6px; transition: background 0.15s;
+    min-height: 44px; display: inline-flex; align-items: center;
   }
   .site-nav a:hover { background: var(--bg-page); }
   .site-nav a[aria-current="page"] {
@@ -43,8 +44,9 @@ title: Browse Projects — Assistive Commons Watch
   }
   .nav-cta {
     font-size: 13px; font-weight: 600; color: white;
-    background: var(--accent-green); padding: 7px 15px;
+    background: var(--accent-green); padding: 0 15px;
     border-radius: 7px; margin-left: 8px; transition: opacity 0.15s;
+    min-height: 44px; display: inline-flex; align-items: center;
   }
   .nav-cta:hover { opacity: 0.88; }
 
@@ -293,7 +295,7 @@ title: Browse Projects — Assistive Commons Watch
 </div>
 
 <!-- ─────────────────────────── MAIN ─────────────────────────── -->
-<main>
+<main id="main-content">
   <div class="container">
     <div class="browse-layout">
 
@@ -525,10 +527,10 @@ title: Browse Projects — Assistive Commons Watch
     <div class="footer-left">
       Assistive Commons Watch · Data: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
     </div>
-    <div class="footer-links">
+    <nav class="footer-links" aria-label="Footer">
       <a href="https://github.com/hoseasiu/assistive-commons-watch">GitHub</a>
       <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new">Submit a project</a>
-    </div>
+    </nav>
   </div>
 </footer>
 
