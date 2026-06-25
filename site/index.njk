@@ -44,9 +44,9 @@ title: Assistive Commons Watch
     font-size: 13px; font-weight: 600; color: white;
     background: var(--accent-green); padding: 7px 15px;
     border-radius: 7px; margin-left: 8px;
-    transition: opacity 0.15s;
+    transition: background 0.15s;
   }
-  .site-nav .nav-cta:hover { opacity: 0.88; }
+  .site-nav .nav-cta:hover { background: oklch(0.36 0.14 165); color: white; }
 
   /* ── Hero ── */
   .hero {
@@ -384,7 +384,7 @@ title: Assistive Commons Watch
   /* ── Footer ── */
   .site-footer {
     background: var(--bg-white); border-top: 1px solid var(--border);
-    padding: 20px 40px;
+    padding: 20px 0;
   }
   .site-footer .container {
     display: flex; justify-content: space-between; align-items: center;
@@ -394,6 +394,26 @@ title: Assistive Commons Watch
   .footer-left a { color: var(--accent-green); }
   .footer-links { display: flex; gap: 16px; }
   .footer-links a { font-size: 12px; color: oklch(0.52 0.015 50); }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .container { padding: 0 16px; }
+    .site-nav a:not(.nav-cta) { display: none; }
+    .hero .container {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding-top: 32px;
+      padding-bottom: 28px;
+    }
+    .hero-h1 { font-size: 26px; }
+    .stat-number { font-size: 24px; }
+    .main-area .container { grid-template-columns: 1fr; }
+    .by-status-grid { grid-template-columns: 1fr; gap: 24px; }
+    .donut-wrap { align-items: flex-start; }
+    .area-label-col { width: 140px; }
+    .gap-label-col { width: 140px; }
+    .tab-nav { gap: 12px; }
+  }
 </style>
 
 {# ── Pull data from acw.json (built by scripts/build_json.py) ── #}
