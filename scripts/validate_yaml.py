@@ -19,14 +19,19 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from _fetchers.models import Project
 
 
-def validate_file(path: Path) -> list[str]:
-    errors = []
+def validate_file(path: Path) -> tuple[list[str], list[str]]:
+    errors: list[str] = []
+    warnings: list[str] = []
     try:
         data = yaml.safe_load(path.read_text(encoding="utf-8"))
-        Project.model_validate(data)
+        project = Project.model_validate(data)
+        if not project.iso_9999_codes:
+            warnings.append(f"{path.name}: iso_9999_codes is missing or empty")
+        if "at_relevance" not in data:
+            warnings.append(f"{path.name}: at_relevance not explicitly set (defaulting to primary)")
     except Exception as exc:
         errors.append(f"{path}: {exc}")
-    return errors
+    return errors, warnings
 
 
 def main() -> None:
@@ -41,12 +46,17 @@ def main() -> None:
         sys.exit(0)
 
     all_errors: list[str] = []
+    all_warnings: list[str] = []
     for f in files:
-        errs = validate_file(f)
+        errs, warns = validate_file(f)
         if errs:
             all_errors.extend(errs)
             for e in errs:
                 print(f"FAIL  {e}")
+        elif warns:
+            for w in warns:
+                print(f"WARN  {w}")
+            all_warnings.extend(warns)
         else:
             print(f"  OK  {f.name}")
 
@@ -55,7 +65,10 @@ def main() -> None:
         print(f"{len(all_errors)} error(s) found.")
         sys.exit(1)
     else:
-        print(f"All {len(files)} file(s) valid.")
+        summary = f"All {len(files)} file(s) valid."
+        if all_warnings:
+            summary += f"  ({len(all_warnings)} warning(s))"
+        print(summary)
 
 
 if __name__ == "__main__":
