@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 # Trigger on every push to main and allow manual runs.
 on:
-  push:
+  workflow_dispatch:
     branches: [main]
   workflow_dispatch:
 
