@@ -1,0 +1,758 @@
+---
+layout: base.njk
+title: Browse Projects — Assistive Commons Watch
+---
+<style>
+  /* ── Layout helpers ── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+  /* ── Header ── */
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border);
+    height: 56px;
+  }
+  .site-header .container { height: 100%; display: flex; align-items: center; }
+  .wordmark {
+    font-size: 15px; font-weight: 800; letter-spacing: -0.03em;
+    color: var(--text-primary); margin-right: auto; text-decoration: none;
+  }
+  .wordmark:hover { opacity: 0.8; }
+  .live-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: oklch(0.94 0.07 142); border-radius: 100px;
+    padding: 3px 8px; margin-left: 10px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.07em;
+    color: oklch(0.33 0.14 142); text-transform: uppercase;
+  }
+  .live-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: oklch(0.50 0.17 142);
+    animation: pulse-dot 2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  .site-nav { display: flex; align-items: center; gap: 4px; }
+  .site-nav a {
+    font-size: 13px; font-weight: 500; color: var(--text-secondary);
+    padding: 7px 12px; border-radius: 6px; transition: background 0.15s;
+  }
+  .site-nav a:hover { background: var(--bg-page); }
+  .site-nav a[aria-current="page"] {
+    background: var(--bg-page); color: var(--text-primary); font-weight: 600;
+  }
+  .nav-cta {
+    font-size: 13px; font-weight: 600; color: white;
+    background: var(--accent-green); padding: 7px 15px;
+    border-radius: 7px; margin-left: 8px; transition: opacity 0.15s;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* ── Page hero ── */
+  .page-hero {
+    background: var(--bg-white); border-bottom: 1px solid var(--border);
+    padding: 28px 0 24px;
+  }
+  .page-hero .container { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .page-title {
+    font-size: 28px; font-weight: 800; letter-spacing: -0.03em;
+    color: oklch(0.17 0.025 50);
+  }
+  .page-subtitle { font-size: 14px; color: var(--text-muted); }
+
+  /* ── Browse layout ── */
+  .browse-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 24px;
+    padding: 24px 0 64px;
+    align-items: start;
+  }
+
+  /* ── Filter panel ── */
+  .filter-panel {
+    background: var(--bg-white); border-radius: 12px;
+    border: 1px solid var(--border); position: sticky; top: 72px;
+  }
+  .filter-panel-header {
+    padding: 14px 16px; border-bottom: 1px solid var(--border-subtle);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .filter-panel-title {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--text-primary);
+  }
+  .filter-clear-btn {
+    font-size: 11px; font-weight: 600; color: var(--accent-green);
+    background: none; border: none; cursor: pointer; padding: 2px 4px;
+    border-radius: 4px; display: none;
+  }
+  .filter-clear-btn:hover { background: var(--accent-green-bg); }
+  .filter-clear-btn.visible { display: block; }
+
+  .filter-section {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .filter-section:last-child { border-bottom: none; }
+  .filter-section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.07em;
+    text-transform: uppercase; color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .filter-options { display: flex; flex-direction: column; gap: 6px; }
+  .filter-option {
+    display: flex; align-items: center; gap: 8px;
+    cursor: pointer; padding: 2px 0;
+  }
+  .filter-option input[type="checkbox"] {
+    width: 14px; height: 14px; accent-color: var(--accent-green);
+    cursor: pointer; flex-shrink: 0;
+    margin: 0;
+  }
+  .filter-option-label {
+    font-size: 13px; color: var(--text-secondary);
+    cursor: pointer; user-select: none;
+  }
+  .filter-option-count {
+    font-size: 11px; color: var(--text-muted);
+    margin-left: auto;
+  }
+  .filter-option input:checked + .filter-option-label {
+    color: var(--text-primary); font-weight: 600;
+  }
+
+  /* Radio group for co-design */
+  .filter-option input[type="radio"] {
+    width: 14px; height: 14px; accent-color: var(--accent-green);
+    cursor: pointer; flex-shrink: 0; margin: 0;
+  }
+
+  /* ── Results area ── */
+  .results-area { display: flex; flex-direction: column; gap: 12px; }
+
+  .results-toolbar {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--bg-white); border-radius: 10px;
+    border: 1px solid var(--border); padding: 10px 16px;
+    flex-wrap: wrap;
+  }
+  .results-count {
+    font-size: 13px; font-weight: 600; color: var(--text-primary);
+    margin-right: auto;
+  }
+  .results-count-muted { color: var(--text-muted); font-weight: 400; }
+  .sort-label {
+    font-size: 12px; color: var(--text-muted); white-space: nowrap;
+  }
+  .sort-select {
+    font-size: 13px; font-weight: 500; color: var(--text-primary);
+    background: var(--bg-page); border: 1px solid var(--border);
+    border-radius: 6px; padding: 5px 8px; cursor: pointer;
+    font-family: inherit;
+  }
+  .sort-select:focus { outline: 2px solid var(--accent-green); outline-offset: 1px; }
+
+  /* ── Project cards ── */
+  .project-cards { display: flex; flex-direction: column; gap: 10px; }
+
+  .project-card {
+    background: var(--bg-white); border-radius: 10px;
+    border: 1px solid var(--border);
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 12px; padding: 16px 18px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    text-decoration: none; color: inherit;
+  }
+  .project-card:hover {
+    border-color: oklch(0.75 0.06 165);
+    box-shadow: 0 2px 8px oklch(0 0 0 / 0.05);
+  }
+  .project-card:focus-visible {
+    outline: 2px solid var(--accent-green); outline-offset: 2px;
+  }
+
+  .card-main { min-width: 0; }
+  .card-name {
+    font-size: 15px; font-weight: 700; color: oklch(0.17 0.025 50);
+    margin-bottom: 4px; letter-spacing: -0.01em;
+  }
+  .card-desc {
+    font-size: 13px; line-height: 1.55; color: var(--text-muted);
+    margin-bottom: 10px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
+  .card-tag {
+    display: inline-block; padding: 2px 8px; border-radius: 100px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.02em;
+    background: var(--bg-page); border: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+  .card-tag--area {
+    background: oklch(0.93 0.06 165); border-color: oklch(0.80 0.10 165);
+    color: oklch(0.30 0.12 165);
+  }
+  .card-meta {
+    font-size: 11px; color: var(--text-muted); margin-left: auto; margin-top: 2px;
+    white-space: nowrap;
+  }
+
+  .card-right {
+    display: flex; flex-direction: column; align-items: flex-end;
+    gap: 8px; flex-shrink: 0;
+  }
+  .tier-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 10px; border-radius: 100px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .tier-pill-dot {
+    width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+  }
+  .card-score {
+    font-size: 20px; font-weight: 800; letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums; color: var(--text-primary);
+    text-align: right;
+  }
+  .card-score-label {
+    font-size: 10px; color: var(--text-muted); text-align: right;
+    font-weight: 500; letter-spacing: 0.03em; margin-top: -2px;
+  }
+
+  /* ── Empty state ── */
+  .empty-state {
+    text-align: center; padding: 56px 24px;
+    background: var(--bg-white); border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  .empty-state-icon { font-size: 32px; margin-bottom: 12px; }
+  .empty-state-title {
+    font-size: 16px; font-weight: 700; color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+  .empty-state-body { font-size: 14px; color: var(--text-muted); }
+  .empty-clear-link {
+    display: inline-block; margin-top: 14px; font-size: 13px;
+    font-weight: 600; color: var(--accent-green); cursor: pointer;
+    background: none; border: none; font-family: inherit;
+  }
+  .empty-clear-link:hover { text-decoration: underline; }
+
+  /* ── Footer ── */
+  .site-footer {
+    background: var(--bg-white); border-top: 1px solid var(--border);
+    padding: 20px 40px;
+  }
+  .site-footer .container {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-left { font-size: 12px; color: var(--text-muted); }
+  .footer-left a { color: var(--accent-green); }
+  .footer-links { display: flex; gap: 16px; }
+  .footer-links a { font-size: 12px; color: oklch(0.52 0.015 50); }
+
+  /* ── No-JS fallback ── */
+  .no-js-note {
+    font-size: 12px; color: var(--text-muted); padding: 6px 0;
+  }
+</style>
+
+{# Embed all project data for client-side filtering #}
+<script id="acw-data" type="application/json">
+{{ acw.projects | dump | safe }}
+</script>
+
+<!-- ─────────────────────────── HEADER ─────────────────────────── -->
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">
+      Assistive Commons Watch
+      <span class="live-badge">
+        <span class="live-dot"></span>LIVE
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Site navigation">
+      <a href="/browse" aria-current="page">Browse</a>
+      <a href="/recent">Recent Changes</a>
+      <a href="/needs-attention">Needs Attention</a>
+      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new" class="nav-cta">Submit a project →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─────────────────────────── PAGE HERO ─────────────────────────── -->
+<div class="page-hero">
+  <div class="container">
+    <h1 class="page-title">Browse Projects</h1>
+    <p class="page-subtitle">{{ acw.projects | length }} open-source assistive technology projects</p>
+  </div>
+</div>
+
+<!-- ─────────────────────────── MAIN ─────────────────────────── -->
+<main>
+  <div class="container">
+    <div class="browse-layout">
+
+      <!-- ── Filter panel ── -->
+      <aside aria-label="Filter projects">
+        <div class="filter-panel">
+          <div class="filter-panel-header">
+            <span class="filter-panel-title">Filter</span>
+            <button class="filter-clear-btn" id="clear-all-btn" aria-label="Clear all filters">Clear all</button>
+          </div>
+
+          <!-- Disability area -->
+          <div class="filter-section">
+            <div class="filter-section-label" id="area-label">Disability Area</div>
+            <div class="filter-options" role="group" aria-labelledby="area-label">
+              <label class="filter-option">
+                <input type="checkbox" name="area" value="eyegaze">
+                <span class="filter-option-label">Eye Gaze / Tracking</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="area" value="motor">
+                <span class="filter-option-label">Motor / Switch Access</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="area" value="communication">
+                <span class="filter-option-label">AAC / Communication</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="area" value="vision">
+                <span class="filter-option-label">Vision / Braille</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="area" value="cognitive">
+                <span class="filter-option-label">Cognitive</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="area" value="hearing">
+                <span class="filter-option-label">Hearing</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="area" value="prosthetics">
+                <span class="filter-option-label">Prosthetics / Rehab</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Health tier -->
+          <div class="filter-section">
+            <div class="filter-section-label" id="tier-label">Health Tier</div>
+            <div class="filter-options" role="group" aria-labelledby="tier-label">
+              <label class="filter-option">
+                <input type="checkbox" name="tier" value="thriving">
+                <span class="filter-option-label">Thriving</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="tier" value="stable">
+                <span class="filter-option-label">Stable</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="tier" value="dormant">
+                <span class="filter-option-label">Dormant</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="tier" value="at_risk">
+                <span class="filter-option-label">At Risk</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="tier" value="archived">
+                <span class="filter-option-label">Archived</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Modality -->
+          <div class="filter-section">
+            <div class="filter-section-label" id="modality-label">Modality</div>
+            <div class="filter-options" role="group" aria-labelledby="modality-label">
+              <label class="filter-option">
+                <input type="checkbox" name="modality" value="hardware">
+                <span class="filter-option-label">Hardware</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="modality" value="software">
+                <span class="filter-option-label">Software</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="modality" value="firmware">
+                <span class="filter-option-label">Firmware</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="modality" value="hybrid">
+                <span class="filter-option-label">Hybrid</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Skill level -->
+          <div class="filter-section">
+            <div class="filter-section-label" id="skill-label">Skill Level</div>
+            <div class="filter-options" role="group" aria-labelledby="skill-label">
+              <label class="filter-option">
+                <input type="checkbox" name="skill" value="beginner">
+                <span class="filter-option-label">Beginner</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="skill" value="maker">
+                <span class="filter-option-label">Maker</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="skill" value="engineer">
+                <span class="filter-option-label">Engineer</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Co-design / NAUWU -->
+          <div class="filter-section">
+            <div class="filter-section-label" id="codesign-label">Co-designed (NAUWU)</div>
+            <div class="filter-options" role="group" aria-labelledby="codesign-label">
+              <label class="filter-option">
+                <input type="radio" name="codesign" value="all" checked>
+                <span class="filter-option-label">Any</span>
+              </label>
+              <label class="filter-option">
+                <input type="radio" name="codesign" value="yes">
+                <span class="filter-option-label">Yes — co-designed</span>
+              </label>
+              <label class="filter-option">
+                <input type="radio" name="codesign" value="no">
+                <span class="filter-option-label">No evidence</span>
+              </label>
+              <label class="filter-option">
+                <input type="radio" name="codesign" value="unknown">
+                <span class="filter-option-label">Unknown</span>
+              </label>
+            </div>
+          </div>
+
+        </div><!-- /filter-panel -->
+      </aside>
+
+      <!-- ── Results area ── -->
+      <div class="results-area">
+
+        <!-- Toolbar -->
+        <div class="results-toolbar" role="toolbar" aria-label="Sort and result count">
+          <span class="results-count" id="results-count" aria-live="polite" aria-atomic="true">
+            <span id="count-num">{{ acw.projects | length }}</span>
+            <span class="results-count-muted"> projects</span>
+          </span>
+          <label class="sort-label" for="sort-select">Sort by</label>
+          <select class="sort-select" id="sort-select" aria-label="Sort projects by">
+            <option value="score-desc">Health score ↓</option>
+            <option value="score-asc">Health score ↑</option>
+            <option value="name-asc">Name A–Z</option>
+            <option value="name-desc">Name Z–A</option>
+            <option value="stars-desc">Stars ↓</option>
+            <option value="commit-desc">Last commit ↓</option>
+          </select>
+        </div>
+
+        <!-- Cards list -->
+        <div class="project-cards" id="project-cards" role="list" aria-label="Project results">
+
+          <!-- Static no-JS fallback: rendered server-side, hidden by JS -->
+          <noscript>
+            <p class="no-js-note">Enable JavaScript to filter and sort projects.</p>
+          </noscript>
+
+          {%- for p in acw.projects | sort(attribute='health_score', reverse=true) -%}
+          <a
+            class="project-card"
+            href="/projects/{{ p.id }}/"
+            role="listitem"
+            aria-label="{{ p.name }}, {{ p.health_tier_label }} — {{ p.description | truncate(120) }}"
+            data-id="{{ p.id }}"
+          >
+            <div class="card-main">
+              <div class="card-name">{{ p.name }}</div>
+              <div class="card-desc">{{ p.description }}</div>
+              <div class="card-tags">
+                {%- for label in p.disability_area_labels -%}
+                <span class="card-tag card-tag--area">{{ label }}</span>
+                {%- endfor -%}
+                <span class="card-tag">{{ p.modality_label }}</span>
+                {%- if p.skill_level_label -%}
+                <span class="card-tag">{{ p.skill_level_label }}</span>
+                {%- endif -%}
+                {%- if p.github_last_commit -%}
+                <span class="card-meta">Last commit {{ p.github_last_commit }}</span>
+                {%- endif -%}
+              </div>
+            </div>
+            <div class="card-right">
+              <span
+                class="tier-pill"
+                style="background: {{ p.health_tier | tierColor }}18; color: {{ p.health_tier | tierColor }}; border: 1px solid {{ p.health_tier | tierColor }}35;"
+              >
+                <span class="tier-pill-dot" style="background: {{ p.health_tier | tierColor }}" aria-hidden="true"></span>
+                {{ p.health_tier_label }}
+              </span>
+              <div>
+                <div class="card-score">{{ p.health_score }}</div>
+                <div class="card-score-label">/ 10</div>
+              </div>
+            </div>
+          </a>
+          {%- endfor -%}
+
+        </div><!-- /project-cards -->
+
+        <!-- Empty state (hidden until JS shows it) -->
+        <div class="empty-state" id="empty-state" style="display:none;" role="status" aria-live="polite">
+          <div class="empty-state-icon" aria-hidden="true">🔍</div>
+          <div class="empty-state-title">No projects match your filters</div>
+          <p class="empty-state-body">Try removing one or more filters to see more results.</p>
+          <button class="empty-clear-link" id="empty-clear-btn">Clear all filters</button>
+        </div>
+
+      </div><!-- /results-area -->
+
+    </div><!-- /browse-layout -->
+  </div>
+</main>
+
+<!-- ─────────────────────────── FOOTER ─────────────────────────── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-left">
+      Assistive Commons Watch · Data: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/hoseasiu/assistive-commons-watch">GitHub</a>
+      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new">Submit a project</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const PROJECTS = JSON.parse(document.getElementById('acw-data').textContent);
+
+  // ── Tier colors (mirrors .eleventy.js) ──────────────────────────────────
+  const TIER_COLORS = {
+    thriving:   'oklch(0.52 0.16 142)',
+    stable:     'oklch(0.50 0.14 245)',
+    dormant:    'oklch(0.72 0.13 83)',
+    at_risk:    'oklch(0.62 0.17 47)',
+    archived:   'oklch(0.52 0.14 22)',
+    unverified: 'oklch(0.80 0.02 250)',
+  };
+  const TIER_LABELS = {
+    thriving: 'Thriving', stable: 'Stable', dormant: 'Dormant',
+    at_risk: 'At Risk', archived: 'Archived', unverified: 'Unverified',
+  };
+
+  // ── DOM refs ─────────────────────────────────────────────────────────────
+  const cardsContainer = document.getElementById('project-cards');
+  const emptyState     = document.getElementById('empty-state');
+  const countNum       = document.getElementById('count-num');
+  const sortSelect     = document.getElementById('sort-select');
+  const clearAllBtn    = document.getElementById('clear-all-btn');
+  const emptyClearBtn  = document.getElementById('empty-clear-btn');
+
+  // Remove static server-rendered cards (JS takes over rendering)
+  cardsContainer.innerHTML = '';
+
+  // ── Read/write URL state ─────────────────────────────────────────────────
+  function getFilters() {
+    const p = new URLSearchParams(location.search);
+    return {
+      area:     p.get('area')     ? p.get('area').split(',').filter(Boolean)     : [],
+      tier:     p.get('tier')     ? p.get('tier').split(',').filter(Boolean)     : [],
+      modality: p.get('modality') ? p.get('modality').split(',').filter(Boolean) : [],
+      skill:    p.get('skill')    ? p.get('skill').split(',').filter(Boolean)    : [],
+      codesign: p.get('codesign') || 'all',
+      sort:     p.get('sort')     || 'score-desc',
+    };
+  }
+
+  function applyFiltersToUI(filters) {
+    // checkboxes
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      cb.checked = filters[cb.name] && filters[cb.name].includes(cb.value);
+    });
+    // radios
+    document.querySelectorAll('input[type="radio"]').forEach(r => {
+      r.checked = r.value === filters.codesign;
+    });
+    // sort
+    sortSelect.value = filters.sort;
+  }
+
+  function pushState(filters) {
+    const p = new URLSearchParams();
+    if (filters.area.length)     p.set('area', filters.area.join(','));
+    if (filters.tier.length)     p.set('tier', filters.tier.join(','));
+    if (filters.modality.length) p.set('modality', filters.modality.join(','));
+    if (filters.skill.length)    p.set('skill', filters.skill.join(','));
+    if (filters.codesign !== 'all') p.set('codesign', filters.codesign);
+    if (filters.sort !== 'score-desc') p.set('sort', filters.sort);
+    const qs = p.toString();
+    history.replaceState(null, '', qs ? '?' + qs : location.pathname);
+  }
+
+  // ── Filter + sort logic ──────────────────────────────────────────────────
+  function applyCodesignFilter(project, value) {
+    if (value === 'all') return true;
+    const v = project.nothing_about_us;
+    if (value === 'yes')     return v === true;
+    if (value === 'no')      return v === false;
+    if (value === 'unknown') return v === null || v === undefined;
+    return true;
+  }
+
+  function filterAndSort(filters) {
+    let results = PROJECTS.filter(p => {
+      if (filters.area.length && !filters.area.some(a => (p.disability_area || []).includes(a)))
+        return false;
+      if (filters.tier.length && !filters.tier.includes(p.health_tier))
+        return false;
+      if (filters.modality.length && !filters.modality.includes(p.modality))
+        return false;
+      if (filters.skill.length && !filters.skill.includes(p.skill_level))
+        return false;
+      if (!applyCodesignFilter(p, filters.codesign))
+        return false;
+      return true;
+    });
+
+    results.sort((a, b) => {
+      switch (filters.sort) {
+        case 'score-asc':  return (a.health_score ?? 0) - (b.health_score ?? 0);
+        case 'name-asc':   return a.name.localeCompare(b.name);
+        case 'name-desc':  return b.name.localeCompare(a.name);
+        case 'stars-desc': return (b.github_stars ?? -1) - (a.github_stars ?? -1);
+        case 'commit-desc':
+          return (b.github_last_commit || '').localeCompare(a.github_last_commit || '');
+        default: // score-desc
+          return (b.health_score ?? 0) - (a.health_score ?? 0);
+      }
+    });
+    return results;
+  }
+
+  // ── Render cards ─────────────────────────────────────────────────────────
+  function hasActiveFilters(filters) {
+    return filters.area.length || filters.tier.length || filters.modality.length ||
+           filters.skill.length || filters.codesign !== 'all';
+  }
+
+  function truncate(str, max) {
+    if (!str || str.length <= max) return str || '';
+    return str.slice(0, max).trimEnd() + '…';
+  }
+
+  function renderCard(p) {
+    const color  = TIER_COLORS[p.health_tier] || TIER_COLORS.unverified;
+    const label  = TIER_LABELS[p.health_tier]  || p.health_tier;
+    const areaTagsHtml = (p.disability_area_labels || [])
+      .map(l => `<span class="card-tag card-tag--area">${l}</span>`).join('');
+    const modalityHtml = p.modality_label
+      ? `<span class="card-tag">${p.modality_label}</span>` : '';
+    const skillHtml = p.skill_level_label
+      ? `<span class="card-tag">${p.skill_level_label}</span>` : '';
+    const commitHtml = p.github_last_commit
+      ? `<span class="card-meta">Last commit ${p.github_last_commit}</span>` : '';
+
+    const a = document.createElement('a');
+    a.className = 'project-card';
+    a.href = `/projects/${p.id}/`;
+    a.setAttribute('role', 'listitem');
+    a.setAttribute('aria-label', `${p.name}, ${label} — ${truncate(p.description, 120)}`);
+    a.dataset.id = p.id;
+    a.innerHTML = `
+      <div class="card-main">
+        <div class="card-name">${p.name}</div>
+        <div class="card-desc">${p.description || ''}</div>
+        <div class="card-tags">
+          ${areaTagsHtml}${modalityHtml}${skillHtml}${commitHtml}
+        </div>
+      </div>
+      <div class="card-right">
+        <span class="tier-pill"
+          style="background:${color}18;color:${color};border:1px solid ${color}35;">
+          <span class="tier-pill-dot" style="background:${color}" aria-hidden="true"></span>
+          ${label}
+        </span>
+        <div>
+          <div class="card-score">${p.health_score ?? '—'}</div>
+          <div class="card-score-label">/ 10</div>
+        </div>
+      </div>`;
+    return a;
+  }
+
+  function render() {
+    const filters = getFilters();
+    const results = filterAndSort(filters);
+
+    // Update UI inputs to match URL state
+    applyFiltersToUI(filters);
+
+    // Show/hide clear button
+    const active = hasActiveFilters(filters);
+    clearAllBtn.classList.toggle('visible', active);
+
+    // Update count
+    countNum.textContent = results.length;
+
+    // Render cards
+    cardsContainer.innerHTML = '';
+    if (results.length === 0) {
+      emptyState.style.display = '';
+    } else {
+      emptyState.style.display = 'none';
+      const frag = document.createDocumentFragment();
+      results.forEach(p => frag.appendChild(renderCard(p)));
+      cardsContainer.appendChild(frag);
+    }
+  }
+
+  // ── Event handlers ───────────────────────────────────────────────────────
+  function readCurrentFilters() {
+    const area = [...document.querySelectorAll('input[name="area"]:checked')].map(i => i.value);
+    const tier = [...document.querySelectorAll('input[name="tier"]:checked')].map(i => i.value);
+    const modality = [...document.querySelectorAll('input[name="modality"]:checked')].map(i => i.value);
+    const skill = [...document.querySelectorAll('input[name="skill"]:checked')].map(i => i.value);
+    const codesignEl = document.querySelector('input[name="codesign"]:checked');
+    const codesign = codesignEl ? codesignEl.value : 'all';
+    const sort = sortSelect.value;
+    return { area, tier, modality, skill, codesign, sort };
+  }
+
+  function onFilterChange() {
+    const filters = readCurrentFilters();
+    pushState(filters);
+    render();
+  }
+
+  function clearAllFilters() {
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
+    const allRadio = document.querySelector('input[name="codesign"][value="all"]');
+    if (allRadio) allRadio.checked = true;
+    sortSelect.value = 'score-desc';
+    history.replaceState(null, '', location.pathname);
+    render();
+  }
+
+  document.querySelectorAll('input[type="checkbox"], input[type="radio"]')
+    .forEach(el => el.addEventListener('change', onFilterChange));
+  sortSelect.addEventListener('change', onFilterChange);
+  clearAllBtn.addEventListener('click', clearAllFilters);
+  emptyClearBtn.addEventListener('click', clearAllFilters);
+
+  // Handle browser back/forward
+  window.addEventListener('popstate', render);
+
+  // Initial render from URL
+  render();
+})();
+</script>
