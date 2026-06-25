@@ -244,7 +244,7 @@ title: Browse Projects — Assistive Commons Watch
   /* ── Footer ── */
   .site-footer {
     background: var(--bg-white); border-top: 1px solid var(--border);
-    padding: 20px 40px;
+    padding: 20px 0;
   }
   .site-footer .container {
     display: flex; justify-content: space-between; align-items: center;
@@ -258,6 +258,28 @@ title: Browse Projects — Assistive Commons Watch
   /* ── No-JS fallback ── */
   .no-js-note {
     font-size: 12px; color: var(--text-muted); padding: 6px 0;
+  }
+
+  /* ── Filter toggle (mobile only) ── */
+  .filter-toggle-btn {
+    display: none;
+    width: 100%; padding: 10px 16px;
+    font-family: inherit; font-size: 13px; font-weight: 600;
+    color: var(--text-primary); background: var(--bg-white);
+    border: 1px solid var(--border); border-radius: 10px;
+    cursor: pointer; text-align: left;
+    margin-bottom: 12px;
+  }
+  .filter-toggle-btn:hover { background: var(--bg-page); }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .container { padding: 0 16px; }
+    .site-nav a:not(.nav-cta) { display: none; }
+    .browse-layout { grid-template-columns: 1fr; }
+    .filter-toggle-btn { display: block; }
+    .filter-panel { position: static; display: none; margin-bottom: 12px; }
+    .filter-panel.open { display: block; }
   }
 </style>
 
@@ -299,7 +321,10 @@ title: Browse Projects — Assistive Commons Watch
 
       <!-- ── Filter panel ── -->
       <aside aria-label="Filter projects">
-        <div class="filter-panel">
+        <button class="filter-toggle-btn" id="filter-toggle-btn" aria-expanded="false" aria-controls="filter-panel">
+          Filter projects ▾
+        </button>
+        <div class="filter-panel" id="filter-panel">
           <div class="filter-panel-header">
             <span class="filter-panel-title">Filter</span>
             <button class="filter-clear-btn" id="clear-all-btn" aria-label="Clear all filters">Clear all</button>
@@ -755,5 +780,16 @@ title: Browse Projects — Assistive Commons Watch
 
   // Initial render from URL
   render();
+
+  // Mobile filter toggle
+  const filterToggleBtn = document.getElementById('filter-toggle-btn');
+  const filterPanel = document.getElementById('filter-panel');
+  if (filterToggleBtn && filterPanel) {
+    filterToggleBtn.addEventListener('click', () => {
+      const isOpen = filterPanel.classList.toggle('open');
+      filterToggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      filterToggleBtn.textContent = isOpen ? 'Hide filters ▴' : 'Filter projects ▾';
+    });
+  }
 })();
 </script>
