@@ -58,6 +58,9 @@ def fetch_project(yaml_path: Path, fetcher: GitHubFetcher) -> tuple[str, str | N
 
     fetched = fetcher.fetch(url)
 
+    if fetched.url != url:
+        print(f"    URL updated: {url} → {fetched.url}")
+
     # Replace the github source in the raw dict in-place (preserves key order).
     github_idx = next(
         i for i, s in enumerate(raw.get("sources", []))

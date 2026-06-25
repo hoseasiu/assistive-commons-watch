@@ -49,7 +49,7 @@ class GitHubFetcher(BaseFetcher):
         }
         if tok:
             headers["Authorization"] = f"Bearer {tok}"
-        self._client = httpx.Client(headers=headers, timeout=30.0)
+        self._client = httpx.Client(headers=headers, timeout=30.0, follow_redirects=True)
 
     # ------------------------------------------------------------------
     # Public interface
@@ -69,9 +69,11 @@ class GitHubFetcher(BaseFetcher):
         published = [r for r in releases if not r.get("draft", False)]
         one_year_ago = date.today() - timedelta(days=365)
 
+        canonical_url = meta.get("html_url", url)
+
         return GitHubSource(
             platform="github",
-            url=url,
+            url=canonical_url,
             fetched_at=datetime.now(timezone.utc),
             # Activity
             stars=meta.get("stargazers_count"),
