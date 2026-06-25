@@ -45,5 +45,21 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/OpenBCI/OpenBCI_GUI
-health_tier: null
-health_score: null
+  fetched_at: '2026-06-25T01:09:13.053817+00:00'
+  stars: 932
+  forks: 306
+  last_commit: '2025-03-31'
+  open_issues: 51
+  open_prs: null
+  issue_response_rate: 0.14
+  release_in_last_year: true
+  readme_has_installation: true
+  readme_has_usage: false
+  readme_has_bom: false
+  release_artifact_present: true
+  dependencies_pinned: null
+  has_contributing: true
+  has_code_of_conduct: true
+  has_issue_templates: true
+health_tier: stable
+health_score: 6.37

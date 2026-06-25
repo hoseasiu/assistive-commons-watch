@@ -43,5 +43,21 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/ableplayer/ableplayer
-health_tier: null
-health_score: null
+  fetched_at: '2026-06-25T01:08:37.829253+00:00'
+  stars: 822
+  forks: 239
+  last_commit: '2026-06-21'
+  open_issues: 104
+  open_prs: null
+  issue_response_rate: 0.25
+  release_in_last_year: true
+  readme_has_installation: true
+  readme_has_usage: false
+  readme_has_bom: false
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: true
+  has_code_of_conduct: true
+  has_issue_templates: true
+health_tier: stable
+health_score: 6.6

@@ -38,5 +38,21 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/liblouis/liblouis
-health_tier: null
-health_score: null
+  fetched_at: '2026-06-25T01:09:00.375079+00:00'
+  stars: 335
+  forks: 253
+  last_commit: '2026-06-09'
+  open_issues: 250
+  open_prs: null
+  issue_response_rate: 0.75
+  release_in_last_year: true
+  readme_has_installation: false
+  readme_has_usage: false
+  readme_has_bom: false
+  release_artifact_present: true
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
+health_tier: at_risk
+health_score: 4.5

@@ -38,7 +38,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/brailletouch/Brailletouch
-  fetched_at: '2026-06-25T00:32:24.017033+00:00'
+  fetched_at: '2026-06-25T01:08:43.617032+00:00'
   stars: 52
   forks: 8
   last_commit: '2025-05-15'
