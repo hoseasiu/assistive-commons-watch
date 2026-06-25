@@ -1,0 +1,124 @@
+name: Submit a project
+description: Suggest an open-source assistive technology project for inclusion in Assistive Commons Watch
+title: "[Submission] <project name>"
+labels: ["submission"]
+body:
+  - type: input
+    id: project_name
+    attributes:
+      label: Project name
+      description: The name of the project as it appears in its repository or documentation.
+    validations:
+      required: true
+
+  - type: input
+    id: source_url
+    attributes:
+      label: Source URL
+      description: Link to the project's source code or main repository.
+      placeholder: "https://github.com/org/repo"
+    validations:
+      required: true
+
+  - type: textarea
+    id: short_description
+    attributes:
+      label: Short description
+      description: In a sentence or two, what does this project do and who is it for?
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: disability_area
+    attributes:
+      label: Disability area(s)
+      description: Check all that apply.
+      options:
+        - label: AAC / Communication
+        - label: Eye Gaze
+        - label: Motor / Switch Access
+        - label: Vision / Braille
+        - label: Hearing
+        - label: Prosthetics / Motor Rehab
+        - label: Cognitive
+        - label: Other
+
+  - type: dropdown
+    id: modality
+    attributes:
+      label: Modality
+      description: What form does this project take?
+      options:
+        - hardware
+        - software
+        - firmware
+        - hybrid
+    validations:
+      required: false
+
+  - type: dropdown
+    id: open_source
+    attributes:
+      label: Is this open source with a public license?
+      description: "Yes means the project has a recognized open-source license (e.g. MIT, GPL, Apache)."
+      options:
+        - "Yes"
+        - "No"
+    validations:
+      required: false
+
+  - type: input
+    id: license_name
+    attributes:
+      label: License name (if open source)
+      description: "e.g. MIT, Apache 2.0, GPL-3.0"
+      placeholder: MIT
+    validations:
+      required: false
+
+  - type: dropdown
+    id: replicability
+    attributes:
+      label: Are design files or code available for someone else to build or adapt this project?
+      description: >
+        "Yes" means another builder could reproduce or adapt this project using the published files.
+        "Partial" means some files are available but key pieces are missing or proprietary.
+        "No" means the source is not publicly available in a form someone could build from.
+      options:
+        - "Yes"
+        - "Partial"
+        - "No"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: nothing_about_us
+    attributes:
+      label: Was this built with or by disabled people? (Nothing About Us Without Us)
+      description: >
+        Did disabled people participate in designing, building, or testing this project?
+        "Unsure" is fine — this is for tracking purposes, not a gate.
+      options:
+        - "Yes"
+        - "No"
+        - "Unsure"
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Anything else the maintainers should know about this project?
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        **Maintainer checklist**
+        - [ ] Scope check: is this AT (not general accessibility)?
+        - [ ] Run `python scripts/add_project.py --url <url>`
+        - [ ] Fill in curated fields from submission
+        - [ ] Open PR with new YAML file
