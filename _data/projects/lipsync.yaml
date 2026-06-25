@@ -43,7 +43,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/LipSync
-  fetched_at: '2026-06-25T01:09:03.643102+00:00'
+  fetched_at: '2026-06-25T01:27:43.215790+00:00'
   stars: 15
   forks: 0
   last_commit: '2026-01-05'

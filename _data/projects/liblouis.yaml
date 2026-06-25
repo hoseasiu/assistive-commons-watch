@@ -38,7 +38,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/liblouis/liblouis
-  fetched_at: '2026-06-25T01:09:00.375079+00:00'
+  fetched_at: '2026-06-25T01:27:41.242073+00:00'
   stars: 335
   forks: 253
   last_commit: '2026-06-09'

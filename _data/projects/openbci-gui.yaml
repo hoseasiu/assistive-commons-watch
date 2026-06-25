@@ -45,7 +45,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/OpenBCI/OpenBCI_GUI
-  fetched_at: '2026-06-25T01:09:13.053817+00:00'
+  fetched_at: '2026-06-25T01:27:50.174591+00:00'
   stars: 932
   forks: 306
   last_commit: '2025-03-31'

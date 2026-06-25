@@ -41,7 +41,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/google/project-gameface
-  fetched_at: '2026-06-25T01:09:28.313824+00:00'
+  fetched_at: '2026-06-25T01:28:04.835727+00:00'
   stars: 632
   forks: 87
   last_commit: '2024-05-15'

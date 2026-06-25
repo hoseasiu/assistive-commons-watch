@@ -43,7 +43,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/ableplayer/ableplayer
-  fetched_at: '2026-06-25T01:08:37.829253+00:00'
+  fetched_at: '2026-06-25T01:27:14.294072+00:00'
   stars: 822
   forks: 239
   last_commit: '2026-06-21'

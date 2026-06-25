@@ -2,8 +2,9 @@ id: acw-0021
 name: ACAT
 description: Assistive Context-Aware Toolkit, originally developed at Intel Labs for
   Stephen Hawking. A Windows platform for people with severely restricted motor and
-  speech capabilities, providing a configurable on-screen keyboard, word/sentence prediction,
-  speech synthesis, and support for switch, eye-gaze, head-tracker, and BCI inputs.
+  speech capabilities, providing a configurable on-screen keyboard, word/sentence
+  prediction, speech synthesis, and support for switch, eye-gaze, head-tracker, and
+  BCI inputs.
 added_date: '2026-06-24'
 tags:
 - communication
@@ -44,5 +45,21 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/intel/acat
-health_tier: null
-health_score: null
+  fetched_at: '2026-06-25T01:27:16.684474+00:00'
+  stars: 3231
+  forks: 614
+  last_commit: '2026-04-23'
+  open_issues: 22
+  open_prs: null
+  issue_response_rate: 0.0
+  release_in_last_year: true
+  readme_has_installation: false
+  readme_has_usage: false
+  readme_has_bom: false
+  release_artifact_present: true
+  dependencies_pinned: null
+  has_contributing: true
+  has_code_of_conduct: true
+  has_issue_templates: false
+health_tier: thriving
+health_score: 7.5

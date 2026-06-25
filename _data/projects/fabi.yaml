@@ -45,7 +45,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/asterics/FABI
-  fetched_at: '2026-06-25T01:08:52.573517+00:00'
+  fetched_at: '2026-06-25T01:27:33.680753+00:00'
   stars: 19
   forks: 11
   last_commit: '2026-06-10'
