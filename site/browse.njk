@@ -534,6 +534,7 @@ title: Browse Projects — Assistive Commons Watch
 
 <script>
 (function () {
+  const PATH_PREFIX = {{ env.pathPrefix | dump }};
   const PROJECTS = JSON.parse(document.getElementById('acw-data').textContent);
 
   // ── Tier colors (mirrors .eleventy.js) ──────────────────────────────────
@@ -664,7 +665,7 @@ title: Browse Projects — Assistive Commons Watch
 
     const a = document.createElement('a');
     a.className = 'project-card';
-    a.href = `/projects/${p.id}/`;
+    a.href = `${PATH_PREFIX}projects/${p.id}/`;
     a.setAttribute('role', 'listitem');
     a.setAttribute('aria-label', `${p.name}, ${label} — ${truncate(p.description, 120)}`);
     a.dataset.id = p.id;
