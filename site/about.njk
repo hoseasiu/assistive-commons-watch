@@ -1,0 +1,275 @@
+---
+title: "About — Assistive Commons Watch"
+layout: base.njk
+permalink: "/about/"
+---
+<style>
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+  /* ── Header ── */
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border);
+    height: 56px;
+  }
+  .site-header .container { height: 100%; display: flex; align-items: center; }
+  .wordmark {
+    font-size: 15px; font-weight: 800; letter-spacing: -0.03em;
+    color: var(--text-primary); margin-right: auto;
+    text-decoration: none;
+  }
+  .wordmark:hover { opacity: 0.8; }
+  .site-nav { display: flex; align-items: center; gap: 4px; }
+  .site-nav a {
+    font-size: 13px; font-weight: 500; color: var(--text-secondary);
+    padding: 0 12px; border-radius: 6px; transition: background 0.15s;
+    min-height: 44px; display: inline-flex; align-items: center;
+  }
+  .site-nav a:hover { background: var(--bg-page); }
+  .site-nav .nav-cta {
+    font-size: 13px; font-weight: 600; color: white;
+    background: var(--accent-green); padding: 0 15px;
+    border-radius: 7px; margin-left: 8px; transition: background 0.15s;
+    min-height: 44px; display: inline-flex; align-items: center;
+  }
+  .site-nav .nav-cta:hover { background: oklch(0.36 0.14 165); color: white; }
+
+  /* ── Content ── */
+  .about-hero {
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 0 36px;
+  }
+  .about-hero h1 {
+    font-size: 34px; font-weight: 800; letter-spacing: -0.03em;
+    color: var(--text-primary); margin-bottom: 12px;
+  }
+  .about-hero p {
+    font-size: 16px; line-height: 1.7; color: oklch(0.42 0.02 50);
+    max-width: 640px;
+  }
+
+  .about-body {
+    padding: 40px 0 80px;
+    max-width: 720px;
+  }
+  .about-section { margin-bottom: 48px; }
+  .about-section h2 {
+    font-size: 20px; font-weight: 800; letter-spacing: -0.02em;
+    color: var(--text-primary); margin-bottom: 14px;
+    padding-bottom: 10px; border-bottom: 2px solid var(--border);
+  }
+  .about-section p {
+    font-size: 15px; line-height: 1.75; color: oklch(0.40 0.02 50);
+    margin-bottom: 12px;
+  }
+  .about-section p:last-child { margin-bottom: 0; }
+
+  /* ── Comparison table ── */
+  .registry-table {
+    width: 100%; border-collapse: collapse; margin-top: 20px;
+    font-size: 13px;
+  }
+  .registry-table th {
+    text-align: left; padding: 8px 12px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--text-muted);
+    border-bottom: 2px solid var(--border);
+  }
+  .registry-table td {
+    padding: 10px 12px; border-bottom: 1px solid var(--border-subtle);
+    vertical-align: top; color: var(--text-secondary); line-height: 1.5;
+  }
+  .registry-table tr:last-child td { border-bottom: none; }
+  .registry-table td:first-child { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+  .registry-table td a { color: var(--accent-green); }
+  .registry-table td a:hover { text-decoration: underline; }
+  .acw-row td { background: oklch(0.94 0.06 165 / 0.25); }
+  .acw-row td:first-child { color: var(--accent-green); }
+
+  /* ── Differentiator pills ── */
+  .differentiator-list {
+    list-style: none; display: flex; flex-direction: column; gap: 10px;
+    margin-top: 14px;
+  }
+  .differentiator-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; line-height: 1.6; color: oklch(0.40 0.02 50);
+  }
+  .differentiator-list li::before {
+    content: "✓";
+    color: var(--accent-green); font-weight: 700;
+    flex-shrink: 0; margin-top: 1px;
+  }
+
+  /* ── Footer ── */
+  .site-footer {
+    background: var(--bg-white); border-top: 1px solid var(--border);
+    padding: 20px 0;
+  }
+  .site-footer .container {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-left { font-size: 12px; color: var(--text-muted); }
+  .footer-left a { color: var(--accent-green); }
+  .footer-links { display: flex; gap: 16px; }
+  .footer-links a { font-size: 12px; color: oklch(0.52 0.015 50); }
+
+  @media (max-width: 640px) {
+    .container { padding: 0 16px; }
+    .site-nav a:not(.nav-cta) { display: none; }
+    .about-hero h1 { font-size: 24px; }
+    .registry-table { font-size: 12px; }
+    .registry-table td:first-child { white-space: normal; }
+  }
+</style>
+
+<!-- ─────────────────────────── HEADER ─────────────────────────── -->
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">Assistive Commons Watch</a>
+    <nav class="site-nav" aria-label="Site navigation">
+      <a href="/browse">Browse</a>
+      <a href="/about" aria-current="page" style="color: var(--text-primary); font-weight: 600;">About</a>
+      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new?template=submit_project.yml" class="nav-cta">Submit a project →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─────────────────────────── HERO ─────────────────────────── -->
+<div class="about-hero">
+  <div class="container">
+    <h1>About ACW</h1>
+    <p>
+      Assistive Commons Watch monitors the health of open-source assistive technology projects —
+      tracking activity, replicability, and community engagement so builders can
+      find projects worth contributing to and users can find tools worth relying on.
+    </p>
+  </div>
+</div>
+
+<!-- ─────────────────────────── BODY ─────────────────────────── -->
+<main id="main-content" style="background: var(--bg-page);">
+  <div class="container">
+    <div class="about-body">
+
+      <!-- What ACW does -->
+      <section class="about-section" aria-labelledby="what-heading">
+        <h2 id="what-heading">What we track</h2>
+        <p>
+          ACW is a living registry of open-source AT projects. Every project gets a
+          <strong>health score</strong> (0–10) computed from five dimensions:
+          Activity (25%), Replicability (30%), Community (15%), AT-Specific signals (20%),
+          and Provenance (10%). Scores are refreshed by automated GitHub data fetches.
+        </p>
+        <p>
+          Projects are classified with <strong>ISO 9999 codes</strong> — the international
+          standard for assistive products — so ACW's data can connect to clinical
+          databases and procurement systems that use the same taxonomy.
+        </p>
+        <ul class="differentiator-list" aria-label="What makes ACW different">
+          <li>Live health monitoring — not a static list frozen in time</li>
+          <li>Machine-readable schema (YAML + JSON) designed for downstream tooling</li>
+          <li>ISO 9999 codes linking to clinical and procurement taxonomies</li>
+          <li>AT-specific signals: co-design, end-user docs, known deployments</li>
+          <li>Open data (CC0) — download, fork, remix without restriction</li>
+        </ul>
+      </section>
+
+      <!-- How ACW fits the ecosystem -->
+      <section class="about-section" aria-labelledby="ecosystem-heading">
+        <h2 id="ecosystem-heading">How ACW fits the ecosystem</h2>
+        <p>
+          ACW is not the first AT registry, and it is not trying to replace any of them.
+          The open AT ecosystem is better served by a network of complementary resources
+          than by competing for the same audience. Where the same project appears in
+          another registry, ACW links out.
+        </p>
+
+        <table class="registry-table" aria-label="Comparison of AT registries">
+          <thead>
+            <tr>
+              <th>Registry</th>
+              <th>Focus</th>
+              <th>What it does well</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="acw-row">
+              <td>Assistive Commons Watch</td>
+              <td>Open-source AT projects</td>
+              <td>Live health scores, ISO 9999 codes, machine-readable schema, AT-specific signals</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.makersmakingchange.com" target="_blank" rel="noopener noreferrer">Makers Making Change</a></td>
+              <td>DIY &amp; maker AT hardware</td>
+              <td>200+ devices, build files, community support, instructional videos</td>
+            </tr>
+            <tr>
+              <td><a href="https://openassistive.org" target="_blank" rel="noopener noreferrer">openassistive.org</a></td>
+              <td>Open-source AT software &amp; hardware</td>
+              <td>Curated catalogue with plain-language descriptions for end users</td>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/openassistive/awesome-assistivetech" target="_blank" rel="noopener noreferrer">awesome-assistivetech</a></td>
+              <td>Curated link list</td>
+              <td>Fast overview of the landscape, easy to contribute via GitHub PR</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.openassistivetech.org" target="_blank" rel="noopener noreferrer">GOAT</a></td>
+              <td>Global open AT catalogue</td>
+              <td>Community-built product pages, broad hardware and software coverage</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.eastin.eu" target="_blank" rel="noopener noreferrer">EASTIN</a></td>
+              <td>European AT product database</td>
+              <td>ISO 9999 taxonomy, links to national databases across 10+ countries</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Contributing -->
+      <section class="about-section" aria-labelledby="contribute-heading">
+        <h2 id="contribute-heading">Contributing</h2>
+        <p>
+          ACW is open source. You can submit new projects, correct metadata, or improve
+          the health-scoring model via GitHub.
+        </p>
+        <p>
+          Project data lives in <code style="font-size: 13px; background: var(--bg-page); padding: 1px 5px; border-radius: 4px; border: 1px solid var(--border);">_data/projects/*.yaml</code> —
+          one file per project, validated against a Pydantic schema. The full schema and
+          a guide to contributing are in the repository.
+        </p>
+        <div style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
+          <a
+            href="https://github.com/hoseasiu/assistive-commons-watch/issues/new?template=submit_project.yml"
+            style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; background: var(--accent-green); color: white; border: none;"
+            target="_blank" rel="noopener noreferrer"
+          >Submit a project →</a>
+          <a
+            href="https://github.com/hoseasiu/assistive-commons-watch"
+            style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; background: var(--bg-white); color: var(--text-primary); border: 1px solid var(--border);"
+            target="_blank" rel="noopener noreferrer"
+          >View on GitHub ↗</a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<!-- ─────────────────────────── FOOTER ─────────────────────────── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-left">
+      Assistive Commons Watch · Data: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="https://github.com/hoseasiu/assistive-commons-watch">GitHub</a>
+      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new?template=submit_project.yml">Submit a project</a>
+    </nav>
+  </div>
+</footer>

@@ -550,6 +550,21 @@
       "title": "Documentation Languages",
       "type": "array"
     },
+    "ecosystem_links": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Ecosystem Links"
+    },
     "sources": {
       "default": [],
       "items": {

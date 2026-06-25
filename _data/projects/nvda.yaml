@@ -46,6 +46,9 @@ documentation_languages:
 - fr
 - ja
 - zh
+ecosystem_links:
+  openassistive: "https://openassistive.org/item/nvda/"
+  awesome_assistivetech: "https://github.com/openassistive/awesome-assistivetech#screen-readers"
 sources:
 - platform: github
   url: https://github.com/nvaccess/nvda

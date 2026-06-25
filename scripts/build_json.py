@@ -77,6 +77,14 @@ BUILD_DOCS_LABELS = {
     "complete": "Complete",
 }
 
+ECOSYSTEM_REGISTRY_LABELS = {
+    "makers_making_change": "Makers Making Change",
+    "openassistive": "openassistive.org",
+    "awesome_assistivetech": "awesome-assistivetech",
+    "goat": "GOAT",
+    "eastin": "EASTIN",
+}
+
 
 def _generate_summary(sub_scores: dict, project: Project) -> str:
     """Two-sentence plain-language synthesis based on statically-available signals."""
@@ -187,6 +195,14 @@ def load_projects() -> list[dict]:
                 "origin_program": project.origin_program,
                 "documentation_languages": project.documentation_languages,
                 "platform": project.platform,
+                "ecosystem_links": [
+                    {
+                        "registry": k,
+                        "label": ECOSYSTEM_REGISTRY_LABELS.get(k, k.replace("_", " ").title()),
+                        "url": v,
+                    }
+                    for k, v in (project.ecosystem_links or {}).items()
+                ],
                 "latest_release_url": latest_release_url,
                 "download_ready": download_ready,
                 "github_stars": source.stars if source else None,

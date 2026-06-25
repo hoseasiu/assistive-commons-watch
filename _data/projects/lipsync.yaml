@@ -43,6 +43,8 @@ institutional_affiliation: Makers Making Change
 origin_program: null
 documentation_languages:
 - en
+ecosystem_links:
+  makers_making_change: "https://www.makersmakingchange.com/project/lipsync/"
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/LipSync
