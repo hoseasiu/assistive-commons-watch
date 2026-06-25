@@ -1,0 +1,75 @@
+id: acw-0055
+name: LipSync Classic
+description: The original open-source mouth-operated sip-and-puff joystick that enables
+  people with limited hand function to emulate a mouse on their computer and/or smartphone.
+  Predecessor to the current LipSync; includes 3D-printable enclosure, PCB, and build
+  documentation. Developed by Makers Making Change.
+at_relevance: primary
+added_date: '2026-06-25'
+tags:
+- sip-and-puff
+- joystick
+- switch-access
+- hardware
+- 3d-printing
+- mouth-control
+- pcb
+disability_area:
+- motor
+iso_9999_codes:
+- 22.36.18
+modality: hybrid
+user_context:
+- home
+- work
+- school
+interface:
+- mouse
+- switch
+bom_present: true
+build_docs_quality: complete
+cost_range: $50–$200
+fabrication_methods:
+- 3d-printing
+- electronics
+- soldering
+- pcb
+skill_level: maker
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Makers Making Change
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links:
+  makers_making_change: http://www.makersmakingchange.com/lipsync
+sources:
+- platform: github
+  url: https://github.com/makersmakingchange/LipSync-Classic
+  fetched_at: '2026-06-25T18:32:02.460962+00:00'
+  latest_release_url: https://github.com/makersmakingchange/LipSync-Classic/releases/tag/v3.0
+  stars: 32
+  forks: 10
+  last_commit: '2026-01-09'
+  open_issues: 1
+  open_prs: null
+  issue_response_rate: 0.57
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: false
+  readme_has_bom: false
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: null
+  has_issue_templates: null
+  license_spdx: null
+health_tier: null
+health_score: null
+platform: []
+plain_language_description: null

@@ -40,7 +40,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/antijingoist/opendyslexic
-  fetched_at: '2026-06-25T13:01:02.241974+00:00'
+  fetched_at: '2026-06-25T18:32:37.560341+00:00'
+  latest_release_url: https://github.com/antijingoist/opendyslexic/releases/tag/v0.91.12
   stars: 796
   forks: 46
   last_commit: '2025-08-11'
@@ -58,7 +59,7 @@ sources:
   has_issue_templates: true
   license_spdx: OFL-1.1
 health_tier: at_risk
-health_score: 4.53
+health_score: 4.73
 platform:
 - web
 - windows

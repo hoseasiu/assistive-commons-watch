@@ -15,7 +15,7 @@ tags:
 disability_area:
 - hearing
 iso_9999_codes:
-  - "22.03.06"
+- 22.03.06
 modality: software
 user_context:
 - clinical
@@ -41,7 +41,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/HoerTech-gGmbH/openMHA
-  fetched_at: '2026-06-25T13:01:07.992791+00:00'
+  fetched_at: '2026-06-25T18:32:41.082213+00:00'
+  latest_release_url: https://github.com/HoerTech-gGmbH/openMHA/releases/tag/v4.18.1
   stars: 321
   forks: 97
   last_commit: '2026-06-17'
@@ -59,9 +60,6 @@ sources:
   has_issue_templates: false
   license_spdx: AGPL-3.0
 health_tier: stable
-health_score: 5.6
-platform:
-- windows
-- linux
-- macos
+e: null
+platform: []
 plain_language_description: null

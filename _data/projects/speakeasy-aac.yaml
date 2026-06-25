@@ -12,7 +12,7 @@ tags:
 disability_area:
 - communication
 iso_9999_codes:
-  - "22.21.06"
+- 22.21.06
 modality: software
 user_context:
 - home
@@ -38,7 +38,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/jeremydpotts/speakeasy-aac
-  fetched_at: '2026-06-25T13:01:41.983720+00:00'
+  fetched_at: '2026-06-25T18:33:13.914468+00:00'
+  latest_release_url: null
   stars: 0
   forks: 0
   last_commit: '2025-12-05'

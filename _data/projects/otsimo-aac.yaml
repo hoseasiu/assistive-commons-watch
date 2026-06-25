@@ -14,7 +14,7 @@ disability_area:
 - communication
 - cognitive
 iso_9999_codes:
-  - "22.21.06"
+- 22.21.06
 modality: software
 user_context:
 - home
@@ -42,7 +42,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/otsimo-archive/aac
-  fetched_at: '2026-06-25T13:01:22.012652+00:00'
+  fetched_at: '2026-06-25T18:32:50.897087+00:00'
+  latest_release_url: null
   stars: 26
   forks: 8
   last_commit: '2020-01-28'

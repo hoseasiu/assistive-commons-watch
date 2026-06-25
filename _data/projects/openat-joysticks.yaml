@@ -15,7 +15,7 @@ tags:
 disability_area:
 - motor
 iso_9999_codes:
-  - "22.36.18"
+- 22.36.18
 modality: hardware
 user_context:
 - home
@@ -45,7 +45,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/OpenAT-Joysticks
-  fetched_at: '2026-06-25T13:00:52.618786+00:00'
+  fetched_at: '2026-06-25T18:32:27.563934+00:00'
+  latest_release_url: null
   stars: 8
   forks: 1
   last_commit: '2026-04-01'

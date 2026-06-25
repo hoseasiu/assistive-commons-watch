@@ -1,0 +1,68 @@
+id: acw-0047
+name: Rocket Switch Interface
+description: A cost-effective two-input USB switch interface based on a commercially
+  available Adafruit Trinkey board. Allows up to two assistive switches to emulate
+  keyboard keypresses or gamepad buttons. Developed by Makers Making Change.
+at_relevance: primary
+added_date: '2026-06-25'
+tags:
+- switch-interface
+- switch-access
+- hardware
+- usb
+- electronics
+disability_area:
+- motor
+iso_9999_codes:
+- 22.36.18
+modality: hardware
+user_context:
+- home
+- work
+- school
+interface:
+- switch
+bom_present: true
+build_docs_quality: complete
+cost_range: <$50
+fabrication_methods:
+- electronics
+skill_level: maker
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Makers Making Change
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links:
+  makers_making_change: https://makersmakingchange.com/project/rocket-switch-interface/
+sources:
+- platform: github
+  url: https://github.com/makersmakingchange/Rocket-Switch-Interface
+  fetched_at: '2026-06-25T18:33:05.922831+00:00'
+  latest_release_url: https://github.com/makersmakingchange/Rocket-Switch-Interface/releases/tag/V1.1
+  stars: 19
+  forks: 4
+  last_commit: '2025-06-06'
+  open_issues: 5
+  open_prs: null
+  issue_response_rate: 0.25
+  release_in_last_year: false
+  readme_has_installation: true
+  readme_has_usage: true
+  readme_has_bom: true
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: null
+  has_issue_templates: null
+  license_spdx: null
+health_tier: null
+health_score: null
+platform: []
+plain_language_description: null

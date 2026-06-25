@@ -1,0 +1,70 @@
+id: acw-0065
+name: Assistive Switches Kit
+description: An assortment of DIY 3D-printable assistive switches in various form
+  factors, packaged as a kit for makers and occupational therapists. Includes multiple
+  switch designs with different activation methods and toppers. Developed by Makers
+  Making Change.
+at_relevance: primary
+added_date: '2026-06-25'
+tags:
+- assistive-switch
+- switch-access
+- 3d-printing
+- hardware
+- kit
+disability_area:
+- motor
+iso_9999_codes:
+- 22.36.18
+modality: hardware
+user_context:
+- home
+- school
+- work
+interface:
+- switch
+bom_present: true
+build_docs_quality: complete
+cost_range: <$50
+fabrication_methods:
+- 3d-printing
+- electronics
+skill_level: maker
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Makers Making Change
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links:
+  makers_making_change: https://www.makersmakingchange.com/s/product/assistive-switches-kit/01tJR0000006998YAA
+sources:
+- platform: github
+  url: https://github.com/makersmakingchange/Assistive-Switches-Kit
+  fetched_at: '2026-06-25T18:30:59.498250+00:00'
+  latest_release_url: null
+  stars: 1
+  forks: 0
+  last_commit: '2026-02-13'
+  open_issues: 0
+  open_prs: null
+  issue_response_rate: 1.0
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: false
+  readme_has_bom: false
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
+spdx: null
+health_tier: null
+health_score: null
+platform: []
+plain_language_description: null

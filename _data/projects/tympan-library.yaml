@@ -15,7 +15,7 @@ tags:
 disability_area:
 - hearing
 iso_9999_codes:
-  - "22.03.06"
+- 22.03.06
 modality: hybrid
 user_context:
 - research
@@ -43,7 +43,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/Tympan/Tympan_Library
-  fetched_at: '2026-06-25T13:01:51.574580+00:00'
+  fetched_at: '2026-06-25T18:33:30.534745+00:00'
+  latest_release_url: https://github.com/Tympan/Tympan_Library/releases/tag/V3.1.1
   stars: 144
   forks: 42
   last_commit: '2026-05-22'

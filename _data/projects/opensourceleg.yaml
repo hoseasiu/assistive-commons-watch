@@ -17,7 +17,7 @@ disability_area:
 - prosthetics
 - motor
 iso_9999_codes:
-  - "06.24.12"
+- 06.24.12
 modality: hybrid
 user_context:
 - research
@@ -46,7 +46,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/neurobionics/opensourceleg
-  fetched_at: '2026-06-25T13:01:13.731811+00:00'
+  fetched_at: '2026-06-25T18:32:44.967153+00:00'
+  latest_release_url: https://github.com/neurobionics/opensourceleg/releases/tag/opensourceleg-v3.5.0
   stars: 108
   forks: 75
   last_commit: '2026-03-16'

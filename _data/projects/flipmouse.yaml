@@ -16,7 +16,7 @@ tags:
 disability_area:
 - motor
 iso_9999_codes:
-  - "22.36.18"
+- 22.36.18
 modality: hybrid
 user_context:
 - home
@@ -47,12 +47,13 @@ documentation_languages:
 - en
 - de
 ecosystem_links:
-  makers_making_change: "https://www.makersmakingchange.com/project/flipmouse/"
-  goat: "https://www.openassistivetech.org/product/flipmouse"
+  makers_making_change: https://www.makersmakingchange.com/project/flipmouse/
+  goat: https://www.openassistivetech.org/product/flipmouse
 sources:
 - platform: github
   url: https://github.com/asterics/FLipMouse
-  fetched_at: '2026-06-25T13:00:19.840265+00:00'
+  fetched_at: '2026-06-25T18:31:38.917644+00:00'
+  latest_release_url: https://github.com/asterics/FLipMouse/releases/tag/v3.6.2
   stars: 43
   forks: 9
   last_commit: '2026-02-18'
@@ -71,8 +72,5 @@ sources:
   license_spdx: NOASSERTION
 health_tier: stable
 health_score: 6.47
-platform:
-- windows
-- linux
-- macos
+platform: []
 plain_language_description: null

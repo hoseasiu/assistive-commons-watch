@@ -15,7 +15,7 @@ disability_area:
 - communication
 - cognitive
 iso_9999_codes:
-  - "22.21.06"
+- 22.21.06
 modality: software
 user_context:
 - home
@@ -47,7 +47,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/cboard-org/cboard
-  fetched_at: '2026-06-25T12:59:47.879455+00:00'
+  fetched_at: '2026-06-25T18:31:12.327048+00:00'
+  latest_release_url: https://github.com/cboard-org/cboard/releases/tag/1.39.0
   stars: 738
   forks: 274
   last_commit: '2026-06-25'
@@ -65,7 +66,7 @@ sources:
   has_issue_templates: true
   license_spdx: GPL-3.0
 health_tier: stable
-health_score: 6.2
+health_score: 6.4
 platform:
 - web
 - android

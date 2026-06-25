@@ -15,7 +15,7 @@ tags:
 disability_area:
 - vision
 iso_9999_codes:
-  - "22.39.16"
+- 22.39.16
 modality: software
 user_context:
 - home
@@ -41,7 +41,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/tvraman/emacspeak
-  fetched_at: '2026-06-25T13:00:00.495581+00:00'
+  fetched_at: '2026-06-25T18:31:24.907994+00:00'
+  latest_release_url: https://github.com/tvraman/emacspeak/releases/tag/60.0
   stars: 280
   forks: 59
   last_commit: '2024-08-26'
@@ -59,8 +60,6 @@ sources:
   has_issue_templates: false
   license_spdx: null
 health_tier: at_risk
-health_score: 3.27
-platform:
-- linux
-- macos
+health_score: null
+platform: []
 plain_language_description: null

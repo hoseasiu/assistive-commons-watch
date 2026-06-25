@@ -15,7 +15,7 @@ tags:
 disability_area:
 - motor
 iso_9999_codes:
-  - "22.36.18"
+- 22.36.18
 modality: hybrid
 user_context:
 - home
@@ -46,11 +46,12 @@ documentation_languages:
 - en
 - de
 ecosystem_links:
-  makers_making_change: "https://www.makersmakingchange.com/project/fabi/"
+  makers_making_change: https://www.makersmakingchange.com/project/fabi/
 sources:
 - platform: github
   url: https://github.com/asterics/FABI
-  fetched_at: '2026-06-25T13:00:14.096496+00:00'
+  fetched_at: '2026-06-25T18:31:34.444976+00:00'
+  latest_release_url: https://github.com/asterics/FABI/releases/tag/v2.8
   stars: 19
   forks: 11
   last_commit: '2026-06-10'
@@ -69,8 +70,5 @@ sources:
   license_spdx: NOASSERTION
 health_tier: thriving
 health_score: 7.6
-platform:
-- windows
-- linux
-- macos
+platform: []
 plain_language_description: null

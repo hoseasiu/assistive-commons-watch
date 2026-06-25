@@ -1,0 +1,69 @@
+id: acw-0048
+name: Open Playback Recorder
+description: Open-source assistive technology device that records and plays back a
+  set of pre-recorded messages or sounds when activated by an assistive switch. Intended
+  for simple AAC and environmental control. Developed by Makers Making Change.
+at_relevance: primary
+added_date: '2026-06-25'
+tags:
+- aac
+- switch-access
+- voice-output
+- hardware
+- 3d-printing
+disability_area:
+- motor
+- communication
+iso_9999_codes:
+- 22.21.06
+modality: hybrid
+user_context:
+- home
+- school
+interface:
+- switch
+bom_present: true
+build_docs_quality: complete
+cost_range: $50–$200
+fabrication_methods:
+- 3d-printing
+- electronics
+skill_level: maker
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Makers Making Change
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links:
+  makers_making_change: https://www.makersmakingchange.com/s/product/open-playback-recorder/01tJR000003DNOVYA4
+sources:
+- platform: github
+  url: https://github.com/makersmakingchange/Open-Playback-Recorder
+  fetched_at: '2026-06-25T18:32:21.573168+00:00'
+  latest_release_url: null
+  stars: 7
+  forks: 0
+  last_commit: '2025-08-07'
+  open_issues: 6
+  open_prs: null
+  issue_response_rate: 0.25
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: false
+  readme_has_bom: true
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
+  license_spdx: null
+er: null
+health_score: null
+platform: []
+plain_language_description: null

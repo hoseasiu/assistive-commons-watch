@@ -1,0 +1,72 @@
+id: acw-0058
+name: Twitch Switch
+description: Assistive device that activates up to three switch-adapted devices, or
+  emulates a mouse or keyboard, using movement as subtle as twitching an eyebrow.
+  Uses an IMU to detect micro-movements. Developed by Makers Making Change.
+at_relevance: primary
+added_date: '2026-06-25'
+tags:
+- assistive-switch
+- switch-access
+- imu
+- gesture
+- hardware
+- 3d-printing
+disability_area:
+- motor
+iso_9999_codes:
+- 22.36.18
+modality: hybrid
+user_context:
+- home
+- work
+- school
+interface:
+- switch
+- mouse
+- keyboard
+bom_present: true
+build_docs_quality: complete
+cost_range: $50–$200
+fabrication_methods:
+- 3d-printing
+- electronics
+skill_level: maker
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Makers Making Change
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links:
+  makers_making_change: https://www.makersmakingchange.com/s/product/twitch-switch/01tJR000003UiebYAC
+sources:
+- platform: github
+  url: https://github.com/makersmakingchange/Twitch-Switch
+  fetched_at: '2026-06-25T18:33:27.896443+00:00'
+  latest_release_url: null
+  stars: 0
+  forks: 0
+  last_commit: '2026-06-08'
+  open_issues: 3
+  open_prs: null
+  issue_response_rate: 0.17
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: false
+  readme_has_bom: true
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
+  license_spdx: null
+_tier: null
+health_score: null
+platform: []
+plain_language_description: null

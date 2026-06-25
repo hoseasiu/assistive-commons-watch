@@ -18,7 +18,7 @@ disability_area:
 - vision
 - communication
 iso_9999_codes:
-  - "22.39.16"
+- 22.39.16
 modality: software
 user_context:
 - home
@@ -45,9 +45,10 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/rhasspy/piper
-  fetched_at: '2026-06-25T13:01:27.445984+00:00'
-  stars: 11140
-  forks: 1033
+  fetched_at: '2026-06-25T18:32:54.993701+00:00'
+  latest_release_url: https://github.com/rhasspy/piper/releases/tag/2023.11.14-2
+  stars: 11141
+  forks: 1034
   last_commit: '2025-08-26'
   open_issues: 419
   open_prs: null

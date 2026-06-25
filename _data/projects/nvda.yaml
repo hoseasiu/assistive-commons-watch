@@ -14,7 +14,7 @@ tags:
 disability_area:
 - vision
 iso_9999_codes:
-  - "22.39.16"
+- 22.39.16
 modality: software
 user_context:
 - home
@@ -47,12 +47,13 @@ documentation_languages:
 - ja
 - zh
 ecosystem_links:
-  openassistive: "https://openassistive.org/item/nvda/"
-  awesome_assistivetech: "https://github.com/openassistive/awesome-assistivetech#screen-readers"
+  openassistive: https://openassistive.org/item/nvda/
+  awesome_assistivetech: https://github.com/openassistive/awesome-assistivetech#screen-readers
 sources:
 - platform: github
   url: https://github.com/nvaccess/nvda
-  fetched_at: '2026-06-25T13:00:42.753725+00:00'
+  fetched_at: '2026-06-25T18:32:12.198333+00:00'
+  latest_release_url: https://github.com/nvaccess/nvda/releases/tag/release-2026.2beta4
   stars: 2589
   forks: 797
   last_commit: '2026-06-25'
@@ -70,7 +71,7 @@ sources:
   has_issue_templates: true
   license_spdx: NOASSERTION
 health_tier: stable
-health_score: 7.0
+health_score: 7.2
 platform:
 - windows
 plain_language_description: A free screen reader for Windows that reads everything

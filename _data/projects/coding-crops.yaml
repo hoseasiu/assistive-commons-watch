@@ -1,0 +1,67 @@
+id: acw-0062
+name: Coding Crops
+description: An accessibility-first farm simulator built on Blockly that teaches coding
+  concepts to people with disabilities. Designed for keyboard navigation, switch access,
+  and screen reader compatibility. Developed by Makers Making Change.
+at_relevance: primary
+added_date: '2026-06-25'
+tags:
+- education
+- coding-education
+- accessibility
+- blockly
+- software
+disability_area:
+- motor
+- cognitive
+iso_9999_codes:
+- 05.03.03
+modality: software
+user_context:
+- school
+- home
+interface:
+- keyboard
+- switch
+bom_present: false
+build_docs_quality: partial
+cost_range: free
+fabrication_methods: []
+skill_level: beginner
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: Apache-2.0
+associated_publication: null
+institutional_affiliation: Makers Making Change
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links: {}
+sources:
+- platform: github
+  url: https://github.com/makersmakingchange/coding-crops
+  fetched_at: '2026-06-25T18:31:14.582728+00:00'
+  latest_release_url: https://github.com/makersmakingchange/coding-crops/releases/tag/v2.0.0
+  stars: 2
+  forks: 0
+  last_commit: '2026-06-17'
+  open_issues: 1
+  open_prs: null
+  issue_response_rate: 0.0
+  release_in_last_year: true
+  readme_has_installation: false
+  readme_has_usage: false
+  readme_has_bom: false
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: null
+  has_issue_templates: null
+  license_spdx: null
+health_tier: null
+health_score: null
+platform: []
+plain_language_description: null

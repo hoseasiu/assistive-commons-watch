@@ -1,0 +1,69 @@
+id: acw-0057
+name: Ivy Nunchuck Joystick Adapter
+description: Open-source adapter that lets a standard Nintendo Nunchuck controller
+  function as a USB HID mouse or USB HID gamepad. Provides an accessible low-cost
+  joystick input option for people with disabilities. Developed by Makers Making Change.
+at_relevance: primary
+added_date: '2026-06-25'
+tags:
+- joystick
+- adapted-gaming
+- switch-access
+- hardware
+- nunchuck
+disability_area:
+- motor
+iso_9999_codes:
+- 22.36.18
+modality: hardware
+user_context:
+- home
+- work
+- school
+interface:
+- joystick
+- mouse
+bom_present: true
+build_docs_quality: complete
+cost_range: <$50
+fabrication_methods:
+- electronics
+skill_level: maker
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Makers Making Change
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links:
+  makers_making_change: https://www.makersmakingchange.com/s/product/ivy-nunchuck-joystick-adaptor/01tJR0000009LBiYAM
+sources:
+- platform: github
+  url: https://github.com/makersmakingchange/Ivy-Nunchuck-Joystick-Adapter
+  fetched_at: '2026-06-25T18:31:54.005850+00:00'
+  latest_release_url: null
+  stars: 4
+  forks: 0
+  last_commit: '2026-01-05'
+  open_issues: 3
+  open_prs: null
+  issue_response_rate: 0.5
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: true
+  readme_has_bom: true
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
+  license_spdx: null
+health_tier:
+health_score: null
+platform: []
+plain_language_description: null

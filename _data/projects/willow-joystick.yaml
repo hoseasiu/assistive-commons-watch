@@ -1,0 +1,69 @@
+id: acw-0052
+name: Willow Joystick
+description: A low-force OpenAT joystick requiring only ~25 g of activation force,
+  intended for people with disabilities for digital access and adapted gaming. 3D-printable
+  enclosure with USB output. Developed by Makers Making Change.
+at_relevance: primary
+added_date: '2026-06-25'
+tags:
+- joystick
+- adapted-gaming
+- switch-access
+- hardware
+- 3d-printing
+- low-force
+disability_area:
+- motor
+iso_9999_codes:
+- 22.36.18
+modality: hardware
+user_context:
+- home
+- work
+- school
+interface:
+- joystick
+bom_present: true
+build_docs_quality: complete
+cost_range: $50–$200
+fabrication_methods:
+- 3d-printing
+- electronics
+skill_level: maker
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Makers Making Change
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links: {}
+sources:
+- platform: github
+  url: https://github.com/makersmakingchange/Willow-Joystick
+  fetched_at: '2026-06-25T18:33:34.388891+00:00'
+  latest_release_url: null
+  stars: 1
+  forks: 0
+  last_commit: '2026-02-03'
+  open_issues: 3
+  open_prs: null
+  issue_response_rate: 0.0
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: false
+  readme_has_bom: true
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
+  license_spdx: null
+health_tier: null
+health_score: null
+platform: []
+plain_language_description: null

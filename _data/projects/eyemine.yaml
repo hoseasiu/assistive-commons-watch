@@ -16,7 +16,7 @@ disability_area:
 - motor
 - eyegaze
 iso_9999_codes:
-  - "22.36.12"
+- 22.36.12
 modality: software
 user_context:
 - home
@@ -42,7 +42,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/SpecialEffect/EyeMine
-  fetched_at: '2026-06-25T13:00:09.481523+00:00'
+  fetched_at: '2026-06-25T18:31:31.520104+00:00'
+  latest_release_url: https://github.com/SpecialEffect/EyeMine/releases/tag/release/eyemine_2.3.0
   stars: 111
   forks: 5
   last_commit: '2024-05-20'
@@ -59,8 +60,7 @@ sources:
   has_code_of_conduct: false
   has_issue_templates: true
   license_spdx: GPL-3.0
-health_tier: dormant
-health_score: 4.84
-platform:
-- windows
+lth_tier: null
+health_score: null
+platform: []
 plain_language_description: null

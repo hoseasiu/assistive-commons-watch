@@ -17,8 +17,8 @@ disability_area:
 - motor
 - communication
 iso_9999_codes:
-  - "22.36.12"
-  - "22.36.18"
+- 22.36.12
+- 22.36.18
 modality: software
 user_context:
 - home
@@ -48,7 +48,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/dasher-project/dasher
-  fetched_at: '2026-06-25T12:59:56.679605+00:00'
+  fetched_at: '2026-06-25T18:31:21.850628+00:00'
+  latest_release_url: https://github.com/dasher-project/dasher/releases/tag/DASHER_5_0_0_beta
   stars: 176
   forks: 48
   last_commit: '2020-04-20'
@@ -66,8 +67,7 @@ sources:
   has_issue_templates: false
   license_spdx: GPL-2.0
 health_tier: at_risk
-health_score: 3.03
-platform:
-- windows
-- linux
+health_score: null
+platform: []
 plain_language_description: null
+e_description: null

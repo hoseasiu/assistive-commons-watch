@@ -15,8 +15,8 @@ tags:
 disability_area:
 - vision
 iso_9999_codes:
-  - "22.39.07"
-  - "22.39.16"
+- 22.39.07
+- 22.39.16
 modality: software
 user_context:
 - school
@@ -43,13 +43,14 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/daisy/MathCAT
-  fetched_at: '2026-06-25T13:00:38.982631+00:00'
+  fetched_at: '2026-06-25T18:32:09.022750+00:00'
+  latest_release_url: https://github.com/daisy/MathCAT/releases/tag/latest
   stars: 104
   forks: 68
   last_commit: '2026-06-24'
-  open_issues: 118
+  open_issues: 115
   open_prs: null
-  issue_response_rate: 0.25
+  issue_response_rate: 0.38
   release_in_last_year: true
   readme_has_installation: false
   readme_has_usage: false
@@ -62,8 +63,5 @@ sources:
   license_spdx: MIT
 health_tier: at_risk
 health_score: 5.1
-platform:
-- windows
-- linux
-- macos
+platform: []
 plain_language_description: null

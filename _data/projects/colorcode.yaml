@@ -15,7 +15,7 @@ disability_area:
 - communication
 - motor
 iso_9999_codes:
-  - "22.36.18"
+- 22.36.18
 modality: software
 user_context:
 - home
@@ -41,7 +41,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/mrdaly/ColorCode
-  fetched_at: '2026-06-25T12:59:50.016699+00:00'
+  fetched_at: '2026-06-25T18:31:16.444363+00:00'
+  latest_release_url: null
   stars: 2
   forks: 1
   last_commit: '2022-05-24'

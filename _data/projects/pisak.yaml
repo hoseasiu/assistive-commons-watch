@@ -16,7 +16,7 @@ disability_area:
 - eyegaze
 - motor
 iso_9999_codes:
-  - "22.36.12"
+- 22.36.12
 modality: software
 user_context:
 - home
@@ -43,7 +43,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/BrainTech/pisak
-  fetched_at: '2026-06-25T13:01:30.730936+00:00'
+  fetched_at: '2026-06-25T18:32:57.487391+00:00'
+  latest_release_url: null
   stars: 6
   forks: 8
   last_commit: '2017-12-20'

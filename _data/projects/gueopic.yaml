@@ -16,7 +16,7 @@ disability_area:
 - communication
 - cognitive
 iso_9999_codes:
-  - "22.21.06"
+- 22.21.06
 modality: software
 user_context:
 - home
@@ -44,7 +44,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/Gueopic/App
-  fetched_at: '2026-06-25T13:00:23.227013+00:00'
+  fetched_at: '2026-06-25T18:31:43.957127+00:00'
+  latest_release_url: null
   stars: 5
   forks: 0
   last_commit: '2025-11-07'

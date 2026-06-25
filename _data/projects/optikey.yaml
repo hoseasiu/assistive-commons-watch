@@ -17,8 +17,8 @@ disability_area:
 - motor
 - communication
 iso_9999_codes:
-  - "22.36.12"
-  - "22.21.06"
+- 22.36.12
+- 22.21.06
 modality: software
 user_context:
 - home
@@ -44,12 +44,13 @@ origin_program: null
 documentation_languages:
 - en
 ecosystem_links:
-  openassistive: "https://openassistive.org/item/optikey/"
-  awesome_assistivetech: "https://github.com/openassistive/awesome-assistivetech#eye-gaze"
+  openassistive: https://openassistive.org/item/optikey/
+  awesome_assistivetech: https://github.com/openassistive/awesome-assistivetech#eye-gaze
 sources:
 - platform: github
   url: https://github.com/OptiKey/OptiKey
-  fetched_at: '2026-06-25T13:01:16.942910+00:00'
+  fetched_at: '2026-06-25T18:32:47.370351+00:00'
+  latest_release_url: https://github.com/OptiKey/OptiKey/releases/tag/v4.1.1
   stars: 4396
   forks: 508
   last_commit: '2026-03-18'

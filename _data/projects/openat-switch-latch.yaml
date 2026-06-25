@@ -1,0 +1,70 @@
+id: acw-0059
+name: OpenAT Switch Latch
+description: Open-source assistive device that adds latching (toggle) functionality
+  to any standard assistive switch. Allows a single press to turn a device on and
+  keep it on until pressed again. 3D-printable enclosure. Developed by Makers Making
+  Change.
+at_relevance: primary
+added_date: '2026-06-25'
+tags:
+- assistive-switch
+- switch-access
+- switch-latch
+- hardware
+- 3d-printing
+disability_area:
+- motor
+iso_9999_codes:
+- 22.36.18
+modality: hardware
+user_context:
+- home
+- work
+- school
+interface:
+- switch
+bom_present: true
+build_docs_quality: complete
+cost_range: <$50
+fabrication_methods:
+- 3d-printing
+- electronics
+skill_level: maker
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Makers Making Change
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links:
+  makers_making_change: https://www.makersmakingchange.com/s/product/switch-latch/01tJR00000095zlYAA
+sources:
+- platform: github
+  url: https://github.com/makersmakingchange/OpenAT-Switch-Latch
+  fetched_at: '2026-06-25T18:32:29.749264+00:00'
+  latest_release_url: null
+  stars: 2
+  forks: 0
+  last_commit: '2026-01-12'
+  open_issues: 5
+  open_prs: null
+  issue_response_rate: 0.5
+  release_in_last_year: false
+  readme_has_installation: true
+  readme_has_usage: true
+  readme_has_bom: true
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
+pdx: null
+health_tier: null
+health_score: null
+platform: []
+plain_language_description: null

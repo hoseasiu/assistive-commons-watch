@@ -1,0 +1,74 @@
+id: acw-0070
+name: LipSync Switch Input Module
+description: A module that converts a LipSync mouth joystick to use two assistive
+  switches instead of sip-and-puff. Provides an alternative input method for users
+  who prefer switch-based control. 3D-printable enclosure with OpenSCAD source files.
+  Developed by Makers Making Change.
+at_relevance: primary
+added_date: '2026-06-25'
+tags:
+- lipsync
+- switch-access
+- mouth-control
+- hardware
+- 3d-printing
+- module
+disability_area:
+- motor
+iso_9999_codes:
+  - "22.36.18"
+modality: hybrid
+user_context:
+- home
+- work
+- school
+interface:
+- switch
+- mouse
+bom_present: true
+build_docs_quality: complete
+cost_range: <$50
+fabrication_methods:
+- 3d-printing
+- electronics
+skill_level: maker
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Makers Making Change
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links:
+  makers_making_change: "https://www.makersmakingchange.com/lipsync"
+sources:
+- platform: github
+  url: https://github.com/makersmakingchange/LipSync-SwitchInputModule
+  fetched_at: '2026-06-25T00:00:00+00:00'
+  stars: 0
+  forks: 1
+  last_commit: '2025-04-12'
+  open_issues: 0
+  open_prs: null
+  issue_response_rate: null
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: true
+  readme_has_bom: true
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
+  license_spdx: null
+health_tier: null
+health_score: null
+platform:
+- windows
+- macos
+- linux
+plain_language_description: null

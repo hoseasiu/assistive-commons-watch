@@ -1,0 +1,68 @@
+id: acw-0066
+name: 3D Printed Low-Tech Assistive Devices Kit
+description: A curated kit of low-tech 3D-printed assistive devices for daily living
+  tasks. Includes parametric OpenSCAD designs for grips, handles, and adaptive tools
+  useful for people with limited hand strength or dexterity. Developed by Makers Making
+  Change.
+at_relevance: primary
+added_date: '2026-06-25'
+tags:
+- daily-living
+- low-tech
+- 3d-printing
+- hardware
+- kit
+- grip-aid
+disability_area:
+- motor
+iso_9999_codes:
+- 24.21.06
+modality: hardware
+user_context:
+- home
+- work
+interface: []
+bom_present: true
+build_docs_quality: partial
+cost_range: <$50
+fabrication_methods:
+- 3d-printing
+skill_level: beginner
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Makers Making Change
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links:
+  makers_making_change: https://www.makersmakingchange.com/product/3d-printed-low-tech-assistive-devices-kit/
+sources:
+- platform: github
+  url: https://github.com/makersmakingchange/3D-Printed-Low-Tech-Assistive-Devices-Kit
+  fetched_at: '2026-06-25T18:30:44.085095+00:00'
+  latest_release_url: null
+  stars: 1
+  forks: 0
+  last_commit: '2026-02-05'
+  open_issues: 3
+  open_prs: null
+  issue_response_rate: 0.2
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: false
+  readme_has_bom: false
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
+x: null
+health_tier: null
+health_score: null
+platform: []
+plain_language_description: null

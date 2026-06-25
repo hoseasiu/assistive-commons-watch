@@ -1,0 +1,69 @@
+id: acw-0063
+name: Rumble Plate Dice Roller
+description: A switch-adapted dice roller for tabletop gaming. Pressing a single assistive
+  switch activates a motor that shakes and rolls the dice. 3D-printable enclosure.
+  Enables people who cannot hold or roll dice to participate in game nights. Developed
+  by Makers Making Change.
+at_relevance: primary
+added_date: '2026-06-25'
+tags:
+- switch-adapted-toy
+- switch-access
+- gaming
+- 3d-printing
+- hardware
+- recreation
+disability_area:
+- motor
+iso_9999_codes:
+- 30.03.21
+modality: hardware
+user_context:
+- home
+interface:
+- switch
+bom_present: true
+build_docs_quality: complete
+cost_range: $50–$200
+fabrication_methods:
+- 3d-printing
+- electronics
+skill_level: maker
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Makers Making Change
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links:
+  makers_making_change: https://www.makersmakingchange.com/s/product/rumble-plate-dice-roller/01tJR000000694JYAQ
+sources:
+- platform: github
+  url: https://github.com/makersmakingchange/Rumble-Plate-Dice-Roller
+  fetched_at: '2026-06-25T18:33:07.862046+00:00'
+  latest_release_url: null
+  stars: 3
+  forks: 1
+  last_commit: '2026-02-05'
+  open_issues: 6
+  open_prs: null
+  issue_response_rate: 0.14
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: true
+  readme_has_bom: true
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
+pdx: null
+health_tier: null
+health_score: null
+platform: []
+plain_language_description: null

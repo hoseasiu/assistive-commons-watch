@@ -15,7 +15,7 @@ tags:
 disability_area:
 - motor
 iso_9999_codes:
-  - "22.36.18"
+- 22.36.18
 modality: hybrid
 user_context:
 - home
@@ -44,11 +44,12 @@ origin_program: null
 documentation_languages:
 - en
 ecosystem_links:
-  makers_making_change: "https://www.makersmakingchange.com/project/lipsync/"
+  makers_making_change: https://www.makersmakingchange.com/project/lipsync/
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/LipSync
-  fetched_at: '2026-06-25T13:00:34.868949+00:00'
+  fetched_at: '2026-06-25T18:32:05.812448+00:00'
+  latest_release_url: https://github.com/makersmakingchange/LipSync/releases/tag/V4.1
   stars: 15
   forks: 0
   last_commit: '2026-01-05'

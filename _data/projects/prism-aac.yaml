@@ -16,7 +16,7 @@ tags:
 disability_area:
 - communication
 iso_9999_codes:
-  - "22.21.06"
+- 22.21.06
 modality: software
 user_context:
 - home
@@ -46,7 +46,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/dcostenco/prism-aac
-  fetched_at: '2026-06-25T13:01:34.783211+00:00'
+  fetched_at: '2026-06-25T18:32:59.940117+00:00'
+  latest_release_url: https://github.com/dcostenco/prism-aac/releases/tag/v1.8.0
   stars: 1
   forks: 0
   last_commit: '2026-06-24'
@@ -64,7 +65,7 @@ sources:
   has_issue_templates: true
   license_spdx: AGPL-3.0
 health_tier: at_risk
-health_score: 4.4
+health_score: 4.6
 platform:
 - web
 plain_language_description: A free browser-based AAC platform you can use on any device

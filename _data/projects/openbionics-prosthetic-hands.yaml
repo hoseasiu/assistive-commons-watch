@@ -16,7 +16,7 @@ disability_area:
 - prosthetics
 - motor
 iso_9999_codes:
-  - "06.24.06"
+- 06.24.06
 modality: hardware
 user_context:
 - home
@@ -45,7 +45,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/OpenBionics/Prosthetic-Hands
-  fetched_at: '2026-06-25T13:00:59.144755+00:00'
+  fetched_at: '2026-06-25T18:32:35.009410+00:00'
+  latest_release_url: null
   stars: 178
   forks: 57
   last_commit: '2018-02-10'

@@ -14,7 +14,7 @@ tags:
 disability_area:
 - vision
 iso_9999_codes:
-  - "22.39.07"
+- 22.39.07
 modality: software
 user_context:
 - home
@@ -41,7 +41,8 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/brailletouch/Brailletouch
-  fetched_at: '2026-06-25T12:59:45.167974+00:00'
+  fetched_at: '2026-06-25T18:31:09.951470+00:00'
+  latest_release_url: https://github.com/brailletouch/Brailletouch/releases/tag/v0.0.0.2
   stars: 52
   forks: 8
   last_commit: '2025-05-15'
@@ -59,8 +60,6 @@ sources:
   has_issue_templates: false
   license_spdx: NOASSERTION
 health_tier: at_risk
-health_score: 1.8
-platform:
-- ios
-- android
+health_score: null
+platform: []
 plain_language_description: null

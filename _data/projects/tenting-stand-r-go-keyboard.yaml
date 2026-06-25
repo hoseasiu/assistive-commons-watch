@@ -1,0 +1,67 @@
+id: acw-0064
+name: Tenting Stand for R-Go Split Keyboard
+description: A 3D-printable low-profile tenting stand that allows for varying the
+  angle of the R-Go Split Keyboard. Helps reduce wrist strain and provides ergonomic
+  positioning for users with repetitive strain injuries or musculoskeletal conditions.
+  Developed by Makers Making Change.
+at_relevance: adjacent
+added_date: '2026-06-25'
+tags:
+- ergonomics
+- keyboard
+- 3d-printing
+- hardware
+- rsi
+disability_area:
+- motor
+iso_9999_codes:
+- 22.39.12
+modality: hardware
+user_context:
+- home
+- work
+interface:
+- keyboard
+bom_present: true
+build_docs_quality: partial
+cost_range: <$50
+fabrication_methods:
+- 3d-printing
+skill_level: beginner
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Makers Making Change
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links: {}
+sources:
+- platform: github
+  url: https://github.com/makersmakingchange/Tenting-Stand-for-R-Go-Split-Keyboard
+  fetched_at: '2026-06-25T18:33:21.851476+00:00'
+  latest_release_url: null
+  stars: 1
+  forks: 0
+  last_commit: '2025-04-12'
+  open_issues: 1
+  open_prs: null
+  issue_response_rate: 0.0
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: true
+  readme_has_bom: true
+  release_artifact_present: false
+  dependencies_pinned: null
+  has_contributing: false
+  has_code_of_conduct: false
+  has_issue_templates: false
+  license_spdx: null
+health_tier: null
+health_score: null
+platform: []
+plain_language_description: null
