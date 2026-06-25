@@ -21,19 +21,6 @@ title: Assistive Commons Watch
     color: var(--text-primary); margin-right: auto; text-decoration: none;
   }
   .wordmark:hover { opacity: 0.8; }
-  .live-badge {
-    display: inline-flex; align-items: center; gap: 5px;
-    background: oklch(0.94 0.07 142); border-radius: 100px;
-    padding: 3px 8px; margin-left: 10px;
-    font-size: 10px; font-weight: 700; letter-spacing: 0.07em;
-    color: oklch(0.33 0.14 142); text-transform: uppercase;
-  }
-  .live-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: oklch(0.50 0.17 142);
-    animation: pulse-dot 2s ease-in-out infinite;
-    flex-shrink: 0;
-  }
   .site-nav { display: flex; align-items: center; gap: 4px; }
   .site-nav a {
     font-size: 13px; font-weight: 500; color: var(--text-secondary);
@@ -73,7 +60,6 @@ title: Assistive Commons Watch
     display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
     font-size: 13px; color: var(--text-muted);
   }
-  .hero-meta .live-dot { width: 7px; height: 7px; animation-delay: 0.5s; }
   .meta-sep { color: oklch(0.82 0.01 75); }
   .hero-meta a { color: var(--accent-green); font-weight: 500; }
 
@@ -404,9 +390,6 @@ title: Assistive Commons Watch
   <div class="container">
     <a href="/" class="wordmark">
       Assistive Commons Watch
-      <span class="live-badge">
-        <span class="live-dot"></span>LIVE
-      </span>
     </a>
     <nav class="site-nav" aria-label="Site navigation">
       <a href="/browse/?mode=contribute">Contribute</a>
@@ -427,7 +410,6 @@ title: Assistive Commons Watch
         projects worth contributing to and AT users can find tools that work.
       </p>
       <div class="hero-meta">
-        <span class="live-dot"></span>
         <span>Last refreshed {{ d.last_refreshed }}</span>
         <span class="meta-sep">·</span>
         <a href="https://creativecommons.org/publicdomain/zero/1.0/">Data: CC0</a>

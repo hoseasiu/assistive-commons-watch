@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 from datetime import date
+from typing import Optional
 
 from .models import BuildDocsQuality, GitHubSource, HealthTier, Project
+
+SCORING_VERSION = "1.0"
 
 _OSI_LICENSES = {
     "MIT", "Apache-2.0",
@@ -85,10 +88,11 @@ def _at_specific(project: Project) -> float:
     )
 
 
-def _provenance(project: Project) -> float:
+def _provenance(project: Project, source: Optional[GitHubSource] = None) -> float:
+    lic = project.license or (source.license_spdx if source is not None else None)
     return min(
         10.0,
-        (4.0 if project.license in _OSI_LICENSES else 0.0)
+        (4.0 if lic in _OSI_LICENSES else 0.0)
         + (3.0 if project.associated_publication else 0.0)
         + (2.0 if project.institutional_affiliation else 0.0)
         + (1.0 if project.origin_program else 0.0),
@@ -106,7 +110,7 @@ def compute_health(project: Project) -> tuple[float, HealthTier]:
     replicability = _replicability(project, source)
     community = _community(source)
     at_specific = _at_specific(project)
-    provenance = _provenance(project)
+    provenance = _provenance(project, source)
 
     score = round(
         0.25 * activity
@@ -147,7 +151,7 @@ def compute_sub_scores(project: Project) -> dict[str, float | None]:
             "replicability": None,
             "community": None,
             "at_specific": round(_at_specific(project), 1),
-            "provenance": round(_provenance(project), 1),
+            "provenance": round(_provenance(project, None), 1),
         }
 
     fetched = source.fetched_at is not None
@@ -156,5 +160,5 @@ def compute_sub_scores(project: Project) -> dict[str, float | None]:
         "replicability": round(_replicability(project, source), 1),
         "community": round(_community(source), 1) if fetched else None,
         "at_specific": round(_at_specific(project), 1),
-        "provenance": round(_provenance(project), 1),
+        "provenance": round(_provenance(project, source), 1),
     }

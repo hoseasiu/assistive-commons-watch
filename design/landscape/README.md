@@ -81,9 +81,6 @@ Inner container: max-width 1200px, centered, 40px horizontal padding, flex row, 
 
 **Left: Wordmark**
 - Text: "Assistive Commons Watch" — 15px, 800, -0.03em, `text-primary`
-- Live badge: pill shape (`border-radius: 100px`), bg `oklch(0.94 0.07 142)`, padding 3px 8px, flex row with 5px gap
-  - Animated dot: 6px circle, `oklch(0.50 0.17 142)`, pulse animation (opacity 1→0.2→1, 2s ease-in-out infinite)
-  - Text: "LIVE", 10px, 700, 0.07em letter-spacing, uppercase, `oklch(0.33 0.14 142)`
 
 **Right: Nav**
 - Links: "Browse", "Recent Changes", "Needs Attention" — 13px, 500, `oklch(0.42 0.02 50)`, padding 7px 12px, border-radius 6px
@@ -98,7 +95,7 @@ White background, 1px bottom border. Inner container: max-width 1200px, padding 
 **Left column:**
 - H1: "A live health registry for open-source assistive technology." — 40px, 800, -0.03em, line-height 1.1, `oklch(0.17 0.025 50)`. Has a `<br>` after "for".
 - Body: 16px, line-height 1.7, `oklch(0.48 0.02 50)`, max-width 500px
-- Meta row (flex, gap 8px, margin-top 20px): animated green dot (7px, 0.5s animation-delay) + "Last refreshed [date]" + separator "·" + "Data: CC0 (linked)"
+- Meta row (flex, gap 8px, margin-top 20px): "Last refreshed [date]" + separator "·" + "Data: CC0 (linked)"
   - Separator color: `oklch(0.82 0.01 75)`
 
 **Right column: 2×2 stat grid** (gap 10px)
@@ -292,10 +289,6 @@ White background, 1px top border. Padding 20px 40px. Inner: max-width 1200px, fl
 - Switching tab replaces the main panel content (no animation required, or use a simple fade-in)
 - Active tab: green underline + green text + bold
 - Inactive tab: transparent underline + muted text + normal weight
-
-### Live pulse dot
-- CSS animation `pulse-dot`: opacity oscillates 1→0.2→1 over 2s, ease-in-out, infinite
-- Header badge dot: no delay. Hero meta dot: 0.5s delay.
 
 ### Project block tooltips
 - Each colored block in Tab 0 has a native HTML `title` attribute with format: `"{name} — {tier}"`

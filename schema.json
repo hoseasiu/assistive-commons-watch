@@ -219,6 +219,18 @@
           ],
           "default": null,
           "title": "Has Issue Templates"
+        },
+        "license_spdx": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License Spdx"
         }
       },
       "required": [
@@ -481,7 +493,17 @@
     "sources": {
       "default": [],
       "items": {
-        "$ref": "#/$defs/GitHubSource"
+        "discriminator": {
+          "mapping": {
+            "github": "#/$defs/GitHubSource"
+          },
+          "propertyName": "platform"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/GitHubSource"
+          }
+        ]
       },
       "title": "Sources",
       "type": "array"
@@ -510,6 +532,18 @@
       ],
       "default": null,
       "title": "Health Score"
+    },
+    "scored_with": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Scored With"
     }
   },
   "required": [

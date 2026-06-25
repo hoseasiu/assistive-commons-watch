@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 from datetime import date, datetime
 from enum import Enum
-from typing import Literal, Optional
+from typing import Annotated, Literal, Optional, Union
 
 from pydantic import BaseModel, Field, field_validator
 
@@ -62,6 +62,9 @@ class GitHubSource(BaseModel):
     has_code_of_conduct: Optional[bool] = None
     has_issue_templates: Optional[bool] = None
 
+    # Provenance signals (auto-populated by fetcher)
+    license_spdx: Optional[str] = None
+
     @field_validator("url")
     @classmethod
     def validate_github_url(cls, v: str) -> str:
@@ -70,9 +73,9 @@ class GitHubSource(BaseModel):
         return v
 
 
-# When Phase 2 adds Printables/Thingiverse, change sources field to:
-#   list[Annotated[Union[GitHubSource, PrintablesSource], Field(discriminator="platform")]]
-Source = GitHubSource
+# Discriminated union over all source platforms — add new source types here when Phase 2 lands.
+# Pydantic uses the `platform` literal to select the right model at parse time.
+Source = Annotated[Union[GitHubSource], Field(discriminator="platform")]
 
 
 class Project(BaseModel):
@@ -113,11 +116,12 @@ class Project(BaseModel):
     documentation_languages: list[str] = ["en"]
 
     # Sources — populated by nightly fetch workflow
-    sources: list[GitHubSource] = []
+    sources: list[Source] = []
 
     # Computed — written back by fetch workflow, not hand-edited
     health_tier: Optional[HealthTier] = None
     health_score: Optional[float] = Field(None, ge=0.0, le=10.0)
+    scored_with: Optional[str] = None
 
     @field_validator("id")
     @classmethod

@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assistive Commons Watch — Improvements Report (v2)</title>
+<style>
+  :root {
+    --bg: oklch(0.97 0.012 76);
+    --card: #fff;
+    --border: oklch(0.91 0.012 75);
+    --border-faint: oklch(0.94 0.008 75);
+    --text: oklch(0.18 0.025 50);
+    --text-2: oklch(0.42 0.02 50);
+    --text-mute: oklch(0.56 0.015 50);
+    --green: oklch(0.43 0.14 165);
+    --green-bg: oklch(0.94 0.06 165);
+    --amber-bg: oklch(0.96 0.06 84);
+    --amber-text: oklch(0.44 0.10 84);
+    --red-bg: oklch(0.96 0.07 47);
+    --red-text: oklch(0.44 0.15 47);
+    --blue-bg: oklch(0.95 0.04 245);
+    --blue-text: oklch(0.40 0.14 245);
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 28px 96px; }
+  header.page {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+  .eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--text-mute); margin-bottom: 6px;
+  }
+  h1 {
+    font-size: 32px; font-weight: 800; letter-spacing: -0.025em;
+    margin: 0 0 10px;
+  }
+  .lead {
+    font-size: 16px; color: var(--text-2); max-width: 680px; margin: 0;
+  }
+  h2 {
+    font-size: 22px; font-weight: 800; letter-spacing: -0.02em;
+    margin: 48px 0 8px; padding-top: 14px;
+    border-top: 1px solid var(--border-faint);
+  }
+  h3 {
+    font-size: 16px; font-weight: 700; margin: 22px 0 6px;
+    color: var(--text);
+  }
+  p { margin: 8px 0; color: var(--text-2); }
+  ul { padding-left: 22px; color: var(--text-2); }
+  li { margin: 4px 0; }
+  code {
+    background: oklch(0.94 0.008 75); padding: 1px 6px; border-radius: 4px;
+    font-size: 0.92em; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 18px; margin: 10px 0;
+  }
+  .card h3 { margin-top: 0; }
+  .grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.04em; padding: 2px 8px; border-radius: 100px;
+    margin-right: 6px;
+  }
+  .tag.p1 { background: var(--red-bg); color: var(--red-text); }
+  .tag.p2 { background: var(--amber-bg); color: var(--amber-text); }
+  .tag.p3 { background: var(--blue-bg); color: var(--blue-text); }
+  .tag.tracked { background: oklch(0.92 0.01 75); color: var(--text-2); }
+  .tag.new { background: var(--green-bg); color: var(--green); }
+  .tag.done { background: var(--green-bg); color: var(--green); }
+  table {
+    width: 100%; border-collapse: collapse; margin: 12px 0;
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border-faint);
+    vertical-align: top;
+  }
+  th { font-weight: 700; color: var(--text); background: oklch(0.95 0.008 75); }
+  .note {
+    background: var(--green-bg); padding: 12px 16px; border-radius: 8px;
+    color: oklch(0.30 0.10 165); font-size: 14px; margin: 16px 0;
+    border-left: 3px solid var(--green);
+  }
+  .note strong { color: oklch(0.25 0.12 165); }
+  a { color: var(--green); }
+  li.done { color: var(--text-mute); text-decoration: line-through; }
+  li.done code { text-decoration: line-through; }
+  li.done .done-label {
+    text-decoration: none;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+    background: var(--green-bg); color: var(--green);
+    padding: 1px 7px; border-radius: 100px; margin-left: 6px;
+    vertical-align: middle;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="page">
+  <div class="eyebrow">Project Review · June 2026 · v2</div>
+  <h1>Assistive Commons Watch — Improvements Report</h1>
+  <p class="lead">A review of the project against its own brief, the six known GitHub issues, and the surrounding landscape of similar registries (CHAOSS, OpenSSF Scorecard, Libraries.io, EASTIN, WHO APL, Makers Making Change, A11yhood, GOAT, Open Assistive, Hackaday.io). Version 2 reflects the Quick Wins completed in the first implementation PR.</p>
+</header>
+
+<h2>1. Snapshot of the current state</h2>
+<p>ACW already has a strong foundation: 46 project YAMLs, a Pydantic-validated schema, a GitHub fetcher with sensible README/community heuristics, a transparent five-dimension scoring model, and a polished Landscape dashboard. The architectural separation between canonical records and per-platform <code>sources</code> blocks is the right call for the multi-platform roadmap. This report assumes that base is solid and focuses on gaps.</p>
+
+<div class="note"><strong>How to read the tags.</strong>
+<span class="tag tracked">tracked</span> already covered by one of the six listed GitHub issues.
+<span class="tag p1">P1</span> high-impact, addresses a structural gap.
+<span class="tag p2">P2</span> meaningful improvement, lower urgency.
+<span class="tag p3">P3</span> nice-to-have / future phase.
+<span class="tag done">done</span> completed in the Quick Wins PR.</p>
+
+<h2>2. Notes on the six tracked issues</h2>
+
+<div class="card">
+  <h3>Expand tracking to GitLab <span class="tag tracked">tracked</span></h3>
+  <p>The <code>Source</code> alias in <code>_fetchers/models.py</code> is currently a direct alias to <code>GitHubSource</code> rather than a discriminated union. Before adding GitLab, refactor that alias to <code>Annotated[Union[GitHubSource, GitLabSource], Field(discriminator="platform")]</code> &mdash; otherwise every fetcher addition becomes a breaking change in <code>compute_health</code> (which currently calls <code>next((s for s in project.sources if s.platform == "github"), None)</code>). Generalize to "pick the most active source" or "merge signals across sources." Also worth deciding: do two sources for one project double-count community signals, or do you pick canonical?</p>
+  <p><em>Note: The discriminated union scaffold is now in place (<span class="tag done">done</span>) — <code>Source = Annotated[Union[GitHubSource], Field(discriminator="platform")]</code>. Adding GitLab is now a non-breaking change.</em></p>
+</div>
+
+<div class="card">
+  <h3>Refine scoring <span class="tag tracked">tracked</span></h3>
+  <p>Three concrete refinements that the current code makes obvious:</p>
+  <ul>
+    <li><strong>Issue response rate bug — fixed.</strong> <span class="tag done">done</span> <code>_response_rate</code> in <code>github.py</code> now fetches per-issue comments and filters out comments by the issue author, counting only issues with at least one reply from a non-reporter. Previously any comment &mdash; including a self-comment &mdash; counted.</li>
+    <li><strong>Activity is currently binary on releases.</strong> <code>release_in_last_year</code> gives a flat +2. A cadence-based signal (e.g., median days between releases over the last 5) better separates "ships occasionally" from "shipped one tag five years ago."</li>
+    <li><strong>Star-count is not used at all today.</strong> That's defensible (the brief explicitly warns against star bias), but consider a tiny <em>community-size context</em> signal that informs the explanation text without entering the score &mdash; "small-audience tool" vs. "broadly used" framing helps readers interpret a dormant tier correctly.</li>
+    <li><strong>Scoring version stamped. <span class="tag done">done</span></strong> <code>SCORING_VERSION = "1.0"</code> is now exported from <code>_fetchers/scoring.py</code> and the <code>scored_with</code> field has been added to the <code>Project</code> schema so stored scores can reference the version that produced them.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Expand tracking to Instructables <span class="tag tracked">tracked</span></h3>
+  <p>Instructables has no public REST API; you'll be scraping. Two notes: (1) bundle this with <strong>Printables / Thingiverse / Hackaday.io</strong> as a single "maker platform" fetcher architecture, since they all share the same shape (downloads, makes/builds, comments, last-update). Printables actually does have a JSON API. (2) For these platforms, the scoring dimensions need different weights &mdash; "release artifact" is meaningless when the artifact <em>is</em> the page. Consider a per-platform scoring profile rather than one model.</p>
+</div>
+
+<div class="card">
+  <h3>Add score changelog <span class="tag tracked">tracked</span></h3>
+  <p>The brief promises "when a project's tier changes, the event is recorded and visible." Implementation suggestions: store as <code>_data/changelog/&lt;project-id&gt;.jsonl</code> (append-only, one event per line, easy to diff in PRs); fields <code>{date, old_tier, new_tier, old_score, new_score, scoring_version, primary_cause}</code>. The <code>primary_cause</code> is the interesting bit &mdash; have the scoring engine return which sub-dimension moved the most and surface that in the UI ("dropped to Dormant: last commit 14 months ago"). This is also what makes the "Recent Changes" tab in the brief work. The <code>scored_with</code> field now in place will populate <code>scoring_version</code> in changelog entries.</p>
+</div>
+
+<div class="card">
+  <h3>Nightly (or weekly) fetch GitHub Actions <span class="tag tracked">tracked</span></h3>
+  <p>Recommend <strong>weekly</strong>, not nightly &mdash; AT projects rarely move daily, and weekly limits PR noise and review fatigue. Operational details worth specifying up front:</p>
+  <ul>
+    <li><strong>Concurrency &amp; rate limits.</strong> 46 projects × ~6 API calls each = ~280 requests; with the response-rate fix this grows to ~300&ndash;350 (per-issue comment fetches) but remains well within the 5,000/hr token limit. Add backoff for 403/429 (the fetcher already raises on these &mdash; should retry instead).</li>
+    <li><strong>Partial-failure mode.</strong> Don't fail the whole run if one repo 404s; record per-project fetch errors in the YAML (<code>last_fetch_error: "404 at ..."</code>) and surface them on the detail page.</li>
+    <li><strong>Commit strategy.</strong> Open one PR per run with all updates, labeled <code>nightly-fetch</code>, auto-mergeable if CI is green and no canonical fields changed. This gives an audit trail without flooding main.</li>
+    <li><strong>Trigger the changelog writer from the same workflow</strong> &mdash; diff before/after tier and write a changelog entry in the same commit.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Add AT-community view to the dashboard <span class="tag tracked">tracked</span></h3>
+  <p>The current Landscape is explicitly built for builders (per the Decisions Log). An AT-community view should re-pivot the same data around three different questions: "What can I use today?" (filter to Thriving + Stable + complete end-user docs), "What's available in my language?" (uses <code>documentation_languages</code>), and "What does this cost / what skill does it take?" (uses <code>cost_range</code> + <code>skill_level</code>). The data is already there &mdash; this is a presentation/filter layer, not a data-model change. Add a <strong>"Find AT for&hellip;"</strong> entry-point that takes a disability area and produces a short list of replicable, well-documented options.</p>
+</div>
+
+<h2>3. Gaps the issues don't yet cover</h2>
+
+<h3>3.1 Data model &amp; interoperability</h3>
+
+<div class="card">
+  <h3>Adopt ISO 9999 classification codes <span class="tag p1">P1</span></h3>
+  <p>ISO 9999 is the international standard for assistive product taxonomy (used by EASTIN's 80,000-product database, WHO, and most national AT registries). Your current <code>disability_area</code> is a free-ish list of slugs. Add an optional <code>iso_9999_codes: list[str]</code> field. This is the single biggest interoperability win: it makes ACW data joinable to EASTIN, WHO APL, and national catalogs without any per-record reconciliation work, and it makes the Phase-5 EASTIN/GARI integration trivial rather than a custom mapping exercise. Even partial adoption is valuable.</p>
+</div>
+
+<div class="card">
+  <h3>Add accessibility metadata for the docs themselves <span class="tag p2">P2</span></h3>
+  <p>The brief lists "Accessibility of the documentation itself" as something ACW tracks, but the schema doesn't have a field for it. Add structured fields modeled on schema.org's <code>accessibilityFeature</code> / <code>accessibilityHazard</code> &mdash; e.g., <code>docs_alt_text: bool</code>, <code>docs_captioned_video: bool</code>, <code>docs_screen_reader_tested: bool</code>. This eats your own dog food and surfaces an important AT-specific signal.</p>
+</div>
+
+<div class="card">
+  <h3>Stable IDs + a public JSON/RSS feed <span class="tag p2">P2</span></h3>
+  <p>The data is CC0 but there's no documented programmatic access. Publish <code>/api/projects.json</code> (already exists internally as <code>site/_data/acw.json</code> &mdash; just expose it), plus per-project <code>/api/projects/&lt;id&gt;.json</code>, and an RSS feed for tier changes. The footer already promises an "API" link &mdash; this fulfills it for free given the 11ty static-build model.</p>
+</div>
+
+<h3>3.2 Scoring &amp; methodology</h3>
+
+<div class="card">
+  <h3>Explicit "AT relevance" gate, separate from quality <span class="tag p1">P1</span></h3>
+  <p>Several seed projects (<code>axe-core</code>, <code>pa11y</code>, <code>accessibility-insights-web</code>, <code>a11ywatch</code>) are generic web-accessibility tooling, not AT in the brief's narrow sense ("tools that increase functional capability for people with disabilities, where design/code/fab files are publicly available for replication"). The brief explicitly scopes out "general accessibility libraries." Either tighten inclusion or add an <code>at_relevance: primary | adjacent | tooling</code> field and let users filter. Currently the Landscape conflates them, which dilutes the headline "47% Thriving" claim.</p>
+</div>
+
+<div class="card">
+  <h3>Don't penalize hardware projects on software-shaped signals <span class="tag p1">P1</span></h3>
+  <p>The Replicability sub-score gives +1 for <code>readme_has_installation AND readme_has_usage</code> &mdash; phrasing that maps cleanly onto software, not onto a 3D-printed switch mount. For hardware/hybrid projects the equivalent signals are <em>BOM completeness</em>, <em>assembly photos</em>, <em>print settings</em>, <em>tested-source files</em>. Either generalize the README regexes (look for "Assembly", "Print Settings", "Soldering", "Calibration") or have a separate hardware sub-score path. Otherwise hardware projects systematically under-score on a dimension that was designed to favor them.</p>
+</div>
+
+<div class="card">
+  <h3>Surface confidence, not just score <span class="tag p2">P2</span></h3>
+  <p><code>compute_sub_scores</code> already returns <code>None</code> for activity/community when <code>fetched_at</code> is null, but the UI doesn't seem to distinguish "scored 0" from "not yet measured." Add a confidence/coverage indicator per dimension: how many of the input signals were actually available vs. inferred vs. missing. Users will trust a tier label more if they can see what went into it.</p>
+</div>
+
+<div class="card">
+  <h3>Borrow specific checks from OpenSSF Scorecard and CHAOSS <span class="tag p2">P2</span></h3>
+  <p>You don't want to <em>be</em> Scorecard (security focus is wrong for AT), but several of its 18 checks map cleanly onto provenance/community and run with the same fetcher infrastructure: <code>Branch-Protection</code>, <code>Maintained</code>, <code>License</code> (you have this), <code>Pinned-Dependencies</code> (the field exists but isn't populated), <code>SAST</code>. From CHAOSS, the <em>Bus Factor</em> metric is highly relevant for solo-maintainer AT projects &mdash; it gives readers a sharper signal than "is anyone home?" &mdash; "how exposed is this if the one maintainer steps away?"</p>
+</div>
+
+<h3>3.3 Frontend / UX</h3>
+
+<div class="card">
+  <h3>Implement the "Recent Changes" tab the brief promises <span class="tag p1">P1</span></h3>
+  <p>The brief lists three primary views (Landscape, Recent Changes, Needs Attention). The Landscape and Needs Attention are partly there; Recent Changes isn't yet a real surface &mdash; the sidebar's "Recently Added" is only new additions, not tier transitions or activity spikes. Once the score changelog ships, this tab is essentially free: render a chronological feed of changelog events.</p>
+</div>
+
+<div class="card">
+  <h3>Plain-language methodology page <span class="tag p2">P2</span></h3>
+  <p>The "Read the methodology →" link in the About card needs a destination. A single page that walks through one real project's scoring (e.g., "Here's why OptiKey is Thriving") is more useful than a formula dump &mdash; and is a strong signal that the project takes explainability seriously.</p>
+</div>
+
+<div class="card">
+  <h3>WCAG audit of the dashboard itself <span class="tag p1">P1</span></h3>
+  <p>This is awkward to ship without &mdash; a registry of AT projects whose own site fails WCAG would be cited against itself. Two specific things to check given the design tokens in the spec: (1) the oklch color choices for tier badges almost certainly need verification against 4.5:1 contrast on their backgrounds, especially Dormant (amber text on amber bg); (2) the tooltip on the Landscape blocks uses native <code>title</code> attributes which are inaccessible to keyboard and screen-reader users. Use the <code>wcag-accessibility-audit</code> skill (it's already in your environment) before launch.</p>
+</div>
+
+<h3>3.4 Submission &amp; community</h3>
+
+<div class="card">
+  <h3>Submission template + auto-scaffold from URL <span class="tag p1">P1</span></h3>
+  <p>The brief says anyone can submit via Issues or PR, and the GitHub Issue Form at <code>.github/ISSUE_TEMPLATE/submit_project.yml</code> is now in place (<span class="tag done">done</span>) — it covers repo URL, disability area, modality, open-source status, NAUWU, and replicability. A bot reaction that auto-opens the PR with a scaffolded YAML, fetched-on-submit signals, and a maintainer checklist would further remove the YAML-writing barrier for non-developers.</p>
+</div>
+
+<div class="card">
+  <h3>Cross-link to the existing ecosystem <span class="tag p2">P2</span></h3>
+  <p>You are not the first registry; positioning matters. On the About page and each project detail page, link out where the same project appears in: <a href="https://makersmakingchange.com">Makers Making Change</a> (200+ devices, big overlap on hardware), <a href="https://openassistive.org">openassistive.org</a>, <a href="https://github.com/openassistive/awesome-assistivetech">awesome-assistivetech</a>, <a href="https://www.openassistivetech.org/">GOAT</a>, <a href="https://www.eastin.eu/">EASTIN</a>. This both helps users and avoids the "yet another awesome list" critique by making the differentiator (live health monitoring, machine-readable schema, ISO codes) explicit.</p>
+</div>
+
+<div class="card">
+  <h3>"Adopt this project" / Seeking Maintainer flag <span class="tag p2">P2</span></h3>
+  <p>The brief mentions "Seeking Maintainer" as a possible maintenance status but the <code>HealthTier</code> enum doesn't include it. For Dormant/At Risk projects that are still useful, the most valuable thing ACW can do is connect them to a new maintainer. Add a simple opt-in (maintainer files an Issue or sets a flag) and surface those projects in a dedicated "Needs a maintainer" feed.</p>
+</div>
+
+<h3>3.5 Operations &amp; trust</h3>
+
+<div class="card">
+  <h3>Schema versioning and migrations <span class="tag p2">P2</span></h3>
+  <p>The Pydantic model has no <code>schema_version</code>. Once external consumers depend on the CC0 JSON feed, schema changes become breaking changes. Add a top-level version, semver it, and document the migration policy. Cheap to add now; expensive to add later.</p>
+</div>
+
+<div class="card">
+  <h3>Data-source citations on every field <span class="tag p3">P3</span></h3>
+  <p>For each manually-curated field (NAUWU, build_docs_quality, etc.), record <em>who</em> set it and <em>when</em>. A <code>provenance</code> sub-object per field is overkill, but a YAML-level <code>curated_by</code> + <code>curated_on</code> + <code>curated_notes</code> would let disputes resolve quickly and would let you re-audit fields older than N months.</p>
+</div>
+
+<div class="card">
+  <h3>Auto-detect license &amp; pinned dependencies <span class="tag p2">P2</span></h3>
+  <p>Two fields the GitHub fetcher could populate but currently doesn't:</p>
+  <ul>
+    <li><code>license</code>: <span class="tag done">done</span> <code>/repos/{owner}/{repo}</code> now returns <code>license.spdx_id</code> into <code>GitHubSource.license_spdx</code>; <code>_provenance()</code> falls back to this value when <code>project.license</code> is not manually set. Manually curated values continue to take priority.</li>
+    <li><code>dependencies_pinned</code>: parse <code>requirements.txt</code>, <code>package.json</code>, <code>Cargo.toml</code>, <code>platformio.ini</code> for version specifiers. Even a coarse "any unpinned major version present" check beats <code>null</code>.</li>
+  </ul>
+</div>
+
+<h2>4. Suggested prioritization</h2>
+<table>
+  <thead>
+    <tr><th>Priority</th><th>Item</th><th>Why now</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="tag p1">P1</span></td><td>AT-relevance gate (3.2)</td><td>Tightens the headline narrative; cheap field addition.</td></tr>
+    <tr><td><span class="tag p1">P1</span></td><td>Hardware-aware replicability (3.2)</td><td>Current scoring under-weights the projects the brief most wants to highlight.</td></tr>
+    <tr><td><span class="tag p1">P1</span></td><td>ISO 9999 codes (3.1)</td><td>Unlocks Phase 4/5 integrations and external use; one optional field.</td></tr>
+    <tr><td><span class="tag p1">P1</span></td><td>Recent Changes tab + changelog (#4 + 3.3)</td><td>The most-cited missing surface in the brief; pairs with the issue already filed.</td></tr>
+    <tr><td><span class="tag p1">P1</span></td><td>WCAG self-audit (3.3)</td><td>Required for credibility; not negotiable for an AT registry.</td></tr>
+    <tr><td><span class="tag done">done</span></td><td>Issue-form submission flow (3.4)</td><td>Issue Form template at <code>.github/ISSUE_TEMPLATE/submit_project.yml</code>.</td></tr>
+    <tr><td><span class="tag p2">P2</span></td><td>Source discriminated union refactor (#1)</td><td>Scaffold now in place; adding GitLab is non-breaking.</td></tr>
+    <tr><td><span class="tag done">done</span></td><td>Issue-response-rate bug + scoring version (#2)</td><td>Self-comment filtering fixed; <code>SCORING_VERSION</code> + <code>scored_with</code> field added.</td></tr>
+    <tr><td><span class="tag p2">P2</span></td><td>Weekly fetch with per-project failure isolation (#5)</td><td>Operational quality of the headline automation.</td></tr>
+    <tr><td><span class="tag done">done</span></td><td>Auto-detected license (3.5)</td><td><code>GitHubSource.license_spdx</code> populated from API; used as fallback in scoring.</td></tr>
+    <tr><td><span class="tag p2">P2</span></td><td>Public JSON API + RSS for changes (3.1)</td><td>Fulfills the footer promise; near-free given static build.</td></tr>
+    <tr><td><span class="tag p2">P2</span></td><td>Plain-language methodology page (3.3)</td><td>Trust signal that scales with project growth.</td></tr>
+    <tr><td><span class="tag p3">P3</span></td><td>Per-platform scoring profiles (#3 + 3.2)</td><td>Needed before Printables/Instructables, not before.</td></tr>
+    <tr><td><span class="tag p3">P3</span></td><td>Per-field curation provenance (3.5)</td><td>Useful at scale; over-engineered for 46 projects.</td></tr>
+  </tbody>
+</table>
+
+<h2>5. Positioning against similar projects</h2>
+<p>From the research, ACW occupies a real gap that none of the existing efforts cover:</p>
+<div class="grid">
+  <div class="card">
+    <h3>Curated lists (awesome-assistivetech, openassistive.org, GOAT, A11yhood)</h3>
+    <p>Link dumps with descriptions. No live status, no scoring, no schema. ACW's differentiator is the dashboard, not the catalog.</p>
+  </div>
+  <div class="card">
+    <h3>Maker libraries (Makers Making Change, Hackaday.io, Printables)</h3>
+    <p>Build-files and instructions for end-users, not health monitoring. Natural <em>upstream sources</em> for ACW Phases 2–3, not competitors.</p>
+  </div>
+  <div class="card">
+    <h3>Commercial &amp; standards databases (EASTIN, WHO APL, GARI, ISO 9999)</h3>
+    <p>Authoritative for products on the market, but exclude open-source DIY and have no maintenance signals. Adopt their taxonomy (ISO 9999), don't replicate.</p>
+  </div>
+  <div class="card">
+    <h3>OSS health tools (CHAOSS, OpenSSF Scorecard, Libraries.io)</h3>
+    <p>Generic OSS metrics with no AT lens. Borrow specific checks (Maintained, Bus Factor, Pinned-Deps) but don't adopt their scoring weights &mdash; they're calibrated for large libraries with many maintainers, the opposite of typical AT projects.</p>
+  </div>
+</div>
+<p style="margin-top: 18px;">The under-served niche is <em>"OpenSSF Scorecard for open AT, with the AT-specific signals (NAUWU, BOM, end-user docs) that generic OSS tools have no concept of."</em> That framing is worth putting in the README hero and the About page &mdash; right now ACW describes itself well to people who already understand both spaces, but not to either audience individually.</p>
+
+<h2>6. Quick wins — status</h2>
+<ul>
+  <li class="done">Fix the issue-response-rate bug in <code>_fetchers/github.py</code> (filter out comments by the issue author). <span class="done-label">done</span></li>
+  <li class="done">Auto-populate <code>license</code> from the GitHub API response (<code>GitHubSource.license_spdx</code>, fallback in <code>_provenance</code>). <span class="done-label">done</span></li>
+  <li class="done">Refactor <code>Source = GitHubSource</code> to a discriminated union scaffold even with one member, so adding GitLab is a non-breaking change. <span class="done-label">done</span></li>
+  <li class="done">Add <code>scored_with</code> (scoring version) to the YAML schema; export <code>SCORING_VERSION = "1.0"</code> from <code>_fetchers/scoring.py</code>. <span class="done-label">done</span></li>
+  <li class="done">Add an Issue Form template for new project submissions (<code>.github/ISSUE_TEMPLATE/submit_project.yml</code>). <span class="done-label">done</span></li>
+  <li>Run the <code>wcag-accessibility-audit</code> skill on the deployed Landscape and file the resulting issues. <em>(Pending — requires a live deployment to audit.)</em></li>
+</ul>
+
+<p style="margin-top: 40px; color: var(--text-mute); font-size: 12px;">Generated June 25, 2026 · v2 updated after Quick Wins PR · Based on a review of CLAUDE.md, assistive-commons-watch.md, the <code>_fetchers/</code> package, the Landscape design spec, and current online sources including CHAOSS, OpenSSF Scorecard, Libraries.io, EASTIN, WHO GATE, ISO 9999, Makers Making Change, openassistive.org, A11yhood, GOAT, and Hackaday.io.</p>
+
+</div>
+</body>
+</html>
