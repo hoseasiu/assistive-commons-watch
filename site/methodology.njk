@@ -1,0 +1,587 @@
+---
+layout: base.njk
+title: Score Methodology — Assistive Commons Watch
+permalink: /methodology/
+---
+<style>
+  /* ── Layout helpers ── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+  /* ── Header ── */
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border);
+    height: 56px;
+  }
+  .site-header .container { height: 100%; display: flex; align-items: center; }
+  .wordmark {
+    font-size: 15px; font-weight: 800; letter-spacing: -0.03em;
+    color: var(--text-primary); margin-right: auto; text-decoration: none;
+  }
+  .wordmark:hover { opacity: 0.8; }
+  .site-nav { display: flex; align-items: center; gap: 4px; }
+  .site-nav a {
+    font-size: 13px; font-weight: 500; color: var(--text-secondary);
+    padding: 0 12px; border-radius: 6px; transition: background 0.15s;
+    min-height: 44px; display: inline-flex; align-items: center;
+  }
+  .site-nav a:hover { background: var(--bg-page); }
+  .site-nav .nav-cta {
+    font-size: 13px; font-weight: 600; color: white;
+    background: var(--accent-green); padding: 0 15px;
+    border-radius: 7px; margin-left: 8px; transition: background 0.15s;
+    min-height: 44px; display: inline-flex; align-items: center;
+  }
+  .site-nav .nav-cta:hover { background: oklch(0.36 0.14 165); color: white; }
+
+  /* ── Page hero ── */
+  .page-hero {
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 0 36px;
+  }
+  .page-title {
+    font-size: 36px; font-weight: 800; letter-spacing: -0.03em;
+    color: oklch(0.17 0.025 50); margin-bottom: 12px;
+  }
+  .page-lead {
+    font-size: 17px; line-height: 1.65; color: oklch(0.48 0.02 50);
+    max-width: 620px;
+  }
+  .page-meta {
+    display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+    margin-top: 20px; font-size: 13px; color: var(--text-muted);
+  }
+  .page-meta a { color: var(--accent-green); font-weight: 500; }
+  .page-meta .meta-sep { color: oklch(0.82 0.01 75); }
+
+  /* ── Content layout ── */
+  .content-body {
+    padding: 48px 0 80px;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .prose h2 {
+    font-size: 22px; font-weight: 800; letter-spacing: -0.02em;
+    color: oklch(0.17 0.025 50); margin: 40px 0 16px;
+  }
+  .prose h2:first-child { margin-top: 0; }
+  .prose h3 {
+    font-size: 15px; font-weight: 700; color: var(--text-primary);
+    margin: 24px 0 8px;
+  }
+  .prose p {
+    font-size: 15px; line-height: 1.7; color: oklch(0.42 0.02 50);
+    margin-bottom: 14px;
+  }
+  .prose ul {
+    margin: 8px 0 14px 20px;
+  }
+  .prose ul li {
+    font-size: 15px; line-height: 1.7; color: oklch(0.42 0.02 50);
+    margin-bottom: 5px;
+  }
+
+  /* ── Formula display ── */
+  .formula-block {
+    background: oklch(0.965 0.012 76);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: 1.9;
+    overflow-x: auto;
+  }
+
+  /* ── Dimension table ── */
+  .dim-table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; }
+  .dim-table th {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+    color: var(--text-muted); text-transform: uppercase;
+    text-align: left; padding: 8px 12px;
+    border-bottom: 2px solid var(--border);
+  }
+  .dim-table td {
+    font-size: 14px; color: var(--text-secondary);
+    padding: 10px 12px; border-bottom: 1px solid var(--border-subtle);
+    vertical-align: top;
+  }
+  .dim-table tr:last-child td { border-bottom: none; }
+  .dim-name { font-weight: 700; color: var(--text-primary); }
+  .dim-weight { font-weight: 800; color: var(--accent-green); font-variant-numeric: tabular-nums; }
+
+  /* ── Worked example ── */
+  .example-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 24px 0;
+  }
+  .example-header {
+    background: oklch(0.94 0.06 165);
+    padding: 16px 20px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .example-project-name {
+    font-size: 18px; font-weight: 800; color: oklch(0.18 0.12 165);
+  }
+  .example-project-desc {
+    font-size: 13px; color: oklch(0.30 0.08 165); margin-top: 2px;
+  }
+  .example-tier-badge {
+    margin-left: auto; flex-shrink: 0;
+    background: oklch(0.62 0.17 47); color: white;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.05em;
+    padding: 4px 11px; border-radius: 100px;
+  }
+
+  .dim-rows { padding: 0; }
+  .dim-row {
+    display: grid; grid-template-columns: 160px 1fr auto;
+    gap: 16px; align-items: start;
+    padding: 14px 20px; border-bottom: 1px solid var(--border-subtle);
+  }
+  .dim-row:last-child { border-bottom: none; }
+  .dim-row-name {
+    font-size: 13px; font-weight: 700; color: var(--text-primary);
+  }
+  .dim-row-weight {
+    font-size: 11px; font-weight: 600; color: var(--text-muted);
+    margin-top: 2px;
+  }
+  .dim-row-detail {
+    font-size: 13px; color: oklch(0.48 0.015 50); line-height: 1.6;
+  }
+  .dim-row-score {
+    font-size: 15px; font-weight: 800; color: var(--text-primary);
+    white-space: nowrap; text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .dim-row-contrib {
+    font-size: 11px; font-weight: 600; color: var(--text-muted);
+    text-align: right; margin-top: 2px;
+  }
+
+  .example-total {
+    background: oklch(0.965 0.012 76);
+    padding: 16px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .example-total-label {
+    font-size: 14px; font-weight: 700; color: var(--text-primary);
+  }
+  .example-total-score {
+    font-size: 26px; font-weight: 800; color: oklch(0.62 0.17 47);
+    font-variant-numeric: tabular-nums;
+  }
+  .example-total-tier {
+    font-size: 13px; color: var(--text-muted); margin-top: 2px; text-align: right;
+  }
+
+  /* ── Tier table ── */
+  .tier-table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; }
+  .tier-table th {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+    color: var(--text-muted); text-transform: uppercase;
+    text-align: left; padding: 8px 12px;
+    border-bottom: 2px solid var(--border);
+  }
+  .tier-table td {
+    font-size: 14px; color: var(--text-secondary);
+    padding: 10px 12px; border-bottom: 1px solid var(--border-subtle);
+    vertical-align: top;
+  }
+  .tier-table tr:last-child td { border-bottom: none; }
+  .tier-swatch {
+    display: inline-block; width: 12px; height: 12px;
+    border-radius: 3px; margin-right: 6px; vertical-align: middle;
+  }
+  .tier-label { font-weight: 700; color: var(--text-primary); }
+
+  /* ── Sidebar ── */
+  .sidebar { display: flex; flex-direction: column; gap: 16px; }
+  .sidebar-card {
+    background: var(--bg-white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 20px;
+  }
+  .sidebar-card-title {
+    font-size: 13px; font-weight: 700; color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+  .sidebar-card p {
+    font-size: 13px; line-height: 1.6; color: oklch(0.50 0.015 50);
+    margin-bottom: 10px;
+  }
+  .sidebar-card a { color: var(--accent-green); font-weight: 500; }
+  .sidebar-card code {
+    font-size: 12px; background: oklch(0.94 0.008 76);
+    padding: 2px 6px; border-radius: 4px; color: var(--text-primary);
+  }
+  .sidebar-card ul { margin: 6px 0 0 16px; }
+  .sidebar-card ul li {
+    font-size: 13px; line-height: 1.6; color: oklch(0.50 0.015 50);
+    margin-bottom: 4px;
+  }
+
+  /* ── Footer ── */
+  .site-footer {
+    background: var(--bg-white); border-top: 1px solid var(--border);
+    padding: 20px 40px;
+  }
+  .site-footer .container {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-left { font-size: 12px; color: var(--text-muted); }
+  .footer-left a { color: var(--accent-green); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a {
+    font-size: 12px; color: oklch(0.58 0.015 50);
+    transition: color 0.15s;
+  }
+  .footer-links a:hover { color: var(--text-primary); }
+
+  /* ── Responsive ── */
+  @media (max-width: 860px) {
+    .container { padding: 0 20px; }
+    .content-body { grid-template-columns: 1fr; gap: 32px; }
+    .dim-row { grid-template-columns: 1fr auto; }
+    .dim-row-name-col { grid-column: 1 / -1; }
+    .page-title { font-size: 28px; }
+  }
+</style>
+
+<!-- ── Header ── -->
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="wordmark">Assistive Commons Watch</a>
+    <nav class="site-nav" aria-label="Site navigation">
+      <a href="/browse/?mode=contribute">Contribute</a>
+      <a href="/browse/?mode=use">Find a Tool</a>
+      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new?template=submit_project.yml" class="nav-cta">Submit a project →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── Hero ── -->
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-title">Score methodology</h1>
+    <p class="page-lead">
+      ACW assigns every project a health score from 0 to 10, split across five
+      weighted dimensions. This page explains what each dimension measures, walks
+      through a real worked example, and documents the tier thresholds.
+    </p>
+    <div class="page-meta">
+      <span>Version <strong>1.0</strong></span>
+      <span class="meta-sep">·</span>
+      <a href="https://github.com/hoseasiu/assistive-commons-watch/blob/main/schema.json">Schema JSON</a>
+      <span class="meta-sep">·</span>
+      <a href="https://github.com/hoseasiu/assistive-commons-watch/blob/main/_fetchers/scoring.py">Scoring source</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Main content ── -->
+<main id="main-content">
+  <div class="container">
+    <div class="content-body">
+
+      <!-- ── Left: prose + example ── -->
+      <div class="prose">
+
+        <h2>The formula</h2>
+        <p>
+          Each project receives a score out of 10, computed as a weighted average of five
+          sub-dimension scores (each also 0–10):
+        </p>
+
+        <div class="formula-block">
+          score = 0.25 × activity<br>
+                + 0.30 × replicability<br>
+                + 0.15 × community<br>
+                + 0.20 × at_specific<br>
+                + 0.10 × provenance
+        </div>
+
+        <table class="dim-table" aria-label="Scoring dimensions">
+          <thead>
+            <tr>
+              <th>Dimension</th>
+              <th>Weight</th>
+              <th>What it measures</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="dim-name">Activity</td>
+              <td class="dim-weight">25%</td>
+              <td>Is the project being maintained? Looks at days since last commit, issue response rate, and whether a release shipped in the last year.</td>
+            </tr>
+            <tr>
+              <td class="dim-name">Replicability</td>
+              <td class="dim-weight">30%</td>
+              <td>Can someone actually build or install it? Checks for a bill of materials, build-doc quality, a release artifact, pinned dependencies, and README completeness.</td>
+            </tr>
+            <tr>
+              <td class="dim-name">Community</td>
+              <td class="dim-weight">15%</td>
+              <td>Is the project welcoming to contributors? Looks for a CONTRIBUTING guide, code of conduct, and issue templates.</td>
+            </tr>
+            <tr>
+              <td class="dim-name">AT-specific</td>
+              <td class="dim-weight">20%</td>
+              <td>Does it meet AT-specific trust signals? Checks for end-user documentation, a feedback channel, "Nothing About Us Without Us" evidence, and known deployment instances.</td>
+            </tr>
+            <tr>
+              <td class="dim-name">Provenance</td>
+              <td class="dim-weight">10%</td>
+              <td>Is the project's origin trustworthy? Looks for an OSI-approved license, associated publication, institutional affiliation, or recognised origin programme.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Worked example: OptiKey</h2>
+        <p>
+          OptiKey is a free, open-source on-screen keyboard for Windows controlled by eye
+          gaze, head tracking, or a standard mouse. Here's exactly how its score of
+          <strong>5.2 / 10</strong> was computed from data fetched on 25 June 2026.
+        </p>
+
+        <div class="example-card">
+          <div class="example-header">
+            <div>
+              <div class="example-project-name">OptiKey</div>
+              <div class="example-project-desc">Eye-gaze on-screen keyboard · GPL-3.0 · github.com/OptiKey/OptiKey</div>
+            </div>
+            <span class="example-tier-badge">At Risk</span>
+          </div>
+
+          <div class="dim-rows">
+            <div class="dim-row">
+              <div>
+                <div class="dim-row-name">Activity</div>
+                <div class="dim-row-weight">weight 0.25</div>
+              </div>
+              <div class="dim-row-detail">
+                Last commit was 99 days ago (18 Mar 2026) → <strong>5.0 pts</strong>.
+                Issue response rate 54% → min(3.0, 0.54 × 3.34) = <strong>1.8 pts</strong>.
+                No release in the last year → <strong>0 pts</strong>.
+              </div>
+              <div>
+                <div class="dim-row-score">6.8 / 10</div>
+                <div class="dim-row-contrib">contributes 1.70</div>
+              </div>
+            </div>
+
+            <div class="dim-row">
+              <div>
+                <div class="dim-row-name">Replicability</div>
+                <div class="dim-row-weight">weight 0.30</div>
+              </div>
+              <div class="dim-row-detail">
+                Release artifact present → <strong>2.0 pts</strong>.
+                No BOM → 0 pts. Build docs quality "none" → 0 pts.
+                Dependencies pinned: unknown → 0 pts.
+                README has installation instructions but missing usage section → 0 pts
+                (both required for the bonus point).
+              </div>
+              <div>
+                <div class="dim-row-score">2.0 / 10</div>
+                <div class="dim-row-contrib">contributes 0.60</div>
+              </div>
+            </div>
+
+            <div class="dim-row">
+              <div>
+                <div class="dim-row-name">Community</div>
+                <div class="dim-row-weight">weight 0.15</div>
+              </div>
+              <div class="dim-row-detail">
+                CONTRIBUTING file present → <strong>4.0 pts</strong>.
+                Issue templates present → <strong>3.0 pts</strong>.
+                Code of conduct present → <strong>3.0 pts</strong>.
+              </div>
+              <div>
+                <div class="dim-row-score">10.0 / 10</div>
+                <div class="dim-row-contrib">contributes 1.50</div>
+              </div>
+            </div>
+
+            <div class="dim-row">
+              <div>
+                <div class="dim-row-name">AT-specific</div>
+                <div class="dim-row-weight">weight 0.20</div>
+              </div>
+              <div class="dim-row-detail">
+                End-user documentation present → <strong>3.0 pts</strong>.
+                Feedback channel present → <strong>2.0 pts</strong>.
+                "Nothing About Us" involvement: unverified → 0 pts.
+                Known deployed instances: unverified → 0 pts.
+              </div>
+              <div>
+                <div class="dim-row-score">5.0 / 10</div>
+                <div class="dim-row-contrib">contributes 1.00</div>
+              </div>
+            </div>
+
+            <div class="dim-row">
+              <div>
+                <div class="dim-row-name">Provenance</div>
+                <div class="dim-row-weight">weight 0.10</div>
+              </div>
+              <div class="dim-row-detail">
+                GPL-3.0 is an OSI-approved license → <strong>4.0 pts</strong>.
+                No associated publication → 0 pts.
+                No institutional affiliation → 0 pts.
+                No origin programme → 0 pts.
+              </div>
+              <div>
+                <div class="dim-row-score">4.0 / 10</div>
+                <div class="dim-row-contrib">contributes 0.40</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="example-total">
+            <div>
+              <div class="example-total-label">Final score</div>
+              <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">
+                1.70 + 0.60 + 1.50 + 1.00 + 0.40
+              </div>
+            </div>
+            <div>
+              <div class="example-total-score">5.20 / 10</div>
+              <div class="example-total-tier">Tier: At Risk</div>
+            </div>
+          </div>
+        </div>
+
+        <p>
+          OptiKey's community health is exemplary — CONTRIBUTING file, code of conduct, and
+          issue templates all present. Its score is dragged down by <strong>replicability</strong>:
+          there's no bill of materials (it's software, so that's expected) and the README
+          covers installation but not end-to-end usage. Adding a usage section to the README
+          and pinning dependencies would move replicability from 2.0 to at least 3.0,
+          pushing the total score above the 5.5 Stable threshold.
+        </p>
+
+        <h2>Tier thresholds</h2>
+        <p>
+          Once the score is computed, the tier is assigned using a first-match rule applied
+          in this order:
+        </p>
+
+        <table class="tier-table" aria-label="Health tier thresholds">
+          <thead>
+            <tr>
+              <th>Tier</th>
+              <th>Condition (first match wins)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tier-swatch" style="background:oklch(0.52 0.14 22)"></span><span class="tier-label">Archived</span></td>
+              <td>Activity score = 0 AND last commit more than 3 years ago.</td>
+            </tr>
+            <tr>
+              <td><span class="tier-swatch" style="background:oklch(0.52 0.16 142)"></span><span class="tier-label">Thriving</span></td>
+              <td>Score ≥ 7.5</td>
+            </tr>
+            <tr>
+              <td><span class="tier-swatch" style="background:oklch(0.50 0.14 245)"></span><span class="tier-label">Stable</span></td>
+              <td>Score ≥ 5.5</td>
+            </tr>
+            <tr>
+              <td><span class="tier-swatch" style="background:oklch(0.72 0.13 83)"></span><span class="tier-label">Dormant</span></td>
+              <td>Activity ≤ 2.0 AND replicability ≥ 5.0 — the project still builds even if it's not actively maintained.</td>
+            </tr>
+            <tr>
+              <td><span class="tier-swatch" style="background:oklch(0.62 0.17 47)"></span><span class="tier-label">At Risk</span></td>
+              <td>Everything else — below Stable and not cleanly Dormant.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          The Dormant tier exists to distinguish projects that are quietly stable from ones
+          that are decaying. A project with no recent commits but a solid, pinned,
+          reproducible build is more useful than a nominally "active" project you can't
+          actually install.
+        </p>
+
+        <h2>Limitations</h2>
+        <p>The score is a heuristic, not a verdict. It cannot see:</p>
+        <ul>
+          <li><strong>Hardware quality</strong> — a BOM can exist and still describe a poorly-designed device. We can check that documentation is present; we can't check that it is accurate or safe.</li>
+          <li><strong>Documentation in languages other than English</strong> — we track <code>documentation_languages</code> as metadata, but non-English docs don't receive extra weight yet.</li>
+          <li><strong>Actual usability for disabled people</strong> — the "Nothing About Us" field captures known co-design involvement, but the absence of that signal doesn't mean disabled people weren't involved.</li>
+          <li><strong>Private forks or deployment</strong> — a project with no public stars could be deployed widely in a hospital system; we have no visibility into that.</li>
+          <li><strong>Regulatory or safety certification</strong> — ISO 9999 codes are recorded as metadata but don't factor into the score.</li>
+        </ul>
+        <p>
+          We plan to revisit the formula weights and add new signals (e.g. documentation
+          language breadth, co-design depth) in future versions. Formula changes will
+          increment <code>SCORING_VERSION</code> and be announced in the changelog.
+        </p>
+
+      </div>
+
+      <!-- ── Right: sidebar ── -->
+      <aside class="sidebar" aria-label="Methodology quick links">
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Formula at a glance</div>
+          <p><code>score = 0.25×activity + 0.30×replicability + 0.15×community + 0.20×at_specific + 0.10×provenance</code></p>
+          <p>Each sub-dimension is scored 0–10. Final score is rounded to two decimal places.</p>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Version</div>
+          <p>Current formula version: <strong>1.0</strong></p>
+          <p>The <code>scored_with</code> field on each project record stores the version used when that project was last scored.</p>
+          <a href="https://github.com/hoseasiu/assistive-commons-watch/blob/main/_fetchers/scoring.py">View scoring.py on GitHub →</a>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Data schema</div>
+          <p>Every field used in the score is documented in <code>schema.json</code>. Fields that require manual curation are marked with a <code>manually_curated</code> annotation.</p>
+          <a href="https://github.com/hoseasiu/assistive-commons-watch/blob/main/schema.json">View schema.json on GitHub →</a>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Suggest a change</div>
+          <p>If you think a dimension is missing or a weight is wrong, open an issue. We especially want feedback from AT users and clinicians.</p>
+          <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new">Open an issue →</a>
+        </div>
+
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<!-- ── Footer ── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-left">
+      Assistive Commons Watch ·
+      <a href="https://creativecommons.org/publicdomain/zero/1.0/">Data CC0</a> ·
+      <a href="/methodology/">Score methodology v1.0</a>
+    </div>
+    <nav class="footer-links">
+      <a href="https://github.com/hoseasiu/assistive-commons-watch">GitHub</a>
+      <a href="/about">About</a>
+      <a href="/api">API</a>
+      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new?template=submit_project.yml">Submit</a>
+    </nav>
+  </div>
+</footer>
