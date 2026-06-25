@@ -17,6 +17,8 @@ tags:
 disability_area:
 - motor
 - neurological
+iso_9999_codes:
+- 22.36.18
 modality: hybrid
 user_context:
 - clinical
@@ -65,7 +67,6 @@ sources:
   has_issue_templates: true
   license_spdx: MIT
 health_tier: stable
-h_tier: null
 health_score: null
 platform: []
 plain_language_description: null
