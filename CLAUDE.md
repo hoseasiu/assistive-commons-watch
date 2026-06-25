@@ -75,3 +75,7 @@ score = 0.25×activity + 0.30×replicability + 0.15×community + 0.20×at_specif
 ```
 
 Tier rules (first match wins): Archived → Thriving (≥7.5) → Stable (≥5.5) → Dormant (activity≤2 AND replicability≥5) → At Risk.
+
+## Testing
+
+If you are testing for something visual, don't try to render the page and take screenshots, as this takes up a lot of tokens. Just tell the user to start up the page via NPM and have the user inspect it.
