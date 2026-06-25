@@ -1,0 +1,37 @@
+name: Validate YAMLs and Schema
+
+on:
+  pull_request:
+    paths:
+      - "_data/projects/**"
+      - "_fetchers/models.py"
+      - "schema.json"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install -e .
+
+      - name: Validate project YAMLs
+        run: python scripts/validate_yaml.py
+
+      - name: Check schema.json is up to date
+        run: |
+          python scripts/export_schema.py
+          if ! git diff --exit-code schema.json; then
+            echo ""
+            echo "schema.json is out of date."
+            echo "Run 'python scripts/export_schema.py' locally and commit the result."
+            exit 1
+          fi
