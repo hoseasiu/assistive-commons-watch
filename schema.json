@@ -13,9 +13,6 @@
       "properties": {
         "platform": {
           "const": "github",
-          "enum": [
-            "github"
-          ],
           "title": "Platform",
           "type": "string"
         },
@@ -329,11 +326,7 @@
       "title": "Bom Present"
     },
     "build_docs_quality": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/BuildDocsQuality"
-        }
-      ],
+      "$ref": "#/$defs/BuildDocsQuality",
       "default": "none"
     },
     "cost_range": {
