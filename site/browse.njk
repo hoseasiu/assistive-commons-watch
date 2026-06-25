@@ -53,14 +53,37 @@ title: Browse Projects — Assistive Commons Watch
   /* ── Page hero ── */
   .page-hero {
     background: var(--bg-white); border-bottom: 1px solid var(--border);
-    padding: 28px 0 24px;
+    padding: 24px 0 0;
   }
-  .page-hero .container { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .page-hero .container { display: flex; flex-direction: column; gap: 0; }
+  .page-hero-top { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
   .page-title {
     font-size: 28px; font-weight: 800; letter-spacing: -0.03em;
     color: oklch(0.17 0.025 50);
   }
   .page-subtitle { font-size: 14px; color: var(--text-muted); }
+
+  /* Mode switcher tabs */
+  .mode-tabs {
+    display: flex; gap: 0;
+  }
+  .mode-tab {
+    font-family: inherit; font-size: 14px; font-weight: 500;
+    padding: 10px 18px; background: none; border: none;
+    color: oklch(0.50 0.02 50); cursor: pointer;
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+    transition: color 0.15s; letter-spacing: 0.01em;
+    text-decoration: none; display: inline-block;
+  }
+  .mode-tab:hover { color: var(--text-primary); }
+  .mode-tab[data-active] {
+    color: oklch(0.38 0.14 165); font-weight: 700;
+    border-bottom-color: oklch(0.43 0.14 165);
+  }
+  .mode-tab--use[data-active] {
+    color: oklch(0.35 0.14 245);
+    border-bottom-color: oklch(0.50 0.14 245);
+  }
 
   /* ── Browse layout ── */
   .browse-layout {
@@ -109,26 +132,22 @@ title: Browse Projects — Assistive Commons Watch
   }
   .filter-option input[type="checkbox"] {
     width: 14px; height: 14px; accent-color: var(--accent-green);
-    cursor: pointer; flex-shrink: 0;
-    margin: 0;
+    cursor: pointer; flex-shrink: 0; margin: 0;
+  }
+  .filter-option input[type="radio"] {
+    width: 14px; height: 14px; accent-color: var(--accent-green);
+    cursor: pointer; flex-shrink: 0; margin: 0;
   }
   .filter-option-label {
     font-size: 13px; color: var(--text-secondary);
     cursor: pointer; user-select: none;
   }
-  .filter-option-count {
-    font-size: 11px; color: var(--text-muted);
-    margin-left: auto;
-  }
   .filter-option input:checked + .filter-option-label {
     color: var(--text-primary); font-weight: 600;
   }
 
-  /* Radio group for co-design */
-  .filter-option input[type="radio"] {
-    width: 14px; height: 14px; accent-color: var(--accent-green);
-    cursor: pointer; flex-shrink: 0; margin: 0;
-  }
+  /* Use-mode hides the health-tier filter section (shown via JS) */
+  .filter-section[data-mode-hide] { display: none; }
 
   /* ── Results area ── */
   .results-area { display: flex; flex-direction: column; gap: 12px; }
@@ -144,9 +163,7 @@ title: Browse Projects — Assistive Commons Watch
     margin-right: auto;
   }
   .results-count-muted { color: var(--text-muted); font-weight: 400; }
-  .sort-label {
-    font-size: 12px; color: var(--text-muted); white-space: nowrap;
-  }
+  .sort-label { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
   .sort-select {
     font-size: 13px; font-weight: 500; color: var(--text-primary);
     background: var(--bg-page); border: 1px solid var(--border);
@@ -155,7 +172,7 @@ title: Browse Projects — Assistive Commons Watch
   }
   .sort-select:focus { outline: 2px solid var(--accent-green); outline-offset: 1px; }
 
-  /* ── Project cards ── */
+  /* ── Project cards (contribute mode) ── */
   .project-cards { display: flex; flex-direction: column; gap: 10px; }
 
   .project-card {
@@ -200,7 +217,6 @@ title: Browse Projects — Assistive Commons Watch
     font-size: 11px; color: var(--text-muted); margin-left: auto; margin-top: 2px;
     white-space: nowrap;
   }
-
   .card-right {
     display: flex; flex-direction: column; align-items: flex-end;
     gap: 8px; flex-shrink: 0;
@@ -211,9 +227,7 @@ title: Browse Projects — Assistive Commons Watch
     font-size: 11px; font-weight: 700; letter-spacing: 0.03em;
     white-space: nowrap;
   }
-  .tier-pill-dot {
-    width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
-  }
+  .tier-pill-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
   .card-score {
     font-size: 20px; font-weight: 800; letter-spacing: -0.04em;
     font-variant-numeric: tabular-nums; color: var(--text-primary);
@@ -224,6 +238,34 @@ title: Browse Projects — Assistive Commons Watch
     font-weight: 500; letter-spacing: 0.03em; margin-top: -2px;
   }
 
+  /* ── Use-mode card overrides ── */
+  .project-card--use:hover {
+    border-color: oklch(0.75 0.07 245);
+  }
+  .card-use-badges { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; margin-top: 8px; }
+
+  .use-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 9px; border-radius: 100px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .use-badge--beginner  { background: oklch(0.93 0.08 142); color: oklch(0.28 0.14 142); border: 1px solid oklch(0.80 0.12 142); }
+  .use-badge--maker     { background: oklch(0.96 0.06 84);  color: oklch(0.38 0.12 84);  border: 1px solid oklch(0.84 0.10 84); }
+  .use-badge--engineer  { background: oklch(0.96 0.07 47);  color: oklch(0.38 0.14 47);  border: 1px solid oklch(0.84 0.12 47); }
+  .use-badge--cost      { background: var(--bg-page); color: var(--text-secondary); border: 1px solid var(--border); }
+  .use-badge--docs      { background: oklch(0.94 0.06 245); color: oklch(0.30 0.12 245); border: 1px solid oklch(0.80 0.10 245); }
+  .use-badge--feedback  { background: oklch(0.95 0.04 165); color: oklch(0.32 0.10 165); border: 1px solid oklch(0.82 0.08 165); }
+
+  .card-maintenance {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.01em;
+    white-space: nowrap; text-align: right;
+  }
+  .card-maintenance-label {
+    font-size: 10px; color: var(--text-muted); text-align: right;
+    font-weight: 500; margin-top: 2px;
+  }
+
   /* ── Empty state ── */
   .empty-state {
     text-align: center; padding: 56px 24px;
@@ -231,10 +273,7 @@ title: Browse Projects — Assistive Commons Watch
     border: 1px solid var(--border);
   }
   .empty-state-icon { font-size: 32px; margin-bottom: 12px; }
-  .empty-state-title {
-    font-size: 16px; font-weight: 700; color: var(--text-primary);
-    margin-bottom: 6px;
-  }
+  .empty-state-title { font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
   .empty-state-body { font-size: 14px; color: var(--text-muted); }
   .empty-clear-link {
     display: inline-block; margin-top: 14px; font-size: 13px;
@@ -246,7 +285,7 @@ title: Browse Projects — Assistive Commons Watch
   /* ── Footer ── */
   .site-footer {
     background: var(--bg-white); border-top: 1px solid var(--border);
-    padding: 20px 0;
+    padding: 20px 40px;
   }
   .site-footer .container {
     display: flex; justify-content: space-between; align-items: center;
@@ -258,15 +297,12 @@ title: Browse Projects — Assistive Commons Watch
   .footer-links a { font-size: 12px; color: oklch(0.52 0.015 50); }
 
   /* ── No-JS fallback ── */
-  .no-js-note {
-    font-size: 12px; color: var(--text-muted); padding: 6px 0;
-  }
+  .no-js-note { font-size: 12px; color: var(--text-muted); padding: 6px 0; }
 
-  /* ── Filter toggle (mobile only) ── */
+  /* ── Mobile filter toggle ── */
   .filter-toggle-btn {
-    display: none;
-    width: 100%; padding: 10px 16px;
-    font-family: inherit; font-size: 13px; font-weight: 600;
+    display: none; width: 100%; padding: 12px 16px;
+    font-size: 14px; font-weight: 600;
     color: var(--text-primary); background: var(--bg-white);
     border: 1px solid var(--border); border-radius: 10px;
     cursor: pointer; text-align: left;
@@ -282,6 +318,7 @@ title: Browse Projects — Assistive Commons Watch
     .filter-toggle-btn { display: block; }
     .filter-panel { position: static; display: none; margin-bottom: 12px; }
     .filter-panel.open { display: block; }
+    .mode-tab { padding: 10px 12px; font-size: 13px; }
   }
 </style>
 
@@ -300,9 +337,8 @@ title: Browse Projects — Assistive Commons Watch
       </span>
     </a>
     <nav class="site-nav" aria-label="Site navigation">
-      <a href="/browse" aria-current="page">Browse</a>
-      <a href="/recent">Recent Changes</a>
-      <a href="/needs-attention">Needs Attention</a>
+      <a href="/browse/?mode=contribute">Contribute</a>
+      <a href="/browse/?mode=use">Find a Tool</a>
       <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new?template=submit_project.yml" class="nav-cta">Submit a project →</a>
     </nav>
   </div>
@@ -311,13 +347,23 @@ title: Browse Projects — Assistive Commons Watch
 <!-- ─────────────────────────── PAGE HERO ─────────────────────────── -->
 <div class="page-hero">
   <div class="container">
-    <h1 class="page-title">Browse Projects</h1>
-    <p class="page-subtitle">{{ acw.projects | length }} open-source assistive technology projects</p>
+    <div class="page-hero-top">
+      <h1 class="page-title" id="page-title">Browse Projects</h1>
+      <p class="page-subtitle" id="page-subtitle">{{ acw.projects | length }} open-source assistive technology projects</p>
+    </div>
+    <div class="mode-tabs" role="tablist" aria-label="Browse mode">
+      <button class="mode-tab mode-tab--contribute" role="tab" data-mode-btn="contribute" aria-selected="false">
+        For Contributors
+      </button>
+      <button class="mode-tab mode-tab--use" role="tab" data-mode-btn="use" aria-selected="false">
+        Find a Tool
+      </button>
+    </div>
   </div>
 </div>
 
 <!-- ─────────────────────────── MAIN ─────────────────────────── -->
-<main id="main-content">
+<main>
   <div class="container">
     <div class="browse-layout">
 
@@ -367,8 +413,8 @@ title: Browse Projects — Assistive Commons Watch
             </div>
           </div>
 
-          <!-- Health tier -->
-          <div class="filter-section">
+          <!-- Health tier (contribute mode) / Maintenance (use mode handled via default filter) -->
+          <div class="filter-section" id="tier-filter-section">
             <div class="filter-section-label" id="tier-label">Health Tier</div>
             <div class="filter-options" role="group" aria-labelledby="tier-label">
               <label class="filter-option">
@@ -396,7 +442,7 @@ title: Browse Projects — Assistive Commons Watch
 
           <!-- Modality -->
           <div class="filter-section">
-            <div class="filter-section-label" id="modality-label">Modality</div>
+            <div class="filter-section-label" id="modality-label">Type</div>
             <div class="filter-options" role="group" aria-labelledby="modality-label">
               <label class="filter-option">
                 <input type="checkbox" name="modality" value="hardware">
@@ -412,22 +458,22 @@ title: Browse Projects — Assistive Commons Watch
               </label>
               <label class="filter-option">
                 <input type="checkbox" name="modality" value="hybrid">
-                <span class="filter-option-label">Hybrid</span>
+                <span class="filter-option-label">Hardware + Software</span>
               </label>
             </div>
           </div>
 
           <!-- Skill level -->
           <div class="filter-section">
-            <div class="filter-section-label" id="skill-label">Skill Level</div>
+            <div class="filter-section-label" id="skill-label">Skill Level Required</div>
             <div class="filter-options" role="group" aria-labelledby="skill-label">
               <label class="filter-option">
                 <input type="checkbox" name="skill" value="beginner">
-                <span class="filter-option-label">Beginner</span>
+                <span class="filter-option-label">Beginner-friendly</span>
               </label>
               <label class="filter-option">
                 <input type="checkbox" name="skill" value="maker">
-                <span class="filter-option-label">Maker</span>
+                <span class="filter-option-label">Maker / DIY</span>
               </label>
               <label class="filter-option">
                 <input type="checkbox" name="skill" value="engineer">
@@ -475,6 +521,7 @@ title: Browse Projects — Assistive Commons Watch
           <select class="sort-select" id="sort-select" aria-label="Sort projects by">
             <option value="score-desc">Health score ↓</option>
             <option value="score-asc">Health score ↑</option>
+            <option value="skill-asc">Beginner first</option>
             <option value="name-asc">Name A–Z</option>
             <option value="name-desc">Name Z–A</option>
             <option value="stars-desc">Stars ↓</option>
@@ -484,12 +531,9 @@ title: Browse Projects — Assistive Commons Watch
 
         <!-- Cards list -->
         <div class="project-cards" id="project-cards" role="list" aria-label="Project results">
-
-          <!-- Static no-JS fallback: rendered server-side, hidden by JS -->
           <noscript>
             <p class="no-js-note">Enable JavaScript to filter and sort projects.</p>
           </noscript>
-
           {%- for p in acw.projects | sort(attribute='health_score', reverse=true) -%}
           <a
             class="project-card"
@@ -529,10 +573,9 @@ title: Browse Projects — Assistive Commons Watch
             </div>
           </a>
           {%- endfor -%}
+        </div>
 
-        </div><!-- /project-cards -->
-
-        <!-- Empty state (hidden until JS shows it) -->
+        <!-- Empty state -->
         <div class="empty-state" id="empty-state" style="display:none;" role="status" aria-live="polite">
           <div class="empty-state-icon" aria-hidden="true">🔍</div>
           <div class="empty-state-title">No projects match your filters</div>
@@ -552,10 +595,10 @@ title: Browse Projects — Assistive Commons Watch
     <div class="footer-left">
       Assistive Commons Watch · Data: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
     </div>
-    <nav class="footer-links" aria-label="Footer">
+    <div class="footer-links">
       <a href="https://github.com/hoseasiu/assistive-commons-watch">GitHub</a>
-      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new?template=submit_project.yml">Submit a project</a>
-    </nav>
+      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new">Submit a project</a>
+    </div>
   </div>
 </footer>
 
@@ -564,7 +607,7 @@ title: Browse Projects — Assistive Commons Watch
   const PATH_PREFIX = ({{ env.pathPrefix | dump | safe }}).replace(/\/?$/, '/');
   const PROJECTS = JSON.parse(document.getElementById('acw-data').textContent);
 
-  // ── Tier colors (mirrors .eleventy.js) ──────────────────────────────────
+  // ── Constants ────────────────────────────────────────────────────────────
   const TIER_COLORS = {
     thriving:   'oklch(0.52 0.16 142)',
     stable:     'oklch(0.50 0.14 245)',
@@ -577,52 +620,98 @@ title: Browse Projects — Assistive Commons Watch
     thriving: 'Thriving', stable: 'Stable', dormant: 'Dormant',
     at_risk: 'At Risk', archived: 'Archived', unverified: 'Unverified',
   };
+  // Plain-language maintenance labels for use mode
+  const MAINTENANCE_LABELS = {
+    thriving:   { label: 'Actively developed', color: 'oklch(0.36 0.15 142)' },
+    stable:     { label: 'Actively maintained', color: 'oklch(0.35 0.14 245)' },
+    dormant:    { label: 'Dormant — still usable', color: 'oklch(0.50 0.12 83)' },
+    at_risk:    { label: 'Needs attention', color: 'oklch(0.50 0.15 47)' },
+    archived:   { label: 'Archived', color: 'oklch(0.48 0.08 22)' },
+    unverified: { label: 'Not yet assessed', color: 'oklch(0.55 0.02 50)' },
+  };
+  const SKILL_ORDER = { beginner: 0, maker: 1, engineer: 2 };
+  const USE_MODE_DEFAULT_TIERS = ['thriving', 'stable', 'dormant'];
 
   // ── DOM refs ─────────────────────────────────────────────────────────────
-  const cardsContainer = document.getElementById('project-cards');
-  const emptyState     = document.getElementById('empty-state');
-  const countNum       = document.getElementById('count-num');
-  const sortSelect     = document.getElementById('sort-select');
-  const clearAllBtn    = document.getElementById('clear-all-btn');
-  const emptyClearBtn  = document.getElementById('empty-clear-btn');
+  const cardsContainer  = document.getElementById('project-cards');
+  const emptyState      = document.getElementById('empty-state');
+  const countNum        = document.getElementById('count-num');
+  const sortSelect      = document.getElementById('sort-select');
+  const clearAllBtn     = document.getElementById('clear-all-btn');
+  const emptyClearBtn   = document.getElementById('empty-clear-btn');
+  const pageTitle       = document.getElementById('page-title');
+  const pageSubtitle    = document.getElementById('page-subtitle');
+  const tierFilterSection = document.getElementById('tier-filter-section');
+  const modeBtns        = document.querySelectorAll('[data-mode-btn]');
 
   // Remove static server-rendered cards (JS takes over rendering)
   cardsContainer.innerHTML = '';
 
+  // ── Mode ─────────────────────────────────────────────────────────────────
+  function getMode() {
+    return new URLSearchParams(location.search).get('mode') || 'contribute';
+  }
+
+  function applyModeUI(mode) {
+    modeBtns.forEach(btn => {
+      const isActive = btn.dataset.modeBtn === mode;
+      if (isActive) btn.setAttribute('data-active', '');
+      else btn.removeAttribute('data-active');
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+
+    if (mode === 'use') {
+      pageTitle.textContent = 'Find a Tool';
+      pageSubtitle.textContent = 'Showing actively maintained projects — ready to use or build';
+      tierFilterSection.style.display = 'none';
+      // Default sort to beginner-first in use mode if not set
+      const p = new URLSearchParams(location.search);
+      if (!p.get('sort')) sortSelect.value = 'skill-asc';
+    } else {
+      pageTitle.textContent = 'For Contributors';
+      pageSubtitle.textContent = PROJECTS.length + ' open-source assistive technology projects';
+      tierFilterSection.style.display = '';
+      const p = new URLSearchParams(location.search);
+      if (!p.get('sort')) sortSelect.value = 'score-desc';
+    }
+  }
+
   // ── Read/write URL state ─────────────────────────────────────────────────
   function getFilters() {
     const p = new URLSearchParams(location.search);
+    const mode = p.get('mode') || 'contribute';
+    const defaultSort = mode === 'use' ? 'skill-asc' : 'score-desc';
     return {
+      mode,
       area:     p.get('area')     ? p.get('area').split(',').filter(Boolean)     : [],
       tier:     p.get('tier')     ? p.get('tier').split(',').filter(Boolean)     : [],
       modality: p.get('modality') ? p.get('modality').split(',').filter(Boolean) : [],
       skill:    p.get('skill')    ? p.get('skill').split(',').filter(Boolean)    : [],
       codesign: p.get('codesign') || 'all',
-      sort:     p.get('sort')     || 'score-desc',
+      sort:     p.get('sort')     || defaultSort,
     };
   }
 
   function applyFiltersToUI(filters) {
-    // checkboxes
     document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
       cb.checked = filters[cb.name] && filters[cb.name].includes(cb.value);
     });
-    // radios
     document.querySelectorAll('input[type="radio"]').forEach(r => {
       r.checked = r.value === filters.codesign;
     });
-    // sort
     sortSelect.value = filters.sort;
   }
 
   function pushState(filters) {
     const p = new URLSearchParams();
+    if (filters.mode && filters.mode !== 'contribute') p.set('mode', filters.mode);
     if (filters.area.length)     p.set('area', filters.area.join(','));
     if (filters.tier.length)     p.set('tier', filters.tier.join(','));
     if (filters.modality.length) p.set('modality', filters.modality.join(','));
     if (filters.skill.length)    p.set('skill', filters.skill.join(','));
     if (filters.codesign !== 'all') p.set('codesign', filters.codesign);
-    if (filters.sort !== 'score-desc') p.set('sort', filters.sort);
+    const defaultSort = filters.mode === 'use' ? 'skill-asc' : 'score-desc';
+    if (filters.sort !== defaultSort) p.set('sort', filters.sort);
     const qs = p.toString();
     history.replaceState(null, '', qs ? '?' + qs : location.pathname);
   }
@@ -638,10 +727,17 @@ title: Browse Projects — Assistive Commons Watch
   }
 
   function filterAndSort(filters) {
+    let activeTiers = filters.tier;
+
+    // In use mode with no explicit tier filter, apply the default set
+    if (filters.mode === 'use' && activeTiers.length === 0) {
+      activeTiers = USE_MODE_DEFAULT_TIERS;
+    }
+
     let results = PROJECTS.filter(p => {
       if (filters.area.length && !filters.area.some(a => (p.disability_area || []).includes(a)))
         return false;
-      if (filters.tier.length && !filters.tier.includes(p.health_tier))
+      if (activeTiers.length && !activeTiers.includes(p.health_tier))
         return false;
       if (filters.modality.length && !filters.modality.includes(p.modality))
         return false;
@@ -654,6 +750,11 @@ title: Browse Projects — Assistive Commons Watch
 
     results.sort((a, b) => {
       switch (filters.sort) {
+        case 'skill-asc': {
+          const ao = SKILL_ORDER[a.skill_level] ?? 99;
+          const bo = SKILL_ORDER[b.skill_level] ?? 99;
+          return ao !== bo ? ao - bo : a.name.localeCompare(b.name);
+        }
         case 'score-asc':  return (a.health_score ?? 0) - (b.health_score ?? 0);
         case 'name-asc':   return a.name.localeCompare(b.name);
         case 'name-desc':  return b.name.localeCompare(a.name);
@@ -667,7 +768,7 @@ title: Browse Projects — Assistive Commons Watch
     return results;
   }
 
-  // ── Render cards ─────────────────────────────────────────────────────────
+  // ── Card rendering ────────────────────────────────────────────────────────
   function hasActiveFilters(filters) {
     return filters.area.length || filters.tier.length || filters.modality.length ||
            filters.skill.length || filters.codesign !== 'all';
@@ -678,9 +779,9 @@ title: Browse Projects — Assistive Commons Watch
     return str.slice(0, max).trimEnd() + '…';
   }
 
-  function renderCard(p) {
-    const color  = TIER_COLORS[p.health_tier] || TIER_COLORS.unverified;
-    const label  = TIER_LABELS[p.health_tier]  || p.health_tier;
+  function renderContributeCard(p) {
+    const color = TIER_COLORS[p.health_tier] || TIER_COLORS.unverified;
+    const label = TIER_LABELS[p.health_tier]  || p.health_tier;
     const areaTagsHtml = (p.disability_area_labels || [])
       .map(l => `<span class="card-tag card-tag--area">${l}</span>`).join('');
     const modalityHtml = p.modality_label
@@ -718,33 +819,83 @@ title: Browse Projects — Assistive Commons Watch
     return a;
   }
 
+  function renderUseCard(p) {
+    const maintenance = MAINTENANCE_LABELS[p.health_tier] || MAINTENANCE_LABELS.unverified;
+    const areaTagsHtml = (p.disability_area_labels || [])
+      .map(l => `<span class="card-tag card-tag--area">${l}</span>`).join('');
+    const modalityHtml = p.modality_label
+      ? `<span class="card-tag">${p.modality_label}</span>` : '';
+
+    // Skill badge
+    let skillBadge = '';
+    if (p.skill_level === 'beginner') {
+      skillBadge = `<span class="use-badge use-badge--beginner">Beginner-friendly</span>`;
+    } else if (p.skill_level === 'maker') {
+      skillBadge = `<span class="use-badge use-badge--maker">Requires DIY / assembly</span>`;
+    } else if (p.skill_level === 'engineer') {
+      skillBadge = `<span class="use-badge use-badge--engineer">Technical setup required</span>`;
+    }
+
+    // Cost badge
+    let costBadge = '';
+    if (p.cost_range) {
+      costBadge = `<span class="use-badge use-badge--cost">${p.cost_range}</span>`;
+    } else if (p.modality === 'software') {
+      costBadge = `<span class="use-badge use-badge--cost">Free</span>`;
+    }
+
+    // User docs + feedback badges
+    const docsBadge = p.end_user_docs
+      ? `<span class="use-badge use-badge--docs">User docs ✓</span>` : '';
+    const feedbackBadge = p.feedback_channel
+      ? `<span class="use-badge use-badge--feedback">Feedback channel ✓</span>` : '';
+
+    const a = document.createElement('a');
+    a.className = 'project-card project-card--use';
+    a.href = `${PATH_PREFIX}projects/${p.id}/`;
+    a.setAttribute('role', 'listitem');
+    a.setAttribute('aria-label', `${p.name}, ${maintenance.label} — ${truncate(p.description, 120)}`);
+    a.dataset.id = p.id;
+    a.innerHTML = `
+      <div class="card-main">
+        <div class="card-name">${p.name}</div>
+        <div class="card-desc">${p.description || ''}</div>
+        <div class="card-tags">${areaTagsHtml}${modalityHtml}</div>
+        <div class="card-use-badges">
+          ${skillBadge}${costBadge}${docsBadge}${feedbackBadge}
+        </div>
+      </div>
+      <div class="card-right">
+        <div class="card-maintenance" style="color:${maintenance.color}">${maintenance.label}</div>
+      </div>`;
+    return a;
+  }
+
+  // ── Render ────────────────────────────────────────────────────────────────
   function render() {
     const filters = getFilters();
     const results = filterAndSort(filters);
 
-    // Update UI inputs to match URL state
+    applyModeUI(filters.mode);
     applyFiltersToUI(filters);
 
-    // Show/hide clear button
     const active = hasActiveFilters(filters);
     clearAllBtn.classList.toggle('visible', active);
-
-    // Update count
     countNum.textContent = results.length;
 
-    // Render cards
     cardsContainer.innerHTML = '';
     if (results.length === 0) {
       emptyState.style.display = '';
     } else {
       emptyState.style.display = 'none';
       const frag = document.createDocumentFragment();
+      const renderCard = filters.mode === 'use' ? renderUseCard : renderContributeCard;
       results.forEach(p => frag.appendChild(renderCard(p)));
       cardsContainer.appendChild(frag);
     }
   }
 
-  // ── Event handlers ───────────────────────────────────────────────────────
+  // ── Event handlers ────────────────────────────────────────────────────────
   function readCurrentFilters() {
     const area = [...document.querySelectorAll('input[name="area"]:checked')].map(i => i.value);
     const tier = [...document.querySelectorAll('input[name="tier"]:checked')].map(i => i.value);
@@ -753,7 +904,8 @@ title: Browse Projects — Assistive Commons Watch
     const codesignEl = document.querySelector('input[name="codesign"]:checked');
     const codesign = codesignEl ? codesignEl.value : 'all';
     const sort = sortSelect.value;
-    return { area, tier, modality, skill, codesign, sort };
+    const mode = getMode();
+    return { mode, area, tier, modality, skill, codesign, sort };
   }
 
   function onFilterChange() {
@@ -766,32 +918,49 @@ title: Browse Projects — Assistive Commons Watch
     document.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
     const allRadio = document.querySelector('input[name="codesign"][value="all"]');
     if (allRadio) allRadio.checked = true;
-    sortSelect.value = 'score-desc';
-    history.replaceState(null, '', location.pathname);
+    const mode = getMode();
+    sortSelect.value = mode === 'use' ? 'skill-asc' : 'score-desc';
+    const p = new URLSearchParams();
+    if (mode !== 'contribute') p.set('mode', mode);
+    history.replaceState(null, '', p.toString() ? '?' + p.toString() : location.pathname);
     render();
   }
+
+  // Mode tab switching
+  modeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const newMode = btn.dataset.modeBtn;
+      // Switch mode, reset to mode defaults
+      const p = new URLSearchParams();
+      if (newMode !== 'contribute') p.set('mode', newMode);
+      if (newMode === 'use') p.set('tier', USE_MODE_DEFAULT_TIERS.join(','));
+      history.replaceState(null, '', '?' + p.toString());
+      // Reset filter UI
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
+      const allRadio = document.querySelector('input[name="codesign"][value="all"]');
+      if (allRadio) allRadio.checked = true;
+      render();
+    });
+  });
 
   document.querySelectorAll('input[type="checkbox"], input[type="radio"]')
     .forEach(el => el.addEventListener('change', onFilterChange));
   sortSelect.addEventListener('change', onFilterChange);
   clearAllBtn.addEventListener('click', clearAllFilters);
   emptyClearBtn.addEventListener('click', clearAllFilters);
-
-  // Handle browser back/forward
   window.addEventListener('popstate', render);
-
-  // Initial render from URL
-  render();
 
   // Mobile filter toggle
   const filterToggleBtn = document.getElementById('filter-toggle-btn');
-  const filterPanel = document.getElementById('filter-panel');
-  if (filterToggleBtn && filterPanel) {
+  const filterPanelEl   = document.getElementById('filter-panel');
+  if (filterToggleBtn && filterPanelEl) {
     filterToggleBtn.addEventListener('click', () => {
-      const isOpen = filterPanel.classList.toggle('open');
-      filterToggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      filterToggleBtn.textContent = isOpen ? 'Hide filters ▴' : 'Filter projects ▾';
+      const open = filterPanelEl.classList.toggle('open');
+      filterToggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      filterToggleBtn.textContent = open ? 'Filter projects ▴' : 'Filter projects ▾';
     });
   }
+
+  render();
 })();
 </script>
