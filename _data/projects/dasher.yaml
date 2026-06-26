@@ -48,7 +48,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/dasher-project/dasher
-  fetched_at: '2026-06-25T18:31:21.850628+00:00'
+  fetched_at: '2026-06-26T11:59:24.766804+00:00'
   latest_release_url: https://github.com/dasher-project/dasher/releases/tag/DASHER_5_0_0_beta
   stars: 176
   forks: 48
@@ -67,7 +67,7 @@ sources:
   has_issue_templates: false
   license_spdx: GPL-2.0
 health_tier: at_risk
-health_score: null
+health_score: 3.03
 platform: []
 plain_language_description: null
 e_description: null

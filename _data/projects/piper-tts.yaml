@@ -45,9 +45,9 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/rhasspy/piper
-  fetched_at: '2026-06-25T18:32:54.993701+00:00'
+  fetched_at: '2026-06-26T12:01:02.136675+00:00'
   latest_release_url: https://github.com/rhasspy/piper/releases/tag/2023.11.14-2
-  stars: 11141
+  stars: 11150
   forks: 1034
   last_commit: '2025-08-26'
   open_issues: 419

@@ -16,7 +16,7 @@ tags:
 disability_area:
 - motor
 iso_9999_codes:
-  - "22.36.18"
+- 22.36.18
 modality: hybrid
 user_context:
 - home
@@ -44,11 +44,12 @@ origin_program: null
 documentation_languages:
 - en
 ecosystem_links:
-  makers_making_change: "https://www.makersmakingchange.com/lipsync"
+  makers_making_change: https://www.makersmakingchange.com/lipsync
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/LipSync-SwitchInputModule
-  fetched_at: '2026-06-25T00:00:00+00:00'
+  fetched_at: '2026-06-26T12:00:09.981232+00:00'
+  latest_release_url: https://github.com/makersmakingchange/LipSync-SwitchInputModule/releases/tag/v1.0
   stars: 0
   forks: 1
   last_commit: '2025-04-12'
@@ -56,8 +57,8 @@ sources:
   open_prs: null
   issue_response_rate: null
   release_in_last_year: false
-  readme_has_installation: false
-  readme_has_usage: true
+  readme_has_installation: true
+  readme_has_usage: false
   readme_has_bom: true
   release_artifact_present: false
   dependencies_pinned: null
@@ -65,8 +66,8 @@ sources:
   has_code_of_conduct: false
   has_issue_templates: false
   license_spdx: null
-health_tier: null
-health_score: null
+health_tier: dormant
+health_score: 4.05
 platform:
 - windows
 - macos

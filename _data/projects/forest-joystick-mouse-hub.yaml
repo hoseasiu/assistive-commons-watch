@@ -48,7 +48,7 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Forest-Joystick-Mouse-Hub
-  fetched_at: '2026-06-25T18:31:41.426766+00:00'
+  fetched_at: '2026-06-26T11:59:44.164292+00:00'
   latest_release_url: null
   stars: 4
   forks: 1
@@ -66,7 +66,7 @@ sources:
   has_code_of_conduct: false
   has_issue_templates: false
   license_spdx: null
-health_tier: null
-health_score: null
+health_tier: at_risk
+health_score: 5.13
 platform: []
 plain_language_description: null

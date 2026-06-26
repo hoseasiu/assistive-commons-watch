@@ -569,10 +569,11 @@ title: Browse Projects — Assistive Commons Watch
     dormant:    { label: 'Dormant — still usable', color: 'oklch(0.50 0.12 83)' },
     at_risk:    { label: 'Needs attention', color: 'oklch(0.50 0.15 47)' },
     archived:   { label: 'Archived', color: 'oklch(0.48 0.08 22)' },
-    unverified: { label: 'Not yet assessed', color: 'oklch(0.55 0.02 50)' },
+    unverified:  { label: 'Not yet assessed', color: 'oklch(0.55 0.02 50)' },
+    documented:  { label: 'Community build project', color: 'oklch(0.40 0.10 290)' },
   };
   const SKILL_ORDER = { beginner: 0, maker: 1, engineer: 2 };
-  const USE_MODE_DEFAULT_TIERS = ['thriving', 'stable', 'dormant'];
+  const USE_MODE_DEFAULT_TIERS = ['thriving', 'stable', 'dormant', 'documented'];
 
   // ── DOM refs ─────────────────────────────────────────────────────────────
   const cardsContainer  = document.getElementById('project-cards');

@@ -45,7 +45,7 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Open-Playback-Recorder
-  fetched_at: '2026-06-25T18:32:21.573168+00:00'
+  fetched_at: '2026-06-26T12:00:28.110623+00:00'
   latest_release_url: null
   stars: 7
   forks: 0
@@ -64,6 +64,7 @@ sources:
   has_issue_templates: false
   license_spdx: null
 er: null
-health_score: null
+health_score: 4.76
 platform: []
 plain_language_description: null
+health_tier: at_risk

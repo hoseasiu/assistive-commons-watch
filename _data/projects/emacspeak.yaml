@@ -41,7 +41,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/tvraman/emacspeak
-  fetched_at: '2026-06-25T18:31:24.907994+00:00'
+  fetched_at: '2026-06-26T11:59:27.971630+00:00'
   latest_release_url: https://github.com/tvraman/emacspeak/releases/tag/60.0
   stars: 280
   forks: 59
@@ -60,6 +60,6 @@ sources:
   has_issue_templates: false
   license_spdx: null
 health_tier: at_risk
-health_score: null
+health_score: 3.27
 platform: []
 plain_language_description: null

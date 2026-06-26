@@ -1,0 +1,57 @@
+id: acw-0031
+name: FreeSpeech AAC
+description: Free and open-source AAC app built in TypeScript/Svelte. Originally
+  created by Archer Calder for his nonverbal sister Della, it provides symbol- and
+  text-based communication with AI-generated voices. Available as a PWA on any device.
+at_relevance: primary
+added_date: '2026-06-26'
+tags:
+- aac
+- communication
+- pwa
+- speech-synthesis
+- typescript
+disability_area:
+- communication
+iso_9999_codes:
+  - "22.21.06"
+modality: software
+user_context:
+- home
+- school
+- clinical
+interface:
+- touch
+- keyboard
+bom_present: null
+build_docs_quality: none
+cost_range: null
+fabrication_methods: []
+skill_level: beginner
+nothing_about_us: true
+replicated_by_disabled_person: null
+end_user_docs: false
+feedback_channel: true
+known_deployed_instances: null
+license: MIT
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+documentation_languages:
+- en
+sources:
+- platform: github
+  url: https://github.com/Merkie/freespeech
+health_tier: null
+health_score: null
+platform:
+- web
+- ios
+- android
+- macos
+- windows
+- linux
+plain_language_description: A free AAC app that works in your browser on any phone,
+  tablet, or computer — no install required. Press symbol buttons to build phrases
+  that the app speaks aloud. Built by Archer Calder for his nonverbal sister; community
+  feedback welcome on Discord.
