@@ -76,6 +76,36 @@ score = 0.25×activity + 0.30×replicability + 0.15×community + 0.20×at_specif
 
 Tier rules (first match wins): Archived → Thriving (≥7.5) → Stable (≥5.5) → Dormant (activity≤2 AND replicability≥5) → At Risk.
 
+## Adding new projects
+
+### Finding the next available ID
+```bash
+grep -h "^id:" _data/projects/*.yaml | sort | tail -1
+# Increment by one: if the result is acw-0082, use acw-0083
+```
+
+### File naming convention
+- **GitHub-hosted projects** — use the repo name, lowercased and hyphenated: `nvda.yaml`, `optikey.yaml`
+- **Static-platform projects** — prefix with the platform slug: `instructables-diy-quad-stick.yaml`, `printables-e-nable-hand.yaml`, `thingiverse-headmouse.yaml`
+
+### Static-platform projects (Instructables, Printables, Thingiverse, MyMiniFactory, Hackaday.io)
+- Set `health_tier: documented` — the UI shows build-readiness signals rather than a live health score
+- Leave `health_score: null` and all fetched numeric fields null (`views`, `favorites`, `likes`, `downloads`, etc.); the fetch workflow fills these in
+- `step_count` can be set manually for Instructables entries where the step count is visible in the search result title (e.g., "9 Steps")
+- Fill in `bom_present`, `build_docs_quality`, `skill_level`, `cost_range`, and `fabrication_methods` by reading the project page
+
+### Where to search for new projects by platform
+| Platform | Starting point |
+|----------|---------------|
+| Instructables | `site:instructables.com assistive technology disability` or browse [instructables.com/Assistive-Technology/](https://www.instructables.com/Assistive-Technology/) |
+| Printables | Search "assistive" or browse the Medical & Assistive category |
+| Thingiverse | Search AT keywords; the e-NABLE and Makers Making Change groups have many entries |
+| MyMiniFactory | Browse the Enable category (prosthetics/AT-focused) |
+| Hackaday.io | Search "assistive-technology" tag; filter by active projects |
+| GitHub | Search `topic:assistive-technology` or `topic:accessibility` |
+
+**Never guess platform URLs.** Use web search to verify real project URLs before adding them.
+
 ## Testing
 
 If you are testing for something visual, don't try to render the page and take screenshots, as this takes up a lot of tokens. Just tell the user to start up the page via NPM and have the user inspect it.
