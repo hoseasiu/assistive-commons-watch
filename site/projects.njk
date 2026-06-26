@@ -549,6 +549,11 @@ layout: base.njk
               <span aria-hidden="true">↗</span> View on GitHub
             </a>
             {%- endif -%}
+            {%- if p.source_url -%}
+            <a href="{{ p.source_url }}" class="link-btn link-btn--primary" target="_blank" rel="noopener">
+              <span aria-hidden="true">↗</span> View on {{ p.source_platform }}
+            </a>
+            {%- endif -%}
             <a href="/" class="link-btn">← Back to Landscape</a>
           </div>
         </div>
@@ -782,6 +787,18 @@ layout: base.njk
               ↗ Open on GitHub
             </a>
           </div>
+        </div>
+      </div>
+      {%- endif -%}
+
+      <!-- Platform link (non-GitHub projects) -->
+      {%- if p.source_url -%}
+      <div class="sidebar-card">
+        <div class="sidebar-card-header">{{ p.source_platform }}</div>
+        <div class="sidebar-card-body">
+          <a href="{{ p.source_url }}" class="link-btn" target="_blank" rel="noopener" style="width: 100%; justify-content: center; font-size: 12px;">
+            ↗ Open on {{ p.source_platform }}
+          </a>
         </div>
       </div>
       {%- endif -%}

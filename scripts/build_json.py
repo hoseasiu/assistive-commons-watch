@@ -77,6 +77,15 @@ BUILD_DOCS_LABELS = {
     "complete": "Complete",
 }
 
+PLATFORM_LABELS = {
+    "instructables": "Instructables",
+    "printables": "Printables",
+    "thingiverse": "Thingiverse",
+    "myminifactory": "MyMiniFactory",
+    "hackaday": "Hackaday.io",
+    "github": "GitHub",
+}
+
 ECOSYSTEM_REGISTRY_LABELS = {
     "makers_making_change": "Makers Making Change",
     "openassistive": "openassistive.org",
@@ -134,6 +143,7 @@ def load_projects() -> list[dict]:
         primary_area = project.disability_area[0] if project.disability_area else "other"
 
         source = next((s for s in project.sources if s.platform == "github"), None)
+        non_github_source = next((s for s in project.sources if s.platform != "github"), None)
         sub_scores = compute_sub_scores(project)
         summary = _generate_summary(sub_scores, project)
 
@@ -205,6 +215,10 @@ def load_projects() -> list[dict]:
                 ],
                 "latest_release_url": latest_release_url,
                 "download_ready": download_ready,
+                "source_url": non_github_source.url if non_github_source else None,
+                "source_platform": PLATFORM_LABELS.get(
+                    non_github_source.platform, non_github_source.platform.title()
+                ) if non_github_source else None,
                 "github_stars": source.stars if source else None,
                 "github_forks": source.forks if source else None,
                 "github_last_commit": str(source.last_commit) if source and source.last_commit else None,
