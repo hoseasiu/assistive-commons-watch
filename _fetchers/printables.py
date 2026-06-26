@@ -17,23 +17,20 @@ _MODEL_ID_RE = re.compile(r"/model/(\d+)")
 _QUERY = """
 query PrintDetail($id: ID!) {
   print(id: $id) {
-    datePublished
-    dateModified
+    firstPublish
+    modified
     likesCount
     downloadCount
-    makeCount
+    makesCount
     remixCount
-    commentsCount
-    hasPrintProfile
-    staffPick
+    commentCount
+    dateFeatured
+    userGcodeCount
     license {
       name
     }
     user {
       publicUsername
-    }
-    images {
-      filePath
     }
   }
 }
@@ -82,15 +79,15 @@ class PrintablesFetcher(BaseFetcher):
             platform="printables",
             url=url,
             fetched_at=datetime.now(timezone.utc),
-            published_date=_parse_date(print_data.get("datePublished")),
-            last_updated=_parse_date(print_data.get("dateModified")),
+            published_date=_parse_date(print_data.get("firstPublish") or print_data.get("datePublished")),
+            last_updated=_parse_date(print_data.get("modified")),
             likes=print_data.get("likesCount"),
             downloads=print_data.get("downloadCount"),
-            makes_count=print_data.get("makeCount"),
+            makes_count=print_data.get("makesCount"),
             remixes_count=print_data.get("remixCount"),
-            comments=print_data.get("commentsCount"),
-            has_print_profile=print_data.get("hasPrintProfile"),
-            staff_pick=print_data.get("staffPick"),
+            comments=print_data.get("commentCount"),
+            has_print_profile=(print_data.get("userGcodeCount") or 0) > 0,
+            staff_pick=print_data.get("dateFeatured") is not None,
             license_cc=license_name,
             author=author,
         )

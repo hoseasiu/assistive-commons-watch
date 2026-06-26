@@ -1,0 +1,68 @@
+id: acw-0083
+name: Tap Bluetooth Dual Switch
+description: Open-source Bluetooth switch-access device with two customisable buttons
+  that maps to switch control on iOS, Android, and desktop. Designed for people with
+  limited motor access who rely on single- or dual-switch scanning to operate phones
+  and computers.
+at_relevance: primary
+added_date: '2026-06-26'
+tags:
+- switch-access
+- bluetooth
+- dual-switch
+- scanning
+- 3d-printing
+disability_area:
+- motor
+iso_9999_codes:
+- 22.36.18
+modality: hardware
+user_context:
+- home
+- work
+- school
+interface:
+- switch
+platform:
+- ios
+- android
+- windows
+- macos
+plain_language_description: A small 3D-printed box with two buttons you can press
+  to control your phone or computer using switch scanning — no hand grip needed.
+bom_present: true
+build_docs_quality: complete
+cost_range: <$50
+fabrication_methods:
+- 3d-printing
+- electronics
+skill_level: maker
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: null
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links: {}
+sources:
+- platform: printables
+  url: https://www.printables.com/model/995064-tap-bluetooth-dual-switch-assistive-device
+  fetched_at: '2026-06-26T12:35:50.666440+00:00'
+  published_date: 2024-09-03
+  last_updated: 2024-09-03
+  likes: 69
+  downloads: 298
+  makes_count: 1
+  remixes_count: 0
+  comments: 1
+  has_print_profile: false
+  staff_pick: false
+  license_cc: Creative Commons — Attribution  — Share Alike
+  author: PrintLab
+health_tier: documented
+health_score: 3.65
