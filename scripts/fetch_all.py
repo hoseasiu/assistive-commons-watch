@@ -4,7 +4,8 @@ Fetch live data for all projects and write results back to YAML.
 
 GitHub projects: fetches live API data then recomputes health score/tier.
 Printables projects: fetches live GraphQL data then recomputes health score/tier.
-Static-platform projects (Instructables, Thingiverse, MyMiniFactory, Hackaday):
+Hackaday projects: fetches live API data (requires HACKADAY_API_KEY env var) then recomputes health score/tier.
+Static-platform projects (Instructables, Thingiverse, MyMiniFactory):
   live fetching is not yet implemented; health score/tier is recomputed from existing YAML data.
 
 After writing YAMLs, regenerates site/_data/acw.json via build_json.
@@ -26,6 +27,7 @@ import yaml
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from _fetchers.github import GitHubFetcher
+from _fetchers.hackaday import HackadayFetcher
 from _fetchers.models import Project, Source
 from _fetchers.printables import PrintablesFetcher
 from _fetchers.scoring import compute_health
@@ -45,12 +47,13 @@ def _source_to_dict(source: Source) -> dict:
 
 def fetch_project(
     yaml_path: Path,
-    fetcher: GitHubFetcher,
+    github_fetcher: GitHubFetcher,
+    hackaday_fetcher: HackadayFetcher | None,
     printables_fetcher: PrintablesFetcher,
 ) -> tuple[str, str | None, bool]:
     """
-    Process one project: fetch live data if it has a GitHub or Printables source,
-    then compute and write back health score/tier.
+    Process one project: fetch live data if it has a GitHub, Hackaday, or Printables
+    source, then compute and write back health score/tier.
 
     Returns (project_id, tier_change_string | None, live_fetch_performed).
     Raises PermissionError on rate-limit, ValueError on bad data.
@@ -64,7 +67,7 @@ def fetch_project(
     for s in project.sources:
         if s.platform == "github":
             url = s.url
-            fetched = fetcher.fetch(url)
+            fetched = github_fetcher.fetch(url)
             live_fetch = True
 
             if fetched.url != url:
@@ -73,6 +76,21 @@ def fetch_project(
             idx = next(
                 i for i, src in enumerate(raw.get("sources", []))
                 if src.get("platform") == "github"
+            )
+            raw["sources"][idx] = _source_to_dict(fetched)
+            project = Project.model_validate(raw)
+
+        elif s.platform == "hackaday" and hackaday_fetcher is not None:
+            url = s.url
+            fetched = hackaday_fetcher.fetch(url)
+            live_fetch = True
+
+            if fetched.url != url:
+                print(f"    URL updated: {url} → {fetched.url}")
+
+            idx = next(
+                i for i, src in enumerate(raw.get("sources", []))
+                if src.get("platform") == "hackaday"
             )
             raw["sources"][idx] = _source_to_dict(fetched)
             project = Project.model_validate(raw)
@@ -132,27 +150,39 @@ def main() -> None:
     errors: list[str] = []
     tier_changes: list[str] = []
 
-    with GitHubFetcher() as fetcher, PrintablesFetcher() as printables_fetcher:
-        for yaml_path in yaml_paths:
-            try:
-                project_id, tier_change, live_fetch = fetch_project(yaml_path, fetcher, printables_fetcher)
-                processed_count += 1
-                if live_fetch:
-                    live_count += 1
-                    status = f"  ✓ {project_id}"
-                else:
-                    status = f"  ~ {project_id}  [scored]"
-                if tier_change:
-                    status += f"  [{tier_change}]"
-                    tier_changes.append(f"  {project_id}: {tier_change}")
-                print(status)
-            except PermissionError as exc:
-                print(f"  ✗ {yaml_path.stem}: rate-limited — {exc}", file=sys.stderr)
-                errors.append(yaml_path.stem)
-                break  # no point continuing once rate-limited
-            except Exception as exc:
-                print(f"  ✗ {yaml_path.stem}: {exc}", file=sys.stderr)
-                errors.append(yaml_path.stem)
+    try:
+        hackaday_fetcher: HackadayFetcher | None = HackadayFetcher()
+    except EnvironmentError as exc:
+        print(f"Note: {exc} — Hackaday projects will be scored from existing data.\n")
+        hackaday_fetcher = None
+
+    try:
+        with GitHubFetcher() as github_fetcher, PrintablesFetcher() as printables_fetcher:
+            for yaml_path in yaml_paths:
+                try:
+                    project_id, tier_change, live_fetch = fetch_project(
+                        yaml_path, github_fetcher, hackaday_fetcher, printables_fetcher
+                    )
+                    processed_count += 1
+                    if live_fetch:
+                        live_count += 1
+                        status = f"  ✓ {project_id}"
+                    else:
+                        status = f"  ~ {project_id}  [scored]"
+                    if tier_change:
+                        status += f"  [{tier_change}]"
+                        tier_changes.append(f"  {project_id}: {tier_change}")
+                    print(status)
+                except PermissionError as exc:
+                    print(f"  ✗ {yaml_path.stem}: rate-limited — {exc}", file=sys.stderr)
+                    errors.append(yaml_path.stem)
+                    break  # no point continuing once rate-limited
+                except Exception as exc:
+                    print(f"  ✗ {yaml_path.stem}: {exc}", file=sys.stderr)
+                    errors.append(yaml_path.stem)
+    finally:
+        if hackaday_fetcher is not None:
+            hackaday_fetcher.__exit__(None, None, None)
 
     scored_count = processed_count - live_count
     print(f"\nDone — {processed_count} processed ({live_count} live fetched, {scored_count} scored from existing data), {len(errors)} errors")
