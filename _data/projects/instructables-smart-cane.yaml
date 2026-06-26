@@ -1,0 +1,64 @@
+id: acw-0081
+name: Smart Cane with Sonar, Lidar, and Computer Vision
+description: An intelligent mobility aid that augments a standard white cane with
+  ultrasonic sensors, lidar, and a microcontroller-based computer vision module.
+  Detects obstacles at multiple heights and directions, communicating hazards to the
+  user through surround-sound headphones — addressing limitations of a standard cane's
+  single-point detection.
+at_relevance: primary
+added_date: '2026-06-26'
+tags:
+- vision
+- navigation
+- smart-cane
+- hardware
+- lidar
+- computer-vision
+- blindness
+disability_area:
+- vision
+iso_9999_codes:
+- 06.12.21
+modality: hardware
+user_context:
+- outdoor
+- home
+interface: []
+platform: []
+bom_present: true
+build_docs_quality: complete
+cost_range: $200–$600
+fabrication_methods:
+- electronics
+- 3d-printing
+- off-the-shelf
+skill_level: engineer
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: false
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links: {}
+sources:
+- platform: instructables
+  url: https://www.instructables.com/Using-Sonar-Lidar-and-Computer-Vision-on-Microcont/
+  published_date: null
+  views: null
+  favorites: null
+  imadeit_count: null
+  comments: null
+  step_count: 16
+  has_bom_step: null
+  has_download_files: null
+  contest_winner: null
+  license_cc: null
+  author: null
+health_tier: documented
+health_score: null
+plain_language_description: null

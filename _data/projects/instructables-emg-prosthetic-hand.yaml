@@ -1,0 +1,62 @@
+id: acw-0076
+name: 3D Printed EMG Prosthetic Hand
+description: A myoelectric prosthetic hand controlled by electromyography (EMG) signals
+  from residual limb muscles. Uses an Arduino and inexpensive EMG sensors to actuate
+  3D-printed fingers, offering a low-cost alternative to commercial myoelectric prostheses
+  that can exceed $20,000.
+at_relevance: primary
+added_date: '2026-06-26'
+tags:
+- prosthetics
+- 3d-printing
+- emg
+- hardware
+- myoelectric
+- upper-limb
+disability_area:
+- prosthetics
+- motor
+iso_9999_codes:
+- 06.24.06
+modality: hardware
+user_context:
+- home
+- clinical
+interface: []
+platform: []
+bom_present: true
+build_docs_quality: partial
+cost_range: $50–$200
+fabrication_methods:
+- 3d-printing
+- electronics
+skill_level: engineer
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: null
+feedback_channel: false
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links: {}
+sources:
+- platform: instructables
+  url: https://www.instructables.com/3D-Printed-EMG-Prosthetic-Hand/
+  published_date: null
+  views: null
+  favorites: null
+  imadeit_count: null
+  comments: null
+  step_count: 5
+  has_bom_step: null
+  has_download_files: null
+  contest_winner: null
+  license_cc: null
+  author: null
+health_tier: documented
+health_score: null
+plain_language_description: null
