@@ -113,7 +113,7 @@ if __name__ == "__main__":
     import json
     import sys
 
-    target = sys.argv[1] if len(sys.argv) > 1 else "https://www.printables.com/model/3367-e-nable-phoenix-hand"
+    target = sys.argv[1] if len(sys.argv) > 1 else "https://www.printables.com/model/129817-e-nable-unlimbited-phoenix-hand"
     with PrintablesFetcher() as f:
         source = f.fetch(target)
     print(json.dumps(source.model_dump(mode="json"), indent=2, default=str))
