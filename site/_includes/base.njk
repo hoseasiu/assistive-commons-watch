@@ -50,10 +50,55 @@
       outline-offset: 2px;
       border-radius: 4px;
     }
+
+    /* ── Shared header ── */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border);
+      height: 56px;
+    }
+    .site-header .container { height: 100%; display: flex; align-items: center; }
+    .wordmark {
+      font-size: 15px; font-weight: 800; letter-spacing: -0.03em;
+      color: var(--text-primary); margin-right: auto; text-decoration: none;
+    }
+    .wordmark:hover { opacity: 0.8; }
+    .site-nav { display: flex; align-items: center; gap: 4px; }
+    .site-nav a {
+      font-size: 13px; font-weight: 500; color: var(--text-secondary);
+      padding: 0 12px; border-radius: 6px; transition: background 0.15s;
+      min-height: 44px; display: inline-flex; align-items: center;
+    }
+    .site-nav a:hover { background: var(--bg-page); }
+    .site-nav a[aria-current="page"] {
+      background: var(--bg-page); color: var(--text-primary); font-weight: 600;
+    }
+    .site-nav .nav-cta {
+      font-size: 13px; font-weight: 600; color: white;
+      background: var(--accent-green); padding: 0 15px;
+      border-radius: 7px; margin-left: 8px; transition: background 0.15s;
+      min-height: 44px; display: inline-flex; align-items: center;
+    }
+    .site-nav .nav-cta:hover { background: oklch(0.36 0.14 165); color: white; }
+    @media (max-width: 640px) {
+      .site-nav a:not(.nav-cta) { display: none; }
+    }
   </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="wordmark">Assistive Commons Watch</a>
+      <nav class="site-nav" aria-label="Site navigation">
+        <a href="/browse/?mode=contribute">Contribute</a>
+        <a href="/browse/?mode=use">Find a Tool</a>
+        <a href="/about"{% if page.url and '/about' in page.url %} aria-current="page"{% endif %}>About</a>
+        <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new?template=submit_project.yml" class="nav-cta">Submit a project →</a>
+      </nav>
+    </div>
+  </header>
   {{ content | safe }}
 </body>
 </html>
