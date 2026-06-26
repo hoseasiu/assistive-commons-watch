@@ -34,6 +34,7 @@ class HealthTier(str, Enum):
     at_risk = "at_risk"
     archived = "archived"
     unverified = "unverified"
+    documented = "documented"  # static-platform-only projects; UI shows build-readiness, not health
 
 
 class AtRelevance(str, Enum):
@@ -80,9 +81,117 @@ class GitHubSource(BaseModel):
         return v
 
 
-# Discriminated union over all source platforms — add new source types here when Phase 2 lands.
+class InstructablesSource(BaseModel):
+    platform: Literal["instructables"]
+    url: str
+    fetched_at: Optional[datetime] = None
+
+    published_date: Optional[date] = None
+    views: Optional[int] = Field(None, ge=0)
+    favorites: Optional[int] = Field(None, ge=0)
+    imadeit_count: Optional[int] = Field(None, ge=0)
+    comments: Optional[int] = Field(None, ge=0)
+
+    step_count: Optional[int] = Field(None, ge=0)
+    has_bom_step: Optional[bool] = None
+    has_download_files: Optional[bool] = None
+    contest_winner: Optional[bool] = None
+
+    license_cc: Optional[str] = None
+    author: Optional[str] = None
+
+
+class PrintablesSource(BaseModel):
+    platform: Literal["printables"]
+    url: str
+    fetched_at: Optional[datetime] = None
+
+    published_date: Optional[date] = None
+    last_updated: Optional[date] = None
+    likes: Optional[int] = Field(None, ge=0)
+    downloads: Optional[int] = Field(None, ge=0)
+    makes_count: Optional[int] = Field(None, ge=0)
+    remixes_count: Optional[int] = Field(None, ge=0)
+    comments: Optional[int] = Field(None, ge=0)
+
+    has_print_profile: Optional[bool] = None
+    staff_pick: Optional[bool] = None
+
+    license_cc: Optional[str] = None
+    author: Optional[str] = None
+
+
+class ThingiverseSource(BaseModel):
+    platform: Literal["thingiverse"]
+    url: str
+    fetched_at: Optional[datetime] = None
+
+    published_date: Optional[date] = None
+    last_updated: Optional[date] = None
+    likes: Optional[int] = Field(None, ge=0)
+    downloads: Optional[int] = Field(None, ge=0)
+    makes_count: Optional[int] = Field(None, ge=0)
+    remixes_count: Optional[int] = Field(None, ge=0)
+    comments: Optional[int] = Field(None, ge=0)
+
+    featured: Optional[bool] = None
+
+    license_cc: Optional[str] = None
+    author: Optional[str] = None
+
+
+class MyMiniFactorySource(BaseModel):
+    platform: Literal["myminifactory"]
+    url: str
+    fetched_at: Optional[datetime] = None
+
+    published_date: Optional[date] = None
+    likes: Optional[int] = Field(None, ge=0)
+    makes_count: Optional[int] = Field(None, ge=0)
+    comments: Optional[int] = Field(None, ge=0)
+
+    is_free: Optional[bool] = None
+    guaranteed_printable: Optional[bool] = None
+    in_enable_category: Optional[bool] = None
+
+    license_cc: Optional[str] = None
+    author: Optional[str] = None
+
+
+class HackadaySource(BaseModel):
+    platform: Literal["hackaday"]
+    url: str
+    fetched_at: Optional[datetime] = None
+
+    last_log_date: Optional[date] = None
+    logs_count: Optional[int] = Field(None, ge=0)
+    project_status: Optional[str] = None
+
+    skulls: Optional[int] = Field(None, ge=0)
+    followers: Optional[int] = Field(None, ge=0)
+    team_size: Optional[int] = Field(None, ge=1)
+    build_count: Optional[int] = Field(None, ge=0)
+
+    has_components_list: Optional[bool] = None
+    has_files: Optional[bool] = None
+
+    license: Optional[str] = None
+    linked_github_url: Optional[str] = None
+
+
+# Discriminated union over all source platforms.
 # Pydantic uses the `platform` literal to select the right model at parse time.
-Source = Annotated[Union[GitHubSource], Field(discriminator="platform")]
+Source = Annotated[
+    Union[
+        GitHubSource,
+        InstructablesSource,
+        PrintablesSource,
+        ThingiverseSource,
+        MyMiniFactorySource,
+        HackadaySource,
+    ],
+    Field(discriminator="platform"),
+]
 
 
 class Project(BaseModel):
