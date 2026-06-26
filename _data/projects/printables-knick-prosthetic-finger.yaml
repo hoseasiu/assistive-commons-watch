@@ -1,0 +1,61 @@
+id: acw-0086
+name: Knick Prosthetic Finger
+description: Simple body-powered 3D-printed prosthetic finger for individuals missing
+  a single digit. Designed by the e-NABLE community; v3.5.5 improves fit and durability.
+  Attaches to the remaining finger with a silicone liner and closes with a cable driven
+  by an adjacent finger or palm movement.
+at_relevance: primary
+added_date: '2026-06-26'
+tags:
+- prosthetics
+- finger
+- body-powered
+- e-nable
+- 3d-printing
+disability_area:
+- motor
+iso_9999_codes:
+- 06.06.03
+modality: hardware
+user_context:
+- home
+- work
+interface: []
+platform: []
+plain_language_description: A printable replacement finger that bends using a thin
+  cable, for people who are missing one finger.
+bom_present: true
+build_docs_quality: partial
+cost_range: <$50
+fabrication_methods:
+- 3d-printing
+skill_level: maker
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: null
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: null
+origin_program: e-NABLE
+documentation_languages:
+- en
+ecosystem_links: {}
+sources:
+- platform: printables
+  url: https://www.printables.com/model/653551-knick-prosthetic-finger-v-355
+  fetched_at: '2026-06-26T12:36:29.606695+00:00'
+  published_date: 2023-11-20
+  last_updated: 2023-11-20
+  likes: 175
+  downloads: 994
+  makes_count: 2
+  remixes_count: 0
+  comments: 2
+  has_print_profile: false
+  staff_pick: false
+  license_cc: Creative Commons — Attribution  — Noncommercial  —  Share Alike
+  author: eNABLE
+health_tier: documented
+health_score: 2.9

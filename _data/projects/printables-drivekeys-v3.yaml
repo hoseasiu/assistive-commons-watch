@@ -1,0 +1,67 @@
+id: acw-0084
+name: DriveKeys v3 Wheelchair Joystick Platform
+description: Bluetooth keyboard platform that mounts to a power wheelchair and maps
+  dual 5-direction joysticks to customisable keyboard keys, enabling heads-up computer
+  control while driving. Built around an ESP32 with open-source firmware.
+at_relevance: primary
+added_date: '2026-06-26'
+tags:
+- wheelchair
+- joystick
+- bluetooth
+- keyboard-emulation
+- esp32
+- 3d-printing
+disability_area:
+- motor
+iso_9999_codes:
+- 22.36.18
+modality: hybrid
+user_context:
+- home
+- work
+interface:
+- joystick
+- keyboard
+platform:
+- windows
+- macos
+- android
+plain_language_description: A tray that attaches to a power wheelchair and gives you
+  two small joysticks to control your computer wirelessly while you drive.
+bom_present: true
+build_docs_quality: complete
+cost_range: <$50
+fabrication_methods:
+- 3d-printing
+- electronics
+skill_level: maker
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: null
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links: {}
+sources:
+- platform: printables
+  url: https://www.printables.com/model/408455-drivekeys-v3-aka-bluetooth-keyboard-wheelchair-joy
+  fetched_at: '2026-06-26T12:36:12.069234+00:00'
+  published_date: 2023-02-25
+  last_updated: 2026-05-21
+  likes: 5
+  downloads: 14
+  makes_count: 0
+  remixes_count: 0
+  comments: 0
+  has_print_profile: false
+  staff_pick: false
+  license_cc: Open Community License v1
+  author: Odd Inventor
+health_tier: documented
+health_score: 3.4

@@ -3,8 +3,9 @@
 Fetch live data for all projects and write results back to YAML.
 
 GitHub projects: fetches live API data then recomputes health score/tier.
+Printables projects: fetches live GraphQL data then recomputes health score/tier.
 Hackaday projects: fetches live API data (requires HACKADAY_API_KEY env var) then recomputes health score/tier.
-Static-platform projects (Instructables, Printables, Thingiverse, MyMiniFactory):
+Static-platform projects (Instructables, Thingiverse, MyMiniFactory):
   live fetching is not yet implemented; health score/tier is recomputed from existing YAML data.
 
 After writing YAMLs, regenerates site/_data/acw.json via build_json.
@@ -23,11 +24,18 @@ from pathlib import Path
 
 import yaml
 
+# Ensure UTF-8 output on Windows so status symbols (✓ ✗ …) render correctly.
+if sys.stdout.encoding and sys.stdout.encoding.lower() not in ("utf-8", "utf8"):
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from _fetchers.github import GitHubFetcher
 from _fetchers.hackaday import HackadayFetcher
 from _fetchers.models import Project, Source
+from _fetchers.printables import PrintablesFetcher
 from _fetchers.scoring import compute_health
 
 ROOT = Path(__file__).parent.parent
@@ -47,10 +55,11 @@ def fetch_project(
     yaml_path: Path,
     github_fetcher: GitHubFetcher,
     hackaday_fetcher: HackadayFetcher | None,
+    printables_fetcher: PrintablesFetcher,
 ) -> tuple[str, str | None, bool]:
     """
-    Process one project: fetch live data if it has a GitHub or Hackaday source,
-    then compute and write back health score/tier.
+    Process one project: fetch live data if it has a GitHub, Hackaday, or Printables
+    source, then compute and write back health score/tier.
 
     Returns (project_id, tier_change_string | None, live_fetch_performed).
     Raises PermissionError on rate-limit, ValueError on bad data.
@@ -61,37 +70,47 @@ def fetch_project(
     old_tier = project.health_tier
     live_fetch = False
 
-    github_sources = [s for s in project.sources if s.platform == "github"]
-    if github_sources:
-        url = github_sources[0].url
-        fetched = github_fetcher.fetch(url)
-        live_fetch = True
+    for s in project.sources:
+        if s.platform == "github":
+            url = s.url
+            fetched = github_fetcher.fetch(url)
+            live_fetch = True
 
-        if fetched.url != url:
-            print(f"    URL updated: {url} → {fetched.url}")
+            if fetched.url != url:
+                print(f"    URL updated: {url} → {fetched.url}")
 
-        github_idx = next(
-            i for i, s in enumerate(raw.get("sources", []))
-            if s.get("platform") == "github"
-        )
-        raw["sources"][github_idx] = _source_to_dict(fetched)
-        project = Project.model_validate(raw)
+            idx = next(
+                i for i, src in enumerate(raw.get("sources", []))
+                if src.get("platform") == "github"
+            )
+            raw["sources"][idx] = _source_to_dict(fetched)
+            project = Project.model_validate(raw)
 
-    elif hackaday_fetcher is not None:
-        hackaday_sources = [s for s in project.sources if s.platform == "hackaday"]
-        if hackaday_sources:
-            url = hackaday_sources[0].url
+        elif s.platform == "hackaday" and hackaday_fetcher is not None:
+            url = s.url
             fetched = hackaday_fetcher.fetch(url)
             live_fetch = True
 
             if fetched.url != url:
                 print(f"    URL updated: {url} → {fetched.url}")
 
-            hd_idx = next(
-                i for i, s in enumerate(raw.get("sources", []))
-                if s.get("platform") == "hackaday"
+            idx = next(
+                i for i, src in enumerate(raw.get("sources", []))
+                if src.get("platform") == "hackaday"
             )
-            raw["sources"][hd_idx] = _source_to_dict(fetched)
+            raw["sources"][idx] = _source_to_dict(fetched)
+            project = Project.model_validate(raw)
+
+        elif s.platform == "printables":
+            url = s.url
+            fetched = printables_fetcher.fetch(url)
+            live_fetch = True
+
+            idx = next(
+                i for i, src in enumerate(raw.get("sources", []))
+                if src.get("platform") == "printables"
+            )
+            raw["sources"][idx] = _source_to_dict(fetched)
             project = Project.model_validate(raw)
 
     score, tier = compute_health(project)
@@ -144,11 +163,11 @@ def main() -> None:
         hackaday_fetcher = None
 
     try:
-        with GitHubFetcher() as github_fetcher:
+        with GitHubFetcher() as github_fetcher, PrintablesFetcher() as printables_fetcher:
             for yaml_path in yaml_paths:
                 try:
                     project_id, tier_change, live_fetch = fetch_project(
-                        yaml_path, github_fetcher, hackaday_fetcher
+                        yaml_path, github_fetcher, hackaday_fetcher, printables_fetcher
                     )
                     processed_count += 1
                     if live_fetch:

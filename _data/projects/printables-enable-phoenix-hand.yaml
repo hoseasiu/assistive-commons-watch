@@ -1,0 +1,61 @@
+id: acw-0085
+name: e-NABLE UnLimbited Phoenix Hand
+description: Body-powered 3D-printed prosthetic hand from the e-NABLE community, designed
+  for children and adults with partial upper limb differences. Wrist flexion closes
+  the fingers, providing a functional grasp without electronics or batteries.
+at_relevance: primary
+added_date: '2026-06-26'
+tags:
+- prosthetics
+- upper-limb
+- body-powered
+- e-nable
+- 3d-printing
+disability_area:
+- motor
+iso_9999_codes:
+- 06.06.03
+modality: hardware
+user_context:
+- home
+- work
+- school
+interface: []
+platform: []
+plain_language_description: A free 3D-printed hand that opens and closes using wrist
+  movement, built for people missing fingers or part of a hand.
+bom_present: true
+build_docs_quality: complete
+cost_range: <$50
+fabrication_methods:
+- 3d-printing
+skill_level: maker
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: null
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: null
+origin_program: e-NABLE
+documentation_languages:
+- en
+ecosystem_links: {}
+sources:
+- platform: printables
+  url: https://www.printables.com/model/129817-e-nable-unlimbited-phoenix-hand
+  fetched_at: '2026-06-26T12:36:26.949890+00:00'
+  published_date: 2022-02-05
+  last_updated: 2023-01-02
+  likes: 50
+  downloads: 365
+  makes_count: 1
+  remixes_count: 0
+  comments: 1
+  has_print_profile: false
+  staff_pick: false
+  license_cc: Creative Commons — Attribution  — Noncommercial
+  author: jcjames_13009
+health_tier: documented
+health_score: 3.5
