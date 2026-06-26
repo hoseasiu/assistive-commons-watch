@@ -46,11 +46,11 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Assistive-Switches-Kit
-  fetched_at: '2026-06-26T11:59:02.524524+00:00'
+  fetched_at: '2026-06-26T12:09:43.401907+00:00'
   latest_release_url: null
   stars: 1
   forks: 0
-  last_commit: '2026-02-13'
+  last_commit: 2026-02-13
   open_issues: 0
   open_prs: null
   issue_response_rate: 1.0

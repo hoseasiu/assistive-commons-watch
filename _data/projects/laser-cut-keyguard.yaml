@@ -47,11 +47,11 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Laser-Cut-Keyguard
-  fetched_at: '2026-06-26T12:00:00.975499+00:00'
+  fetched_at: '2026-06-26T12:10:40.627736+00:00'
   latest_release_url: null
   stars: 2
   forks: 2
-  last_commit: '2026-06-08'
+  last_commit: 2026-06-08
   open_issues: 1
   open_prs: null
   issue_response_rate: 0.0

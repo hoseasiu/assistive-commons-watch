@@ -39,11 +39,11 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/a11ywatch/a11ywatch
-  fetched_at: '2026-06-26T11:58:49.202207+00:00'
+  fetched_at: '2026-06-26T12:09:31.390995+00:00'
   latest_release_url: https://github.com/a11ywatch/a11ywatch/releases/tag/v0.10.4
   stars: 50
   forks: 9
-  last_commit: '2024-08-11'
+  last_commit: 2024-08-11
   open_issues: 0
   open_prs: null
   issue_response_rate: 0.95

@@ -1,9 +1,9 @@
 id: acw-0074
 name: Adaptive Button – 3D Printed Accessibility Switch
-description: A large, easy-to-press 3D-printed accessibility switch designed for
-  users with cerebral palsy, limited hand strength, or reduced fine motor control.
-  Compatible with AAC devices, gaming setups, and general-purpose switch-adapted
-  equipment via standard 3.5 mm jack.
+description: A large, easy-to-press 3D-printed accessibility switch designed for users
+  with cerebral palsy, limited hand strength, or reduced fine motor control. Compatible
+  with AAC devices, gaming setups, and general-purpose switch-adapted equipment via
+  standard 3.5 mm jack.
 at_relevance: primary
 added_date: '2026-06-26'
 tags:
@@ -58,5 +58,5 @@ sources:
   license_cc: null
   author: null
 health_tier: documented
-health_score: null
+health_score: 3.4
 plain_language_description: null

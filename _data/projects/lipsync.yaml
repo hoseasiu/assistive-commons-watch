@@ -48,11 +48,11 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/LipSync
-  fetched_at: '2026-06-26T12:00:12.037877+00:00'
+  fetched_at: '2026-06-26T12:10:49.629677+00:00'
   latest_release_url: https://github.com/makersmakingchange/LipSync/releases/tag/V4.1
   stars: 15
   forks: 0
-  last_commit: '2026-01-05'
+  last_commit: 2026-01-05
   open_issues: 39
   open_prs: null
   issue_response_rate: 0.21

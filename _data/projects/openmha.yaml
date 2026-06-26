@@ -41,11 +41,11 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/HoerTech-gGmbH/openMHA
-  fetched_at: '2026-06-26T12:00:47.652931+00:00'
+  fetched_at: '2026-06-26T12:11:21.950231+00:00'
   latest_release_url: https://github.com/HoerTech-gGmbH/openMHA/releases/tag/v4.18.1
   stars: 321
   forks: 97
-  last_commit: '2026-06-17'
+  last_commit: 2026-06-17
   open_issues: 0
   open_prs: null
   issue_response_rate: 0.89

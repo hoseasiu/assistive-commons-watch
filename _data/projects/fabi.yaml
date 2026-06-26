@@ -50,11 +50,11 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/asterics/FABI
-  fetched_at: '2026-06-26T11:59:37.466525+00:00'
+  fetched_at: '2026-06-26T12:10:16.327984+00:00'
   latest_release_url: https://github.com/asterics/FABI/releases/tag/v2.8
   stars: 19
   forks: 11
-  last_commit: '2026-06-10'
+  last_commit: 2026-06-10
   open_issues: 5
   open_prs: null
   issue_response_rate: 0.5

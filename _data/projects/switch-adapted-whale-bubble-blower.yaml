@@ -45,11 +45,11 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/switch-adapted-whale-bubble-blower
-  fetched_at: '2026-06-26T12:01:26.514903+00:00'
+  fetched_at: '2026-06-26T12:11:56.624067+00:00'
   latest_release_url: null
   stars: 0
   forks: 0
-  last_commit: '2026-02-19'
+  last_commit: 2026-02-19
   open_issues: 0
   open_prs: null
   issue_response_rate: null

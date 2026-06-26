@@ -47,11 +47,11 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/cboard-org/cboard
-  fetched_at: '2026-06-26T11:59:15.309581+00:00'
+  fetched_at: '2026-06-26T12:09:55.096983+00:00'
   latest_release_url: https://github.com/cboard-org/cboard/releases/tag/1.39.0
   stars: 738
   forks: 274
-  last_commit: '2026-06-25'
+  last_commit: 2026-06-25
   open_issues: 237
   open_prs: null
   issue_response_rate: 0.14

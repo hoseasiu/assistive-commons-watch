@@ -43,11 +43,11 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/3D-printed-educational-devices-kit
-  fetched_at: '2026-06-26T11:58:44.334730+00:00'
+  fetched_at: '2026-06-26T12:09:27.124879+00:00'
   latest_release_url: null
   stars: 1
   forks: 0
-  last_commit: '2026-02-05'
+  last_commit: 2026-02-05
   open_issues: 0
   open_prs: null
   issue_response_rate: 1.0

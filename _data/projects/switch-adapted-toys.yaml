@@ -44,11 +44,11 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Switch_Adapted_Toys
-  fetched_at: '2026-06-26T12:01:23.988441+00:00'
+  fetched_at: '2026-06-26T12:11:54.670550+00:00'
   latest_release_url: null
   stars: 2
   forks: 1
-  last_commit: '2026-06-25'
+  last_commit: 2026-06-25
   open_issues: 2
   open_prs: null
   issue_response_rate: 0.0

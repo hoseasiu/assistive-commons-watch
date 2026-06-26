@@ -47,11 +47,11 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Open-Rocker-Switch
-  fetched_at: '2026-06-26T12:00:32.049709+00:00'
+  fetched_at: '2026-06-26T12:11:07.873604+00:00'
   latest_release_url: https://github.com/makersmakingchange/Open-Rocker-Switch/releases/tag/v2.2
   stars: 0
   forks: 1
-  last_commit: '2025-08-07'
+  last_commit: 2025-08-07
   open_issues: 3
   open_prs: null
   issue_response_rate: 0.0
