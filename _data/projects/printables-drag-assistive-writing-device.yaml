@@ -1,0 +1,63 @@
+id: acw-0096
+name: DRAG Assistive Writing and Drawing Device
+description: Open-source writing and drawing aid by PrintLab that holds a pen, pencil,
+  or marker in a hand-worn frame, eliminating the need to form a closed pinch grip.
+  Designed for people with arthritis, tremors, or limited finger dexterity; the device
+  rests against the palm and can be adjusted to different pen angles.
+at_relevance: primary
+added_date: '2026-06-26'
+tags:
+- daily-living
+- writing-aid
+- drawing-aid
+- arthritis
+- tremor
+- 3d-printing
+disability_area:
+- motor
+iso_9999_codes:
+- 28.21.18
+modality: hardware
+user_context:
+- home
+- school
+- work
+interface: []
+platform: []
+plain_language_description: A wearable 3D-printed frame that holds a pen so you can
+  write or draw without needing to grip it with your fingers.
+bom_present: true
+build_docs_quality: complete
+cost_range: <$10
+fabrication_methods:
+- 3d-printing
+skill_level: beginner
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: null
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links: {}
+sources:
+- platform: printables
+  url: https://www.printables.com/model/753450-drag-assistive-writing-and-drawing-device
+  fetched_at: null
+  published_date: null
+  last_updated: null
+  likes: null
+  downloads: null
+  makes_count: null
+  remixes_count: null
+  comments: null
+  has_print_profile: null
+  staff_pick: null
+  license_cc: null
+  author: null
+health_tier: documented
+health_score: null

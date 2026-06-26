@@ -29,7 +29,7 @@ interface:
 - emg
 bom_present: true
 build_docs_quality: complete
-cost_range: $200–$2000
+cost_range: $200-$2000
 fabrication_methods:
 - electronics
 - off-shelf

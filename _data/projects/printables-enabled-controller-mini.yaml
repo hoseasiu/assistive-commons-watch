@@ -1,0 +1,73 @@
+id: acw-0091
+name: Enabled Controller Mini
+description: Open-source USB switch interface from Makers Making Change that accepts
+  up to 8 adaptive switches (3.5 mm) and two dual-axis analog joysticks, presenting
+  them as a standard USB HID game controller to computers, tablets, and phones. Enables
+  people with motor disabilities to use off-the-shelf adaptive switches with any device
+  that accepts a game controller.
+at_relevance: primary
+added_date: '2026-06-26'
+tags:
+- switch-access
+- switch-interface
+- joystick
+- usb-hid
+- makers-making-change
+- 3d-printing
+disability_area:
+- motor
+iso_9999_codes:
+- 24.13.03
+- 22.39.12
+modality: hybrid
+user_context:
+- home
+- work
+- school
+interface:
+- switch
+- joystick
+- usb
+platform:
+- windows
+- macos
+- linux
+- ios
+- android
+plain_language_description: A small box that lets up to 8 standard assistive switches
+  and 2 joysticks plug into any computer or tablet as if they were a game controller.
+bom_present: true
+build_docs_quality: complete
+cost_range: <$50
+fabrication_methods:
+- 3d-printing
+skill_level: maker
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: null
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Neil Squire Society
+origin_program: Makers Making Change
+documentation_languages:
+- en
+ecosystem_links: {}
+sources:
+- platform: printables
+  url: https://www.printables.com/model/216968-enabled-controller-mini
+  fetched_at: null
+  published_date: null
+  last_updated: null
+  likes: null
+  downloads: null
+  makes_count: null
+  remixes_count: null
+  comments: null
+  has_print_profile: null
+  staff_pick: null
+  license_cc: null
+  author: null
+health_tier: documented
+health_score: null

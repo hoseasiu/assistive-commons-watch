@@ -1,0 +1,61 @@
+id: acw-0093
+name: Assistive Pencil Grip
+description: 3D-printed pencil and pen grip from Makers Making Change that provides
+  a larger, easier-to-hold surface for people with limited hand strength or fine motor
+  control. Fits standard pencils, pens, and styluses.
+at_relevance: primary
+added_date: '2026-06-26'
+tags:
+- daily-living
+- grip-aid
+- writing-aid
+- pencil-grip
+- makers-making-change
+- 3d-printing
+disability_area:
+- motor
+iso_9999_codes:
+- 28.21.18
+modality: hardware
+user_context:
+- home
+- school
+interface: []
+platform: []
+plain_language_description: A 3D-printed grip that slips onto a pencil or pen to
+  make it easier to hold and write with.
+bom_present: true
+build_docs_quality: complete
+cost_range: <$10
+fabrication_methods:
+- 3d-printing
+skill_level: beginner
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: null
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Neil Squire Society
+origin_program: Makers Making Change
+documentation_languages:
+- en
+ecosystem_links: {}
+sources:
+- platform: printables
+  url: https://www.printables.com/model/493801-assistive-pencil-grip
+  fetched_at: null
+  published_date: null
+  last_updated: null
+  likes: null
+  downloads: null
+  makes_count: null
+  remixes_count: null
+  comments: null
+  has_print_profile: null
+  staff_pick: null
+  license_cc: null
+  author: null
+health_tier: documented
+health_score: null

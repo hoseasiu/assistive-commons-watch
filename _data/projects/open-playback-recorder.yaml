@@ -24,7 +24,7 @@ interface:
 - switch
 bom_present: true
 build_docs_quality: complete
-cost_range: $50–$200
+cost_range: $50-$200
 fabrication_methods:
 - 3d-printing
 - electronics
@@ -63,8 +63,7 @@ sources:
   has_code_of_conduct: false
   has_issue_templates: false
   license_spdx: null
-er: null
+health_tier: at_risk
 health_score: 4.76
 platform: []
 plain_language_description: null
-health_tier: at_risk

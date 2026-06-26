@@ -27,7 +27,7 @@ interface:
 - switch
 bom_present: true
 build_docs_quality: complete
-cost_range: $50–$200
+cost_range: $50-$200
 fabrication_methods:
 - 3d-printing
 - electronics

@@ -1,0 +1,60 @@
+id: acw-0095
+name: Assistive Nail Polish Applicator
+description: 3D-printed holder from Makers Making Change that grips a standard nail
+  polish bottle, providing a larger, stable handle for users with low pinch strength
+  or limited fine motor control. Allows one-handed opening, application, and closing
+  of the bottle.
+at_relevance: primary
+added_date: '2026-06-26'
+tags:
+- daily-living
+- personal-care
+- grip-aid
+- makers-making-change
+- 3d-printing
+disability_area:
+- motor
+iso_9999_codes:
+- 09.12.03
+modality: hardware
+user_context:
+- home
+interface: []
+platform: []
+plain_language_description: A handle that clips onto a nail polish bottle so people
+  with weak hands can open and use it more easily.
+bom_present: true
+build_docs_quality: complete
+cost_range: <$10
+fabrication_methods:
+- 3d-printing
+skill_level: beginner
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: null
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Neil Squire Society
+origin_program: Makers Making Change
+documentation_languages:
+- en
+ecosystem_links: {}
+sources:
+- platform: printables
+  url: https://www.printables.com/model/213773-assistive-nail-polish-applicator
+  fetched_at: null
+  published_date: null
+  last_updated: null
+  likes: null
+  downloads: null
+  makes_count: null
+  remixes_count: null
+  comments: null
+  has_print_profile: null
+  staff_pick: null
+  license_cc: null
+  author: null
+health_tier: documented
+health_score: null

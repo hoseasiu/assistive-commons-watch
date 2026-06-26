@@ -58,7 +58,6 @@ sources:
   has_issue_templates: false
   license_spdx: GPL-3.0
 health_tier: archived
-th_tier: null
 health_score: 1.0
 platform: []
 plain_language_description: null

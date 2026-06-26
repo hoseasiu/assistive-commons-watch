@@ -1,0 +1,62 @@
+id: acw-0094
+name: Pen Ball
+description: Spherical pen and pencil holder from Makers Making Change. The ball shape
+  distributes grip force across the palm, making writing accessible for users who
+  cannot form a pinch grip. Accepts standard pens and pencils through a central hole.
+at_relevance: primary
+added_date: '2026-06-26'
+tags:
+- daily-living
+- writing-aid
+- grip-aid
+- pen-holder
+- makers-making-change
+- 3d-printing
+disability_area:
+- motor
+iso_9999_codes:
+- 28.21.18
+modality: hardware
+user_context:
+- home
+- school
+- work
+interface: []
+platform: []
+plain_language_description: A ball-shaped holder that lets you grip a pen or pencil
+  with your whole hand instead of your fingers.
+bom_present: true
+build_docs_quality: complete
+cost_range: <$10
+fabrication_methods:
+- 3d-printing
+skill_level: beginner
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: null
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Neil Squire Society
+origin_program: Makers Making Change
+documentation_languages:
+- en
+ecosystem_links: {}
+sources:
+- platform: printables
+  url: https://www.printables.com/model/217071-pen-ball
+  fetched_at: null
+  published_date: null
+  last_updated: null
+  likes: null
+  downloads: null
+  makes_count: null
+  remixes_count: null
+  comments: null
+  has_print_profile: null
+  staff_pick: null
+  license_cc: null
+  author: null
+health_tier: documented
+health_score: null

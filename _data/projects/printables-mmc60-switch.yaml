@@ -1,0 +1,62 @@
+id: acw-0088
+name: MMC60 Switch
+description: Accessibility switch from Makers Making Change with a 60 mm diameter
+  activation surface. Designed for people with physical disabilities who benefit from
+  a larger target area; plugs into any device via a standard 3.5 mm mono jack.
+at_relevance: primary
+added_date: '2026-06-26'
+tags:
+- switch-access
+- adaptive-switch
+- large-button
+- makers-making-change
+- 3d-printing
+disability_area:
+- motor
+iso_9999_codes:
+- 24.13.03
+modality: hardware
+user_context:
+- home
+- work
+- school
+interface:
+- switch
+platform: []
+plain_language_description: A large 3D-printed button (60 mm across) that connects
+  to assistive devices via a headphone jack.
+bom_present: true
+build_docs_quality: complete
+cost_range: <$50
+fabrication_methods:
+- 3d-printing
+skill_level: maker
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: null
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Neil Squire Society
+origin_program: Makers Making Change
+documentation_languages:
+- en
+ecosystem_links: {}
+sources:
+- platform: printables
+  url: https://www.printables.com/model/214286-mmc60-switch
+  fetched_at: null
+  published_date: null
+  last_updated: null
+  likes: null
+  downloads: null
+  makes_count: null
+  remixes_count: null
+  comments: null
+  has_print_profile: null
+  staff_pick: null
+  license_cc: null
+  author: null
+health_tier: documented
+health_score: null
