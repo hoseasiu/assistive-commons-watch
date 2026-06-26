@@ -1,0 +1,63 @@
+id: acw-0078
+name: MaKey MaKey DIY Assistive Technology for Computer Access
+description: A guide for building low-cost, customized computer access interfaces
+  using the MaKey MaKey board, which turns any conductive object into a keyboard or
+  mouse input. Demonstrates how to create large-button keyboards, adaptive switches,
+  and alternative pointer devices without soldering.
+at_relevance: primary
+added_date: '2026-06-26'
+tags:
+- switch-access
+- makey-makey
+- hardware
+- computer-access
+- low-cost
+- diy
+disability_area:
+- motor
+iso_9999_codes:
+- 22.36.18
+modality: hardware
+user_context:
+- home
+- school
+- work
+interface:
+- switch
+- keyboard
+platform: []
+bom_present: true
+build_docs_quality: complete
+cost_range: $50–$200
+fabrication_methods:
+- off-the-shelf
+skill_level: beginner
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: false
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+documentation_languages:
+- en
+ecosystem_links: {}
+sources:
+- platform: instructables
+  url: https://www.instructables.com/Use-the-MaKey-MaKey-to-make-DIY-assistive-technolo/
+  published_date: null
+  views: null
+  favorites: null
+  imadeit_count: null
+  comments: null
+  step_count: 11
+  has_bom_step: null
+  has_download_files: null
+  contest_winner: null
+  license_cc: null
+  author: null
+health_tier: documented
+health_score: null
+plain_language_description: null

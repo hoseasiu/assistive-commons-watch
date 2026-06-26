@@ -1,0 +1,63 @@
+id: acw-0077
+name: Galileo Hand V 2.0
+description: A low-cost 3D-printed prosthetic hand developed at Galileo University
+  of Guatemala. Designed to make prosthetic limbs accessible in low-resource settings,
+  with freely available print files and assembly instructions. Provides a functional
+  transradial prosthesis using common materials.
+at_relevance: primary
+added_date: '2026-06-26'
+tags:
+- prosthetics
+- 3d-printing
+- hardware
+- upper-limb
+- low-cost
+- global-south
+disability_area:
+- prosthetics
+- motor
+iso_9999_codes:
+- 06.24.06
+modality: hardware
+user_context:
+- home
+- clinical
+interface: []
+platform: []
+bom_present: true
+build_docs_quality: complete
+cost_range: <$50
+fabrication_methods:
+- 3d-printing
+- assembly
+skill_level: maker
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: false
+known_deployed_instances: null
+license: null
+associated_publication: null
+institutional_affiliation: Galileo University
+origin_program: null
+documentation_languages:
+- en
+- es
+ecosystem_links: {}
+sources:
+- platform: instructables
+  url: https://www.instructables.com/Galileo-Hand-3D-Printed-Prosthetic-Hand/
+  published_date: null
+  views: null
+  favorites: null
+  imadeit_count: null
+  comments: null
+  step_count: 6
+  has_bom_step: null
+  has_download_files: null
+  contest_winner: null
+  license_cc: null
+  author: null
+health_tier: documented
+health_score: null
+plain_language_description: null
