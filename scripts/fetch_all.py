@@ -3,7 +3,8 @@
 Fetch live data for all projects and write results back to YAML.
 
 GitHub projects: fetches live API data then recomputes health score/tier.
-Static-platform projects (Instructables, Printables, Thingiverse, MyMiniFactory, Hackaday):
+Printables projects: fetches live GraphQL data then recomputes health score/tier.
+Static-platform projects (Instructables, Thingiverse, MyMiniFactory, Hackaday):
   live fetching is not yet implemented; health score/tier is recomputed from existing YAML data.
 
 After writing YAMLs, regenerates site/_data/acw.json via build_json.
@@ -26,6 +27,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from _fetchers.github import GitHubFetcher
 from _fetchers.models import Project, Source
+from _fetchers.printables import PrintablesFetcher
 from _fetchers.scoring import compute_health
 
 ROOT = Path(__file__).parent.parent
@@ -41,10 +43,14 @@ def _source_to_dict(source: Source) -> dict:
     return d
 
 
-def fetch_project(yaml_path: Path, fetcher: GitHubFetcher) -> tuple[str, str | None, bool]:
+def fetch_project(
+    yaml_path: Path,
+    fetcher: GitHubFetcher,
+    printables_fetcher: PrintablesFetcher,
+) -> tuple[str, str | None, bool]:
     """
-    Process one project: fetch live data if it has a GitHub source, then compute and
-    write back health score/tier.
+    Process one project: fetch live data if it has a GitHub or Printables source,
+    then compute and write back health score/tier.
 
     Returns (project_id, tier_change_string | None, live_fetch_performed).
     Raises PermissionError on rate-limit, ValueError on bad data.
@@ -55,21 +61,33 @@ def fetch_project(yaml_path: Path, fetcher: GitHubFetcher) -> tuple[str, str | N
     old_tier = project.health_tier
     live_fetch = False
 
-    github_sources = [s for s in project.sources if s.platform == "github"]
-    if github_sources:
-        url = github_sources[0].url
-        fetched = fetcher.fetch(url)
-        live_fetch = True
+    for s in project.sources:
+        if s.platform == "github":
+            url = s.url
+            fetched = fetcher.fetch(url)
+            live_fetch = True
 
-        if fetched.url != url:
-            print(f"    URL updated: {url} → {fetched.url}")
+            if fetched.url != url:
+                print(f"    URL updated: {url} → {fetched.url}")
 
-        github_idx = next(
-            i for i, s in enumerate(raw.get("sources", []))
-            if s.get("platform") == "github"
-        )
-        raw["sources"][github_idx] = _source_to_dict(fetched)
-        project = Project.model_validate(raw)
+            idx = next(
+                i for i, src in enumerate(raw.get("sources", []))
+                if src.get("platform") == "github"
+            )
+            raw["sources"][idx] = _source_to_dict(fetched)
+            project = Project.model_validate(raw)
+
+        elif s.platform == "printables":
+            url = s.url
+            fetched = printables_fetcher.fetch(url)
+            live_fetch = True
+
+            idx = next(
+                i for i, src in enumerate(raw.get("sources", []))
+                if src.get("platform") == "printables"
+            )
+            raw["sources"][idx] = _source_to_dict(fetched)
+            project = Project.model_validate(raw)
 
     score, tier = compute_health(project)
     raw["health_score"] = score
@@ -114,10 +132,10 @@ def main() -> None:
     errors: list[str] = []
     tier_changes: list[str] = []
 
-    with GitHubFetcher() as fetcher:
+    with GitHubFetcher() as fetcher, PrintablesFetcher() as printables_fetcher:
         for yaml_path in yaml_paths:
             try:
-                project_id, tier_change, live_fetch = fetch_project(yaml_path, fetcher)
+                project_id, tier_change, live_fetch = fetch_project(yaml_path, fetcher, printables_fetcher)
                 processed_count += 1
                 if live_fetch:
                     live_count += 1
