@@ -7,34 +7,6 @@ permalink: /methodology/
   /* ── Layout helpers ── */
   .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 
-  /* ── Header ── */
-  .site-header {
-    position: sticky; top: 0; z-index: 100;
-    background: var(--bg-white);
-    border-bottom: 1px solid var(--border);
-    height: 56px;
-  }
-  .site-header .container { height: 100%; display: flex; align-items: center; }
-  .wordmark {
-    font-size: 15px; font-weight: 800; letter-spacing: -0.03em;
-    color: var(--text-primary); margin-right: auto; text-decoration: none;
-  }
-  .wordmark:hover { opacity: 0.8; }
-  .site-nav { display: flex; align-items: center; gap: 4px; }
-  .site-nav a {
-    font-size: 13px; font-weight: 500; color: var(--text-secondary);
-    padding: 0 12px; border-radius: 6px; transition: background 0.15s;
-    min-height: 44px; display: inline-flex; align-items: center;
-  }
-  .site-nav a:hover { background: var(--bg-page); }
-  .site-nav .nav-cta {
-    font-size: 13px; font-weight: 600; color: white;
-    background: var(--accent-green); padding: 0 15px;
-    border-radius: 7px; margin-left: 8px; transition: background 0.15s;
-    min-height: 44px; display: inline-flex; align-items: center;
-  }
-  .site-nav .nav-cta:hover { background: oklch(0.36 0.14 165); color: white; }
-
   /* ── Page hero ── */
   .page-hero {
     background: var(--bg-white);
@@ -258,18 +230,6 @@ permalink: /methodology/
     .page-title { font-size: 28px; }
   }
 </style>
-
-<!-- ── Header ── -->
-<header class="site-header">
-  <div class="container">
-    <a href="/" class="wordmark">Assistive Commons Watch</a>
-    <nav class="site-nav" aria-label="Site navigation">
-      <a href="/browse/?mode=contribute">Contribute</a>
-      <a href="/browse/?mode=use">Find a Tool</a>
-      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new?template=submit_project.yml" class="nav-cta">Submit a project →</a>
-    </nav>
-  </div>
-</header>
 
 <!-- ── Hero ── -->
 <section class="page-hero">
