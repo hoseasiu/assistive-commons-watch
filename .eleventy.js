@@ -14,6 +14,7 @@ module.exports = function (eleventyConfig) {
       at_risk: "oklch(0.62 0.17 47)",
       archived: "oklch(0.52 0.14 22)",
       unverified: "oklch(0.80 0.02 250)",
+      documented: "oklch(0.58 0.12 300)",
     };
     return colors[tier] ?? colors.unverified;
   });
@@ -34,6 +35,7 @@ module.exports = function (eleventyConfig) {
       at_risk: "At Risk",
       archived: "Archived",
       unverified: "Unverified",
+      documented: "Documented",
     };
     return labels[tier] ?? tier;
   });

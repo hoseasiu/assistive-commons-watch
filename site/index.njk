@@ -332,14 +332,15 @@ title: Assistive Commons Watch
 {%- set stats = d.stats -%}
 {%- set tierCounts = d.tier_counts -%}
 
-{%- set tierOrder = ["thriving","stable","dormant","at_risk","archived","unverified"] -%}
+{%- set tierOrder = ["thriving","stable","dormant","at_risk","archived","unverified","documented"] -%}
 {%- set tierLabels = {
   "thriving": "Thriving",
   "stable": "Stable",
   "dormant": "Dormant",
   "at_risk": "At Risk",
   "archived": "Archived",
-  "unverified": "Unverified"
+  "unverified": "Unverified",
+  "documented": "Documented"
 } -%}
 {%- set tierDescs = {
   "thriving": "Active, documented, welcoming",
@@ -347,7 +348,8 @@ title: Assistive Commons Watch
   "dormant": "Documented to replicate, inactive",
   "at_risk": "Maintenance unclear, documentation gaps",
   "archived": "Explicitly archived or abandoned",
-  "unverified": "Newly submitted, not yet assessed"
+  "unverified": "Newly submitted, not yet assessed",
+  "documented": "Build instructions on a maker platform (Instructables, Printables, etc.)"
 } -%}
 
 {%- set maxAreaCount = 0 -%}
