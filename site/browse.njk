@@ -225,6 +225,34 @@ title: Browse Projects — Assistive Commons Watch
     font-weight: 500; margin-top: 2px;
   }
 
+  /* ── Search bar ── */
+  .search-bar {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--bg-white); border-radius: 10px;
+    border: 1px solid var(--border); padding: 10px 14px;
+  }
+  .search-bar:focus-within {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 0 2px oklch(0.43 0.14 165 / 0.12);
+  }
+  .search-icon {
+    flex-shrink: 0; width: 16px; height: 16px;
+    color: var(--text-muted);
+  }
+  .search-input {
+    flex: 1; border: none; outline: none; background: none;
+    font-family: inherit; font-size: 14px; color: var(--text-primary);
+    min-width: 0;
+  }
+  .search-input::placeholder { color: var(--text-muted); }
+  .search-clear-btn {
+    flex-shrink: 0; background: none; border: none; cursor: pointer;
+    padding: 2px 4px; border-radius: 4px; font-size: 14px;
+    color: var(--text-muted); display: none; line-height: 1;
+  }
+  .search-clear-btn:hover { background: var(--bg-page); color: var(--text-primary); }
+  .search-clear-btn.visible { display: block; }
+
   /* ── Empty state ── */
   .empty-state {
     text-align: center; padding: 56px 24px;
@@ -240,20 +268,6 @@ title: Browse Projects — Assistive Commons Watch
     background: none; border: none; font-family: inherit;
   }
   .empty-clear-link:hover { text-decoration: underline; }
-
-  /* ── Footer ── */
-  .site-footer {
-    background: var(--bg-white); border-top: 1px solid var(--border);
-    padding: 20px 40px;
-  }
-  .site-footer .container {
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 12px;
-  }
-  .footer-left { font-size: 12px; color: var(--text-muted); }
-  .footer-left a { color: var(--accent-green); }
-  .footer-links { display: flex; gap: 16px; }
-  .footer-links a { font-size: 12px; color: oklch(0.52 0.015 50); }
 
   /* ── No-JS fallback ── */
   .no-js-note { font-size: 12px; color: var(--text-muted); padding: 6px 0; }
@@ -453,6 +467,23 @@ title: Browse Projects — Assistive Commons Watch
       <!-- ── Results area ── -->
       <div class="results-area">
 
+        <!-- Search bar -->
+        <div class="search-bar">
+          <svg class="search-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="6.5" cy="6.5" r="4.5"/>
+            <line x1="10.5" y1="10.5" x2="14" y2="14"/>
+          </svg>
+          <input
+            class="search-input"
+            id="search-input"
+            type="search"
+            placeholder="Search projects by name or description…"
+            aria-label="Search projects"
+            autocomplete="off"
+          >
+          <button class="search-clear-btn" id="search-clear-btn" aria-label="Clear search">✕</button>
+        </div>
+
         <!-- Toolbar -->
         <div class="results-toolbar" role="toolbar" aria-label="Sort and result count">
           <span class="results-count" id="results-count" aria-live="polite" aria-atomic="true">
@@ -520,8 +551,8 @@ title: Browse Projects — Assistive Commons Watch
         <!-- Empty state -->
         <div class="empty-state" id="empty-state" style="display:none;" role="status" aria-live="polite">
           <div class="empty-state-icon" aria-hidden="true">🔍</div>
-          <div class="empty-state-title">No projects match your filters</div>
-          <p class="empty-state-body">Try removing one or more filters to see more results.</p>
+          <div class="empty-state-title" id="empty-state-title">No projects match your filters</div>
+          <p class="empty-state-body" id="empty-state-body">Try removing one or more filters to see more results.</p>
           <button class="empty-clear-link" id="empty-clear-btn">Clear all filters</button>
         </div>
 
@@ -531,18 +562,6 @@ title: Browse Projects — Assistive Commons Watch
   </div>
 </main>
 
-<!-- ─────────────────────────── FOOTER ─────────────────────────── -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-left">
-      Assistive Commons Watch · Data: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
-    </div>
-    <div class="footer-links">
-      <a href="https://github.com/hoseasiu/assistive-commons-watch">GitHub</a>
-      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new?template=submit_project.yml">Submit a project</a>
-    </div>
-  </div>
-</footer>
 
 <script>
 (function () {
@@ -586,6 +605,8 @@ title: Browse Projects — Assistive Commons Watch
   const pageSubtitle    = document.getElementById('page-subtitle');
   const tierFilterSection = document.getElementById('tier-filter-section');
   const modeBtns        = document.querySelectorAll('[data-mode-btn]');
+  const searchInput     = document.getElementById('search-input');
+  const searchClearBtn  = document.getElementById('search-clear-btn');
 
   // Remove static server-rendered cards (JS takes over rendering)
   cardsContainer.innerHTML = '';
@@ -632,6 +653,7 @@ title: Browse Projects — Assistive Commons Watch
       skill:    p.get('skill')    ? p.get('skill').split(',').filter(Boolean)    : [],
       codesign: p.get('codesign') || 'all',
       sort:     p.get('sort')     || defaultSort,
+      query:    searchInput.value.trim() || p.get('q') || '',
     };
   }
 
@@ -643,6 +665,7 @@ title: Browse Projects — Assistive Commons Watch
       r.checked = r.value === filters.codesign;
     });
     sortSelect.value = filters.sort;
+    if (searchInput.value.trim() !== filters.query) searchInput.value = filters.query || '';
   }
 
   function pushState(filters) {
@@ -653,6 +676,7 @@ title: Browse Projects — Assistive Commons Watch
     if (filters.modality.length) p.set('modality', filters.modality.join(','));
     if (filters.skill.length)    p.set('skill', filters.skill.join(','));
     if (filters.codesign !== 'all') p.set('codesign', filters.codesign);
+    if (filters.query) p.set('q', filters.query);
     const defaultSort = filters.mode === 'use' ? 'skill-asc' : 'score-desc';
     if (filters.sort !== defaultSort) p.set('sort', filters.sort);
     const qs = p.toString();
@@ -677,9 +701,16 @@ title: Browse Projects — Assistive Commons Watch
       activeTiers = USE_MODE_DEFAULT_TIERS;
     }
 
+    const queryLower = filters.query ? filters.query.toLowerCase() : '';
+
     let results = PROJECTS.filter(p => {
       // In use mode, only show primary AT (directly usable by disabled people)
       if (filters.mode === 'use' && p.at_relevance !== 'primary') return false;
+      if (queryLower) {
+        const searchable = [p.name, p.description, p.plain_language_description]
+          .filter(Boolean).join(' ').toLowerCase();
+        if (!searchable.includes(queryLower)) return false;
+      }
       if (filters.area.length && !filters.area.some(a => (p.disability_area || []).includes(a)))
         return false;
       if (activeTiers.length && !activeTiers.includes(p.health_tier))
@@ -716,7 +747,7 @@ title: Browse Projects — Assistive Commons Watch
   // ── Card rendering ────────────────────────────────────────────────────────
   function hasActiveFilters(filters) {
     return filters.area.length || filters.tier.length || filters.modality.length ||
-           filters.skill.length || filters.codesign !== 'all';
+           filters.skill.length || filters.codesign !== 'all' || filters.query;
   }
 
   function truncate(str, max) {
@@ -840,10 +871,20 @@ title: Browse Projects — Assistive Commons Watch
 
     const active = hasActiveFilters(filters);
     clearAllBtn.classList.toggle('visible', active);
+    searchClearBtn.classList.toggle('visible', !!filters.query);
     countNum.textContent = results.length;
 
     cardsContainer.innerHTML = '';
     if (results.length === 0) {
+      const emptyTitle = document.getElementById('empty-state-title');
+      const emptyBody  = document.getElementById('empty-state-body');
+      if (filters.query && !hasActiveFilters({ ...filters, query: '' })) {
+        emptyTitle.textContent = `No projects found for "${filters.query}"`;
+        emptyBody.textContent  = 'Try a different search term or browse all projects.';
+      } else {
+        emptyTitle.textContent = 'No projects match your filters';
+        emptyBody.textContent  = 'Try removing one or more filters to see more results.';
+      }
       emptyState.style.display = '';
     } else {
       emptyState.style.display = 'none';
@@ -864,7 +905,8 @@ title: Browse Projects — Assistive Commons Watch
     const codesign = codesignEl ? codesignEl.value : 'all';
     const sort = sortSelect.value;
     const mode = getMode();
-    return { mode, area, tier, modality, skill, codesign, sort };
+    const query = searchInput.value.trim();
+    return { mode, area, tier, modality, skill, codesign, sort, query };
   }
 
   function onFilterChange() {
@@ -877,6 +919,7 @@ title: Browse Projects — Assistive Commons Watch
     document.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
     const allRadio = document.querySelector('input[name="codesign"][value="all"]');
     if (allRadio) allRadio.checked = true;
+    searchInput.value = '';
     const mode = getMode();
     sortSelect.value = mode === 'use' ? 'skill-asc' : 'score-desc';
     const p = new URLSearchParams();
@@ -898,6 +941,7 @@ title: Browse Projects — Assistive Commons Watch
       document.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
       const allRadio = document.querySelector('input[name="codesign"][value="all"]');
       if (allRadio) allRadio.checked = true;
+      searchInput.value = '';
       render();
     });
   });
@@ -907,6 +951,12 @@ title: Browse Projects — Assistive Commons Watch
   sortSelect.addEventListener('change', onFilterChange);
   clearAllBtn.addEventListener('click', clearAllFilters);
   emptyClearBtn.addEventListener('click', clearAllFilters);
+  searchInput.addEventListener('input', onFilterChange);
+  searchClearBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    onFilterChange();
+    searchInput.focus();
+  });
   window.addEventListener('popstate', render);
 
   // Mobile filter toggle

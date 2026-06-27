@@ -203,24 +203,6 @@ permalink: /methodology/
     margin-bottom: 4px;
   }
 
-  /* ── Footer ── */
-  .site-footer {
-    background: var(--bg-white); border-top: 1px solid var(--border);
-    padding: 20px 40px;
-  }
-  .site-footer .container {
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 12px;
-  }
-  .footer-left { font-size: 12px; color: var(--text-muted); }
-  .footer-left a { color: var(--accent-green); }
-  .footer-links { display: flex; gap: 20px; }
-  .footer-links a {
-    font-size: 12px; color: oklch(0.58 0.015 50);
-    transition: color 0.15s;
-  }
-  .footer-links a:hover { color: var(--text-primary); }
-
   /* ── Responsive ── */
   @media (max-width: 860px) {
     .container { padding: 0 20px; }
@@ -529,19 +511,3 @@ permalink: /methodology/
   </div>
 </main>
 
-<!-- ── Footer ── -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-left">
-      Assistive Commons Watch ·
-      <a href="https://creativecommons.org/publicdomain/zero/1.0/">Data CC0</a> ·
-      <a href="/methodology/">Score methodology v1.0</a>
-    </div>
-    <nav class="footer-links">
-      <a href="https://github.com/hoseasiu/assistive-commons-watch">GitHub</a>
-      <a href="/about">About</a>
-      <a href="/api">API</a>
-      <a href="https://github.com/hoseasiu/assistive-commons-watch/issues/new?template=submit_project.yml">Submit</a>
-    </nav>
-  </div>
-</footer>
