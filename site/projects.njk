@@ -365,8 +365,8 @@ layout: base.njk
         <div class="card-body">
           <div class="summary-tier-row">
             <div>
-              <div class="summary-score" aria-label="Overall health score: {{ p.health_score }} out of 10">{{ p.health_score }}</div>
-              <div class="summary-score-label">/ 10 overall</div>
+              <div class="summary-score" aria-label="Availability score: {{ p.availability_score }} out of 5">{{ p.availability_score }}</div>
+              <div class="summary-score-label">/ 5 availability</div>
             </div>
             <div
               style="margin-left: 4px; padding: 5px 12px; border-radius: 8px; font-size: 13px; font-weight: 700; background: {{ p.health_tier | tierColor }}18; color: {{ p.health_tier | tierColor }}; border: 1px solid {{ p.health_tier | tierColor }}35;"

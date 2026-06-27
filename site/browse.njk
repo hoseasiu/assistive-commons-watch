@@ -382,6 +382,10 @@ title: Browse Projects — Assistive Commons Watch
                 <span class="filter-option-label">Stable</span>
               </label>
               <label class="filter-option">
+                <input type="checkbox" name="tier" value="complete">
+                <span class="filter-option-label">Complete</span>
+              </label>
+              <label class="filter-option">
                 <input type="checkbox" name="tier" value="dormant">
                 <span class="filter-option-label">Dormant</span>
               </label>
@@ -507,7 +511,7 @@ title: Browse Projects — Assistive Commons Watch
           <noscript>
             <p class="no-js-note">Enable JavaScript to filter and sort projects.</p>
           </noscript>
-          {%- for p in acw.projects | sort(attribute='health_score', reverse=true) -%}
+          {%- for p in acw.projects | sort(attribute='availability_score', reverse=true) -%}
           <a
             class="project-card"
             href="/projects/{{ p.id }}/"
@@ -540,8 +544,8 @@ title: Browse Projects — Assistive Commons Watch
                 {{ p.health_tier_label }}
               </span>
               <div>
-                <div class="card-score">{{ p.health_score }}</div>
-                <div class="card-score-label">/ 10</div>
+                <div class="card-score">{{ p.availability_score }}</div>
+                <div class="card-score-label">/ 5</div>
               </div>
             </div>
           </a>
@@ -572,19 +576,21 @@ title: Browse Projects — Assistive Commons Watch
   const TIER_COLORS = {
     thriving:   'oklch(0.52 0.16 142)',
     stable:     'oklch(0.50 0.14 245)',
+    complete:   'oklch(0.50 0.14 245)',
     dormant:    'oklch(0.72 0.13 83)',
     at_risk:    'oklch(0.62 0.17 47)',
     archived:   'oklch(0.52 0.14 22)',
     unverified: 'oklch(0.80 0.02 250)',
   };
   const TIER_LABELS = {
-    thriving: 'Thriving', stable: 'Stable', dormant: 'Dormant',
+    thriving: 'Thriving', stable: 'Stable', complete: 'Complete', dormant: 'Dormant',
     at_risk: 'At Risk', archived: 'Archived', unverified: 'Unverified',
   };
   // Plain-language maintenance labels for use mode
   const MAINTENANCE_LABELS = {
     thriving:   { label: 'Actively developed', color: 'oklch(0.36 0.15 142)' },
     stable:     { label: 'Actively maintained', color: 'oklch(0.35 0.14 245)' },
+    complete:   { label: 'Complete — still usable', color: 'oklch(0.35 0.14 245)' },
     dormant:    { label: 'Dormant — still usable', color: 'oklch(0.50 0.12 83)' },
     at_risk:    { label: 'Needs attention', color: 'oklch(0.50 0.15 47)' },
     archived:   { label: 'Archived', color: 'oklch(0.48 0.08 22)' },
@@ -592,7 +598,7 @@ title: Browse Projects — Assistive Commons Watch
     documented:  { label: 'Community build project', color: 'oklch(0.40 0.10 290)' },
   };
   const SKILL_ORDER = { beginner: 0, maker: 1, engineer: 2 };
-  const USE_MODE_DEFAULT_TIERS = ['thriving', 'stable', 'dormant', 'documented'];
+  const USE_MODE_DEFAULT_TIERS = ['thriving', 'stable', 'complete', 'dormant', 'documented'];
 
   // ── DOM refs ─────────────────────────────────────────────────────────────
   const cardsContainer  = document.getElementById('project-cards');
@@ -731,14 +737,14 @@ title: Browse Projects — Assistive Commons Watch
           const bo = SKILL_ORDER[b.skill_level] ?? 99;
           return ao !== bo ? ao - bo : a.name.localeCompare(b.name);
         }
-        case 'score-asc':  return (a.health_score ?? 0) - (b.health_score ?? 0);
+        case 'score-asc':  return (a.availability_score ?? 0) - (b.availability_score ?? 0);
         case 'name-asc':   return a.name.localeCompare(b.name);
         case 'name-desc':  return b.name.localeCompare(a.name);
         case 'stars-desc': return (b.github_stars ?? -1) - (a.github_stars ?? -1);
         case 'commit-desc':
           return (b.github_last_commit || '').localeCompare(a.github_last_commit || '');
         default: // score-desc
-          return (b.health_score ?? 0) - (a.health_score ?? 0);
+          return (b.availability_score ?? 0) - (a.availability_score ?? 0);
       }
     });
     return results;
@@ -788,8 +794,8 @@ title: Browse Projects — Assistive Commons Watch
           ${label}
         </span>
         <div>
-          <div class="card-score">${p.health_score ?? '—'}</div>
-          <div class="card-score-label">/ 10</div>
+          <div class="card-score">${p.availability_score ?? '—'}</div>
+          <div class="card-score-label">/ 5</div>
         </div>
       </div>`;
     return a;
