@@ -58,6 +58,26 @@ permalink: /methodology/
     margin-bottom: 5px;
   }
 
+  /* ── Score pair display ── */
+  .score-pair {
+    display: flex; gap: 16px; flex-wrap: wrap; margin: 20px 0;
+  }
+  .score-card {
+    flex: 1; min-width: 220px;
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+  }
+  .score-card-label {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px;
+  }
+  .score-card-question {
+    font-size: 15px; font-weight: 700; color: var(--text-primary);
+    margin-bottom: 10px; line-height: 1.4;
+  }
+
   /* ── Formula display ── */
   .formula-block {
     background: oklch(0.965 0.012 76);
@@ -114,8 +134,17 @@ permalink: /methodology/
     font-size: 12px; font-weight: 700; letter-spacing: 0.05em;
     padding: 4px 11px; border-radius: 100px;
   }
+  .example-tier-badge.complete {
+    background: oklch(0.50 0.14 245);
+  }
 
   .dim-rows { padding: 0; }
+  .dim-rows-header {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+    color: var(--text-muted); padding: 10px 20px 6px;
+    border-bottom: 1px solid var(--border-subtle);
+    background: oklch(0.975 0.006 76);
+  }
   .dim-row {
     display: grid; grid-template-columns: 160px 1fr auto;
     gap: 16px; align-items: start;
@@ -142,20 +171,24 @@ permalink: /methodology/
     text-align: right; margin-top: 2px;
   }
 
-  .example-total {
+  .example-totals {
     background: oklch(0.965 0.012 76);
     padding: 16px 20px;
-    display: flex; justify-content: space-between; align-items: center;
+    display: flex; gap: 24px; flex-wrap: wrap;
+    border-top: 1px solid var(--border);
   }
+  .example-total-block { flex: 1; min-width: 160px; }
   .example-total-label {
-    font-size: 14px; font-weight: 700; color: var(--text-primary);
+    font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;
   }
   .example-total-score {
-    font-size: 26px; font-weight: 800; color: oklch(0.62 0.17 47);
+    font-size: 24px; font-weight: 800; color: oklch(0.62 0.17 47);
     font-variant-numeric: tabular-nums;
   }
+  .example-total-score.complete { color: oklch(0.50 0.14 245); }
   .example-total-tier {
-    font-size: 13px; color: var(--text-muted); margin-top: 2px; text-align: right;
+    font-size: 13px; color: var(--text-muted); margin-top: 2px;
   }
 
   /* ── Tier table ── */
@@ -218,12 +251,10 @@ permalink: /methodology/
   <div class="container">
     <h1 class="page-title">Score methodology</h1>
     <p class="page-lead">
-      ACW assigns every project a health score from 0 to 10, split across five
-      weighted dimensions. This page explains what each dimension measures, walks
-      through a real worked example, and documents the tier thresholds.
+      ACW assigns every project two independent scores: <strong>Availability</strong> (can I use this today?) and <strong>Momentum</strong> (is anyone actively developing it?). This page explains what each score measures, walks through two worked examples, and documents the tier thresholds.
     </p>
     <div class="page-meta">
-      <span>Version <strong>1.0</strong></span>
+      <span>Version <strong>2.0</strong></span>
       <span class="meta-sep">·</span>
       <a href="https://github.com/hoseasiu/assistive-commons-watch/blob/main/schema.json">Schema JSON</a>
       <span class="meta-sep">·</span>
@@ -237,27 +268,112 @@ permalink: /methodology/
   <div class="container">
     <div class="content-body">
 
-      <!-- ── Left: prose + example ── -->
+      <!-- ── Left: prose + examples ── -->
       <div class="prose">
 
-        <h2>The formula</h2>
+        <h2>Why two scores?</h2>
         <p>
-          Each project receives a score out of 10, computed as a weighted average of five
-          sub-dimension scores (each also 0–10):
+          A single composite score creates misleading results when a project's health looks
+          different across these two dimensions. A well-documented, freely downloadable font
+          with no recent commits is not "at risk" — it is complete. Conversely, an actively
+          developed hardware project with no build docs or release artifacts is not "healthy"
+          just because its commit graph is busy.
+        </p>
+        <p>
+          Showing Availability and Momentum separately lets visitors apply their own judgment.
+          Someone deploying a tool in a clinical context will weight Momentum heavily. Someone
+          looking for a font to install today mostly cares about Availability.
+        </p>
+        <p>The two scores are never added together or averaged into a single number.</p>
+
+        <h2>Availability (1–5)</h2>
+
+        <div class="score-card" style="margin:0 0 20px">
+          <div class="score-card-question">Can someone get value from this project right now?</div>
+        </div>
+
+        <p>
+          Availability measures how ready a project is for immediate use or replication. It looks
+          at whether the project is downloadable or installable, whether documentation supports
+          end users, whether the license permits use, and whether the project meets AT-specific
+          trust signals.
         </p>
 
         <div class="formula-block">
-          score = 0.25 × activity<br>
-                + 0.30 × replicability<br>
-                + 0.15 × community<br>
-                + 0.20 × at_specific<br>
-                + 0.10 × provenance
+          availability = 0.40 × replicability<br>
+                       + 0.30 × at_specific<br>
+                       + 0.20 × provenance<br>
+                       + 0.10 × maturity_bonus
         </div>
 
-        <table class="dim-table" aria-label="Scoring dimensions">
+        <table class="dim-table" aria-label="Availability sub-dimensions">
           <thead>
             <tr>
-              <th>Dimension</th>
+              <th>Sub-dimension</th>
+              <th>Weight</th>
+              <th>What it measures</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="dim-name">Replicability</td>
+              <td class="dim-weight">40%</td>
+              <td>Can someone build, install, or print this? Checks for release artifacts, bill of materials, build doc quality, installation instructions, and pinned dependencies.</td>
+            </tr>
+            <tr>
+              <td class="dim-name">AT-specific</td>
+              <td class="dim-weight">30%</td>
+              <td>Is it centred on disabled users? Checks for end-user documentation, a feedback channel, co-design involvement (Nothing About Us), and known deployed instances.</td>
+            </tr>
+            <tr>
+              <td class="dim-name">Provenance</td>
+              <td class="dim-weight">20%</td>
+              <td>Is the project trustworthy and legally usable? Checks for an open license (OSI-approved, SIL OFL, CC-BY, etc.), associated publication, institutional affiliation, and origin program.</td>
+            </tr>
+            <tr>
+              <td class="dim-name">Maturity bonus</td>
+              <td class="dim-weight">10%</td>
+              <td>Is the project intentionally complete? Applies a bonus when a project is inferred or curated as mature — preventing well-finished projects from being penalised for low activity.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="tier-table" aria-label="Availability tier labels">
+          <thead><tr><th>Label</th><th>Score</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tier-label">Ready</span></td><td>4.0 – 5.0</td></tr>
+            <tr><td><span class="tier-label">Usable</span></td><td>2.5 – 3.9</td></tr>
+            <tr><td><span class="tier-label">Limited</span></td><td>1.0 – 2.4</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Momentum (1–5)</h2>
+
+        <div class="score-card" style="margin:0 0 20px">
+          <div class="score-card-question">Is active development, maintenance, or community energy flowing into this project?</div>
+        </div>
+
+        <p>
+          Momentum measures the level of ongoing human activity around a project. Low Momentum
+          is not inherently bad — a mature, complete project may have low Momentum by design.
+          High Momentum signals that issues get responses, the codebase is being maintained,
+          and contributors are welcome.
+        </p>
+        <p>
+          Momentum is shown as <strong>N/A</strong> for static-platform projects (Instructables,
+          Printables, Thingiverse, MyMiniFactory) where the platform exposes no meaningful
+          activity signals.
+        </p>
+
+        <div class="formula-block">
+          momentum = 0.55 × activity<br>
+                   + 0.45 × community
+        </div>
+
+        <table class="dim-table" aria-label="Momentum sub-dimensions">
+          <thead>
+            <tr>
+              <th>Sub-dimension</th>
               <th>Weight</th>
               <th>What it measures</th>
             </tr>
@@ -265,161 +381,54 @@ permalink: /methodology/
           <tbody>
             <tr>
               <td class="dim-name">Activity</td>
-              <td class="dim-weight">25%</td>
-              <td>Is the project being maintained? Looks at days since last commit, issue response rate, and whether a release shipped in the last year.</td>
-            </tr>
-            <tr>
-              <td class="dim-name">Replicability</td>
-              <td class="dim-weight">30%</td>
-              <td>Can someone actually build or install it? Checks for a bill of materials, build-doc quality, a release artifact, pinned dependencies, and README completeness.</td>
+              <td class="dim-weight">55%</td>
+              <td>Is the project being maintained? Looks at days since last commit (or last log entry for Hackaday), issue response rate, and whether a release shipped in the last year.</td>
             </tr>
             <tr>
               <td class="dim-name">Community</td>
-              <td class="dim-weight">15%</td>
-              <td>Is the project welcoming to contributors? Looks for a CONTRIBUTING guide, code of conduct, and issue templates.</td>
-            </tr>
-            <tr>
-              <td class="dim-name">AT-specific</td>
-              <td class="dim-weight">20%</td>
-              <td>Does it meet AT-specific trust signals? Checks for end-user documentation, a feedback channel, "Nothing About Us Without Us" evidence, and known deployment instances.</td>
-            </tr>
-            <tr>
-              <td class="dim-name">Provenance</td>
-              <td class="dim-weight">10%</td>
-              <td>Is the project's origin trustworthy? Looks for an OSI-approved license, associated publication, institutional affiliation, or recognised origin programme.</td>
+              <td class="dim-weight">45%</td>
+              <td>Is the project welcoming to contributors? Looks for a CONTRIBUTING guide, code of conduct, and issue templates (GitHub); or team size, followers, and build count (Hackaday).</td>
             </tr>
           </tbody>
         </table>
 
-        <h2>Worked example: OptiKey</h2>
+        <table class="tier-table" aria-label="Momentum tier labels">
+          <thead><tr><th>Label</th><th>Score</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tier-label">Active</span></td><td>4.0 – 5.0</td></tr>
+            <tr><td><span class="tier-label">Slow</span></td><td>2.5 – 3.9</td></tr>
+            <tr><td><span class="tier-label">Quiet</span></td><td>1.0 – 2.4</td></tr>
+            <tr><td><span class="tier-label">Quiet (complete)</span></td><td>1.0 – 2.4 and mature — low activity is expected for a finished project</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Maturity: inferred flag with curator override</h2>
         <p>
-          OptiKey is a free, open-source on-screen keyboard for Windows controlled by eye
-          gaze, head tracking, or a standard mouse. Here's exactly how its score of
-          <strong>5.2 / 10</strong> was computed from data fetched on 25 June 2026.
+          Some projects are intentionally complete: a font reaches its final letterforms, a
+          3D-printable hand splint reaches a well-tested design, a firmware reaches a stable
+          release with no open bugs. These projects should not be penalised in Availability for
+          low Momentum.
+        </p>
+        <p>
+          ACW infers a <code>mature</code> flag when all of the following are true:
+        </p>
+        <ul>
+          <li>A release artifact is present</li>
+          <li><code>build_docs_quality</code> is <code>partial</code> or <code>complete</code></li>
+          <li>The license is open (OSI-approved, SIL OFL, CC-BY, CC-BY-SA, or equivalent)</li>
+          <li>Last commit is between 90 days and 5 years ago (not brand-new and not stale into Archived territory)</li>
+        </ul>
+        <p>
+          Curators can override this in the YAML with <code>maturity: mature</code> (force-apply)
+          or <code>maturity: active</code> (suppress). When mature, Availability receives a +0.5
+          bonus (capped at 5.0), and the Momentum tier label changes to "Quiet (complete)" to
+          signal that low activity is expected.
         </p>
 
-        <div class="example-card">
-          <div class="example-header">
-            <div>
-              <div class="example-project-name">OptiKey</div>
-              <div class="example-project-desc">Eye-gaze on-screen keyboard · GPL-3.0 · github.com/OptiKey/OptiKey</div>
-            </div>
-            <span class="example-tier-badge">At Risk</span>
-          </div>
-
-          <div class="dim-rows">
-            <div class="dim-row">
-              <div>
-                <div class="dim-row-name">Activity</div>
-                <div class="dim-row-weight">weight 0.25</div>
-              </div>
-              <div class="dim-row-detail">
-                Last commit was 99 days ago (18 Mar 2026) → <strong>5.0 pts</strong>.
-                Issue response rate 54% → min(3.0, 0.54 × 3.34) = <strong>1.8 pts</strong>.
-                No release in the last year → <strong>0 pts</strong>.
-              </div>
-              <div>
-                <div class="dim-row-score">6.8 / 10</div>
-                <div class="dim-row-contrib">contributes 1.70</div>
-              </div>
-            </div>
-
-            <div class="dim-row">
-              <div>
-                <div class="dim-row-name">Replicability</div>
-                <div class="dim-row-weight">weight 0.30</div>
-              </div>
-              <div class="dim-row-detail">
-                Release artifact present → <strong>2.0 pts</strong>.
-                No BOM → 0 pts. Build docs quality "none" → 0 pts.
-                Dependencies pinned: unknown → 0 pts.
-                README has installation instructions but missing usage section → 0 pts
-                (both required for the bonus point).
-              </div>
-              <div>
-                <div class="dim-row-score">2.0 / 10</div>
-                <div class="dim-row-contrib">contributes 0.60</div>
-              </div>
-            </div>
-
-            <div class="dim-row">
-              <div>
-                <div class="dim-row-name">Community</div>
-                <div class="dim-row-weight">weight 0.15</div>
-              </div>
-              <div class="dim-row-detail">
-                CONTRIBUTING file present → <strong>4.0 pts</strong>.
-                Issue templates present → <strong>3.0 pts</strong>.
-                Code of conduct present → <strong>3.0 pts</strong>.
-              </div>
-              <div>
-                <div class="dim-row-score">10.0 / 10</div>
-                <div class="dim-row-contrib">contributes 1.50</div>
-              </div>
-            </div>
-
-            <div class="dim-row">
-              <div>
-                <div class="dim-row-name">AT-specific</div>
-                <div class="dim-row-weight">weight 0.20</div>
-              </div>
-              <div class="dim-row-detail">
-                End-user documentation present → <strong>3.0 pts</strong>.
-                Feedback channel present → <strong>2.0 pts</strong>.
-                "Nothing About Us" involvement: unverified → 0 pts.
-                Known deployed instances: unverified → 0 pts.
-              </div>
-              <div>
-                <div class="dim-row-score">5.0 / 10</div>
-                <div class="dim-row-contrib">contributes 1.00</div>
-              </div>
-            </div>
-
-            <div class="dim-row">
-              <div>
-                <div class="dim-row-name">Provenance</div>
-                <div class="dim-row-weight">weight 0.10</div>
-              </div>
-              <div class="dim-row-detail">
-                GPL-3.0 is an OSI-approved license → <strong>4.0 pts</strong>.
-                No associated publication → 0 pts.
-                No institutional affiliation → 0 pts.
-                No origin programme → 0 pts.
-              </div>
-              <div>
-                <div class="dim-row-score">4.0 / 10</div>
-                <div class="dim-row-contrib">contributes 0.40</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="example-total">
-            <div>
-              <div class="example-total-label">Final score</div>
-              <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">
-                1.70 + 0.60 + 1.50 + 1.00 + 0.40
-              </div>
-            </div>
-            <div>
-              <div class="example-total-score">5.20 / 10</div>
-              <div class="example-total-tier">Tier: At Risk</div>
-            </div>
-          </div>
-        </div>
-
+        <h2>Tier labels (overall project status)</h2>
         <p>
-          OptiKey's community health is exemplary — CONTRIBUTING file, code of conduct, and
-          issue templates all present. Its score is dragged down by <strong>replicability</strong>:
-          there's no bill of materials (it's software, so that's expected) and the README
-          covers installation but not end-to-end usage. Adding a usage section to the README
-          and pinning dependencies would move replicability from 2.0 to at least 3.0,
-          pushing the total score above the 5.5 Stable threshold.
-        </p>
-
-        <h2>Tier thresholds</h2>
-        <p>
-          Once the score is computed, the tier is assigned using a first-match rule applied
-          in this order:
+          In addition to the two scores, each project receives a single status label derived
+          from both together. This is used in browse filters and cards. First matching rule wins:
         </p>
 
         <table class="tier-table" aria-label="Health tier thresholds">
@@ -436,43 +445,333 @@ permalink: /methodology/
             </tr>
             <tr>
               <td><span class="tier-swatch" style="background:oklch(0.52 0.16 142)"></span><span class="tier-label">Thriving</span></td>
-              <td>Score ≥ 7.5</td>
+              <td>Availability ≥ 4.0 AND Momentum ≥ 4.0</td>
             </tr>
             <tr>
               <td><span class="tier-swatch" style="background:oklch(0.50 0.14 245)"></span><span class="tier-label">Stable</span></td>
-              <td>Score ≥ 5.5</td>
+              <td>Availability ≥ 3.0 AND Momentum ≥ 2.5</td>
+            </tr>
+            <tr>
+              <td><span class="tier-swatch" style="background:oklch(0.50 0.14 245)"></span><span class="tier-label">Complete</span></td>
+              <td>Availability ≥ 3.0 AND mature AND Momentum &lt; 2.5 — intentionally finished, low activity is expected.</td>
             </tr>
             <tr>
               <td><span class="tier-swatch" style="background:oklch(0.72 0.13 83)"></span><span class="tier-label">Dormant</span></td>
-              <td>Activity ≤ 2.0 AND replicability ≥ 5.0 — the project still builds even if it's not actively maintained.</td>
+              <td>Availability ≥ 3.0 AND Momentum &lt; 2.5 (not mature) — the project is usable but maintenance is unclear.</td>
             </tr>
             <tr>
               <td><span class="tier-swatch" style="background:oklch(0.62 0.17 47)"></span><span class="tier-label">At Risk</span></td>
-              <td>Everything else — below Stable and not cleanly Dormant.</td>
+              <td>Everything else — availability or momentum gaps that need attention.</td>
             </tr>
           </tbody>
         </table>
 
+        <h2>Worked example 1: OptiKey</h2>
         <p>
-          The Dormant tier exists to distinguish projects that are quietly stable from ones
-          that are decaying. A project with no recent commits but a solid, pinned,
-          reproducible build is more useful than a nominally "active" project you can't
-          actually install.
+          OptiKey is a free, open-source on-screen keyboard for Windows controlled by eye
+          gaze, head tracking, or a standard mouse. The two-score view explains its status
+          precisely: strong Momentum (the maintainer responds and the community is healthy),
+          but limited Availability because there are no build docs and the README doesn't
+          cover end-to-end usage.
+        </p>
+
+        <div class="example-card">
+          <div class="example-header">
+            <div>
+              <div class="example-project-name">OptiKey</div>
+              <div class="example-project-desc">Eye-gaze on-screen keyboard · GPL-3.0 · github.com/OptiKey/OptiKey</div>
+            </div>
+            <span class="example-tier-badge">At Risk</span>
+          </div>
+
+          <div class="dim-rows-header">Availability — Can someone use this today?</div>
+          <div class="dim-rows">
+            <div class="dim-row">
+              <div>
+                <div class="dim-row-name">Replicability</div>
+                <div class="dim-row-weight">weight 0.40</div>
+              </div>
+              <div class="dim-row-detail">
+                Release artifact present → <strong>2.0 pts</strong>.
+                No BOM → 0. Build docs quality "none" → 0.
+                Dependencies pinned: unknown → 0.
+                README has installation but missing usage section → 0 (both required).
+              </div>
+              <div>
+                <div class="dim-row-score">2.0 / 10</div>
+                <div class="dim-row-contrib">× 0.40 = 0.80</div>
+              </div>
+            </div>
+
+            <div class="dim-row">
+              <div>
+                <div class="dim-row-name">AT-specific</div>
+                <div class="dim-row-weight">weight 0.30</div>
+              </div>
+              <div class="dim-row-detail">
+                End-user docs present → <strong>3.0 pts</strong>.
+                Feedback channel present → <strong>2.0 pts</strong>.
+                "Nothing About Us" involvement: unverified → 0.
+                Known deployed instances: unverified → 0.
+              </div>
+              <div>
+                <div class="dim-row-score">5.0 / 10</div>
+                <div class="dim-row-contrib">× 0.30 = 1.50</div>
+              </div>
+            </div>
+
+            <div class="dim-row">
+              <div>
+                <div class="dim-row-name">Provenance</div>
+                <div class="dim-row-weight">weight 0.20</div>
+              </div>
+              <div class="dim-row-detail">
+                GPL-3.0 is an OSI-approved license → <strong>4.0 pts</strong>.
+                No publication, no affiliation, no origin program → 0.
+              </div>
+              <div>
+                <div class="dim-row-score">4.0 / 10</div>
+                <div class="dim-row-contrib">× 0.20 = 0.80</div>
+              </div>
+            </div>
+
+            <div class="dim-row">
+              <div>
+                <div class="dim-row-name">Maturity</div>
+                <div class="dim-row-weight">weight 0.10</div>
+              </div>
+              <div class="dim-row-detail">
+                Not inferred mature: build docs quality "none" fails the requirement.
+              </div>
+              <div>
+                <div class="dim-row-score">0 / 10</div>
+                <div class="dim-row-contrib">× 0.10 = 0.00</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dim-rows-header">Momentum — Is anyone actively developing this?</div>
+          <div class="dim-rows">
+            <div class="dim-row">
+              <div>
+                <div class="dim-row-name">Activity</div>
+                <div class="dim-row-weight">weight 0.55</div>
+              </div>
+              <div class="dim-row-detail">
+                Last commit was 99 days ago → <strong>5.0 pts</strong>.
+                Issue response rate 54% → min(3.0, 0.54 × 3.34) = <strong>1.8 pts</strong>.
+                No release in the last year → 0.
+              </div>
+              <div>
+                <div class="dim-row-score">6.8 / 10</div>
+                <div class="dim-row-contrib">× 0.55 = 3.74</div>
+              </div>
+            </div>
+
+            <div class="dim-row">
+              <div>
+                <div class="dim-row-name">Community</div>
+                <div class="dim-row-weight">weight 0.45</div>
+              </div>
+              <div class="dim-row-detail">
+                CONTRIBUTING file → <strong>4.0 pts</strong>.
+                Issue templates → <strong>3.0 pts</strong>.
+                Code of conduct → <strong>3.0 pts</strong>.
+              </div>
+              <div>
+                <div class="dim-row-score">10.0 / 10</div>
+                <div class="dim-row-contrib">× 0.45 = 4.50</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="example-totals">
+            <div class="example-total-block">
+              <div class="example-total-label">Availability</div>
+              <div class="example-total-score" style="color:oklch(0.62 0.17 47)">2.24 / 5</div>
+              <div class="example-total-tier">raw 3.10 → 1 + (3.10/10)×4 = 2.24 · Limited</div>
+            </div>
+            <div class="example-total-block">
+              <div class="example-total-label">Momentum</div>
+              <div class="example-total-score" style="color:oklch(0.52 0.16 142)">4.30 / 5</div>
+              <div class="example-total-tier">raw 8.24 → 1 + (8.24/10)×4 = 4.30 · Active</div>
+            </div>
+            <div class="example-total-block">
+              <div class="example-total-label">Tier</div>
+              <div class="example-total-score" style="color:oklch(0.62 0.17 47); font-size:18px; padding-top:4px">At Risk</div>
+              <div class="example-total-tier">Availability &lt; 3.0</div>
+            </div>
+          </div>
+        </div>
+
+        <p>
+          OptiKey's community health is exemplary — CONTRIBUTING file, code of conduct, and
+          issue templates all present, giving it Active Momentum. Its tier is At Risk because
+          <strong>Availability is Limited</strong>: there's no bill of materials (expected for
+          software), but the README covers installation without end-to-end usage guidance.
+          Adding a usage section to the README and pinning dependencies would push Replicability
+          from 2.0 to at least 3.0, raising Availability into the Usable band and likely
+          promoting the tier to Stable.
+        </p>
+
+        <h2>Worked example 2: OpenDyslexic</h2>
+        <p>
+          OpenDyslexic is an open-source typeface designed to reduce common visual symptoms of
+          dyslexia. A completed font is a good illustration of the <strong>Complete</strong>
+          tier: high Availability (widely deployed, user-facing, permissively licensed), low
+          Momentum (no recent commits — by design for a finished typeface), and the maturity
+          bonus correctly recognises that the project is intentionally done.
+        </p>
+
+        <div class="example-card">
+          <div class="example-header">
+            <div>
+              <div class="example-project-name">OpenDyslexic</div>
+              <div class="example-project-desc">Dyslexia-friendly typeface · SIL OFL-1.1 · github.com/antijingoist/opendyslexic</div>
+            </div>
+            <span class="example-tier-badge complete">Complete</span>
+          </div>
+
+          <div class="dim-rows-header">Availability — Can someone use this today?</div>
+          <div class="dim-rows">
+            <div class="dim-row">
+              <div>
+                <div class="dim-row-name">Replicability</div>
+                <div class="dim-row-weight">weight 0.40</div>
+              </div>
+              <div class="dim-row-detail">
+                Release artifact present → <strong>2.0 pts</strong>.
+                Build docs quality "partial" → <strong>2.0 pts</strong>.
+                No BOM (not applicable for a font) → 0.
+                README does not have installation + usage → 0.
+              </div>
+              <div>
+                <div class="dim-row-score">4.0 / 10</div>
+                <div class="dim-row-contrib">× 0.40 = 1.60</div>
+              </div>
+            </div>
+
+            <div class="dim-row">
+              <div>
+                <div class="dim-row-name">AT-specific</div>
+                <div class="dim-row-weight">weight 0.30</div>
+              </div>
+              <div class="dim-row-detail">
+                "Nothing About Us" involvement → <strong>4.0 pts</strong>.
+                End-user docs present → <strong>3.0 pts</strong>.
+                Feedback channel present → <strong>2.0 pts</strong>.
+                Known deployed instances → <strong>1.0 pt</strong>.
+              </div>
+              <div>
+                <div class="dim-row-score">10.0 / 10</div>
+                <div class="dim-row-contrib">× 0.30 = 3.00</div>
+              </div>
+            </div>
+
+            <div class="dim-row">
+              <div>
+                <div class="dim-row-name">Provenance</div>
+                <div class="dim-row-weight">weight 0.20</div>
+              </div>
+              <div class="dim-row-detail">
+                SIL OFL-1.1 is an open font license → <strong>4.0 pts</strong>.
+                No publication, no affiliation, no origin program → 0.
+              </div>
+              <div>
+                <div class="dim-row-score">4.0 / 10</div>
+                <div class="dim-row-contrib">× 0.20 = 0.80</div>
+              </div>
+            </div>
+
+            <div class="dim-row">
+              <div>
+                <div class="dim-row-name">Maturity</div>
+                <div class="dim-row-weight">weight 0.10</div>
+              </div>
+              <div class="dim-row-detail">
+                Inferred mature: release artifact present ✓, build docs partial ✓,
+                SIL OFL open license ✓, last commit ~320 days ago (within 90–1825 window) ✓.
+                Bonus applied.
+              </div>
+              <div>
+                <div class="dim-row-score">10.0 / 10</div>
+                <div class="dim-row-contrib">× 0.10 = 1.00</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dim-rows-header">Momentum — Is anyone actively developing this?</div>
+          <div class="dim-rows">
+            <div class="dim-row">
+              <div>
+                <div class="dim-row-name">Activity</div>
+                <div class="dim-row-weight">weight 0.55</div>
+              </div>
+              <div class="dim-row-detail">
+                Last commit ~320 days ago → <strong>3.0 pts</strong>.
+                Issue response rate 39% → min(3.0, 0.39 × 3.34) = <strong>1.3 pts</strong>.
+                No release in the last year → 0.
+              </div>
+              <div>
+                <div class="dim-row-score">4.3 / 10</div>
+                <div class="dim-row-contrib">× 0.55 = 2.37</div>
+              </div>
+            </div>
+
+            <div class="dim-row">
+              <div>
+                <div class="dim-row-name">Community</div>
+                <div class="dim-row-weight">weight 0.45</div>
+              </div>
+              <div class="dim-row-detail">
+                No CONTRIBUTING file → 0.
+                Issue templates present → <strong>3.0 pts</strong>.
+                No code of conduct → 0.
+              </div>
+              <div>
+                <div class="dim-row-score">3.0 / 10</div>
+                <div class="dim-row-contrib">× 0.45 = 1.35</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="example-totals">
+            <div class="example-total-block">
+              <div class="example-total-label">Availability</div>
+              <div class="example-total-score complete">3.56 / 5</div>
+              <div class="example-total-tier">raw 6.40 → 1 + (6.40/10)×4 = 3.56 · Usable</div>
+            </div>
+            <div class="example-total-block">
+              <div class="example-total-label">Momentum</div>
+              <div class="example-total-score" style="color:oklch(0.72 0.13 83)">2.49 / 5</div>
+              <div class="example-total-tier">raw 3.72 → 1 + (3.72/10)×4 = 2.49 · Quiet (complete)</div>
+            </div>
+            <div class="example-total-block">
+              <div class="example-total-label">Tier</div>
+              <div class="example-total-score complete" style="font-size:18px; padding-top:4px">Complete</div>
+              <div class="example-total-tier">Availability ≥ 3.0, mature, Momentum &lt; 2.5</div>
+            </div>
+          </div>
+        </div>
+
+        <p>
+          Without the maturity bonus, OpenDyslexic's raw Availability score would be 5.4/10,
+          yielding 3.16/5 — still Usable, but without the Complete tier. The bonus correctly
+          recognises that this is a finished, freely deployable artifact. A well-maintained
+          font with wide deployment does not need a busy commit graph to be considered healthy.
         </p>
 
         <h2>Limitations</h2>
-        <p>The score is a heuristic, not a verdict. It cannot see:</p>
+        <p>The scores are heuristics, not verdicts. They cannot see:</p>
         <ul>
-          <li><strong>Hardware quality</strong> — a BOM can exist and still describe a poorly-designed device. We can check that documentation is present; we can't check that it is accurate or safe.</li>
-          <li><strong>Documentation in languages other than English</strong> — we track <code>documentation_languages</code> as metadata, but non-English docs don't receive extra weight yet.</li>
-          <li><strong>Actual usability for disabled people</strong> — the "Nothing About Us" field captures known co-design involvement, but the absence of that signal doesn't mean disabled people weren't involved.</li>
-          <li><strong>Private forks or deployment</strong> — a project with no public stars could be deployed widely in a hospital system; we have no visibility into that.</li>
-          <li><strong>Regulatory or safety certification</strong> — ISO 9999 codes are recorded as metadata but don't factor into the score.</li>
+          <li><strong>Hardware quality</strong> — a BOM can exist and still describe a poorly-designed device. We can verify that documentation is present; we cannot verify that it is accurate or safe.</li>
+          <li><strong>Documentation in languages other than English</strong> — <code>documentation_languages</code> is tracked as metadata but does not yet affect scoring.</li>
+          <li><strong>Actual usability for disabled people</strong> — the Nothing About Us field captures known co-design involvement, but its absence does not mean disabled people were not involved.</li>
+          <li><strong>Private forks or deployment</strong> — a project with no public stars could be deployed widely in a hospital system.</li>
+          <li><strong>Regulatory or safety certification</strong> — ISO 9999 codes are recorded as metadata but do not factor into scores.</li>
         </ul>
         <p>
-          We plan to revisit the formula weights and add new signals (e.g. documentation
-          language breadth, co-design depth) in future versions. Formula changes will
-          increment <code>SCORING_VERSION</code> and be announced in the changelog.
+          Formula changes will increment <code>SCORING_VERSION</code> and be announced in the changelog.
         </p>
 
       </div>
@@ -481,21 +780,27 @@ permalink: /methodology/
       <aside class="sidebar" aria-label="Methodology quick links">
 
         <div class="sidebar-card">
-          <div class="sidebar-card-title">Formula at a glance</div>
-          <p><code>score = 0.25×activity + 0.30×replicability + 0.15×community + 0.20×at_specific + 0.10×provenance</code></p>
-          <p>Each sub-dimension is scored 0–10. Final score is rounded to two decimal places.</p>
+          <div class="sidebar-card-title">Availability formula</div>
+          <p><code>availability = 0.40×rep + 0.30×at_specific + 0.20×prov + 0.10×maturity</code></p>
+          <p>Each sub-dimension is scored 0–10 internally. Final score is rescaled to 1–5.</p>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Momentum formula</div>
+          <p><code>momentum = 0.55×activity + 0.45×community</code></p>
+          <p>Null for static-platform projects (Instructables, Printables, Thingiverse, MyMiniFactory).</p>
         </div>
 
         <div class="sidebar-card">
           <div class="sidebar-card-title">Version</div>
-          <p>Current formula version: <strong>1.0</strong></p>
+          <p>Current formula version: <strong>2.0</strong></p>
           <p>The <code>scored_with</code> field on each project record stores the version used when that project was last scored.</p>
           <a href="https://github.com/hoseasiu/assistive-commons-watch/blob/main/_fetchers/scoring.py">View scoring.py on GitHub →</a>
         </div>
 
         <div class="sidebar-card">
           <div class="sidebar-card-title">Data schema</div>
-          <p>Every field used in the score is documented in <code>schema.json</code>. Fields that require manual curation are marked with a <code>manually_curated</code> annotation.</p>
+          <p>Every field used in the score is documented in <code>schema.json</code>.</p>
           <a href="https://github.com/hoseasiu/assistive-commons-watch/blob/main/schema.json">View schema.json on GitHub →</a>
         </div>
 
@@ -510,4 +815,3 @@ permalink: /methodology/
     </div>
   </div>
 </main>
-
