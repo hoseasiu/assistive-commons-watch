@@ -72,11 +72,15 @@ The Landscape homepage is implemented in `site/index.njk` following the spec in 
 
 ## Health-scoring summary
 
-```
-score = 0.25×activity + 0.30×replicability + 0.15×community + 0.20×at_specific + 0.10×provenance
-```
+ACW assigns two independent scores per project:
 
-Tier rules (first match wins): Archived → Thriving (≥7.5) → Stable (≥5.5) → Dormant (activity≤2 AND replicability≥5) → At Risk.
+- **Availability (1–5):** Can someone use this today?
+  `availability = 0.40×replicability + 0.30×at_specific + 0.20×provenance + 0.10×maturity_bonus`
+- **Momentum (1–5):** Is active development or community energy flowing into this?
+  `momentum = 0.55×activity + 0.45×community`
+  Null for static-platform projects.
+
+Tier rules (first match wins): Archived → Thriving (avail≥4.0 AND mom≥4.0) → Stable (avail≥3.0 AND mom≥2.5) → Complete (avail≥3.0 AND mature AND mom<2.5) → Dormant (avail≥3.0, mom<2.5, not mature) → At Risk.
 
 ## Adding new projects
 

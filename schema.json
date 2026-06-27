@@ -435,6 +435,7 @@
       "enum": [
         "thriving",
         "stable",
+        "complete",
         "dormant",
         "at_risk",
         "archived",
@@ -613,6 +614,14 @@
       ],
       "title": "InstructablesSource",
       "type": "object"
+    },
+    "MaturityLevel": {
+      "enum": [
+        "active",
+        "mature"
+      ],
+      "title": "MaturityLevel",
+      "type": "string"
     },
     "Modality": {
       "enum": [
@@ -1418,6 +1427,17 @@
       "title": "Sources",
       "type": "array"
     },
+    "maturity": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/MaturityLevel"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
     "health_tier": {
       "anyOf": [
         {
@@ -1442,6 +1462,34 @@
       ],
       "default": null,
       "title": "Health Score"
+    },
+    "availability_score": {
+      "anyOf": [
+        {
+          "maximum": 5.0,
+          "minimum": 1.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Availability Score"
+    },
+    "momentum_score": {
+      "anyOf": [
+        {
+          "maximum": 5.0,
+          "minimum": 1.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Momentum Score"
     },
     "scored_with": {
       "anyOf": [

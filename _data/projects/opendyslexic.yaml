@@ -60,6 +60,7 @@ sources:
   has_code_of_conduct: false
   has_issue_templates: true
   license_spdx: OFL-1.1
+maturity: mature
 health_tier: at_risk
 health_score: 4.73
 platform:

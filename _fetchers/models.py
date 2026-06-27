@@ -27,9 +27,15 @@ class BuildDocsQuality(str, Enum):
     complete = "complete"
 
 
+class MaturityLevel(str, Enum):
+    active = "active"   # suppress inferred maturity bonus
+    mature = "mature"   # force-apply maturity bonus
+
+
 class HealthTier(str, Enum):
     thriving = "thriving"
     stable = "stable"
+    complete = "complete"
     dormant = "dormant"
     at_risk = "at_risk"
     archived = "archived"
@@ -243,9 +249,14 @@ class Project(BaseModel):
     # Sources — populated by fetch workflow
     sources: list[Source] = []
 
+    # Maturity — curator override for the maturity bonus (None = infer)
+    maturity: Optional[MaturityLevel] = None
+
     # Computed — written back by fetch workflow, not hand-edited
     health_tier: Optional[HealthTier] = None
     health_score: Optional[float] = Field(None, ge=0.0, le=10.0)
+    availability_score: Optional[float] = Field(None, ge=1.0, le=5.0)
+    momentum_score: Optional[float] = Field(None, ge=1.0, le=5.0)
     scored_with: Optional[str] = None
 
     @field_validator("id")

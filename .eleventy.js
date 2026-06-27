@@ -10,6 +10,7 @@ module.exports = function (eleventyConfig) {
     const colors = {
       thriving: "oklch(0.52 0.16 142)",
       stable: "oklch(0.50 0.14 245)",
+      complete: "oklch(0.50 0.14 245)",
       dormant: "oklch(0.72 0.13 83)",
       at_risk: "oklch(0.62 0.17 47)",
       archived: "oklch(0.52 0.14 22)",
@@ -31,6 +32,7 @@ module.exports = function (eleventyConfig) {
     const labels = {
       thriving: "Thriving",
       stable: "Stable",
+      complete: "Complete",
       dormant: "Dormant",
       at_risk: "At Risk",
       archived: "Archived",

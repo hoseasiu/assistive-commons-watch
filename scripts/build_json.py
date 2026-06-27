@@ -43,6 +43,7 @@ AREA_LABEL = {slug: label for slug, label in AREA_DEFS}
 TIER_ORDER = [
     HealthTier.thriving,
     HealthTier.stable,
+    HealthTier.complete,
     HealthTier.dormant,
     HealthTier.at_risk,
     HealthTier.archived,
@@ -53,6 +54,7 @@ TIER_ORDER = [
 TIER_LABELS = {
     "thriving": "Thriving",
     "stable": "Stable",
+    "complete": "Complete",
     "dormant": "Dormant",
     "at_risk": "At Risk",
     "archived": "Archived",
@@ -132,14 +134,14 @@ def load_projects() -> list[dict]:
         raw = yaml.safe_load(yaml_path.read_text(encoding="utf-8"))
         project = Project.model_validate(raw)
 
-        # Use stored tier/score if available (post-fetch); otherwise compute.
-        if project.health_tier is not None and project.health_score is not None:
+        # Use stored scores if available (post-fetch); otherwise compute live.
+        if project.health_tier is not None and project.availability_score is not None:
             tier = project.health_tier.value
-            score = project.health_score
+            availability = project.availability_score
+            momentum = project.momentum_score
         else:
-            computed_score, computed_tier = compute_health(project)
+            availability, momentum, computed_tier = compute_health(project)
             tier = computed_tier.value
-            score = computed_score
 
         primary_area = project.disability_area[0] if project.disability_area else "other"
 
@@ -165,7 +167,8 @@ def load_projects() -> list[dict]:
                 "primary_area_label": AREA_LABEL.get(primary_area, primary_area.title()),
                 "health_tier": tier,
                 "health_tier_label": TIER_LABELS.get(tier, tier),
-                "health_score": score,
+                "availability_score": availability,
+                "momentum_score": momentum,
                 "github_url": next(
                     (s.url for s in project.sources if s.platform == "github"), None
                 ),
@@ -255,7 +258,7 @@ def build_by_area(projects: list[dict]) -> list[dict]:
         )
         active_count = sum(
             1 for p in area_projects
-            if p["health_tier"] in ("thriving", "stable")
+            if p["health_tier"] in ("thriving", "stable", "complete")
         )
         result.append(
             {
@@ -270,11 +273,11 @@ def build_by_area(projects: list[dict]) -> list[dict]:
 
 
 def build_needs_attention(projects: list[dict]) -> list[dict]:
-    """Dormant and at-risk projects, limited to 5, with a short note."""
+    """Dormant and at-risk projects, limited to 5, sorted by availability ascending."""
     attention_tiers = {"dormant", "at_risk"}
     candidates = [p for p in projects if p["health_tier"] in attention_tiers]
-    # Sort: at_risk first, then dormant; within each by score ascending (worst first)
-    candidates.sort(key=lambda p: (p["health_tier"] != "at_risk", p["health_score"]))
+    # at_risk first, then dormant; within each by availability ascending (worst first)
+    candidates.sort(key=lambda p: (p["health_tier"] != "at_risk", p["availability_score"] or 0))
     return candidates[:5]
 
 
@@ -291,7 +294,7 @@ def main() -> None:
     by_area = build_by_area(projects)
 
     primary_projects = [p for p in projects if p["at_relevance"] == AtRelevance.primary.value]
-    active_count = tier_counts.get("thriving", 0) + tier_counts.get("stable", 0)
+    active_count = tier_counts.get("thriving", 0) + tier_counts.get("stable", 0) + tier_counts.get("complete", 0)
     total = len(projects)
     active_pct = round(active_count / total * 100) if total else 0
     dormant_count = tier_counts.get("dormant", 0)
@@ -299,7 +302,7 @@ def main() -> None:
 
     primary_total = len(primary_projects)
     primary_active = sum(
-        1 for p in primary_projects if p["health_tier"] in ("thriving", "stable")
+        1 for p in primary_projects if p["health_tier"] in ("thriving", "stable", "complete")
     )
     primary_active_pct = round(primary_active / primary_total * 100) if primary_total else 0
 
