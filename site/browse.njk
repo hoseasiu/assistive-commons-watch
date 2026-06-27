@@ -442,6 +442,25 @@ title: Browse Projects — Assistive Commons Watch
             </div>
           </div>
 
+          <!-- Source platform -->
+          <div class="filter-section">
+            <div class="filter-section-label" id="source-platform-label">Source Platform</div>
+            <div class="filter-options" role="group" aria-labelledby="source-platform-label">
+              <label class="filter-option">
+                <input type="checkbox" name="source_platform" value="github">
+                <span class="filter-option-label">GitHub</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="source_platform" value="instructables">
+                <span class="filter-option-label">Instructables</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="source_platform" value="printables">
+                <span class="filter-option-label">Printables</span>
+              </label>
+            </div>
+          </div>
+
           <!-- Co-design / NAUWU -->
           <div class="filter-section">
             <div class="filter-section-label" id="codesign-label">Co-designed (NAUWU)</div>
@@ -581,10 +600,12 @@ title: Browse Projects — Assistive Commons Watch
     at_risk:    'oklch(0.62 0.17 47)',
     archived:   'oklch(0.52 0.14 22)',
     unverified: 'oklch(0.80 0.02 250)',
+    documented: 'oklch(0.58 0.12 300)',
   };
   const TIER_LABELS = {
     thriving: 'Thriving', stable: 'Stable', complete: 'Complete', dormant: 'Dormant',
     at_risk: 'At Risk', archived: 'Archived', unverified: 'Unverified',
+    documented: 'Documented',
   };
   // Plain-language maintenance labels for use mode
   const MAINTENANCE_LABELS = {
@@ -598,6 +619,19 @@ title: Browse Projects — Assistive Commons Watch
     documented:  { label: 'Community build project', color: 'oklch(0.40 0.10 290)' },
   };
   const SKILL_ORDER = { beginner: 0, maker: 1, engineer: 2 };
+  const SOURCE_PLATFORM_LABELS = {
+    github: 'GitHub', instructables: 'Instructables', printables: 'Printables',
+    thingiverse: 'Thingiverse', myminifactory: 'MyMiniFactory', hackaday: 'Hackaday.io',
+  };
+
+  function sourcePlatformTag(p) {
+    const platforms = p.source_platforms || [];
+    const nonGithub = platforms.find(pl => pl !== 'github');
+    const slug = nonGithub || (platforms.includes('github') ? 'github' : null);
+    if (!slug) return '';
+    const label = SOURCE_PLATFORM_LABELS[slug] || slug;
+    return `<span class="card-tag card-tag--platform">${label}</span>`;
+  }
   const USE_MODE_DEFAULT_TIERS = ['thriving', 'stable', 'complete', 'dormant', 'documented'];
 
   // ── DOM refs ─────────────────────────────────────────────────────────────
@@ -653,13 +687,14 @@ title: Browse Projects — Assistive Commons Watch
     const defaultSort = mode === 'use' ? 'skill-asc' : 'score-desc';
     return {
       mode,
-      area:     p.get('area')     ? p.get('area').split(',').filter(Boolean)     : [],
-      tier:     p.get('tier')     ? p.get('tier').split(',').filter(Boolean)     : [],
-      modality: p.get('modality') ? p.get('modality').split(',').filter(Boolean) : [],
-      skill:    p.get('skill')    ? p.get('skill').split(',').filter(Boolean)    : [],
-      codesign: p.get('codesign') || 'all',
-      sort:     p.get('sort')     || defaultSort,
-      query:    searchInput.value.trim() || p.get('q') || '',
+      area:            p.get('area')            ? p.get('area').split(',').filter(Boolean)            : [],
+      tier:            p.get('tier')            ? p.get('tier').split(',').filter(Boolean)            : [],
+      modality:        p.get('modality')        ? p.get('modality').split(',').filter(Boolean)        : [],
+      skill:           p.get('skill')           ? p.get('skill').split(',').filter(Boolean)           : [],
+      source_platform: p.get('source_platform') ? p.get('source_platform').split(',').filter(Boolean) : [],
+      codesign:        p.get('codesign') || 'all',
+      sort:            p.get('sort')     || defaultSort,
+      query:           searchInput.value.trim() || p.get('q') || '',
     };
   }
 
@@ -677,11 +712,12 @@ title: Browse Projects — Assistive Commons Watch
   function pushState(filters) {
     const p = new URLSearchParams();
     if (filters.mode && filters.mode !== 'contribute') p.set('mode', filters.mode);
-    if (filters.area.length)     p.set('area', filters.area.join(','));
-    if (filters.tier.length)     p.set('tier', filters.tier.join(','));
-    if (filters.modality.length) p.set('modality', filters.modality.join(','));
-    if (filters.skill.length)    p.set('skill', filters.skill.join(','));
-    if (filters.codesign !== 'all') p.set('codesign', filters.codesign);
+    if (filters.area.length)            p.set('area', filters.area.join(','));
+    if (filters.tier.length)            p.set('tier', filters.tier.join(','));
+    if (filters.modality.length)        p.set('modality', filters.modality.join(','));
+    if (filters.skill.length)           p.set('skill', filters.skill.join(','));
+    if (filters.source_platform.length) p.set('source_platform', filters.source_platform.join(','));
+    if (filters.codesign !== 'all')     p.set('codesign', filters.codesign);
     if (filters.query) p.set('q', filters.query);
     const defaultSort = filters.mode === 'use' ? 'skill-asc' : 'score-desc';
     if (filters.sort !== defaultSort) p.set('sort', filters.sort);
@@ -725,6 +761,8 @@ title: Browse Projects — Assistive Commons Watch
         return false;
       if (filters.skill.length && !filters.skill.includes(p.skill_level))
         return false;
+      if (filters.source_platform.length && !filters.source_platform.some(pl => (p.source_platforms || []).includes(pl)))
+        return false;
       if (!applyCodesignFilter(p, filters.codesign))
         return false;
       return true;
@@ -753,7 +791,8 @@ title: Browse Projects — Assistive Commons Watch
   // ── Card rendering ────────────────────────────────────────────────────────
   function hasActiveFilters(filters) {
     return filters.area.length || filters.tier.length || filters.modality.length ||
-           filters.skill.length || filters.codesign !== 'all' || filters.query;
+           filters.skill.length || filters.source_platform.length ||
+           filters.codesign !== 'all' || filters.query;
   }
 
   function truncate(str, max) {
@@ -770,6 +809,7 @@ title: Browse Projects — Assistive Commons Watch
       ? `<span class="card-tag">${p.modality_label}</span>` : '';
     const skillHtml = p.skill_level_label
       ? `<span class="card-tag">${p.skill_level_label}</span>` : '';
+    const platformSourceHtml = sourcePlatformTag(p);
     const commitHtml = p.github_last_commit
       ? `<span class="card-meta">Last commit ${p.github_last_commit}</span>` : '';
 
@@ -784,7 +824,7 @@ title: Browse Projects — Assistive Commons Watch
         <div class="card-name">${p.name}</div>
         <div class="card-desc">${p.description || ''}</div>
         <div class="card-tags">
-          ${areaTagsHtml}${modalityHtml}${skillHtml}${commitHtml}
+          ${areaTagsHtml}${modalityHtml}${skillHtml}${platformSourceHtml}${commitHtml}
         </div>
       </div>
       <div class="card-right">
@@ -845,6 +885,7 @@ title: Browse Projects — Assistive Commons Watch
       .map(pl => `<span class="card-tag card-tag--platform">${PLATFORM_LABELS[pl] || pl}</span>`).join('');
 
     const desc = p.plain_language_description || p.description || '';
+    const platformSourceHtml = sourcePlatformTag(p);
 
     const a = document.createElement('a');
     a.className = 'project-card project-card--use';
@@ -856,7 +897,7 @@ title: Browse Projects — Assistive Commons Watch
       <div class="card-main">
         <div class="card-name">${p.name}</div>
         <div class="card-desc">${desc}</div>
-        <div class="card-tags">${areaTagsHtml}${modalityHtml}${platformTagsHtml}</div>
+        <div class="card-tags">${areaTagsHtml}${modalityHtml}${platformTagsHtml}${platformSourceHtml}</div>
         <div class="card-use-badges">
           ${skillBadge}${costBadge}${docsBadge}${feedbackBadge}${downloadBadge}
         </div>
@@ -907,12 +948,13 @@ title: Browse Projects — Assistive Commons Watch
     const tier = [...document.querySelectorAll('input[name="tier"]:checked')].map(i => i.value);
     const modality = [...document.querySelectorAll('input[name="modality"]:checked')].map(i => i.value);
     const skill = [...document.querySelectorAll('input[name="skill"]:checked')].map(i => i.value);
+    const source_platform = [...document.querySelectorAll('input[name="source_platform"]:checked')].map(i => i.value);
     const codesignEl = document.querySelector('input[name="codesign"]:checked');
     const codesign = codesignEl ? codesignEl.value : 'all';
     const sort = sortSelect.value;
     const mode = getMode();
     const query = searchInput.value.trim();
-    return { mode, area, tier, modality, skill, codesign, sort, query };
+    return { mode, area, tier, modality, skill, source_platform, codesign, sort, query };
   }
 
   function onFilterChange() {

@@ -48,6 +48,7 @@ TIER_ORDER = [
     HealthTier.at_risk,
     HealthTier.archived,
     HealthTier.unverified,
+    HealthTier.documented,
 ]
 
 TIER_LABELS = {
@@ -222,6 +223,8 @@ def load_projects() -> list[dict]:
                 "source_platform": PLATFORM_LABELS.get(
                     non_github_source.platform, non_github_source.platform.title()
                 ) if non_github_source else None,
+                "source_platform_slug": non_github_source.platform if non_github_source else None,
+                "source_platforms": [s.platform for s in project.sources],
                 "github_stars": source.stars if source else None,
                 "github_forks": source.forks if source else None,
                 "github_last_commit": str(source.last_commit) if source and source.last_commit else None,
