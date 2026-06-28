@@ -18,6 +18,17 @@ title: Browse Projects — Assistive Commons Watch
     color: oklch(0.17 0.025 50);
   }
   .page-subtitle { font-size: 14px; color: var(--text-muted); }
+  .score-legend {
+    display: flex; align-items: center; gap: 8px; margin-left: auto;
+    font-size: 12px; color: var(--text-muted); flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .score-legend-item { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+  .score-legend-sep { color: var(--border); }
+  .score-legend-link {
+    color: var(--accent-green); font-weight: 600; white-space: nowrap; text-decoration: none;
+  }
+  .score-legend-link:hover { text-decoration: underline; }
 
   /* Mode switcher tabs */
   .mode-tabs {
@@ -184,15 +195,18 @@ title: Browse Projects — Assistive Commons Watch
     white-space: nowrap;
   }
   .tier-pill-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-  .card-score {
-    font-size: 20px; font-weight: 800; letter-spacing: -0.04em;
-    font-variant-numeric: tabular-nums; color: var(--text-primary);
-    text-align: right;
+
+  /* ── Score dots ── */
+  .score-dots { display: flex; flex-direction: column; gap: 6px; }
+  .score-dots-row { display: flex; align-items: center; gap: 4px; }
+  .score-dot-label {
+    font-size: 10px; font-weight: 700; color: var(--text-muted);
+    width: 11px; flex-shrink: 0; letter-spacing: 0.01em;
   }
-  .card-score-label {
-    font-size: 10px; color: var(--text-muted); text-align: right;
-    font-weight: 500; letter-spacing: 0.03em; margin-top: -2px;
-  }
+  .score-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .score-dot-avail { background: oklch(0.52 0.16 142); }
+  .score-dot-mom   { background: oklch(0.50 0.14 245); }
+  .score-dot-empty { background: none; border: 1.5px solid oklch(0.82 0.01 75); }
 
   /* ── Use-mode card overrides ── */
   .project-card--use:hover {
@@ -306,6 +320,18 @@ title: Browse Projects — Assistive Commons Watch
     <div class="page-hero-top">
       <h1 class="page-title" id="page-title">Browse Projects</h1>
       <p class="page-subtitle" id="page-subtitle">{{ acw.projects | length }} open-source assistive technology projects</p>
+      <div class="score-legend" id="score-legend" aria-label="Score key">
+        <span class="score-legend-item">
+          <span class="score-dot score-dot-avail" aria-hidden="true"></span>
+          A = availability
+        </span>
+        <span class="score-legend-sep" aria-hidden="true">·</span>
+        <span class="score-legend-item">
+          <span class="score-dot score-dot-mom" aria-hidden="true"></span>
+          M = momentum
+        </span>
+        <a href="/methodology/" class="score-legend-link">Learn more →</a>
+      </div>
     </div>
     <div class="mode-tabs" role="tablist" aria-label="Browse mode">
       <button class="mode-tab mode-tab--contribute" role="tab" data-mode-btn="contribute" aria-selected="false">
@@ -515,8 +541,10 @@ title: Browse Projects — Assistive Commons Watch
           </span>
           <label class="sort-label" for="sort-select">Sort by</label>
           <select class="sort-select" id="sort-select" aria-label="Sort projects by">
-            <option value="score-desc">Health score ↓</option>
-            <option value="score-asc">Health score ↑</option>
+            <option value="score-desc">Availability ↓</option>
+            <option value="score-asc">Availability ↑</option>
+            <option value="momentum-desc">Momentum ↓</option>
+            <option value="momentum-asc">Momentum ↑</option>
             <option value="skill-asc">Beginner first</option>
             <option value="name-asc">Name A–Z</option>
             <option value="name-desc">Name Z–A</option>
@@ -554,6 +582,8 @@ title: Browse Projects — Assistive Commons Watch
                 {%- endif -%}
               </div>
             </div>
+            {%- set availFilled = (p.availability_score | round) if p.availability_score else 0 -%}
+            {%- set momFilled = (p.momentum_score | round) if p.momentum_score else 0 -%}
             <div class="card-right">
               <span
                 class="tier-pill"
@@ -562,9 +592,21 @@ title: Browse Projects — Assistive Commons Watch
                 <span class="tier-pill-dot" style="background: {{ p.health_tier | tierColor }}" aria-hidden="true"></span>
                 {{ p.health_tier_label }}
               </span>
-              <div>
-                <div class="card-score">{{ p.availability_score }}</div>
-                <div class="card-score-label">/ 5</div>
+              <div class="score-dots">
+                <div class="score-dots-row">
+                  <span class="score-dot-label">A</span>
+                  {%- for i in range(5) -%}
+                    <span class="score-dot {% if i < availFilled %}score-dot-avail{% else %}score-dot-empty{% endif %}"></span>
+                  {%- endfor -%}
+                </div>
+                {%- if p.momentum_score != null -%}
+                <div class="score-dots-row">
+                  <span class="score-dot-label">M</span>
+                  {%- for i in range(5) -%}
+                    <span class="score-dot {% if i < momFilled %}score-dot-mom{% else %}score-dot-empty{% endif %}"></span>
+                  {%- endfor -%}
+                </div>
+                {%- endif -%}
               </div>
             </div>
           </a>
@@ -647,6 +689,7 @@ title: Browse Projects — Assistive Commons Watch
   const modeBtns        = document.querySelectorAll('[data-mode-btn]');
   const searchInput     = document.getElementById('search-input');
   const searchClearBtn  = document.getElementById('search-clear-btn');
+  const scoreLegend     = document.getElementById('score-legend');
 
   // Remove static server-rendered cards (JS takes over rendering)
   cardsContainer.innerHTML = '';
@@ -668,6 +711,7 @@ title: Browse Projects — Assistive Commons Watch
       pageTitle.textContent = 'Find a Tool';
       pageSubtitle.textContent = 'Showing primary AT — tools directly usable by disabled people';
       tierFilterSection.style.display = 'none';
+      if (scoreLegend) scoreLegend.style.display = 'none';
       // Default sort to beginner-first in use mode if not set
       const p = new URLSearchParams(location.search);
       if (!p.get('sort')) sortSelect.value = 'skill-asc';
@@ -675,6 +719,7 @@ title: Browse Projects — Assistive Commons Watch
       pageTitle.textContent = 'For Contributors';
       pageSubtitle.textContent = PROJECTS.length + ' open-source assistive technology projects';
       tierFilterSection.style.display = '';
+      if (scoreLegend) scoreLegend.style.display = '';
       const p = new URLSearchParams(location.search);
       if (!p.get('sort')) sortSelect.value = 'score-desc';
     }
@@ -775,7 +820,9 @@ title: Browse Projects — Assistive Commons Watch
           const bo = SKILL_ORDER[b.skill_level] ?? 99;
           return ao !== bo ? ao - bo : a.name.localeCompare(b.name);
         }
-        case 'score-asc':  return (a.availability_score ?? 0) - (b.availability_score ?? 0);
+        case 'score-asc':     return (a.availability_score ?? 0) - (b.availability_score ?? 0);
+        case 'momentum-desc': return (b.momentum_score ?? -1) - (a.momentum_score ?? -1);
+        case 'momentum-asc':  return (a.momentum_score ?? 6) - (b.momentum_score ?? 6);
         case 'name-asc':   return a.name.localeCompare(b.name);
         case 'name-desc':  return b.name.localeCompare(a.name);
         case 'stars-desc': return (b.github_stars ?? -1) - (a.github_stars ?? -1);
@@ -789,6 +836,17 @@ title: Browse Projects — Assistive Commons Watch
   }
 
   // ── Card rendering ────────────────────────────────────────────────────────
+  function renderScoreDots(score, type) {
+    const filled = score != null ? Math.round(score) : 0;
+    let html = '';
+    for (let i = 0; i < 5; i++) {
+      html += i < filled
+        ? `<span class="score-dot score-dot-${type}"></span>`
+        : `<span class="score-dot score-dot-empty"></span>`;
+    }
+    return html;
+  }
+
   function hasActiveFilters(filters) {
     return filters.area.length || filters.tier.length || filters.modality.length ||
            filters.skill.length || filters.source_platform.length ||
@@ -819,6 +877,12 @@ title: Browse Projects — Assistive Commons Watch
     a.setAttribute('role', 'listitem');
     a.setAttribute('aria-label', `${p.name}, ${label} — ${truncate(p.description, 120)}`);
     a.dataset.id = p.id;
+    const momRow = p.momentum_score != null
+      ? `<div class="score-dots-row">
+           <span class="score-dot-label">M</span>
+           ${renderScoreDots(p.momentum_score, 'mom')}
+         </div>`
+      : '';
     a.innerHTML = `
       <div class="card-main">
         <div class="card-name">${p.name}</div>
@@ -833,9 +897,12 @@ title: Browse Projects — Assistive Commons Watch
           <span class="tier-pill-dot" style="background:${color}" aria-hidden="true"></span>
           ${label}
         </span>
-        <div>
-          <div class="card-score">${p.availability_score ?? '—'}</div>
-          <div class="card-score-label">/ 5</div>
+        <div class="score-dots" aria-label="Availability: ${p.availability_score ?? 0} of 5${p.momentum_score != null ? ', Momentum: ' + p.momentum_score + ' of 5' : ''}">
+          <div class="score-dots-row">
+            <span class="score-dot-label">A</span>
+            ${renderScoreDots(p.availability_score, 'avail')}
+          </div>
+          ${momRow}
         </div>
       </div>`;
     return a;
