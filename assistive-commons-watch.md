@@ -182,7 +182,7 @@ score = 0.25×activity + 0.30×replicability + 0.15×community + 0.20×at_specif
 Each project's detail page shows a **row of five score pills** — one per dimension, colored by score tier (green → red), with a small icon and label for each. This avoids the spatial distortion of radar charts (where enclosed area misleads perception of magnitude) while keeping all five signals visible at a glance.
 
 Each pill shows:
-- Icon (⚡ Activity, 🔧 Replicability, 🤝 Community, ♿ AT-Specific, 📎 Provenance)
+- Icon (⚡ Activity, 🔧 Replicability, 🤝 Community, ♿ AT-Specific, 🔎 Provenance)
 - Color: green (≥7), yellow (4–6), red (<4)
 - Score on hover/expand
 
