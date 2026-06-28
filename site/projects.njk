@@ -121,6 +121,28 @@ layout: base.njk
   }
   .quick-fact-value--muted { color: var(--text-muted); font-weight: 400; }
 
+  /* ── Two-score summary ── */
+  .score-two-row {
+    display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;
+  }
+  .score-block {
+    flex: 1; min-width: 120px; border-radius: 10px; padding: 14px;
+    border: 1px solid transparent;
+  }
+  .score-block-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 8px; opacity: 0.8;
+  }
+  .score-block-value {
+    font-size: 26px; font-weight: 800; letter-spacing: -0.04em; line-height: 1;
+  }
+  .score-block-value--na { font-size: 20px; opacity: 0.45; }
+  .score-block-sub { font-size: 10px; opacity: 0.65; margin-top: 4px; font-weight: 500; }
+  .score-group-section-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--text-muted); margin: 16px 0 8px;
+  }
+
   /* ── Score pills ── */
   .score-pills-row {
     display: flex; gap: 8px; flex-wrap: wrap;
@@ -247,10 +269,6 @@ layout: base.njk
     font-weight: 600; color: var(--text-primary);
     font-variant-numeric: tabular-nums;
   }
-  .score-formula-note {
-    font-size: 11px; color: var(--text-muted); line-height: 1.6;
-    margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border-subtle);
-  }
   .back-link {
     display: inline-flex; align-items: center; gap: 6px;
     font-size: 13px; font-weight: 600; color: var(--accent-green);
@@ -273,42 +291,44 @@ layout: base.njk
 
 {%- set p = project -%}
 
-{# ── Dimension metadata (icons, weights, tooltips) ── #}
-{%- set dims = [
-  {
-    "key": "activity",
-    "icon": "⚡",
-    "label": "Activity",
-    "weight": "25%",
-    "tooltip": "How recently and consistently the project has been updated — last commit date, release cadence, and issue response rate. Requires a GitHub data fetch to populate."
-  },
+{# ── Dimension metadata for the two-score breakdown ── #}
+{%- set avail_dims = [
   {
     "key": "replicability",
     "icon": "🔧",
     "label": "Replicability",
-    "weight": "30%",
-    "tooltip": "How easy it is to build or reproduce — bill of materials, build docs quality, installation steps, and release artifacts."
-  },
-  {
-    "key": "community",
-    "icon": "🤝",
-    "label": "Community",
-    "weight": "15%",
-    "tooltip": "Signals that contributors are welcomed: CONTRIBUTING.md, issue templates, code of conduct. Requires a GitHub data fetch to populate."
+    "weight": "40%",
+    "tooltip": "How easy it is to build or reproduce — bill of materials, build docs quality, installation steps, and release artifacts. Weight: 40% of Availability."
   },
   {
     "key": "at_specific",
     "icon": "♿",
     "label": "AT-Specific",
-    "weight": "20%",
-    "tooltip": "How centered on disabled users — end-user docs, Nothing About Us co-design principle, feedback channels, and known deployments."
+    "weight": "30%",
+    "tooltip": "How centered on disabled users — end-user docs, Nothing About Us co-design principle, feedback channels, and known deployments. Weight: 30% of Availability."
   },
   {
     "key": "provenance",
     "icon": "🔎",
     "label": "Provenance",
-    "weight": "10%",
-    "tooltip": "Trust and credibility signals — OSI-approved license, associated publications, institutional affiliation, and origin program."
+    "weight": "20%",
+    "tooltip": "Trust and credibility signals — OSI-approved license, associated publications, institutional affiliation, and origin program. Weight: 20% of Availability."
+  }
+] -%}
+{%- set mom_dims = [
+  {
+    "key": "activity",
+    "icon": "⚡",
+    "label": "Activity",
+    "weight": "55%",
+    "tooltip": "How recently and consistently the project has been updated — last commit date, release cadence, and issue response rate. Requires a GitHub data fetch to populate. Weight: 55% of Momentum."
+  },
+  {
+    "key": "community",
+    "icon": "🤝",
+    "label": "Community",
+    "weight": "45%",
+    "tooltip": "Signals that contributors are welcomed: CONTRIBUTING.md, issue templates, code of conduct. Requires a GitHub data fetch to populate. Weight: 45% of Momentum."
   }
 ] -%}
 
@@ -368,8 +388,14 @@ layout: base.njk
               <div class="summary-score" aria-label="Availability score: {{ p.availability_score }} out of 5">{{ p.availability_score }}</div>
               <div class="summary-score-label">/ 5 availability</div>
             </div>
+            {%- if p.momentum_score != null -%}
+            <div>
+              <div class="summary-score" aria-label="Momentum score: {{ p.momentum_score }} out of 5">{{ p.momentum_score }}</div>
+              <div class="summary-score-label">/ 5 momentum</div>
+            </div>
+            {%- endif -%}
             <div
-              style="margin-left: 4px; padding: 5px 12px; border-radius: 8px; font-size: 13px; font-weight: 700; background: {{ p.health_tier | tierColor }}18; color: {{ p.health_tier | tierColor }}; border: 1px solid {{ p.health_tier | tierColor }}35;"
+              style="margin-left: auto; padding: 5px 12px; border-radius: 8px; font-size: 13px; font-weight: 700; background: {{ p.health_tier | tierColor }}18; color: {{ p.health_tier | tierColor }}; border: 1px solid {{ p.health_tier | tierColor }}35;"
               role="status"
               aria-label="Health tier: {{ p.health_tier_label }}"
             >{{ p.health_tier_label }}</div>
@@ -445,8 +471,36 @@ layout: base.njk
           <h2 class="card-title" id="scores-heading">Score Breakdown</h2>
         </div>
         <div class="card-body">
-          <div class="score-pills-row" role="list" aria-label="Health score dimensions">
-            {%- for dim in dims -%}
+
+          <!-- Two main scores -->
+          <div class="score-two-row">
+            <div class="score-block"
+              style="background: oklch(0.93 0.06 142); border-color: oklch(0.80 0.10 142); color: oklch(0.26 0.14 142);">
+              <div class="score-block-label">📐 Availability</div>
+              <div class="score-block-value" aria-label="Availability: {{ p.availability_score }} out of 5">{{ p.availability_score }}</div>
+              <div class="score-block-sub">/ 5 · Can someone use this today?</div>
+            </div>
+            {%- if p.momentum_score != null -%}
+            <div class="score-block"
+              style="background: oklch(0.93 0.06 245); border-color: oklch(0.80 0.10 245); color: oklch(0.28 0.12 245);">
+              <div class="score-block-label">📈 Momentum</div>
+              <div class="score-block-value" aria-label="Momentum: {{ p.momentum_score }} out of 5">{{ p.momentum_score }}</div>
+              <div class="score-block-sub">/ 5 · Active development flowing?</div>
+            </div>
+            {%- else -%}
+            <div class="score-block"
+              style="background: oklch(0.94 0.005 75); border-color: oklch(0.82 0.01 75); color: oklch(0.44 0.01 75);">
+              <div class="score-block-label">📈 Momentum</div>
+              <div class="score-block-value score-block-value--na" aria-label="Momentum: not applicable">N/A</div>
+              <div class="score-block-sub">Static platform — not scored</div>
+            </div>
+            {%- endif -%}
+          </div>
+
+          <!-- Availability components -->
+          <div class="score-group-section-label" style="margin-top: 0;">Availability components</div>
+          <div class="score-pills-row" role="list" aria-label="Availability score components">
+            {%- for dim in avail_dims -%}
             {%- set dimScore = p.scores[dim.key] -%}
             <div
               class="score-pill"
@@ -465,6 +519,32 @@ layout: base.njk
             </div>
             {%- endfor -%}
           </div>
+
+          <!-- Momentum components (only when live scores are available) -->
+          {%- if p.scores.activity != null or p.scores.community != null -%}
+          <div class="score-group-section-label">Momentum components</div>
+          <div class="score-pills-row" role="list" aria-label="Momentum score components">
+            {%- for dim in mom_dims -%}
+            {%- set dimScore = p.scores[dim.key] -%}
+            <div
+              class="score-pill"
+              role="listitem"
+              tabindex="0"
+              style="background: {{ dimScore | scoreBg }}; color: {{ dimScore | scoreText }}; border-color: {{ dimScore | scoreBorder }};"
+              aria-label="{{ dim.label }}: {% if dimScore != null %}{{ dimScore }} out of 10{% else %}not yet computed{% endif %}"
+            >
+              <div class="pill-tooltip-text" role="tooltip">{{ dim.tooltip }}</div>
+              <div class="pill-icon" aria-hidden="true">{{ dim.icon }}</div>
+              <div class="pill-label">{{ dim.label }}</div>
+              <div class="pill-score{% if dimScore == null %} pill-score--na{% endif %}">
+                {%- if dimScore != null -%}{{ dimScore }}{%- else -%}—{%- endif -%}
+              </div>
+              <div class="pill-weight">weight {{ dim.weight }}</div>
+            </div>
+            {%- endfor -%}
+          </div>
+          {%- endif -%}
+
         </div>
       </div>
 
@@ -744,36 +824,6 @@ layout: base.njk
         </div>
       </div>
       {%- endif -%}
-
-      <!-- Score formula reference -->
-      <div class="sidebar-card">
-        <div class="sidebar-card-header">Scoring formula</div>
-        <div class="sidebar-card-body">
-          <div class="sidebar-stat-row">
-            <span class="sidebar-stat-key"><span aria-hidden="true">⚡</span> Activity</span>
-            <span class="sidebar-stat-val">25%</span>
-          </div>
-          <div class="sidebar-stat-row">
-            <span class="sidebar-stat-key"><span aria-hidden="true">🔧</span> Replicability</span>
-            <span class="sidebar-stat-val">30%</span>
-          </div>
-          <div class="sidebar-stat-row">
-            <span class="sidebar-stat-key"><span aria-hidden="true">🤝</span> Community</span>
-            <span class="sidebar-stat-val">15%</span>
-          </div>
-          <div class="sidebar-stat-row">
-            <span class="sidebar-stat-key"><span aria-hidden="true">♿</span> AT-Specific</span>
-            <span class="sidebar-stat-val">20%</span>
-          </div>
-          <div class="sidebar-stat-row">
-            <span class="sidebar-stat-key"><span aria-hidden="true">🔎</span> Provenance</span>
-            <span class="sidebar-stat-val">10%</span>
-          </div>
-          <p class="score-formula-note">
-            Scores 0–10. Activity and Community update via GitHub Actions. Tier: Thriving ≥7.5, Stable ≥5.5.
-          </p>
-        </div>
-      </div>
 
       <!-- Back link -->
       <div class="sidebar-card">
