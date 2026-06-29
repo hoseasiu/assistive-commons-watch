@@ -49,7 +49,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/intel/acat
-  fetched_at: '2026-06-29T13:02:54.332377+00:00'
+  fetched_at: '2026-06-29T13:10:50.191404+00:00'
   latest_release_url: https://github.com/intel/acat/releases/tag/v4.0.0-beta-1
   stars: 3231
   forks: 614

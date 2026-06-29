@@ -38,7 +38,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/jeremydpotts/speakeasy-aac
-  fetched_at: '2026-06-29T13:05:24.706483+00:00'
+  fetched_at: '2026-06-29T13:13:16.225850+00:00'
   latest_release_url: null
   stars: 0
   forks: 0

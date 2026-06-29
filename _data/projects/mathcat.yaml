@@ -43,7 +43,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/daisy/MathCAT
-  fetched_at: '2026-06-29T13:04:14.983090+00:00'
+  fetched_at: '2026-06-29T13:12:08.978385+00:00'
   latest_release_url: https://github.com/daisy/MathCAT/releases/tag/latest
   stars: 104
   forks: 68

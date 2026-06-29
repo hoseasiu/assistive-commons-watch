@@ -45,7 +45,7 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Rumble-Plate-Dice-Roller
-  fetched_at: '2026-06-29T13:05:18.712106+00:00'
+  fetched_at: '2026-06-29T13:13:10.423583+00:00'
   latest_release_url: null
   stars: 3
   forks: 1

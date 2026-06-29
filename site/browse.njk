@@ -334,10 +334,10 @@ title: Browse Projects — Assistive Commons Watch
       </div>
     </div>
     <div class="mode-tabs" role="tablist" aria-label="Browse mode">
-      <button class="mode-tab mode-tab--contribute" role="tab" data-mode-btn="contribute" aria-selected="false">
+      <button class="mode-tab mode-tab--contribute" role="tab" data-mode-btn="contribute" aria-selected="false" aria-controls="browse-results">
         For Contributors
       </button>
-      <button class="mode-tab mode-tab--use" role="tab" data-mode-btn="use" aria-selected="false">
+      <button class="mode-tab mode-tab--use" role="tab" data-mode-btn="use" aria-selected="false" aria-controls="browse-results">
         Find a Tool
       </button>
     </div>
@@ -345,7 +345,7 @@ title: Browse Projects — Assistive Commons Watch
 </div>
 
 <!-- ─────────────────────────── MAIN ─────────────────────────── -->
-<main>
+<main id="main-content">
   <div class="container">
     <div class="browse-layout">
 
@@ -514,7 +514,7 @@ title: Browse Projects — Assistive Commons Watch
       </aside>
 
       <!-- ── Results area ── -->
-      <div class="results-area">
+      <div class="results-area" id="browse-results">
 
         <!-- Search bar -->
         <div class="search-bar">
@@ -592,7 +592,7 @@ title: Browse Projects — Assistive Commons Watch
                 <span class="tier-pill-dot" style="background: {{ p.health_tier | tierColor }}" aria-hidden="true"></span>
                 {{ p.health_tier_label }}
               </span>
-              <div class="score-dots">
+              <div class="score-dots" aria-label="Availability: {{ availFilled }} of 5{% if p.momentum_score != null %}, Momentum: {{ momFilled }} of 5{% endif %}">
                 <div class="score-dots-row">
                   <span class="score-dot-label">A</span>
                   {%- for i in range(5) -%}
@@ -705,6 +705,7 @@ title: Browse Projects — Assistive Commons Watch
       if (isActive) btn.setAttribute('data-active', '');
       else btn.removeAttribute('data-active');
       btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      btn.setAttribute('tabindex', isActive ? '0' : '-1');
     });
 
     if (mode === 'use') {
@@ -1042,6 +1043,24 @@ title: Browse Projects — Assistive Commons Watch
     history.replaceState(null, '', p.toString() ? '?' + p.toString() : location.pathname);
     render();
   }
+
+  // Mode tab arrow-key navigation
+  const modeBtnsArr = [...modeBtns];
+  modeBtnsArr.forEach((btn, i) => {
+    btn.addEventListener('keydown', e => {
+      const len = modeBtnsArr.length;
+      let next = -1;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % len;
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i - 1 + len) % len;
+      else if (e.key === 'Home') next = 0;
+      else if (e.key === 'End') next = len - 1;
+      if (next !== -1) {
+        e.preventDefault();
+        modeBtnsArr[next].focus();
+        modeBtnsArr[next].click();
+      }
+    });
+  });
 
   // Mode tab switching
   modeBtns.forEach(btn => {

@@ -42,7 +42,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/ocrmypdf/OCRmyPDF
-  fetched_at: '2026-06-29T13:04:25.375630+00:00'
+  fetched_at: '2026-06-29T13:12:17.347799+00:00'
   latest_release_url: https://github.com/ocrmypdf/OCRmyPDF/releases/tag/v17.4.1
   stars: 34002
   forks: 2346
