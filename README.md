@@ -60,13 +60,21 @@ The two scores are never averaged into a single number. Scores map to tiers (fir
 
 ```
 _data/projects/       one YAML file per project (source of truth)
-_fetchers/            Python: Pydantic models, GitHub REST fetcher, health-scoring engine
+_fetchers/            Python: Pydantic models, fetchers, health-scoring engine
 scripts/
+  fetch_all.py        fetches live data for all projects and writes results back to YAML
+  build_json.py       reads YAMLs → writes site/_data/acw.json for the frontend
   validate_yaml.py    validates all YAMLs against the Pydantic model
   export_schema.py    regenerates schema.json (do not hand-edit)
-  build_json.py       reads YAMLs → writes site/_data/acw.json for the frontend
+  add_project.py      CLI helper for scaffolding a new project YAML
 site/                 Eleventy (11ty) frontend source
+  _data/env.js        injects env.pathPrefix for JS link building
+  _includes/base.njk  shared HTML shell (head, nav, body wrapper)
   index.njk           Landscape homepage (three-tab dashboard)
+  browse.njk          Browse / Find-a-Tool page
+  projects.njk        Project detail pages
+  about.njk           About page
+  methodology.njk     Scoring methodology page
 schema.json           CI artifact — do not edit by hand
 ```
 
@@ -128,5 +136,6 @@ The `sources` array in each YAML is designed for multi-platform expansion: addin
 
 | Status | Platforms |
 |--------|-----------|
-| Implemented | GitHub, Instructables, Printables, Thingiverse, MyMiniFactory, Hackaday.io |
+| Fetcher implemented | GitHub, Printables, Hackaday.io |
+| Data model only (no fetcher yet) | Instructables, Thingiverse, MyMiniFactory |
 | Planned | Zenodo, OSF, EASTIN, GARI |
