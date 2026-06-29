@@ -41,7 +41,7 @@ ecosystem_links: {}
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Key-Turner
-  fetched_at: '2026-06-26T12:10:39.053997+00:00'
+  fetched_at: '2026-06-29T13:04:00.859869+00:00'
   latest_release_url: null
   stars: 0
   forks: 0
@@ -60,6 +60,8 @@ sources:
   has_issue_templates: false
   license_spdx: null
 health_tier: at_risk
-health_score: 3.65
+health_score: null
 platform: []
 plain_language_description: null
+availability_score: 2.4
+momentum_score: 2.1

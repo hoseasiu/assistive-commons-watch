@@ -47,17 +47,19 @@ ecosystem_links: {}
 sources:
 - platform: printables
   url: https://www.printables.com/model/753450-drag-assistive-writing-and-drawing-device
-  fetched_at: null
-  published_date: null
-  last_updated: null
-  likes: null
-  downloads: null
-  makes_count: null
-  remixes_count: null
-  comments: null
-  has_print_profile: null
-  staff_pick: null
-  license_cc: null
-  author: null
+  fetched_at: '2026-06-29T13:05:05.847061+00:00'
+  published_date: 2024-02-06
+  last_updated: 2024-10-12
+  likes: 674
+  downloads: 3489
+  makes_count: 12
+  remixes_count: 3
+  comments: 60
+  has_print_profile: false
+  staff_pick: false
+  license_cc: Creative Commons — Attribution  — Share Alike
+  author: PrintLab
 health_tier: documented
 health_score: null
+availability_score: 2.48
+momentum_score: null

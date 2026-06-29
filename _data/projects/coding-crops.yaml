@@ -43,7 +43,7 @@ ecosystem_links: {}
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/coding-crops
-  fetched_at: '2026-06-26T12:09:57.010015+00:00'
+  fetched_at: '2026-06-29T13:03:13.667129+00:00'
   latest_release_url: https://github.com/makersmakingchange/coding-crops/releases/tag/v2.0.0
   stars: 2
   forks: 0
@@ -61,7 +61,9 @@ sources:
   has_code_of_conduct: false
   has_issue_templates: false
   license_spdx: Apache-2.0
-health_tier: stable
-health_score: 5.5
+health_tier: at_risk
+health_score: null
 platform: []
 plain_language_description: null
+availability_score: 2.88
+momentum_score: 3.2

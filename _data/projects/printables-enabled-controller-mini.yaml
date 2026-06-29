@@ -57,17 +57,19 @@ ecosystem_links: {}
 sources:
 - platform: printables
   url: https://www.printables.com/model/216968-enabled-controller-mini
-  fetched_at: null
-  published_date: null
-  last_updated: null
-  likes: null
-  downloads: null
-  makes_count: null
-  remixes_count: null
-  comments: null
-  has_print_profile: null
-  staff_pick: null
-  license_cc: null
-  author: null
+  fetched_at: '2026-06-29T13:05:06.382891+00:00'
+  published_date: 2022-05-30
+  last_updated: 2023-04-13
+  likes: 3
+  downloads: 18
+  makes_count: 0
+  remixes_count: 0
+  comments: 0
+  has_print_profile: false
+  staff_pick: false
+  license_cc: Creative Commons — Attribution  — Share Alike
+  author: Makers Making Change
 health_tier: documented
 health_score: null
+availability_score: 2.56
+momentum_score: null

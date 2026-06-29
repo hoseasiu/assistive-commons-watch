@@ -42,7 +42,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/SpecialEffect/EyeMine
-  fetched_at: '2026-06-26T12:10:13.519236+00:00'
+  fetched_at: '2026-06-29T13:03:30.416811+00:00'
   latest_release_url: https://github.com/SpecialEffect/EyeMine/releases/tag/release/eyemine_2.3.0
   stars: 111
   forks: 5
@@ -60,7 +60,9 @@ sources:
   has_code_of_conduct: false
   has_issue_templates: true
   license_spdx: GPL-3.0
-health_tier: dormant
-health_score: 4.84
+health_tier: complete
+health_score: null
 platform: []
 plain_language_description: null
+availability_score: 3.92
+momentum_score: 1.71

@@ -44,7 +44,7 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/3D-Printed-Low-Tech-Assistive-Devices-Kit
-  fetched_at: '2026-06-26T12:09:29.021083+00:00'
+  fetched_at: '2026-06-29T13:02:43.118280+00:00'
   latest_release_url: null
   stars: 1
   forks: 0
@@ -64,6 +64,8 @@ sources:
   license_spdx: null
 x: null
 health_tier: at_risk
-health_score: 4.62
+health_score: null
 platform: []
 plain_language_description: null
+availability_score: 2.88
+momentum_score: 2.25

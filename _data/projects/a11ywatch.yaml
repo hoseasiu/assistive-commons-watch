@@ -39,7 +39,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/a11ywatch/a11ywatch
-  fetched_at: '2026-06-26T12:09:31.390995+00:00'
+  fetched_at: '2026-06-29T13:02:45.665179+00:00'
   latest_release_url: https://github.com/a11ywatch/a11ywatch/releases/tag/v0.10.4
   stars: 50
   forks: 9
@@ -58,6 +58,8 @@ sources:
   has_issue_templates: true
   license_spdx: MIT
 health_tier: at_risk
-health_score: 4.2
+health_score: null
 platform: []
 plain_language_description: null
+availability_score: 2.4
+momentum_score: 2.96

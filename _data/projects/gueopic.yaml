@@ -44,7 +44,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/Gueopic/App
-  fetched_at: '2026-06-26T12:10:27.324579+00:00'
+  fetched_at: '2026-06-29T13:03:48.682245+00:00'
   latest_release_url: null
   stars: 5
   forks: 0
@@ -63,7 +63,9 @@ sources:
   has_issue_templates: false
   license_spdx: GPL-3.0
 health_tier: at_risk
-health_score: 1.15
+health_score: null
 platform:
 - android
 plain_language_description: null
+availability_score: 1.32
+momentum_score: 1.66

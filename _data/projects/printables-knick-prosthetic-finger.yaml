@@ -45,11 +45,11 @@ ecosystem_links: {}
 sources:
 - platform: printables
   url: https://www.printables.com/model/653551-knick-prosthetic-finger-v-355
-  fetched_at: '2026-06-26T12:36:29.606695+00:00'
+  fetched_at: '2026-06-29T13:05:06.922490+00:00'
   published_date: 2023-11-20
   last_updated: 2023-11-20
-  likes: 175
-  downloads: 994
+  likes: 177
+  downloads: 997
   makes_count: 2
   remixes_count: 0
   comments: 2
@@ -58,4 +58,6 @@ sources:
   license_cc: Creative Commons — Attribution  — Noncommercial  —  Share Alike
   author: eNABLE
 health_tier: documented
-health_score: 2.9
+health_score: null
+availability_score: 2.08
+momentum_score: null

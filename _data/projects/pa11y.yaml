@@ -40,14 +40,14 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/pa11y/pa11y
-  fetched_at: '2026-06-26T12:11:32.834398+00:00'
+  fetched_at: '2026-06-29T13:04:57.142475+00:00'
   latest_release_url: https://github.com/pa11y/pa11y/releases/tag/9.1.1
-  stars: 4464
-  forks: 295
+  stars: 4466
+  forks: 296
   last_commit: 2026-05-25
-  open_issues: 49
+  open_issues: 50
   open_prs: null
-  issue_response_rate: 0.67
+  issue_response_rate: 0.5
   release_in_last_year: true
   readme_has_installation: false
   readme_has_usage: true
@@ -58,7 +58,9 @@ sources:
   has_code_of_conduct: false
   has_issue_templates: true
   license_spdx: LGPL-3.0
-health_tier: stable
-health_score: 6.15
+health_tier: at_risk
+health_score: null
 platform: []
 plain_language_description: null
+availability_score: 2.56
+momentum_score: 4.46

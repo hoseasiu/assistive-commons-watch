@@ -45,17 +45,19 @@ ecosystem_links: {}
 sources:
 - platform: printables
   url: https://www.printables.com/model/204521-mechanical-finger-prosthesis
-  fetched_at: null
-  published_date: null
-  last_updated: null
-  likes: null
-  downloads: null
-  makes_count: null
-  remixes_count: null
-  comments: null
-  has_print_profile: null
-  staff_pick: null
-  license_cc: null
-  author: null
+  fetched_at: '2026-06-29T13:05:07.499528+00:00'
+  published_date: 2022-05-13
+  last_updated: 2023-09-12
+  likes: 455
+  downloads: 3506
+  makes_count: 14
+  remixes_count: 1
+  comments: 43
+  has_print_profile: false
+  staff_pick: false
+  license_cc: Creative Commons — Attribution  — Noncommercial  —  Share Alike
+  author: Guilhem
 health_tier: documented
 health_score: null
+availability_score: 1.8
+momentum_score: null

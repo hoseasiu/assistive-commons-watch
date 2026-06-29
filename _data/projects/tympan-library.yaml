@@ -43,7 +43,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/Tympan/Tympan_Library
-  fetched_at: '2026-06-26T12:12:07.603073+00:00'
+  fetched_at: '2026-06-29T13:05:39.916187+00:00'
   latest_release_url: https://github.com/Tympan/Tympan_Library/releases/tag/V3.1.1
   stars: 144
   forks: 42
@@ -62,9 +62,11 @@ sources:
   has_issue_templates: false
   license_spdx: MIT
 health_tier: at_risk
-health_score: 4.17
+health_score: null
 platform:
 - windows
 - linux
 - macos
 plain_language_description: null
+availability_score: 2.2
+momentum_score: 2.91

@@ -41,7 +41,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/liblouis/liblouis
-  fetched_at: '2026-06-26T12:10:42.533160+00:00'
+  fetched_at: '2026-06-29T13:04:04.552313+00:00'
   latest_release_url: https://github.com/liblouis/liblouis/releases/tag/v3.38.0
   stars: 335
   forks: 253
@@ -60,7 +60,7 @@ sources:
   has_issue_templates: false
   license_spdx: LGPL-2.1
 health_tier: at_risk
-health_score: 4.5
+health_score: null
 platform:
 - windows
 - linux
@@ -68,3 +68,5 @@ platform:
 - android
 - ios
 plain_language_description: null
+availability_score: 2.2
+momentum_score: 3.2

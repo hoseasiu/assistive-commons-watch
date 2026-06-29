@@ -43,7 +43,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/BrainTech/pisak
-  fetched_at: '2026-06-26T12:11:37.535651+00:00'
+  fetched_at: '2026-06-29T13:05:01.738645+00:00'
   latest_release_url: null
   stars: 6
   forks: 8
@@ -62,7 +62,9 @@ sources:
   has_issue_templates: false
   license_spdx: GPL-3.0
 health_tier: archived
-health_score: 1.2
+health_score: null
 platform:
 - linux
 plain_language_description: null
+availability_score: 1.8
+momentum_score: 1.0

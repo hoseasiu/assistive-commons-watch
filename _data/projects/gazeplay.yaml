@@ -1,0 +1,76 @@
+id: acw-0040
+name: GazePlay
+description: Free, open source collection of around 60 mini-games playable entirely
+  with an eye tracker. Designed for people with multiple or severe physical disabilities
+  for whom gaze is the primary means of computer interaction. Works with any eye tracker
+  that can emulate mouse movement, and runs on Windows, macOS, and Linux.
+at_relevance: primary
+added_date: '2026-06-29'
+tags:
+- eye-tracking
+- gaze
+- games
+- motor
+- recreation
+- multiple-disabilities
+disability_area:
+- motor
+- eyegaze
+iso_9999_codes:
+- 22.36.12
+modality: software
+user_context:
+- home
+- recreation
+- school
+interface:
+- eye-gaze
+bom_present: null
+build_docs_quality: partial
+cost_range: null
+fabrication_methods: []
+skill_level: beginner
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: null
+feedback_channel: null
+known_deployed_instances: null
+license: null
+associated_publication: https://hal.science/hal-01630628v1
+institutional_affiliation: null
+origin_program: null
+documentation_languages:
+- en
+- fr
+sources:
+- platform: github
+  url: https://github.com/GazePlay/GazePlay
+  fetched_at: '2026-06-29T13:03:46.023078+00:00'
+  latest_release_url: https://github.com/GazePlay/GazePlay/releases/tag/1.11.9
+  stars: 51
+  forks: 43
+  last_commit: 2025-06-13
+  open_issues: 53
+  open_prs: null
+  issue_response_rate: 0.67
+  release_in_last_year: false
+  readme_has_installation: false
+  readme_has_usage: false
+  readme_has_bom: false
+  release_artifact_present: true
+  dependencies_pinned: null
+  has_contributing: true
+  has_code_of_conduct: false
+  has_issue_templates: true
+  license_spdx: GPL-3.0
+health_tier: at_risk
+health_score: null
+availability_score: 2.6
+momentum_score: 2.97
+platform:
+- windows
+- linux
+- macos
+plain_language_description: A free collection of about 60 simple games you can play
+  using just your eyes and an eye tracker. Built for people with severe physical disabilities
+  who use gaze as their main way to interact with a computer — no hands or voice needed.

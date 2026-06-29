@@ -43,7 +43,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/asterics/eye-lcos-tracker
-  fetched_at: '2026-06-26T12:09:45.175754+00:00'
+  fetched_at: '2026-06-29T13:03:00.722552+00:00'
   latest_release_url: null
   stars: 9
   forks: 0
@@ -62,7 +62,9 @@ sources:
   has_issue_templates: false
   license_spdx: null
 health_tier: at_risk
-health_score: 3.65
+health_score: null
 platform:
 - windows
 plain_language_description: null
+availability_score: 1.8
+momentum_score: 2.98

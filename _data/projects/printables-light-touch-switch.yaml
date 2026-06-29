@@ -1,8 +1,8 @@
 id: acw-0087
 name: Light Touch Switch
-description: Low-activation-force accessibility switch from Makers Making Change. Used
-  by people with physical disabilities to control electronics such as phones, computers,
-  adapted toys, and game controllers via a standard 3.5 mm mono jack.
+description: Low-activation-force accessibility switch from Makers Making Change.
+  Used by people with physical disabilities to control electronics such as phones,
+  computers, adapted toys, and game controllers via a standard 3.5 mm mono jack.
 at_relevance: primary
 added_date: '2026-06-26'
 tags:
@@ -45,17 +45,19 @@ ecosystem_links: {}
 sources:
 - platform: printables
   url: https://www.printables.com/model/214268-light-touch-switch
-  fetched_at: null
-  published_date: null
-  last_updated: null
-  likes: null
-  downloads: null
-  makes_count: null
-  remixes_count: null
-  comments: null
-  has_print_profile: null
-  staff_pick: null
-  license_cc: null
-  author: null
+  fetched_at: '2026-06-29T13:05:07.089104+00:00'
+  published_date: 2022-05-30
+  last_updated: 2023-04-13
+  likes: 37
+  downloads: 240
+  makes_count: 2
+  remixes_count: 1
+  comments: 4
+  has_print_profile: false
+  staff_pick: false
+  license_cc: Creative Commons — Attribution  — Share Alike
+  author: Makers Making Change
 health_tier: documented
 health_score: null
+availability_score: 2.56
+momentum_score: null
