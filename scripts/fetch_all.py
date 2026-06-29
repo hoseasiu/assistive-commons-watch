@@ -113,8 +113,10 @@ def fetch_project(
             raw["sources"][idx] = _source_to_dict(fetched)
             project = Project.model_validate(raw)
 
-    score, tier = compute_health(project)
-    raw["health_score"] = score
+    availability, momentum, tier = compute_health(project)
+    raw["availability_score"] = availability
+    raw["momentum_score"] = momentum
+    raw["health_score"] = None
     raw["health_tier"] = tier.value
 
     yaml_path.write_text(
