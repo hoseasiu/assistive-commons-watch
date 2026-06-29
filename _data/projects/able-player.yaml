@@ -47,12 +47,12 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/ableplayer/ableplayer
-  fetched_at: '2026-06-26T12:09:37.020580+00:00'
+  fetched_at: '2026-06-29T13:02:51.785804+00:00'
   latest_release_url: https://github.com/ableplayer/ableplayer/releases/tag/v5.0.0
   stars: 822
-  forks: 239
+  forks: 240
   last_commit: 2026-06-21
-  open_issues: 104
+  open_issues: 97
   open_prs: null
   issue_response_rate: 0.0
   release_in_last_year: true
@@ -65,10 +65,12 @@ sources:
   has_code_of_conduct: true
   has_issue_templates: true
   license_spdx: NOASSERTION
-health_tier: stable
-health_score: 6.6
+health_tier: at_risk
+health_score: null
 platform:
 - web
 plain_language_description: A free, fully accessible video and audio player that works
   on any website. Supports captions, audio descriptions, keyboard navigation, and
   screen readers out of the box.
+availability_score: 2.56
+momentum_score: 5.0

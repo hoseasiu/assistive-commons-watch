@@ -1,0 +1,76 @@
+id: acw-0032
+name: Plover
+description: Free, open source stenography software that lets anyone type using a
+  chorded keyboard layout at speeds of 200+ words per minute. Developed by the Open
+  Steno Project and widely used by people with repetitive strain injuries, motor disabilities,
+  and professional stenographers seeking an open alternative to proprietary steno
+  software.
+at_relevance: primary
+added_date: '2026-06-29'
+tags:
+- stenography
+- keyboard
+- motor
+- input-method
+- typing
+- rsi
+disability_area:
+- motor
+iso_9999_codes:
+- 22.06.03
+modality: software
+user_context:
+- home
+- work
+- school
+interface:
+- keyboard
+bom_present: null
+build_docs_quality: complete
+cost_range: null
+fabrication_methods: []
+skill_level: beginner
+nothing_about_us: null
+replicated_by_disabled_person: null
+end_user_docs: true
+feedback_channel: true
+known_deployed_instances: null
+license: GPL-2.0
+associated_publication: null
+institutional_affiliation: null
+origin_program: null
+documentation_languages:
+- en
+sources:
+- platform: github
+  url: https://github.com/opensteno/plover
+  fetched_at: '2026-06-29T13:05:03.955579+00:00'
+  latest_release_url: https://github.com/opensteno/plover/releases/tag/v5.3.0
+  stars: 2565
+  forks: 307
+  last_commit: 2026-04-24
+  open_issues: 120
+  open_prs: null
+  issue_response_rate: 0.5
+  release_in_last_year: true
+  readme_has_installation: true
+  readme_has_usage: false
+  readme_has_bom: false
+  release_artifact_present: true
+  dependencies_pinned: null
+  has_contributing: true
+  has_code_of_conduct: false
+  has_issue_templates: true
+  license_spdx: GPL-2.0
+health_tier: at_risk
+health_score: null
+availability_score: 2.88
+momentum_score: 4.46
+platform:
+- windows
+- linux
+- macos
+plain_language_description: Free software that lets you type very fast — over 200
+  words per minute — using a chord-based stenography system where each key press types
+  whole words or syllables. Popular with people who have repetitive strain injuries
+  or motor disabilities because it requires far fewer keystrokes than a standard keyboard.

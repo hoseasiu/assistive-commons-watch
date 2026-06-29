@@ -44,7 +44,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/cmauri/eviacam
-  fetched_at: '2026-06-26T12:10:11.297044+00:00'
+  fetched_at: '2026-06-29T13:03:28.122053+00:00'
   latest_release_url: null
   stars: 174
   forks: 44
@@ -63,10 +63,12 @@ sources:
   has_issue_templates: false
   license_spdx: GPL-3.0
 health_tier: at_risk
-health_score: 2.21
+health_score: null
 platform:
 - windows
 - linux
 plain_language_description: A free webcam-based mouse replacement for Windows and
   Linux. Just look at your webcam and move your head to control the mouse pointer
   — no extra hardware required.
+availability_score: 2.24
+momentum_score: 1.18

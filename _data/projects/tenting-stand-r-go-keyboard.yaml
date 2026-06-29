@@ -43,7 +43,7 @@ ecosystem_links: {}
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Tenting-Stand-for-R-Go-Split-Keyboard
-  fetched_at: '2026-06-26T12:11:59.596244+00:00'
+  fetched_at: '2026-06-29T13:05:31.589367+00:00'
   latest_release_url: null
   stars: 1
   forks: 0
@@ -62,6 +62,8 @@ sources:
   has_issue_templates: false
   license_spdx: NOASSERTION
 health_tier: at_risk
-health_score: 2.65
+health_score: null
 platform: []
 plain_language_description: null
+availability_score: 2.4
+momentum_score: 1.22

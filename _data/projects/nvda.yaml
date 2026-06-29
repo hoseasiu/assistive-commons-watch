@@ -52,14 +52,14 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/nvaccess/nvda
-  fetched_at: '2026-06-26T12:10:56.042392+00:00'
+  fetched_at: '2026-06-29T13:04:18.692459+00:00'
   latest_release_url: https://github.com/nvaccess/nvda/releases/tag/release-2026.2beta4
-  stars: 2592
-  forks: 797
-  last_commit: 2026-06-26
-  open_issues: 2236
+  stars: 2595
+  forks: 798
+  last_commit: 2026-06-29
+  open_issues: 2241
   open_prs: null
-  issue_response_rate: 0.7
+  issue_response_rate: 0.83
   release_in_last_year: true
   readme_has_installation: false
   readme_has_usage: false
@@ -71,9 +71,11 @@ sources:
   has_issue_templates: true
   license_spdx: NOASSERTION
 health_tier: stable
-health_score: 7.2
+health_score: null
 platform:
 - windows
 plain_language_description: A free screen reader for Windows that reads everything
   on screen aloud using a synthesized voice or a Braille display. One of the world's
   most widely used screen readers — download and run, no purchase required.
+availability_score: 3.0
+momentum_score: 5.0

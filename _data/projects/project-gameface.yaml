@@ -44,7 +44,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/google/project-gameface
-  fetched_at: '2026-06-26T12:11:42.179701+00:00'
+  fetched_at: '2026-06-29T13:05:13.134892+00:00'
   latest_release_url: https://github.com/google/project-gameface/releases/tag/v0.3.33
   stars: 632
   forks: 87
@@ -62,11 +62,13 @@ sources:
   has_code_of_conduct: true
   has_issue_templates: false
   license_spdx: Apache-2.0
-health_tier: at_risk
-health_score: 5.07
+health_tier: stable
+health_score: null
 platform:
 - windows
 - linux
 plain_language_description: A free hands-free mouse for Windows and Linux that uses
   your webcam to track your head movements, letting you control a computer cursor
   without touching anything.
+availability_score: 3.6
+momentum_score: 2.63

@@ -47,7 +47,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/asterics/Asterics-AAC
-  fetched_at: '2026-06-26T12:09:46.985721+00:00'
+  fetched_at: '2026-06-29T13:03:02.553146+00:00'
   latest_release_url: https://github.com/asterics/Asterics-AAC/releases/tag/release-2026-06-03-09.11/%2B0200
   stars: 112
   forks: 53
@@ -66,9 +66,11 @@ sources:
   has_issue_templates: false
   license_spdx: AGPL-3.0
 health_tier: at_risk
-health_score: 4.9
+health_score: null
 platform:
 - web
 plain_language_description: A free communication board app that works in any web browser,
   no installation needed. Create customizable picture grids that speak sentences aloud
   — great for AAC users, students, and people with limited speech.
+availability_score: 2.56
+momentum_score: 3.2

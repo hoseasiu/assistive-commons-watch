@@ -48,17 +48,19 @@ ecosystem_links: {}
 sources:
 - platform: printables
   url: https://www.printables.com/model/24196-jellybean-switch-mount-for-wheelchair-headrest
-  fetched_at: null
-  published_date: null
-  last_updated: null
-  likes: null
-  downloads: null
-  makes_count: null
-  remixes_count: null
-  comments: null
-  has_print_profile: null
-  staff_pick: null
-  license_cc: null
-  author: null
+  fetched_at: '2026-06-29T13:05:06.561833+00:00'
+  published_date: 2020-02-26
+  last_updated: 2022-04-12
+  likes: 15
+  downloads: 160
+  makes_count: 1
+  remixes_count: 0
+  comments: 1
+  has_print_profile: false
+  staff_pick: false
+  license_cc: Creative Commons — Attribution
+  author: RockChalkAZ
 health_tier: documented
 health_score: null
+availability_score: 1.64
+momentum_score: null

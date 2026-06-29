@@ -42,7 +42,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/otsimo-archive/aac
-  fetched_at: '2026-06-26T12:11:31.123815+00:00'
+  fetched_at: '2026-06-29T13:04:55.322936+00:00'
   latest_release_url: null
   stars: 26
   forks: 8
@@ -61,10 +61,12 @@ sources:
   has_issue_templates: false
   license_spdx: AGPL-3.0
 health_tier: archived
-health_score: 1.2
+health_score: null
 platform:
 - ios
 - android
 plain_language_description: A free AAC app for phones and tablets that helps people
   with autism or communication difficulties express themselves using pictures and
   symbols. Available in multiple languages on iPhone and Android.
+availability_score: 1.8
+momentum_score: 1.0

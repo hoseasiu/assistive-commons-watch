@@ -38,7 +38,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/jeremydpotts/speakeasy-aac
-  fetched_at: '2026-06-26T12:11:52.991669+00:00'
+  fetched_at: '2026-06-29T13:05:24.706483+00:00'
   latest_release_url: null
   stars: 0
   forks: 0
@@ -57,10 +57,12 @@ sources:
   has_issue_templates: false
   license_spdx: MIT
 health_tier: at_risk
-health_score: 1.75
+health_score: null
 platform:
 - ios
 - android
 plain_language_description: A free AAC app for phones and tablets that lets users
   communicate by tapping picture symbols. Fully customizable, works offline, and available
   on both iPhone and Android.
+availability_score: 1.64
+momentum_score: 1.66

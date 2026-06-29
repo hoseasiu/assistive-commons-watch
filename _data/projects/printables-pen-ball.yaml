@@ -46,17 +46,19 @@ ecosystem_links: {}
 sources:
 - platform: printables
   url: https://www.printables.com/model/217071-pen-ball
-  fetched_at: null
-  published_date: null
-  last_updated: null
-  likes: null
-  downloads: null
-  makes_count: null
-  remixes_count: null
-  comments: null
-  has_print_profile: null
-  staff_pick: null
-  license_cc: null
-  author: null
+  fetched_at: '2026-06-29T13:05:07.847195+00:00'
+  published_date: 2022-05-30
+  last_updated: 2022-05-30
+  likes: 92
+  downloads: 513
+  makes_count: 3
+  remixes_count: 2
+  comments: 3
+  has_print_profile: false
+  staff_pick: false
+  license_cc: Creative Commons — Attribution  — Share Alike
+  author: Makers Making Change
 health_tier: documented
 health_score: null
+availability_score: 2.56
+momentum_score: null

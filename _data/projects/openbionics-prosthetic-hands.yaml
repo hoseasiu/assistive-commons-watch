@@ -45,14 +45,14 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/OpenBionics/Prosthetic-Hands
-  fetched_at: '2026-06-26T12:11:16.792913+00:00'
+  fetched_at: '2026-06-29T13:04:40.923499+00:00'
   latest_release_url: null
   stars: 178
   forks: 57
   last_commit: 2018-02-10
-  open_issues: 5
+  open_issues: 6
   open_prs: null
-  issue_response_rate: 0.17
+  issue_response_rate: 0.14
   release_in_last_year: false
   readme_has_installation: false
   readme_has_usage: false
@@ -64,7 +64,9 @@ sources:
   has_issue_templates: false
   license_spdx: NOASSERTION
 health_tier: at_risk
-health_score: 1.54
+health_score: null
 platform:
 - hardware-only
 plain_language_description: null
+availability_score: 1.8
+momentum_score: 1.1

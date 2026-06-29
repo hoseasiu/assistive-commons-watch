@@ -52,7 +52,7 @@ ecosystem_links: {}
 sources:
 - platform: printables
   url: https://www.printables.com/model/995064-tap-bluetooth-dual-switch-assistive-device
-  fetched_at: '2026-06-26T12:35:50.666440+00:00'
+  fetched_at: '2026-06-29T13:05:08.342574+00:00'
   published_date: 2024-09-03
   last_updated: 2024-09-03
   likes: 69
@@ -65,4 +65,6 @@ sources:
   license_cc: Creative Commons — Attribution  — Share Alike
   author: PrintLab
 health_tier: documented
-health_score: 3.65
+health_score: null
+availability_score: 2.32
+momentum_score: null

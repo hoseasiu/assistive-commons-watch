@@ -376,6 +376,39 @@ layout: base.njk
     <!-- Left column -->
     <div class="main-col">
 
+      <!-- ── About this project ── -->
+      <div class="detail-card" aria-labelledby="about-heading">
+        <div class="card-header">
+          <span class="card-icon" aria-hidden="true">📋</span>
+          <h2 class="card-title" id="about-heading">About this project</h2>
+        </div>
+        <div class="card-body">
+          <p class="project-description">{{ p.description }}</p>
+
+          {%- if p.tags and p.tags.length > 0 -%}
+          <div class="tags-row" style="margin-top: 14px;" aria-label="Tags">
+            {%- for tag in p.tags -%}
+            <span class="meta-pill">{{ tag }}</span>
+            {%- endfor -%}
+          </div>
+          {%- endif -%}
+
+          <div class="project-links">
+            {%- if p.github_url -%}
+            <a href="{{ p.github_url }}" class="link-btn link-btn--primary" target="_blank" rel="noopener">
+              <span aria-hidden="true">↗</span> View on GitHub
+            </a>
+            {%- endif -%}
+            {%- if p.source_url -%}
+            <a href="{{ p.source_url }}" class="link-btn link-btn--primary" target="_blank" rel="noopener">
+              <span aria-hidden="true">↗</span> View on {{ p.source_platform }}
+            </a>
+            {%- endif -%}
+            <a href="/" class="link-btn">← Back to Landscape</a>
+          </div>
+        </div>
+      </div>
+
       <!-- ── "Can I use this today?" summary card ── -->
       <div class="detail-card" aria-labelledby="summary-heading">
         <div class="card-header">
@@ -545,39 +578,6 @@ layout: base.njk
           </div>
           {%- endif -%}
 
-        </div>
-      </div>
-
-      <!-- ── About this project ── -->
-      <div class="detail-card" aria-labelledby="about-heading">
-        <div class="card-header">
-          <span class="card-icon" aria-hidden="true">📋</span>
-          <h2 class="card-title" id="about-heading">About this project</h2>
-        </div>
-        <div class="card-body">
-          <p class="project-description">{{ p.description }}</p>
-
-          {%- if p.tags and p.tags.length > 0 -%}
-          <div class="tags-row" style="margin-top: 14px;" aria-label="Tags">
-            {%- for tag in p.tags -%}
-            <span class="meta-pill">{{ tag }}</span>
-            {%- endfor -%}
-          </div>
-          {%- endif -%}
-
-          <div class="project-links">
-            {%- if p.github_url -%}
-            <a href="{{ p.github_url }}" class="link-btn link-btn--primary" target="_blank" rel="noopener">
-              <span aria-hidden="true">↗</span> View on GitHub
-            </a>
-            {%- endif -%}
-            {%- if p.source_url -%}
-            <a href="{{ p.source_url }}" class="link-btn link-btn--primary" target="_blank" rel="noopener">
-              <span aria-hidden="true">↗</span> View on {{ p.source_platform }}
-            </a>
-            {%- endif -%}
-            <a href="/" class="link-btn">← Back to Landscape</a>
-          </div>
         </div>
       </div>
 

@@ -40,9 +40,9 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/microsoft/accessibility-insights-web
-  fetched_at: '2026-06-26T12:09:41.779536+00:00'
+  fetched_at: '2026-06-29T13:02:56.912162+00:00'
   latest_release_url: https://github.com/microsoft/accessibility-insights-web/releases/tag/web%402.47.0
-  stars: 904
+  stars: 905
   forks: 171
   last_commit: 2026-06-15
   open_issues: 67
@@ -58,9 +58,11 @@ sources:
   has_code_of_conduct: true
   has_issue_templates: true
   license_spdx: MIT
-health_tier: stable
-health_score: 6.8
+health_tier: at_risk
+health_score: null
 platform:
 - web
 - windows
 plain_language_description: null
+availability_score: 2.72
+momentum_score: 5.0

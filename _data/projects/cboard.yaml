@@ -47,14 +47,14 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/cboard-org/cboard
-  fetched_at: '2026-06-26T12:09:55.096983+00:00'
+  fetched_at: '2026-06-29T13:03:11.538260+00:00'
   latest_release_url: https://github.com/cboard-org/cboard/releases/tag/1.39.0
   stars: 738
-  forks: 274
-  last_commit: 2026-06-25
-  open_issues: 237
+  forks: 275
+  last_commit: 2026-06-27
+  open_issues: 239
   open_prs: null
-  issue_response_rate: 0.14
+  issue_response_rate: 0.0
   release_in_last_year: true
   readme_has_installation: true
   readme_has_usage: false
@@ -65,8 +65,8 @@ sources:
   has_code_of_conduct: true
   has_issue_templates: true
   license_spdx: GPL-3.0
-health_tier: stable
-health_score: 6.4
+health_tier: at_risk
+health_score: null
 platform:
 - web
 - android
@@ -74,3 +74,5 @@ platform:
 plain_language_description: An online communication board for people who have difficulty
   speaking. Works in any web browser — type or tap symbols to build sentences, and
   the app speaks them aloud. Also available as a free app on phones and tablets.
+availability_score: 2.52
+momentum_score: 5.0

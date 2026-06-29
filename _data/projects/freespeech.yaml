@@ -42,7 +42,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/Merkie/freespeech
-  fetched_at: '2026-06-26T12:10:25.617484+00:00'
+  fetched_at: '2026-06-29T13:03:43.608964+00:00'
   latest_release_url: https://github.com/Merkie/freespeech/releases/tag/0.0.0.1
   stars: 597
   forks: 72
@@ -60,8 +60,8 @@ sources:
   has_code_of_conduct: true
   has_issue_templates: true
   license_spdx: null
-health_tier: stable
-health_score: 5.95
+health_tier: at_risk
+health_score: null
 platform:
 - web
 - ios
@@ -73,3 +73,5 @@ plain_language_description: A free AAC app that works in your browser on any pho
   tablet, or computer — no install required. Press symbol buttons to build phrases
   that the app speaks aloud. Built by Archer Calder for his nonverbal sister; community
   feedback welcome on Discord.
+availability_score: 2.36
+momentum_score: 4.78

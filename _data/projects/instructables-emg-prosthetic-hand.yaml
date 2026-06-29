@@ -58,5 +58,7 @@ sources:
   license_cc: null
   author: null
 health_tier: documented
-health_score: 2.2
+health_score: null
 plain_language_description: null
+availability_score: 1.64
+momentum_score: null

@@ -48,9 +48,9 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/OpenBCI/OpenBCI_GUI
-  fetched_at: '2026-06-26T12:11:14.781535+00:00'
+  fetched_at: '2026-06-29T13:04:38.863956+00:00'
   latest_release_url: https://github.com/OpenBCI/OpenBCI_GUI/releases/tag/v7.0.0-alpha1
-  stars: 932
+  stars: 933
   forks: 307
   last_commit: 2025-03-31
   open_issues: 51
@@ -67,6 +67,8 @@ sources:
   has_issue_templates: true
   license_spdx: MIT
 health_tier: stable
-health_score: 6.31
+health_score: null
 platform: []
 plain_language_description: null
+availability_score: 3.76
+momentum_score: 3.51

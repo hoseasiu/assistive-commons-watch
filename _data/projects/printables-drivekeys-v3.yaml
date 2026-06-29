@@ -51,7 +51,7 @@ ecosystem_links: {}
 sources:
 - platform: printables
   url: https://www.printables.com/model/408455-drivekeys-v3-aka-bluetooth-keyboard-wheelchair-joy
-  fetched_at: '2026-06-26T12:36:12.069234+00:00'
+  fetched_at: '2026-06-29T13:05:06.030565+00:00'
   published_date: 2023-02-25
   last_updated: 2026-05-21
   likes: 5
@@ -64,4 +64,6 @@ sources:
   license_cc: Open Community License v1
   author: Odd Inventor
 health_tier: documented
-health_score: 3.4
+health_score: null
+availability_score: 2.32
+momentum_score: null

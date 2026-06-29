@@ -45,10 +45,10 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/rhasspy/piper
-  fetched_at: '2026-06-26T12:11:35.014185+00:00'
+  fetched_at: '2026-06-29T13:04:59.064464+00:00'
   latest_release_url: https://github.com/rhasspy/piper/releases/tag/2023.11.14-2
-  stars: 11150
-  forks: 1034
+  stars: 11161
+  forks: 1033
   last_commit: 2025-08-26
   open_issues: 419
   open_prs: null
@@ -63,8 +63,8 @@ sources:
   has_code_of_conduct: false
   has_issue_templates: false
   license_spdx: MIT
-health_tier: at_risk
-health_score: 4.38
+health_tier: complete
+health_score: null
 platform:
 - windows
 - linux
@@ -72,3 +72,5 @@ platform:
 plain_language_description: A free, fast text-to-speech app that runs entirely on
   your own computer — no internet connection required. Produces natural-sounding speech
   in many languages. Good for privacy-conscious users and offline use.
+availability_score: 3.44
+momentum_score: 1.86
