@@ -1,0 +1,55 @@
+name: Weekly Data Fetch
+
+# Runs every Monday at 09:00 UTC, plus allows manual runs.
+on:
+  schedule:
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install -e .
+
+      # Fetches live data for GitHub/Hackaday/Printables projects, recomputes
+      # health score/tier for all projects, and regenerates site/_data/acw.json.
+      # continue-on-error: fetch_all.py exits 1 if any single project fails
+      # (e.g. a dead URL); we still want to commit the projects that succeeded.
+      - name: Fetch project data
+        id: fetch
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HACKADAY_API_KEY: ${{ secrets.HACKADAY_API_KEY }}
+        run: python scripts/fetch_all.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _data/projects/ site/_data/acw.json
+          if git diff --cached --quiet; then
+            echo "No data changes, skipping commit."
+          else
+            git commit -m "Weekly data fetch $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Fail run if fetch had errors
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          echo "One or more projects failed to fetch — see the 'Fetch project data' step log above."
+          exit 1
