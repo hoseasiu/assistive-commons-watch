@@ -42,9 +42,9 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/otsimo-archive/aac
-  fetched_at: '2026-06-29T13:12:47.173225+00:00'
+  fetched_at: '2026-07-13T12:42:29.151843+00:00'
   latest_release_url: null
-  stars: 26
+  stars: 25
   forks: 8
   last_commit: 2020-01-28
   open_issues: 13

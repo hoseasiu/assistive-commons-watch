@@ -51,7 +51,7 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/LipSync-Classic
-  fetched_at: '2026-06-29T13:12:01.019183+00:00'
+  fetched_at: '2026-07-13T12:41:36.676449+00:00'
   latest_release_url: https://github.com/makersmakingchange/LipSync-Classic/releases/tag/v3.0
   stars: 32
   forks: 10
@@ -69,9 +69,9 @@ sources:
   has_code_of_conduct: false
   has_issue_templates: false
   license_spdx: null
-health_tier: stable
+health_tier: dormant
 health_score: null
 platform: []
 plain_language_description: null
 availability_score: 3.2
-momentum_score: 2.52
+momentum_score: 2.08

@@ -47,12 +47,12 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/ableplayer/ableplayer
-  fetched_at: '2026-06-29T13:10:47.688171+00:00'
+  fetched_at: '2026-07-13T12:39:50.985983+00:00'
   latest_release_url: https://github.com/ableplayer/ableplayer/releases/tag/v5.0.0
-  stars: 822
-  forks: 240
+  stars: 823
+  forks: 242
   last_commit: 2026-06-21
-  open_issues: 97
+  open_issues: 93
   open_prs: null
   issue_response_rate: 0.0
   release_in_last_year: true

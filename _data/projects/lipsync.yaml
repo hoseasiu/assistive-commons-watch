@@ -48,7 +48,7 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/LipSync
-  fetched_at: '2026-06-29T13:12:05.889964+00:00'
+  fetched_at: '2026-07-13T12:41:41.260360+00:00'
   latest_release_url: https://github.com/makersmakingchange/LipSync/releases/tag/V4.1
   stars: 15
   forks: 0
@@ -74,4 +74,4 @@ platform:
 - macos
 plain_language_description: null
 availability_score: 4.24
-momentum_score: 2.25
+momentum_score: 1.81
