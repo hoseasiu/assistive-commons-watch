@@ -45,7 +45,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/GazePlay/GazePlay
-  fetched_at: '2026-07-13T12:41:07.199861+00:00'
+  fetched_at: '2026-07-20T11:47:16.071631+00:00'
   latest_release_url: https://github.com/GazePlay/GazePlay/releases/tag/1.11.9
   stars: 50
   forks: 43

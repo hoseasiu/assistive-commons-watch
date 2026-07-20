@@ -43,10 +43,10 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/Tympan/Tympan_Library
-  fetched_at: '2026-07-13T12:43:15.180905+00:00'
+  fetched_at: '2026-07-20T11:48:53.747217+00:00'
   latest_release_url: https://github.com/Tympan/Tympan_Library/releases/tag/V3.1.1
-  stars: 144
-  forks: 41
+  stars: 147
+  forks: 43
   last_commit: 2026-07-07
   open_issues: 31
   open_prs: null

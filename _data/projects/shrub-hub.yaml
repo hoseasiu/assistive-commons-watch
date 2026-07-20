@@ -44,10 +44,10 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Shrub-Hub
-  fetched_at: '2026-07-13T12:42:55.273258+00:00'
+  fetched_at: '2026-07-20T11:48:37.167935+00:00'
   latest_release_url: null
   stars: 5
-  forks: 1
+  forks: 2
   last_commit: 2026-03-26
   open_issues: 4
   open_prs: null
