@@ -42,11 +42,11 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/Merkie/freespeech
-  fetched_at: '2026-07-20T11:47:14.059879+00:00'
+  fetched_at: '2026-07-27T12:26:11.046230+00:00'
   latest_release_url: https://github.com/Merkie/freespeech/releases/tag/0.0.0.1
   stars: 597
   forks: 74
-  last_commit: 2026-07-14
+  last_commit: 2026-07-26
   open_issues: 14
   open_prs: null
   issue_response_rate: 0.0

@@ -42,7 +42,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/SpecialEffect/EyeMine
-  fetched_at: '2026-07-20T11:47:02.030387+00:00'
+  fetched_at: '2026-07-27T12:25:54.853659+00:00'
   latest_release_url: https://github.com/SpecialEffect/EyeMine/releases/tag/release/eyemine_2.3.0
   stars: 111
   forks: 5
