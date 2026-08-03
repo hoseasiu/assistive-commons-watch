@@ -40,9 +40,9 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/pa11y/pa11y
-  fetched_at: '2026-07-27T12:27:47.148153+00:00'
+  fetched_at: '2026-08-03T12:27:50.654803+00:00'
   latest_release_url: https://github.com/pa11y/pa11y/releases/tag/9.1.1
-  stars: 4482
+  stars: 4483
   forks: 295
   last_commit: 2026-07-14
   open_issues: 45

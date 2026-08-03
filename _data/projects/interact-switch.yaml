@@ -44,11 +44,11 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Interact-Switch
-  fetched_at: '2026-07-27T12:26:27.610657+00:00'
+  fetched_at: '2026-08-03T12:26:50.084117+00:00'
   latest_release_url: null
   stars: 1
   forks: 1
-  last_commit: 2025-12-16
+  last_commit: 2026-07-30
   open_issues: 4
   open_prs: null
   issue_response_rate: 0.33
@@ -62,9 +62,9 @@ sources:
   has_code_of_conduct: false
   has_issue_templates: false
   license_spdx: BSD-2-Clause
-health_tier: dormant
+health_tier: stable
 health_score: null
 platform: []
 plain_language_description: null
 availability_score: 3.52
-momentum_score: 1.9
+momentum_score: 3.2
