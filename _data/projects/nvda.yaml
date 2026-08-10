@@ -52,14 +52,14 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/nvaccess/nvda
-  fetched_at: '2026-08-03T12:27:13.552467+00:00'
-  latest_release_url: https://github.com/nvaccess/nvda/releases/tag/release-2026.2beta9
-  stars: 2610
-  forks: 812
-  last_commit: 2026-08-03
-  open_issues: 2209
+  fetched_at: '2026-08-10T10:18:32.929728+00:00'
+  latest_release_url: https://github.com/nvaccess/nvda/releases/tag/release-2026.2beta10
+  stars: 2616
+  forks: 815
+  last_commit: 2026-08-10
+  open_issues: 2189
   open_prs: null
-  issue_response_rate: 0.25
+  issue_response_rate: 0.14
   release_in_last_year: true
   readme_has_installation: false
   readme_has_usage: false

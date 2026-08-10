@@ -42,7 +42,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/antijingoist/opendyslexic
-  fetched_at: '2026-08-03T12:27:36.391121+00:00'
+  fetched_at: '2026-08-10T10:18:52.725077+00:00'
   latest_release_url: https://github.com/antijingoist/opendyslexic/releases/tag/v0.91.12
   stars: 797
   forks: 46

@@ -45,10 +45,10 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/OpenAT-Joysticks
-  fetched_at: '2026-08-03T12:27:26.725321+00:00'
+  fetched_at: '2026-08-10T10:18:43.993176+00:00'
   latest_release_url: null
   stars: 8
-  forks: 1
+  forks: 2
   last_commit: 2026-04-01
   open_issues: 2
   open_prs: null
