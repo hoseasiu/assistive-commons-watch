@@ -47,10 +47,10 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/asterics/Asterics-AAC
-  fetched_at: '2026-08-10T10:17:29.085248+00:00'
+  fetched_at: '2026-08-17T09:42:12.018050+00:00'
   latest_release_url: https://github.com/asterics/Asterics-AAC/releases/tag/release-2026-08-06-12.14/%2B0200
-  stars: 116
-  forks: 54
+  stars: 117
+  forks: 56
   last_commit: 2026-08-06
   open_issues: 180
   open_prs: null

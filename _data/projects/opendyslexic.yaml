@@ -42,10 +42,10 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/antijingoist/opendyslexic
-  fetched_at: '2026-08-10T10:18:52.725077+00:00'
+  fetched_at: '2026-08-17T09:43:44.209175+00:00'
   latest_release_url: https://github.com/antijingoist/opendyslexic/releases/tag/v0.91.12
-  stars: 797
-  forks: 46
+  stars: 798
+  forks: 45
   last_commit: 2025-08-11
   open_issues: 46
   open_prs: null
@@ -74,4 +74,4 @@ plain_language_description: A free dyslexia-friendly font designed to make readi
   easier by giving each letter a unique shape. Install it on any device or use it
   as a browser extension.
 availability_score: 3.56
-momentum_score: 2.49
+momentum_score: 2.05

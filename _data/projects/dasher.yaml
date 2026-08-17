@@ -48,7 +48,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/dasher-project/dasher
-  fetched_at: '2026-08-10T10:17:43.981705+00:00'
+  fetched_at: '2026-08-17T09:42:30.953880+00:00'
   latest_release_url: https://github.com/dasher-project/dasher/releases/tag/DASHER_5_0_0_beta
   stars: 176
   forks: 48

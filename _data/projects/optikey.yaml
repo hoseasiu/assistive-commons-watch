@@ -49,10 +49,10 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/OptiKey/OptiKey
-  fetched_at: '2026-08-10T10:19:00.592863+00:00'
+  fetched_at: '2026-08-17T09:43:51.976191+00:00'
   latest_release_url: https://github.com/OptiKey/OptiKey/releases/tag/v4.1.1
-  stars: 4409
-  forks: 507
+  stars: 4408
+  forks: 506
   last_commit: 2026-03-18
   open_issues: 125
   open_prs: null
