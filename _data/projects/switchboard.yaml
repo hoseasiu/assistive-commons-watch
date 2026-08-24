@@ -39,7 +39,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/jqug/switchboard
-  fetched_at: '2026-08-17T09:44:24.282091+00:00'
+  fetched_at: '2026-08-24T09:52:39.657931+00:00'
   latest_release_url: null
   stars: 3
   forks: 0

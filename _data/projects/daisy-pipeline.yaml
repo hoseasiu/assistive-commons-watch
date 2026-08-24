@@ -43,7 +43,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/daisy/pipeline
-  fetched_at: '2026-08-17T09:42:27.987507+00:00'
+  fetched_at: '2026-08-24T09:49:55.285551+00:00'
   latest_release_url: null
   stars: 26
   forks: 22

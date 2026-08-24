@@ -45,7 +45,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/OpenBionics/Prosthetic-Hands
-  fetched_at: '2026-08-17T09:43:42.326138+00:00'
+  fetched_at: '2026-08-24T09:51:39.221252+00:00'
   latest_release_url: null
   stars: 186
   forks: 57

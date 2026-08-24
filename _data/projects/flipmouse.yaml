@@ -52,7 +52,7 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/asterics/FLipMouse
-  fetched_at: '2026-08-17T09:42:46.545564+00:00'
+  fetched_at: '2026-08-24T09:50:23.295158+00:00'
   latest_release_url: https://github.com/asterics/FLipMouse/releases/tag/v3.6.2
   stars: 43
   forks: 9
@@ -75,4 +75,4 @@ health_score: null
 platform: []
 plain_language_description: null
 availability_score: 4.24
-momentum_score: 2.47
+momentum_score: 2.03
