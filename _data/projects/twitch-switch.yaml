@@ -48,7 +48,7 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Twitch-Switch
-  fetched_at: '2026-08-24T09:52:49.327909+00:00'
+  fetched_at: '2026-08-31T16:49:09.449827+00:00'
   latest_release_url: null
   stars: 0
   forks: 1

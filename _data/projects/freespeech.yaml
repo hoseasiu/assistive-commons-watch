@@ -42,7 +42,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/Merkie/freespeech
-  fetched_at: '2026-08-24T09:50:29.575797+00:00'
+  fetched_at: '2026-08-31T16:47:27.752245+00:00'
   latest_release_url: https://github.com/Merkie/freespeech/releases/tag/0.0.0.1
   stars: 596
   forks: 74
@@ -74,4 +74,4 @@ plain_language_description: A free AAC app that works in your browser on any pho
   that the app speaks aloud. Built by Archer Calder for his nonverbal sister; community
   feedback welcome on Discord.
 availability_score: 2.36
-momentum_score: 4.78
+momentum_score: 4.34

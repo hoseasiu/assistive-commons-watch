@@ -41,7 +41,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/mrdaly/ColorCode
-  fetched_at: '2026-08-24T09:49:52.950841+00:00'
+  fetched_at: '2026-08-31T16:47:02.574222+00:00'
   latest_release_url: null
   stars: 2
   forks: 1
