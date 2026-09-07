@@ -40,14 +40,14 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/dequelabs/axe-core
-  fetched_at: '2026-08-31T16:46:54.599981+00:00'
+  fetched_at: '2026-09-07T14:51:59.228327+00:00'
   latest_release_url: https://github.com/dequelabs/axe-core/releases/tag/v4.13.0
-  stars: 7457
-  forks: 923
-  last_commit: 2026-08-31
-  open_issues: 434
+  stars: 7488
+  forks: 924
+  last_commit: 2026-09-03
+  open_issues: 439
   open_prs: null
-  issue_response_rate: 0.5
+  issue_response_rate: 0.4
   release_in_last_year: true
   readme_has_installation: true
   readme_has_usage: false

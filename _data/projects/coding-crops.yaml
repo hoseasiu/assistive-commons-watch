@@ -43,7 +43,7 @@ ecosystem_links: {}
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/coding-crops
-  fetched_at: '2026-08-31T16:47:00.714148+00:00'
+  fetched_at: '2026-09-07T14:52:05.350619+00:00'
   latest_release_url: https://github.com/makersmakingchange/coding-crops/releases/tag/v2.0.0
   stars: 2
   forks: 0

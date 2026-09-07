@@ -46,12 +46,12 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/dcostenco/prism-aac
-  fetched_at: '2026-08-31T16:48:44.592234+00:00'
+  fetched_at: '2026-09-07T14:53:52.717288+00:00'
   latest_release_url: https://github.com/dcostenco/prism-aac/releases/tag/v1.8.0
   stars: 3
   forks: 0
-  last_commit: 2026-08-22
-  open_issues: 1
+  last_commit: 2026-09-02
+  open_issues: 0
   open_prs: null
   issue_response_rate: null
   release_in_last_year: true
