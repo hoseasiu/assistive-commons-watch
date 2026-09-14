@@ -44,7 +44,7 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Rocket-Switch-Interface
-  fetched_at: '2026-09-07T14:53:58.352691+00:00'
+  fetched_at: '2026-09-14T15:45:39.887497+00:00'
   latest_release_url: https://github.com/makersmakingchange/Rocket-Switch-Interface/releases/tag/V1.1
   stars: 19
   forks: 4

@@ -39,7 +39,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/dkager/tolk
-  fetched_at: '2026-09-07T14:54:14.796740+00:00'
+  fetched_at: '2026-09-14T15:45:58.094583+00:00'
   latest_release_url: null
   stars: 104
   forks: 53
