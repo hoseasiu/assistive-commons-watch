@@ -46,11 +46,11 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/neurobionics/opensourceleg
-  fetched_at: '2026-09-14T15:45:13.845135+00:00'
+  fetched_at: '2026-09-21T15:44:55.154201+00:00'
   latest_release_url: https://github.com/neurobionics/opensourceleg/releases/tag/opensourceleg-v3.5.0
-  stars: 119
+  stars: 118
   forks: 76
-  last_commit: 2026-07-06
+  last_commit: 2026-09-16
   open_issues: 37
   open_prs: null
   issue_response_rate: 0.0
@@ -70,4 +70,4 @@ platform:
 - linux
 plain_language_description: null
 availability_score: 3.2
-momentum_score: 4.78
+momentum_score: 5.0

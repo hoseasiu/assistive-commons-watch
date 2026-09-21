@@ -44,7 +44,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/Gueopic/App
-  fetched_at: '2026-09-14T15:44:16.866694+00:00'
+  fetched_at: '2026-09-21T15:43:54.461751+00:00'
   latest_release_url: null
   stars: 5
   forks: 0
