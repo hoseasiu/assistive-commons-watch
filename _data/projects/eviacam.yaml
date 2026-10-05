@@ -44,7 +44,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/cmauri/eviacam
-  fetched_at: '2026-09-28T17:25:53.686959+00:00'
+  fetched_at: '2026-10-05T18:02:09.190719+00:00'
   latest_release_url: null
   stars: 174
   forks: 44

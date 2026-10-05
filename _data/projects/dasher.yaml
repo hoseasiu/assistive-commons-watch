@@ -48,10 +48,10 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/dasher-project/dasher
-  fetched_at: '2026-09-28T17:25:44.382722+00:00'
+  fetched_at: '2026-10-05T18:02:01.856278+00:00'
   latest_release_url: https://github.com/dasher-project/dasher/releases/tag/DASHER_5_0_0_beta
   stars: 176
-  forks: 48
+  forks: 49
   last_commit: 2020-04-20
   open_issues: 52
   open_prs: null
