@@ -40,10 +40,10 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/microsoft/accessibility-insights-web
-  fetched_at: '2026-10-05T18:01:36.047878+00:00'
+  fetched_at: '2026-10-12T18:41:24.626268+00:00'
   latest_release_url: https://github.com/microsoft/accessibility-insights-web/releases/tag/web%402.49.0
-  stars: 954
-  forks: 181
+  stars: 957
+  forks: 182
   last_commit: 2026-09-15
   open_issues: 76
   open_prs: null

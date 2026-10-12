@@ -46,7 +46,7 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/OpenAT-Switch-Latch
-  fetched_at: '2026-10-05T18:03:17.806052+00:00'
+  fetched_at: '2026-10-12T18:42:52.304766+00:00'
   latest_release_url: null
   stars: 2
   forks: 0

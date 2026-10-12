@@ -39,7 +39,7 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/mrpmorris/iGaze
-  fetched_at: '2026-10-05T18:02:33.938463+00:00'
+  fetched_at: '2026-10-12T18:42:15.337536+00:00'
   latest_release_url: https://github.com/mrpmorris/iGaze/releases/tag/1.0
   stars: 7
   forks: 2

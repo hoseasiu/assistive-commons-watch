@@ -48,7 +48,7 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Oak-Compact-Joystick
-  fetched_at: '2026-10-05T18:03:03.699767+00:00'
+  fetched_at: '2026-10-12T18:42:39.574776+00:00'
   latest_release_url: null
   stars: 5
   forks: 2
