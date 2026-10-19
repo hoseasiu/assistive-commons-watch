@@ -41,12 +41,12 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/liblouis/liblouis
-  fetched_at: '2026-10-12T18:42:25.081604+00:00'
+  fetched_at: '2026-10-19T16:17:04.329949+00:00'
   latest_release_url: https://github.com/liblouis/liblouis/releases/tag/v3.39.0
-  stars: 348
-  forks: 263
+  stars: 349
+  forks: 264
   last_commit: 2026-09-18
-  open_issues: 292
+  open_issues: 306
   open_prs: null
   issue_response_rate: 0.0
   release_in_last_year: true
@@ -69,4 +69,4 @@ platform:
 - ios
 plain_language_description: null
 availability_score: 2.2
-momentum_score: 3.2
+momentum_score: 2.98

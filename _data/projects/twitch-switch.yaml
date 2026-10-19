@@ -48,14 +48,14 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Twitch-Switch
-  fetched_at: '2026-10-12T18:43:49.405679+00:00'
+  fetched_at: '2026-10-19T16:18:40.470926+00:00'
   latest_release_url: null
   stars: 0
   forks: 1
-  last_commit: 2026-06-08
-  open_issues: 3
+  last_commit: 2026-10-16
+  open_issues: 4
   open_prs: null
-  issue_response_rate: 0.17
+  issue_response_rate: 0.14
   release_in_last_year: false
   readme_has_installation: false
   readme_has_usage: false
@@ -70,6 +70,6 @@ _tier: null
 health_score: null
 platform: []
 plain_language_description: null
-health_tier: dormant
+health_tier: stable
 availability_score: 3.2
-momentum_score: 2.22
+momentum_score: 3.08

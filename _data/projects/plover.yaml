@@ -44,9 +44,9 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/opensteno/plover
-  fetched_at: '2026-10-12T18:43:18.525455+00:00'
+  fetched_at: '2026-10-19T16:18:06.495969+00:00'
   latest_release_url: https://github.com/opensteno/plover/releases/tag/v5.4.2
-  stars: 2596
+  stars: 2600
   forks: 307
   last_commit: 2026-10-11
   open_issues: 125

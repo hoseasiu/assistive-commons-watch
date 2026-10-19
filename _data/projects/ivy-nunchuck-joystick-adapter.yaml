@@ -45,7 +45,7 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Ivy-Nunchuck-Joystick-Adapter
-  fetched_at: '2026-10-12T18:42:19.842927+00:00'
+  fetched_at: '2026-10-19T16:16:57.870309+00:00'
   latest_release_url: null
   stars: 4
   forks: 0

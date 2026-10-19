@@ -43,12 +43,12 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/daisy/MathCAT
-  fetched_at: '2026-10-12T18:42:34.158788+00:00'
+  fetched_at: '2026-10-19T16:17:14.705815+00:00'
   latest_release_url: https://github.com/daisy/MathCAT/releases/tag/latest
-  stars: 121
-  forks: 90
-  last_commit: 2026-10-07
-  open_issues: 136
+  stars: 123
+  forks: 93
+  last_commit: 2026-10-19
+  open_issues: 137
   open_prs: null
   issue_response_rate: 0.5
   release_in_last_year: true
@@ -57,7 +57,7 @@ sources:
   readme_has_bom: false
   release_artifact_present: true
   dependencies_pinned: null
-  has_contributing: false
+  has_contributing: true
   has_code_of_conduct: false
   has_issue_templates: false
   license_spdx: MIT
@@ -66,4 +66,4 @@ health_score: null
 platform: []
 plain_language_description: null
 availability_score: 2.56
-momentum_score: 3.2
+momentum_score: 3.92
