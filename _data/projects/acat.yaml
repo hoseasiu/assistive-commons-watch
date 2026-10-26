@@ -49,10 +49,10 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/intel/acat
-  fetched_at: '2026-10-19T16:15:53.692002+00:00'
+  fetched_at: '2026-10-26T15:55:01.499875+00:00'
   latest_release_url: https://github.com/intel/acat/releases/tag/v4.0.0-beta-1
   stars: 3231
-  forks: 613
+  forks: 614
   last_commit: 2026-04-23
   open_issues: 22
   open_prs: null
@@ -73,4 +73,4 @@ health_score: null
 platform: []
 plain_language_description: null
 availability_score: 3.92
-momentum_score: 3.8
+momentum_score: 3.36

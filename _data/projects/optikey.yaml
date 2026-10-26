@@ -49,14 +49,14 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/OptiKey/OptiKey
-  fetched_at: '2026-10-19T16:17:54.794616+00:00'
+  fetched_at: '2026-10-26T15:57:09.241573+00:00'
   latest_release_url: https://github.com/OptiKey/OptiKey/releases/tag/v4.1.1
-  stars: 4425
-  forks: 511
+  stars: 4428
+  forks: 512
   last_commit: 2026-09-03
-  open_issues: 126
+  open_issues: 127
   open_prs: null
-  issue_response_rate: 0.62
+  issue_response_rate: 0.58
   release_in_last_year: false
   readme_has_installation: true
   readme_has_usage: false
@@ -75,4 +75,4 @@ plain_language_description: A free on-screen keyboard for Windows controlled by 
   gaze or a webcam. No specialist hardware required — just a standard webcam. Designed
   for people who cannot use a physical keyboard or mouse.
 availability_score: 2.24
-momentum_score: 4.8
+momentum_score: 4.77

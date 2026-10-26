@@ -45,7 +45,7 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Sip-And-Puff-Analog-Switch
-  fetched_at: '2026-10-19T16:18:24.365533+00:00'
+  fetched_at: '2026-10-26T15:57:42.067075+00:00'
   latest_release_url: https://github.com/makersmakingchange/Sip-And-Puff-Analog-Switch/releases/tag/v1.0
   stars: 4
   forks: 1

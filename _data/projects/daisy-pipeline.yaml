@@ -43,9 +43,9 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/daisy/pipeline
-  fetched_at: '2026-10-19T16:16:16.730452+00:00'
+  fetched_at: '2026-10-26T15:55:27.267079+00:00'
   latest_release_url: null
-  stars: 26
+  stars: 27
   forks: 22
   last_commit: 2026-09-04
   open_issues: 128

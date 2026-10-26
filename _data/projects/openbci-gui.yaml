@@ -48,10 +48,10 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/OpenBCI/OpenBCI_GUI
-  fetched_at: '2026-10-19T16:17:40.482455+00:00'
+  fetched_at: '2026-10-26T15:56:55.221376+00:00'
   latest_release_url: https://github.com/OpenBCI/OpenBCI_GUI/releases/tag/v7.0.0-alpha1
-  stars: 971
-  forks: 326
+  stars: 975
+  forks: 327
   last_commit: 2025-03-31
   open_issues: 52
   open_prs: null
