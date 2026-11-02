@@ -44,7 +44,7 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Interact-Switch
-  fetched_at: '2026-10-26T15:56:08.841837+00:00'
+  fetched_at: '2026-11-02T19:16:25.206604+00:00'
   latest_release_url: null
   stars: 1
   forks: 2

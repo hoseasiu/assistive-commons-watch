@@ -40,12 +40,12 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/pa11y/pa11y
-  fetched_at: '2026-10-26T15:57:14.755022+00:00'
+  fetched_at: '2026-11-02T19:17:39.254611+00:00'
   latest_release_url: https://github.com/pa11y/pa11y/releases/tag/10.0.0
-  stars: 4585
+  stars: 4589
   forks: 312
-  last_commit: 2026-10-13
-  open_issues: 59
+  last_commit: 2026-11-01
+  open_issues: 60
   open_prs: null
   issue_response_rate: 0.5
   release_in_last_year: true

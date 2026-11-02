@@ -42,9 +42,9 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/Merkie/freespeech
-  fetched_at: '2026-10-26T15:55:55.375117+00:00'
+  fetched_at: '2026-11-02T19:16:07.701441+00:00'
   latest_release_url: https://github.com/Merkie/freespeech/releases/tag/0.0.0.1
-  stars: 595
+  stars: 596
   forks: 75
   last_commit: 2026-10-20
   open_issues: 15

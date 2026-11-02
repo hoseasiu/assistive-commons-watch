@@ -45,7 +45,7 @@ ecosystem_links: {}
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/Willow-Joystick
-  fetched_at: '2026-10-26T15:58:07.827265+00:00'
+  fetched_at: '2026-11-02T19:18:27.299447+00:00'
   latest_release_url: null
   stars: 1
   forks: 0

@@ -43,12 +43,12 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/espeak-ng/espeak-ng
-  fetched_at: '2026-10-26T15:55:36.903798+00:00'
+  fetched_at: '2026-11-02T19:15:44.929591+00:00'
   latest_release_url: https://github.com/espeak-ng/espeak-ng/releases/tag/1.52.0
-  stars: 6976
-  forks: 1328
+  stars: 6990
+  forks: 1330
   last_commit: 2026-09-22
-  open_issues: 671
+  open_issues: 686
   open_prs: null
   issue_response_rate: 0.0
   release_in_last_year: false
