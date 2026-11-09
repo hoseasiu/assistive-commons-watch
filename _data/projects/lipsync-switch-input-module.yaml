@@ -48,7 +48,7 @@ ecosystem_links:
 sources:
 - platform: github
   url: https://github.com/makersmakingchange/LipSync-SwitchInputModule
-  fetched_at: '2026-11-02T19:16:46.001256+00:00'
+  fetched_at: '2026-11-09T19:35:15.873977+00:00'
   latest_release_url: https://github.com/makersmakingchange/LipSync-SwitchInputModule/releases/tag/v1.0
   stars: 0
   forks: 1

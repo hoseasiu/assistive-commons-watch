@@ -41,9 +41,9 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/tvraman/emacspeak
-  fetched_at: '2026-11-02T19:15:41.762313+00:00'
+  fetched_at: '2026-11-09T19:34:20.177049+00:00'
   latest_release_url: https://github.com/tvraman/emacspeak/releases/tag/60.0
-  stars: 285
+  stars: 287
   forks: 59
   last_commit: 2024-08-26
   open_issues: 6

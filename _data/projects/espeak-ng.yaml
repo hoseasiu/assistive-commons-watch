@@ -43,14 +43,14 @@ documentation_languages:
 sources:
 - platform: github
   url: https://github.com/espeak-ng/espeak-ng
-  fetched_at: '2026-11-02T19:15:44.929591+00:00'
+  fetched_at: '2026-11-09T19:34:22.978893+00:00'
   latest_release_url: https://github.com/espeak-ng/espeak-ng/releases/tag/1.52.0
-  stars: 6990
-  forks: 1330
-  last_commit: 2026-09-22
-  open_issues: 686
+  stars: 7016
+  forks: 1336
+  last_commit: 2026-11-08
+  open_issues: 640
   open_prs: null
-  issue_response_rate: 0.0
+  issue_response_rate: null
   release_in_last_year: false
   readme_has_installation: false
   readme_has_usage: false
@@ -72,4 +72,4 @@ plain_language_description: A free text-to-speech engine that reads text aloud i
   over 100 languages. Lightweight and works offline. Used by screen readers and accessibility
   tools worldwide.
 availability_score: 2.56
-momentum_score: 3.26
+momentum_score: 3.7
