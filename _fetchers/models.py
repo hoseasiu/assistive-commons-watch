@@ -252,6 +252,9 @@ class Project(BaseModel):
     # Maturity — curator override for the maturity bonus (None = infer)
     maturity: Optional[MaturityLevel] = None
 
+    # Curator override — force the Archived tier (e.g. upstream deleted). Skips live fetching.
+    archived: bool = False
+
     # Computed — written back by fetch workflow, not hand-edited
     health_tier: Optional[HealthTier] = None
     health_score: Optional[float] = Field(None, ge=0.0, le=10.0)

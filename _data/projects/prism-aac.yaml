@@ -64,7 +64,8 @@ sources:
   has_code_of_conduct: true
   has_issue_templates: true
   license_spdx: AGPL-3.0
-health_tier: at_risk
+archived: true
+health_tier: archived
 health_score: null
 platform:
 - web
@@ -72,4 +73,4 @@ plain_language_description: A free browser-based AAC platform you can use on any
   without installing anything. Supports symbols and text-to-speech to help people
   who have difficulty speaking.
 availability_score: 1.44
-momentum_score: 4.34
+momentum_score: 5.0

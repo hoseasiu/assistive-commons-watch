@@ -347,6 +347,13 @@ def _assign_tier(
 
 def compute_health(project: Project) -> tuple[float, Optional[float], HealthTier]:
     """Compute (availability 1–5, momentum 1–5 or None, tier) for a project."""
+    availability, momentum, tier = _compute_health(project)
+    if project.archived:
+        tier = HealthTier.archived
+    return availability, momentum, tier
+
+
+def _compute_health(project: Project) -> tuple[float, Optional[float], HealthTier]:
     github = next((s for s in project.sources if s.platform == "github"), None)
     hackaday = next((s for s in project.sources if s.platform == "hackaday"), None)
     static = next((s for s in project.sources if s.platform in _STATIC_PLATFORMS), None)

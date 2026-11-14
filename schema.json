@@ -1438,6 +1438,11 @@
       ],
       "default": null
     },
+    "archived": {
+      "default": false,
+      "title": "Archived",
+      "type": "boolean"
+    },
     "health_tier": {
       "anyOf": [
         {

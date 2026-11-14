@@ -109,7 +109,7 @@ def fetch_project(
     live_fetch = False
     unavailable: list[str] = []
 
-    for s in project.sources:
+    for s in ([] if project.archived else project.sources):
         if s.platform == "github":
             url = s.url
             fetched = _fetch_source(github_fetcher, url)
