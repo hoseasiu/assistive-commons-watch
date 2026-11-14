@@ -19,9 +19,11 @@ Requires GITHUB_TOKEN env var for authenticated GitHub rate limits (5000 req/hr 
 
 import argparse
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 
+import httpx
 import yaml
 
 # Ensure UTF-8 output on Windows so status symbols (✓ ✗ …) render correctly.
@@ -32,6 +34,7 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() not in ("utf-8", "utf8"):
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+from _fetchers.base import SourceNotFoundError
 from _fetchers.github import GitHubFetcher
 from _fetchers.hackaday import HackadayFetcher
 from _fetchers.models import Project, Source
@@ -51,17 +54,52 @@ def _source_to_dict(source: Source) -> dict:
     return d
 
 
+RETRY_ATTEMPTS = 4
+RETRY_BASE_DELAY = 2.0  # seconds; doubles each attempt (2, 4, 8)
+
+
+def _is_transient(exc: Exception) -> bool:
+    """Network blips, timeouts, and 5xx responses are worth retrying."""
+    if isinstance(exc, httpx.TransportError):  # timeouts, disconnects, DNS, etc.
+        return True
+    if isinstance(exc, httpx.HTTPStatusError):
+        return exc.response.status_code >= 500
+    return False
+
+
+def _fetch_source(fetcher, url: str):
+    """
+    Fetch one source with retry/backoff on transient errors.
+
+    Returns the fetched Source, or None if the upstream project no longer exists
+    (404). In that case the caller keeps the existing YAML data; the project is
+    flagged with a warning rather than failing the whole run.
+    """
+    for attempt in range(1, RETRY_ATTEMPTS + 1):
+        try:
+            return fetcher.fetch(url)
+        except SourceNotFoundError as exc:
+            print(f"    ! source not found, keeping existing data: {url} ({exc})", file=sys.stderr)
+            return None
+        except Exception as exc:
+            if attempt == RETRY_ATTEMPTS or not _is_transient(exc):
+                raise
+            delay = RETRY_BASE_DELAY * 2 ** (attempt - 1)
+            print(f"    retry {attempt}/{RETRY_ATTEMPTS - 1} in {delay:.0f}s after: {exc}")
+            time.sleep(delay)
+
+
 def fetch_project(
     yaml_path: Path,
     github_fetcher: GitHubFetcher,
     hackaday_fetcher: HackadayFetcher | None,
     printables_fetcher: PrintablesFetcher,
-) -> tuple[str, str | None, bool]:
+) -> tuple[str, str | None, bool, list[str]]:
     """
     Process one project: fetch live data if it has a GitHub, Hackaday, or Printables
     source, then compute and write back health score/tier.
 
-    Returns (project_id, tier_change_string | None, live_fetch_performed).
+    Returns (project_id, tier_change_string | None, live_fetch_performed, unavailable_urls).
     Raises PermissionError on rate-limit, ValueError on bad data.
     """
     raw: dict = yaml.safe_load(yaml_path.read_text(encoding="utf-8"))
@@ -69,11 +107,15 @@ def fetch_project(
 
     old_tier = project.health_tier
     live_fetch = False
+    unavailable: list[str] = []
 
     for s in project.sources:
         if s.platform == "github":
             url = s.url
-            fetched = github_fetcher.fetch(url)
+            fetched = _fetch_source(github_fetcher, url)
+            if fetched is None:
+                unavailable.append(url)
+                continue
             live_fetch = True
 
             if fetched.url != url:
@@ -88,7 +130,10 @@ def fetch_project(
 
         elif s.platform == "hackaday" and hackaday_fetcher is not None:
             url = s.url
-            fetched = hackaday_fetcher.fetch(url)
+            fetched = _fetch_source(hackaday_fetcher, url)
+            if fetched is None:
+                unavailable.append(url)
+                continue
             live_fetch = True
 
             if fetched.url != url:
@@ -103,7 +148,10 @@ def fetch_project(
 
         elif s.platform == "printables":
             url = s.url
-            fetched = printables_fetcher.fetch(url)
+            fetched = _fetch_source(printables_fetcher, url)
+            if fetched is None:
+                unavailable.append(url)
+                continue
             live_fetch = True
 
             idx = next(
@@ -128,7 +176,7 @@ def fetch_project(
     if old_tier is not None and old_tier != tier:
         tier_change = f"{old_tier.value} → {tier.value}"
 
-    return project.id, tier_change, live_fetch
+    return project.id, tier_change, live_fetch, unavailable
 
 
 def resolve_yaml_paths(project_id: str | None) -> list[Path]:
@@ -156,6 +204,7 @@ def main() -> None:
     processed_count = 0
     live_count = 0
     errors: list[str] = []
+    missing: list[str] = []
     tier_changes: list[str] = []
 
     try:
@@ -168,10 +217,12 @@ def main() -> None:
         with GitHubFetcher() as github_fetcher, PrintablesFetcher() as printables_fetcher:
             for yaml_path in yaml_paths:
                 try:
-                    project_id, tier_change, live_fetch = fetch_project(
+                    project_id, tier_change, live_fetch, unavailable = fetch_project(
                         yaml_path, github_fetcher, hackaday_fetcher, printables_fetcher
                     )
                     processed_count += 1
+                    if unavailable:
+                        missing.append(f"{project_id} ({', '.join(unavailable)})")
                     if live_fetch:
                         live_count += 1
                         status = f"  ✓ {project_id}"

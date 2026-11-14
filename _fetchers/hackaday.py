@@ -8,7 +8,7 @@ from typing import Any, Optional
 
 import httpx
 
-from .base import BaseFetcher
+from .base import BaseFetcher, SourceNotFoundError
 from .models import HackadaySource
 
 _BASE = "https://api.hackaday.io/v1"
@@ -114,7 +114,7 @@ class HackadayFetcher(BaseFetcher):
             params={"api_key": self._api_key, **params},
         )
         if resp.status_code == 404:
-            raise ValueError(f"Hackaday API 404: {path}")
+            raise SourceNotFoundError(f"Hackaday API 404: {path}")
         if resp.status_code in (401, 403, 429):
             raise PermissionError(
                 f"Hackaday API auth/rate-limit error (status {resp.status_code}). "

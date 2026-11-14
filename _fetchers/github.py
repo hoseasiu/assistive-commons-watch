@@ -9,7 +9,7 @@ from typing import Any, Optional
 
 import httpx
 
-from .base import BaseFetcher
+from .base import BaseFetcher, SourceNotFoundError
 from .models import GitHubSource
 
 _OWNER_REPO_RE = re.compile(r"https://github\.com/([^/]+)/([^/]+?)(?:\.git|/)?$")
@@ -111,7 +111,7 @@ class GitHubFetcher(BaseFetcher):
     def _get(self, path: str) -> Any:
         resp = self._client.get(f"{self._BASE}{path}")
         if resp.status_code == 404:
-            raise ValueError(f"GitHub API 404: {path}")
+            raise SourceNotFoundError(f"GitHub API 404: {path}")
         if resp.status_code in (403, 429):
             reset = resp.headers.get("X-RateLimit-Reset", "unknown")
             raise PermissionError(

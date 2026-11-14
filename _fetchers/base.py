@@ -8,3 +8,7 @@ class BaseFetcher(ABC):
     def fetch(self, url: str) -> Source:
         """Fetch live platform data for the given source URL."""
         ...
+
+
+class SourceNotFoundError(ValueError):
+    """The upstream project no longer exists (or is private) - a permanent condition, not a transient failure."""

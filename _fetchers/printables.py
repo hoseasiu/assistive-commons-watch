@@ -7,7 +7,7 @@ from typing import Any, Optional
 
 import httpx
 
-from .base import BaseFetcher
+from .base import BaseFetcher, SourceNotFoundError
 from .models import PrintablesSource
 
 _GRAPHQL_URL = "https://api.printables.com/graphql/"
@@ -70,7 +70,7 @@ class PrintablesFetcher(BaseFetcher):
         print_data: dict[str, Any] = data.get("print") or {}
 
         if not print_data:
-            raise ValueError(f"Printables model {model_id!r} not found or API returned no data")
+            raise SourceNotFoundError(f"Printables model {model_id!r} not found or API returned no data")
 
         license_name: Optional[str] = (print_data.get("license") or {}).get("name")
         author: Optional[str] = (print_data.get("user") or {}).get("publicUsername")
